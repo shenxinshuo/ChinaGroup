@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">              
+
+	<!-- c3p0配置数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/findwork?serverTimezone=UTC"/>
+		<property name="user" value="root"/>
+		<property name="password" value="88888888"/>
+		<!--初始化时获取的连接数，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->
+		<property name="initialPoolSize" value="1"/>
+		<!--连接池中保留的最小连接数。-->
+		<property name="minPoolSize" value="1"/>
+		<!--连接池中保留的最大连接数。Default: 15 -->
+		<property name="maxPoolSize" value="300"/>
+		<!--最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
+		<property name="maxIdleTime" value="60"/>
+		<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+		<property name="acquireIncrement" value="5"/>
+		<!--每60秒检查所有连接池中的空闲连接。Default: 0 -->
+		<property name="idleConnectionTestPeriod" value="60"/>
+	</bean>
+	
+	<!-- 配置SessionFactory -->
+		<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+			 <property name="dataSource" ref="dataSource"/>
+			 <property name="mappingResources">
+			    <list>
+			      <value>com/zhbit/findwork/entity/Student.hbm.xml</value>
+			    </list>
+			 </property>
+			 <property name="hibernateProperties">
+			 <props>
+			 <prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</prop>
+			 <!-- 此属性禁止使用 -->
+			 <!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+			 <prop key="hibernate.show_sql">true</prop>
+			 <prop key="hibernate.format_sql">true</prop>
+			 <prop key="hibernate.current_session_context_class">
+				org.springframework.orm.hibernate4.SpringSessionContext</prop>
+			 </props>
+			 </property>
+		</bean> 
+	
+	
+	<!-- 配置事务管理器 -->
+	<bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!-- 使用基于注解方式配置事务 -->
+	<tx:annotation-driven transaction-manager="txManager"/>
+	
+	
+	<!-- 配置action -->
+	<bean id="studentAction" class="com.zhbit.findwork.action.StudentAction" scope="prototype">
+		<property name="studentService" ref="studentService"></property>
+	</bean>
+	
+	<!-- 配置service -->
+	<bean id="studentService" class="com.zhbit.findwork.servicce.StudentService">
+		<property name="studentDao" ref="studentDao"></property>
+	</bean>
+	
+	<!-- 配置dao -->
+	<bean id="studentDao" class="com.zhbit.findwork.dao.StudentDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+		
+	           
+</beans>
