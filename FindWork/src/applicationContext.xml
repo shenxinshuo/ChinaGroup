@@ -52,13 +52,30 @@
 		</bean> 
 	
 	
-	<!-- 配置事务管理器 -->
+	 <!-- 配置事务管理器 -->
 	<bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
-	<!-- 使用基于注解方式配置事务 -->
-	<tx:annotation-driven transaction-manager="txManager"/>
+	<!--使用基于注解方式配置事务
+	<tx:annotation-driven transaction-manager="txManager"/> -->
 	
+	<!-- tx:advice：定义事务通知，transaction-manager属性用于指定事务管理器 --> 
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		  <tx:attributes>
+		  	<!-- tx:method为某个或某些（name属性可使用通配符）指定方法的5种事务属性; rollback-for属性用于设置事务回滚的异常，若有多个，则用逗号隔开 -->
+		    <tx:method name="get*" read-only="true" />
+		    <tx:method name="*" propagation="REQUIRED" timeout="5" read-only="false"/>
+		  </tx:attributes>
+	</tx:advice>
+		
+		
+	<!--使用基于XML方式配置事务 -->
+	<aop:config>
+		<!-- aop:pointcut:使用切入点表达式定义切入点 -->
+	  	<aop:pointcut id="transactionPointcut" expression="execution(* com.zhbit.findwork.service.impl.*.*(..))"/>
+	  	<!-- aop:advisor：用于指定哪些Bean应该被通知 -->
+	  	<aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointcut"/>
+	</aop:config>
 	
 	<!-- 配置action -->
 	<bean id="studentAction" class="com.zhbit.findwork.action.StudentAction" scope="prototype">
@@ -74,6 +91,31 @@
 	<bean id="studentDao" class="com.zhbit.findwork.dao.StudentDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-		
+	
+	
+	<!-- xinshuostart -->
+	<!-- xinshuoend -->
+	
+	<!-- yufengstart -->
+	<!-- yufengend -->
+	
+	<!-- qinzhistart -->
+	<!-- qinzhiend -->
+	
+	<!-- deluestart -->
+	<!-- delueend -->
+	
+	<!-- shipingstart -->
+	<!-- shipingend -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	           
 </beans>

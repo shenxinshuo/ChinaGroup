@@ -11,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.zhbit.findwork.entity.Student;
-@Transactional
+//@Transactional
 public class StudentDao {
 	private SessionFactory sessionFactory;
 	public void setSessionFactory(SessionFactory sessionFactory) {
