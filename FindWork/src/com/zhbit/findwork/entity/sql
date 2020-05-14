@@ -1,0 +1,25 @@
+create table t_business(
+	Bid int(10) unique not null auto_increment primary key comment '企业ID，主键',
+    Rid int (10) comment '角色ID，外键',
+    Bname varchar(50) not null comment '企业名称',
+    Bcity varchar (20) not null comment '企业所在城市',
+    Btelephone int(12) not null comment '企业联系电话',
+    Bemail varchar(50) comment '企业邮箱',
+    Baddress varchar(255) comment '企业地址',
+    Bdescription varchar(255) comment '企业简介',
+    Burl varchar(255) comment '公司详情超链接',
+    delete_flag int(1) not null default 0 comment '删除标识，0：正常，1：已删除',
+    comment varchar(255) comment '备注',
+    create_at datetime comment '创建时间',
+    update_at datetime comment '修改时间',
+    constraint FK_BUSINESS_ROLE_RID foreign key(Rid) references t_role(Rid)
+) comment='企业表';
+
+create table t_role(
+	Rid int(10) auto_increment unique not null primary key comment '角色ID，主键',
+    Rname varchar(20) unique not null comment '角色名',
+    delete_flag int(1) not null default 0 comment '删除标识，0：正常，1：已删除',
+    comment varchar(255) comment '备注',
+    create_at datetime comment '创建时间',
+    update_at datetime comment '修改时间'
+);
