@@ -72,7 +72,7 @@
 	<!--使用基于XML方式配置事务 -->
 	<aop:config>
 		<!-- aop:pointcut:使用切入点表达式定义切入点 -->
-	  	<aop:pointcut id="transactionPointcut" expression="execution(* com.zhbit.findwork.servicce..*.*(..))"/>
+	  	<aop:pointcut id="transactionPointcut" expression="execution(* com.zhbit.findwork.service..*.*(..))"/>
 	  	<!-- aop:advisor：用于指定哪些Bean应该被通知 -->
 	  	<aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointcut"/>
 	</aop:config>
