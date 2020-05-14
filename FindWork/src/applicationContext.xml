@@ -35,7 +35,7 @@
 			 <property name="dataSource" ref="dataSource"/>
 			 <property name="mappingResources">
 			    <list>
-			      <value>com/zhbit/findwork/entity/Student.hbm.xml</value>
+			      
 			    </list>
 			 </property>
 			 <property name="hibernateProperties">
@@ -72,25 +72,12 @@
 	<!--使用基于XML方式配置事务 -->
 	<aop:config>
 		<!-- aop:pointcut:使用切入点表达式定义切入点 -->
-	  	<aop:pointcut id="transactionPointcut" expression="execution(* com.zhbit.findwork.service.impl.*.*(..))"/>
+	  	<aop:pointcut id="transactionPointcut" expression="execution(* com.zhbit.findwork.servicce..*.*(..))"/>
 	  	<!-- aop:advisor：用于指定哪些Bean应该被通知 -->
 	  	<aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointcut"/>
 	</aop:config>
 	
-	<!-- 配置action -->
-	<bean id="studentAction" class="com.zhbit.findwork.action.StudentAction" scope="prototype">
-		<property name="studentService" ref="studentService"></property>
-	</bean>
 	
-	<!-- 配置service -->
-	<bean id="studentService" class="com.zhbit.findwork.servicce.StudentService">
-		<property name="studentDao" ref="studentDao"></property>
-	</bean>
-	
-	<!-- 配置dao -->
-	<bean id="studentDao" class="com.zhbit.findwork.dao.StudentDao">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
 	
 	
 	<!-- xinshuostart -->

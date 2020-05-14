@@ -1,0 +1,2 @@
+*企业表（t_business）添加字段‘密码’（Bpassword）
+*招聘信息表（t_advice）添加字段‘是否经过审核’（Acheck）
