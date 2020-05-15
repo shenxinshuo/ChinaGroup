@@ -1,5 +1,6 @@
 package com.zhbit.findwork.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -57,6 +58,11 @@ public class Role {
 	}
 	public void setBusinesses(List<Business> businesses) {
 		this.businesses = businesses;
+	}
+	@Override
+	public String toString() {
+		return "Role [id=" + id + ", name=" + name + ", delete_flag=" + delete_flag + ", comment=" + comment
+				+ ", create_at=" + create_at + ", update_at=" + update_at + "]";
 	}
 	
 	

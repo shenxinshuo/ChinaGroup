@@ -16,10 +16,11 @@
 		<property name="create_at" column="create_at" />
 		<property name="update_at" column="update_at" />
 		<!-- 配置和企业的一对多关系 -->
-		<!-- <list name="businesses" table="t_business">
+		<!-- 因为暂时是在dao层做单元测试，所以使用懒加载会实现session已关闭的情况，故关闭懒加载，等后面将事务放在service层时再开启懒加载 -->
+		<list name="businesses" table="t_business" lazy="false">
 			<key column="Rid" />
 			<list-index column="Bid"/>
 			<one-to-many class="Business"/>
-		</list> -->
+		</list>
 	</class>
 </hibernate-mapping>

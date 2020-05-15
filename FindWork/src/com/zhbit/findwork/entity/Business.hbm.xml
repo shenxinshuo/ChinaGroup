@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+   <!-- 沈鑫烁 -->
+   <!-- Business映射文件 -->
+<hibernate-mapping package="com.zhbit.findwork.entity">
+	<class name="com.zhbit.findwork.entity.Business" table="t_business">
+		<id name="id" column="Bid">
+			<generator class="native" />
+		</id>
+		<property name="name" column="Bname" />
+		<property name="city" column="Bcity" />
+		<property name="telephone" column="Btelephone" />
+		<property name="email" column="Bemail" />
+		<property name="address" column="Baddress" />
+		<property name="description" column="Bdescription" />
+		<property name="url" column="Burl" />
+		<property name="password" column="Bpassword"></property>
+		<property name="delete_flag" column="delete_flag" />
+		<property name="comment" column="comment" />
+		<property name="create_at" column="create_at" />
+		<property name="update_at" column="update_at" />
+		<!-- 配置和角色多对一的关系 -->
+		<many-to-one name="role" class="Role" column="Rid"></many-to-one>
+	</class>
+</hibernate-mapping>

@@ -17,7 +17,8 @@ public class Business {
 	private String address;		//
 	private String description;	//企业简介
 	private String url;			//公司详情超链接
-	private int delete_flag = 0;//
+	private String password;    //登录密码
+	private int delete_flag = 0;//删除标识   0：正常  1：已删除
 	private String comment;		//
 	private Date create_at;		//
 	private Date update_at;		//
@@ -70,6 +71,13 @@ public class Business {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public int getDelete_flag() {
 		return delete_flag;
 	}
@@ -99,6 +107,12 @@ public class Business {
 	}
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	@Override
+	public String toString() {
+		return "Business [id=" + id + ", name=" + name + ", city=" + city + ", telephone=" + telephone + ", email="
+				+ email + ", address=" + address + ", description=" + description + ", url=" + url + ", delete_flag="
+				+ delete_flag + ", comment=" + comment + ", create_at=" + create_at + ", update_at=" + update_at + "]";
 	}
 	
 	

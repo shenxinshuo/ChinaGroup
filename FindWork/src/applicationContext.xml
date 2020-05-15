@@ -13,7 +13,8 @@
 	<!-- c3p0配置数据源 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/findwork?serverTimezone=UTC"/>
+		<!-- 解决mysql时区问题，采用上海时间 -->
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/findwork?serverTimezone=Asia/Shanghai"/>
 		<property name="user" value="root"/>
 		<property name="password" value="88888888"/>
 		<!--初始化时获取的连接数，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->
@@ -36,11 +37,12 @@
 			 <property name="mappingResources">
 			    <list>
 			      <value>com/zhbit/findwork/entity/Role.hbm.xml</value>
+			      <value>com/zhbit/findwork/entity/Business.hbm.xml</value>
 			    </list>
 			 </property>
 			 <property name="hibernateProperties">
 			 <props>
-			 <prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</prop>
+			 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 			 <!-- 此属性禁止使用 -->
 			 <!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
 			 <prop key="hibernate.show_sql">true</prop>
@@ -64,7 +66,7 @@
 		  <tx:attributes>
 		  	<!-- tx:method为某个或某些（name属性可使用通配符）指定方法的5种事务属性; rollback-for属性用于设置事务回滚的异常，若有多个，则用逗号隔开 -->
 		    <tx:method name="get*" read-only="true" />
-		    <tx:method name="*" propagation="REQUIRED" timeout="5" read-only="false"/>
+		    <tx:method name="*" propagation="REQUIRED" timeout="20" read-only="false"/>
 		  </tx:attributes>
 	</tx:advice>
 		
@@ -77,7 +79,9 @@
 		-->
 	<aop:config>
 		<!-- aop:pointcut:使用切入点表达式定义切入点 -->
-	  	<aop:pointcut id="transactionPointcut" expression="execution(* com.zhbit.findwork.service.impl.*.*(..))"/>
+	  	<!-- <aop:pointcut id="transactionPointcut" expression="execution(* com.zhbit.findwork.service.impl.*.*(..))"/> -->
+	  	<!-- 为方便单元测试，暂时将事务定在dao层开启 -->
+	  	<aop:pointcut id="transactionPointcut" expression="execution(* com.zhbit.findwork.dao.impl.*.*(..))"/>
 	  	<!-- aop:advisor：用于指定哪些Bean应该被通知 -->
 	  	<aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointcut"/>
 	</aop:config>
@@ -90,10 +94,14 @@
 		<bean id="roleDaoImpl" class="com.zhbit.findwork.dao.impl.RoleDaoImpl">
 			<property name="sessionFactory" ref="sessionFactory" />
 		</bean>
+		<bean id="businessDaoImpl" class="com.zhbit.findwork.dao.impl.BusinessDaoImpl">
+			<property name="sessionFactory" ref="sessionFactory" />
+		</bean>
 		<!-- 配置service -->
 		<bean id="roleServiceImpl" class="com.zhbit.findwork.service.impl.RoleServiceImpl">
 			<property name="roleDao" ref="roleDaoImpl" />
 		</bean>
+		
 		<!-- 配置action -->
 	<!-- xinshuoend -->
 	
