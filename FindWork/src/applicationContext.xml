@@ -31,9 +31,17 @@
 		<property name="idleConnectionTestPeriod" value="60"/>
 	</bean>
 	
+	<!-- 配置jdbc数据源 -->
+	<bean id="dataSourceOfJdbc" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/findwork?serverTimezone=Asia/Shanghai"/>
+		<property name="username" value="root"/>
+		<property name="password" value="88888888"/>
+	</bean>
+	
 	<!-- 配置SessionFactory -->
 		<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-			 <property name="dataSource" ref="dataSource"/>
+			 <property name="dataSource" ref="dataSourceOfJdbc"/>
 			 <property name="mappingResources">
 			    <list>
 			      <value>com/zhbit/findwork/entity/Role.hbm.xml</value>
