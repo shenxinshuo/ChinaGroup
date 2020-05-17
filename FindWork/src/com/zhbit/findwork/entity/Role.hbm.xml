@@ -22,5 +22,11 @@
 			<list-index column="Bid"/>
 			<one-to-many class="Business"/>
 		</list>
+		<!-- 王德略： 配置和用户一对多关系 -->
+		<list name="users" table="t_user" lazy="false">
+			<key column="Rid" />
+			<list-index column="Uid"/>
+			<one-to-many class="User"/>
+		</list>
 	</class>
 </hibernate-mapping>

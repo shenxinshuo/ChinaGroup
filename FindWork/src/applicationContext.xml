@@ -46,6 +46,7 @@
 			    <list>
 			      <value>com/zhbit/findwork/entity/Role.hbm.xml</value>
 			      <value>com/zhbit/findwork/entity/Business.hbm.xml</value>
+			      <value>com/zhbit/findwork/entity/User.hbm.xml</value>
 			    </list>
 			 </property>
 			 <property name="hibernateProperties">
@@ -109,6 +110,12 @@
 		<bean id="roleServiceImpl" class="com.zhbit.findwork.service.impl.RoleServiceImpl">
 			<property name="roleDao" ref="roleDaoImpl" />
 		</bean>
+		
+	<!-- 王德略 -->
+		<!-- 配置userDaoImpl 注入session工厂 -->
+		<bean id="userDaoImpl" class="com.zhbit.findwork.dao.impl.UserDaoImpl" >
+			<property name="sessionFactory" ref="sessionFactory" />
+		</bean>	
 		
 		<!-- 配置action -->
 	<!-- xinshuoend -->

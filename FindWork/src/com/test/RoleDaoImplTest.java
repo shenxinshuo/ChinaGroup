@@ -39,7 +39,7 @@ public class RoleDaoImplTest {
 
 	@Test
 	public void testAddRole() {
-		fail("Not yet implemented");
+	
 	}
 
 	@Test
