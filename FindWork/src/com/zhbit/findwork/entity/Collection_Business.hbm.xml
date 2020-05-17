@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+   <!-- 王德略 -->
+   <!-- 收藏中心（企业）映射文件 -->
+<hibernate-mapping package="com.zhbit.findwork.entity">
+	<class name="com.zhbit.findwork.entity.Collection_Business" table="t_collection_business">
+		<id name="id" column="Cid">
+			<generator class="native" />
+		</id>
+		<many-to-one name="user" class="User" column="Uid" lazy="false"></many-to-one>
+		<many-to-one name="business" class="Business" column="Bid" lazy="false"></many-to-one>
+		<property name="delete_flag" column="delete_flag" />
+		<property name="comment" column="comment" />
+		<property name="create_at" column="create_at" />
+		<property name="update_at" column="update_at" />		
+	</class>
+</hibernate-mapping>

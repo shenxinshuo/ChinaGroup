@@ -2,6 +2,8 @@ package com.zhbit.findwork.service;
 
 import java.util.List;
 
+import com.zhbit.findwork.entity.Business;
+import com.zhbit.findwork.entity.Collection_Business;
 import com.zhbit.findwork.entity.User;
 
 /**
@@ -16,6 +18,21 @@ public interface UserService {
 	 * @param user
 	 */
 	public boolean addUser(User user);
+	/**
+	 * 新增企业收藏
+	 * @param c_b
+	 */
+	public boolean addCollection_Business(Collection_Business c_b);
+	/**
+	 * 删除收藏的企业
+	 * @param userid businessid
+	 */
+	public boolean deleteCollection_Business(int userid,int businessid);
+	/**
+	 * 查看收藏的企业
+	 * @param userid
+	 */
+	public List<Business> getBusinessesByUserId(int userid);
 	/**
 	 * 修改用户信息
 	 * @param user

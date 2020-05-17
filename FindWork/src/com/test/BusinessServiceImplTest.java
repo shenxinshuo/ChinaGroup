@@ -63,7 +63,7 @@ public class BusinessServiceImplTest {
 	@Test
 	public void testGetBusinessByID() {
 		BusinessService businessService = (BusinessService) context.getBean("businessServiceImpl");
-		Business business = businessService.getBusinessByID(4);
+		Business business = businessService.getBusinessByID(3);
 		System.out.println(business);
 	}
 

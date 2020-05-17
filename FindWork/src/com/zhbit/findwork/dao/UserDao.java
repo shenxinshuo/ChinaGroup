@@ -3,6 +3,11 @@ package com.zhbit.findwork.dao;
 import java.util.List;
 import com.zhbit.findwork.entity.User;
 
+/**
+ * 
+ * @author 王德略
+ *
+ */
 public interface UserDao {
 	/**
 	 * 根据用户名字查询用户是否存在
@@ -62,6 +67,7 @@ public interface UserDao {
 	 * @return
 	 */
 	public int getCount();
+	
 
 
 }

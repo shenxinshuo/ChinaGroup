@@ -10,15 +10,20 @@
            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">    
 
-		<!-- 配置userDaoImpl 注入session工厂 -->
+		<!-- 配置dao 注入session工厂 -->
 		<bean id="userDaoImpl" class="com.zhbit.findwork.dao.impl.UserDaoImpl" >
 			<property name="sessionFactory" ref="sessionFactory" />
 		</bean>	
 		
+		<bean id="collection_BusinessDaoImpl" class="com.zhbit.findwork.dao.impl.Collection_BusinessDaoImpl">
+			<property name="sessionFactory" ref="sessionFactory" />
+		</bean>
+		
 		<!-- 配置userServiceImpl -->
 		<bean id="userServiceImpl" class="com.zhbit.findwork.service.impl.UserServiceImpl">
-			<!-- 注入userDao -->
+			<!-- 注入属性 -->
 			<property name="userDao" ref="userDaoImpl"></property>
+			<property name="collection_BusinessDao" ref="collection_BusinessDaoImpl"></property>
 		</bean>
 
 
