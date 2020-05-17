@@ -98,39 +98,18 @@
 	
 	
 	
-	<!-- xinshuostart -->
-		<!-- 配置dao -->
-		<bean id="roleDaoImpl" class="com.zhbit.findwork.dao.impl.RoleDaoImpl">
-			<property name="sessionFactory" ref="sessionFactory" />
-		</bean>
-		<bean id="businessDaoImpl" class="com.zhbit.findwork.dao.impl.BusinessDaoImpl">
-			<property name="sessionFactory" ref="sessionFactory" />
-		</bean>
-		<!-- 配置service -->
-		<bean id="roleServiceImpl" class="com.zhbit.findwork.service.impl.RoleServiceImpl">
-			<property name="roleDao" ref="roleDaoImpl" />
-		</bean>
+	
+	
+	<!-- 引入团队成员的spring配置文件 -->
+	<import resource="applicationContext_xinshuo.xml"/>
+	<import resource="applicationContext_delue.xml"/>
+	<import resource="applicationContext_yufeng.xml"/>
+	<import resource="applicationContext_qinzhi.xml"/>
+	<import resource="applicationContext_shiping.xml"/>
 		
-	<!-- 王德略 -->
-		<!-- 配置userDaoImpl 注入session工厂 -->
-		<bean id="userDaoImpl" class="com.zhbit.findwork.dao.impl.UserDaoImpl" >
-			<property name="sessionFactory" ref="sessionFactory" />
-		</bean>	
 		
-		<!-- 配置action -->
-	<!-- xinshuoend -->
+		
 	
-	<!-- yufengstart -->
-	<!-- yufengend -->
-	
-	<!-- qinzhistart -->
-	<!-- qinzhiend -->
-	
-	<!-- deluestart -->
-	<!-- delueend -->
-	
-	<!-- shipingstart -->
-	<!-- shipingend -->
 	
 	
 	

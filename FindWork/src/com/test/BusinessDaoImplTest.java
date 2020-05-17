@@ -62,7 +62,7 @@ public class BusinessDaoImplTest {
 	@Test
 	public void testUpdateBusiness() {
 		BusinessDao businessDao = (BusinessDao) context.getBean("businessDaoImpl");
-		Business business = businessDao.getBusinessByID(1);
+		Business business = businessDao.getBusinessByID(2);
 		business.setPassword("mayu");
 		businessDao.updateBusiness(business);
 	}
@@ -70,7 +70,7 @@ public class BusinessDaoImplTest {
 	@Test
 	public void testGetBusinessByID() {
 		BusinessDao businessDao = (BusinessDao) context.getBean("businessDaoImpl");
-		Business business = businessDao.getBusinessByID(1);
+		Business business = businessDao.getBusinessByID(2);
 		System.out.println(business);
 	}
 
