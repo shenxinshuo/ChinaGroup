@@ -47,13 +47,17 @@ public class BusinessServiceImplTest {
 	}
 
 	//TODO 报错：NonUnique
-	//猜测：这里两次调用了businessService的方法，应该是开启了两次事务，
+	//猜测：这里两次调用了businessService的方法，应该是开启了两次事务，缓存
+	//解决：采用merge（） 或者清除session缓存
+	//记录最后解决方法：merge（）
 	@Test
 	public void testUpdateBusiness() {
 		BusinessService businessService = (BusinessService) context.getBean("businessServiceImpl");
 		Business business = businessService.getBusinessByID(4);
-		business.setComment("百度李彦宏");
-		businessService.updateBusiness(business);
+		//business.setPassword("liyanhong");
+		business.setName("腾讯");
+		int result = businessService.updateBusiness(business);
+		System.out.println(result);
 	}
 
 	@Test

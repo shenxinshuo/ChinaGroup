@@ -40,18 +40,23 @@ public class BusinessServiceImpl implements BusinessService {
 
 	/**
 	 * 0:数据修改成功
-	 * 1:无此记录
+	 * 1:名字已被占用
 	 */
 	@Override
 	public int updateBusiness(Business business) {
-		boolean exist = businessDao.isExist(business.getName());
-		if (exist == true) {
-			//如果数据库中已有该记录则修改数据
+		List<Business> businessesInDB = (List<Business>) businessDao.getBusinessesByName(business.getName());
+		if (businessesInDB.size() == 0) {
+			//说明数据库中这个名字没人用，也证明企业修改了自己的名字 执行修改
 			businessDao.updateBusiness(business);
 			return 0;
 		} else {
-			//如果数据库中不存在则提示用户
-			return 1;
+			if (business.getId() == businessesInDB.get(0).getId()) {
+				//说明要修改信息的企业没有修改名字，修改了别的字段 执行修改
+				businessDao.updateBusiness(business);
+				return 0;
+			} else {
+				return 1;
+			}
 		}
 	}
 

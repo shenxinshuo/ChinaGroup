@@ -43,7 +43,7 @@ public class RoleDaoImpl implements RoleDao{
 	@Override
 	public void updateRole(Role role) {
 		role.setUpdate_at(new Date());
-		sessionFactory.getCurrentSession().update(role);
+		sessionFactory.getCurrentSession().merge(role);
 	}
 	@Override
 	public void deleteRole(int id) {
@@ -57,25 +57,39 @@ public class RoleDaoImpl implements RoleDao{
 	@Override
 	public Role getRoleByID(int id) {
 		Role role = (Role) sessionFactory.getCurrentSession().get(Role.class, id);
+		if (role != null) {
+			if (role.getDelete_flag() == 1) {
+				//说明该记录已被删除
+				return null;
+			}
+		}
 		return role;
 	}
 	@Override
 	public List<Role> getRolesByPage(int firstResult, int maxResults) {
-		String hql="from Role order By id";
+		String hql="from Role where delete_flag = 0 order By id";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setFirstResult(firstResult)
 			.setMaxResults(maxResults);
 		List<Role> roles = query.list();
-		return roles.size() == 0 ? null : roles;
+		return roles;
 	}
 	@Override
 	public int getCount() {
-		String hql = "select count(R.id) from Role R";
+		String hql = "select count(R.id) from Role R where R.delete_flag = 0";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		Long sum = (Long)query.uniqueResult(); //获得的整数只能为Long型，需要自己再转换为int
 		String temp = String.valueOf(sum);  //强制转换会报错Cannot cast from Long to int
 		int count = Integer.parseInt(temp);    //故先转String，再转int
 		return count;
+	}
+	@Override
+	public List<Role> getRolesByName(String name) {
+		String hql = "from Role where name = :roleName and delete_flag = 0";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("roleName", name);
+		List<Role> roles = query.list();
+		return roles;
 	}
 	
 }

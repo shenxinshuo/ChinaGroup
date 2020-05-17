@@ -14,7 +14,7 @@
 
 
 
-<!-- 配置dao -->
+		<!-- 配置dao -->
 		<bean id="roleDaoImpl" class="com.zhbit.findwork.dao.impl.RoleDaoImpl">
 			<property name="sessionFactory" ref="sessionFactory" />
 		</bean>
@@ -24,6 +24,9 @@
 		<!-- 配置service -->
 		<bean id="roleServiceImpl" class="com.zhbit.findwork.service.impl.RoleServiceImpl">
 			<property name="roleDao" ref="roleDaoImpl" />
+		</bean>
+		<bean id="businessServiceImpl" class="com.zhbit.findwork.service.impl.BusinessServiceImpl">
+			<property name="businessDao" ref="businessDaoImpl"></property>
 		</bean>
 		
 		

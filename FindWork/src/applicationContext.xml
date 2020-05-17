@@ -88,9 +88,9 @@
 		-->
 	<aop:config>
 		<!-- aop:pointcut:使用切入点表达式定义切入点 -->
-	  	<!-- <aop:pointcut id="transactionPointcut" expression="execution(* com.zhbit.findwork.service.impl.*.*(..))"/> -->
+	  	<aop:pointcut id="transactionPointcut" expression="execution(* com.zhbit.findwork.service.impl.*.*(..))"/>
 	  	<!-- 为方便单元测试，暂时将事务定在dao层开启 -->
-	  	<aop:pointcut id="transactionPointcut" expression="execution(* com.zhbit.findwork.dao.impl.*.*(..))"/>
+	  	<!-- <aop:pointcut id="transactionPointcut" expression="execution(* com.zhbit.findwork.dao.impl.*.*(..))"/> -->
 	  	<!-- aop:advisor：用于指定哪些Bean应该被通知 -->
 	  	<aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointcut"/>
 	</aop:config>

@@ -40,6 +40,12 @@ public interface RoleDao {
 	public Role getRoleByID(int id);
 	
 	/**
+	 * 根据角色名获取role
+	 * @param name
+	 * @return
+	 */
+	public List<Role> getRolesByName(String name);
+	/**
 	 * 获取分页需要的角色列表
 	 * @param firstResult 要查询的第一条记录
 	 * @param maxResults  页面大小

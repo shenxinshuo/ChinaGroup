@@ -45,22 +45,27 @@ public class BusinessDaoImpl implements BusinessDao {
 	@Override
 	public void updateBusiness(Business business) {
 		business.setUpdate_at(new Date());
-		sessionFactory.getCurrentSession().update(business);
+		sessionFactory.getCurrentSession().merge(business);
 	}
 
 	@Override
 	public Business getBusinessByID(int id) {
 		Business business = (Business)sessionFactory.getCurrentSession().get(Business.class, id);
+		if (business != null) {
+			if (business.getDelete_flag() == 1) {
+				return null;
+			}
+		}
 		return business;
 	}
 
 	@Override
 	public List<Business> getBusinessesByName(String name) {
-		String hql = "from Business where name = :businessName";
+		String hql = "from Business where name = :businessName and delete_flag = 0";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setParameter("businessName", name);
 		List<Business> businesses = query.list();
-		return businesses.size() == 0 ? null : businesses;
+		return businesses;
 	}
 
 	@Override
@@ -75,7 +80,7 @@ public class BusinessDaoImpl implements BusinessDao {
 
 	@Override
 	public List<Business> getBusinessesByPage(int firstResult, int maxResults) {
-		String hql = "from Business order by id";
+		String hql = "from Business where delete_flag = 0 order by id";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setFirstResult(firstResult)
 			.setMaxResults(maxResults);
@@ -85,7 +90,7 @@ public class BusinessDaoImpl implements BusinessDao {
 
 	@Override
 	public int getCount() {
-		String hql = "select count(id) from Business";
+		String hql = "select count(id) from Business where delete_flag = 0";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		Long sum = (Long)query.uniqueResult(); //获得的整数只能为Long型，需要自己再转换为int
 		String temp = String.valueOf(sum);  //强制转换会报错Cannot cast from Long to int

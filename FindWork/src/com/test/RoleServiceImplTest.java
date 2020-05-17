@@ -2,7 +2,7 @@ package com.test;
 
 import static org.junit.Assert.*;
 
-import java.util.Date;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -12,17 +12,18 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.zhbit.findwork.dao.RoleDao;
-import com.zhbit.findwork.dao.impl.RoleDaoImpl;
 import com.zhbit.findwork.entity.Role;
 import com.zhbit.findwork.service.RoleService;
-import com.zhbit.findwork.service.impl.RoleServiceImpl;
 
 public class RoleServiceImplTest {
-	private static ApplicationContext context;
+	
+	private ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+	public void setContext(ApplicationContext context) {
+		this.context = context;
+	}
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		context = new ClassPathXmlApplicationContext("applicationContext.xml");
 	}
 
 	@AfterClass
@@ -39,17 +40,60 @@ public class RoleServiceImplTest {
 
 	@Test
 	public void testAddRole() {
+		RoleService roleService = (RoleService) context.getBean("roleServiceImpl");
 		Role role = new Role();
 		role.setName("管理员");
-		Date create_at = new Date();
-		role.setCreate_at(create_at);
-		role.setUpdate_at(create_at);
-		//RoleDao roleDao = (RoleDaoImpl)context.getBean("roleDaoImpl");
-		RoleService roleService = (RoleService)context.getBean("roleServiceImpl");
-		
 		roleService.addRole(role);
 	}
-	
-	
+
+	@Test
+	public void testUpdateRole() {
+		RoleService roleService = (RoleService) context.getBean("roleServiceImpl");
+		Role role = roleService.getRoleByID(5);
+		role.setComment("管理员角色");
+		int result = roleService.updateRole(role);
+		System.out.println(result);
+	}
+
+	@Test
+	public void testGetRoleByID() {
+		RoleService roleService = (RoleService) context.getBean("roleServiceImpl");
+		Role role = roleService.getRoleByID(1);
+		System.out.println(role);
+	}
+
+	@Test
+	public void testGetRolesByName() {
+		RoleService roleService = (RoleService) context.getBean("roleServiceImpl");
+		List<Role> roles = roleService.getRolesByName("企业");
+		for (Role role : roles) {
+			System.out.println(role);
+		}
+//		for(int i=0; i<roles.size(); i++) {
+//			System.out.println(roles.get(i));
+//		}
+	}
+
+	@Test
+	public void testDeleteRoleByID() {
+		RoleService roleService = (RoleService) context.getBean("roleServiceImpl");
+		roleService.deleteRoleByID(5);
+	}
+
+	@Test
+	public void testGetRoleByPage() {
+		RoleService roleService = (RoleService) context.getBean("roleServiceImpl");
+		List<Role> roles = roleService.getRoleByPage(0, 3);
+		for(Role role : roles) {
+			System.out.println(role);
+		}
+	}
+
+	@Test
+	public void testGetCount() {
+		RoleService roleService = (RoleService) context.getBean("roleServiceImpl");
+		int count = roleService.getCount();
+		System.out.println(count);
+	}
 
 }
