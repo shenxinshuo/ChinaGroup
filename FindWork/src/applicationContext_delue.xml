@@ -14,6 +14,12 @@
 		<bean id="userDaoImpl" class="com.zhbit.findwork.dao.impl.UserDaoImpl" >
 			<property name="sessionFactory" ref="sessionFactory" />
 		</bean>	
+		
+		<!-- 配置userServiceImpl -->
+		<bean id="userServiceImpl" class="com.zhbit.findwork.service.impl.UserServiceImpl">
+			<!-- 注入userDao -->
+			<property name="userDao" ref="userDaoImpl"></property>
+		</bean>
 
 
 </beans>

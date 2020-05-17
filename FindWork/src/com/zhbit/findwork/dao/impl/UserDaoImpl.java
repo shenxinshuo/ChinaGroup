@@ -2,11 +2,9 @@ package com.zhbit.findwork.dao.impl;
 
 import java.util.Date;
 import java.util.List;
-
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import com.zhbit.findwork.dao.UserDao;
-import com.zhbit.findwork.entity.Business;
 import com.zhbit.findwork.entity.User;
 
 /**
@@ -24,7 +22,7 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
-	public boolean isExist(String name) {
+	public boolean isExistbyName(String name) {
 		// TODO Auto-generated method stub
 		String hql = "from User where name = :userName";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -36,6 +34,19 @@ public class UserDaoImpl implements UserDao {
 		return true;
 	}
 
+	@Override
+	public boolean isExistbyId(String id) {
+		// TODO Auto-generated method stub
+		String hql = "from User where id = :userid";
+		User user = (User)sessionFactory.getCurrentSession()
+				.createQuery(hql)
+				.setParameter("userid", id)
+				.uniqueResult();
+		if (user== null) {
+			return false;
+		}
+		return true;
+	}
 	@Override
 	public void addUser(User user) {
 		// TODO Auto-generated method stub
@@ -61,15 +72,24 @@ public class UserDaoImpl implements UserDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<User> getUserListByName(String name) {
+	public User getUserByName(String name) {
 		// TODO Auto-generated method stub
 		String hql="from User u where name=?";
-		List<User> list=(List<User>)sessionFactory.getCurrentSession().createQuery(hql)
+		User user=(User)sessionFactory.getCurrentSession().createQuery(hql)
 				.setParameter(0, name)
-				.list();
-		return list;
+				.uniqueResult();
+		return user;
 	}
-
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> getAllUsers() {
+		// TODO Auto-generated method stub
+		String hql="from User u ";
+		List<User> users=(List<User>)sessionFactory.getCurrentSession()
+				.createQuery(hql)		
+				.list();
+		return users;
+	}
 	@Override
 	public void deleteUserByID(int id) {
 		// TODO Auto-generated method stub
@@ -99,6 +119,10 @@ public class UserDaoImpl implements UserDao {
 				.createQuery(hql).uniqueResult();
 		return (int)count;
 	}
+
+
+
+
 
 
 }
