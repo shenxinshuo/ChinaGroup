@@ -1,29 +1,26 @@
-package com.zhbit.findwork.dao;
+package com.zhbit.findwork.service;
 
 import java.util.List;
+
 import com.zhbit.findwork.entity.User;
 
-public interface UserDao {
-	/**
-	 * 根据用户名字查询用户是否存在
-	 * @return
-	 */
-	public boolean isExistbyName(String name);
-	/**
-	 * 根据用户id查询用户是否存在
-	 * @return
-	 */
-	public boolean isExistbyId(String id);
+/**
+ * 用户业务接口
+ * @author 王德略
+ * @description TODO
+ * @date 2020年5月17日
+ */
+public interface UserService {
 	/**
 	 * 新增用户
 	 * @param user
 	 */
-	public void addUser(User user);
+	public boolean addUser(User user);
 	/**
 	 * 修改用户信息
 	 * @param user
 	 */
-	public void updateUser(User user);
+	public boolean updateUser(User user);
 	/**
 	 * 根据ID查询用户信息
 	 * @param id
@@ -31,23 +28,23 @@ public interface UserDao {
 	 */
 	public User getUserByID(int id);
 	/**
-	 * 根据用户名字查询用户信息（查询用）
-	 * @param name
-	 * @return
-	 */
-	public User getUserByName(String name);
-	/**
-	 * 获取所有的用户（查询用）
+	 * 查询所有的用户（查询用）
 	 * @param 
 	 * @return
 	 */
 	public List<User> getAllUsers();
+	/**
+	 * 根据用户名查询用户（查询用）
+	 * @param name
+	 * @return
+	 */
+	public User getUserByName(String name);
 	
 	/**
 	 * 根据ID删除用户
 	 * @param id
 	 */
-	public void deleteUserByID(int id);
+	public boolean deleteUserByID(int id);
 	
 	/**
 	 * 根据分页返回某一页的用户信息列表
@@ -62,6 +59,4 @@ public interface UserDao {
 	 * @return
 	 */
 	public int getCount();
-
-
 }
