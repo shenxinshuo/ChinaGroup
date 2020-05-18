@@ -23,9 +23,14 @@ public class BusinessServiceImpl implements BusinessService {
 	/**
 	 * 0:数据库中已有该记录
 	 * 1:插入成功
+	 * 2:企业密码和确认密码不一致
 	 */
 	@Override
 	public int addBusiness(Business business) {
+		//判断用户传过来的密码和确认密码是否一致
+		if (!(business.getPassword().equals(business.getConfirmPassword()))) {
+			return 2;
+		}
 		//新增之前先判断数据库中是否已有该记录
 		boolean exist = businessDao.isExist(business.getName());
 		if (exist == true) {

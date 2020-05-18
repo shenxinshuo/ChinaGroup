@@ -12,12 +12,13 @@ public class Business {
 	private int id;				//
 	private String name;		//
 	private String city;		//企业所在城市
-	private int telephone;		//
+	private String telephone;		//
 	private String email;		//
 	private String address;		//
 	private String description;	//企业简介
 	private String url;			//公司详情超链接
 	private String password;    //登录密码
+	private String confirmPassword; //确认密码，跟数据库没有关系
 	private int delete_flag = 0;//删除标识   0：正常  1：已删除
 	private String comment;		//
 	private Date create_at;		//
@@ -41,10 +42,10 @@ public class Business {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public int getTelephone() {
+	public String getTelephone() {
 		return telephone;
 	}
-	public void setTelephone(int telephone) {
+	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 	public String getEmail() {
@@ -77,6 +78,13 @@ public class Business {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 	public int getDelete_flag() {
 		return delete_flag;
