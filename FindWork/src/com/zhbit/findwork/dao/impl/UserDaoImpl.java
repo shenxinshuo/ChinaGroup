@@ -67,6 +67,9 @@ public class UserDaoImpl implements UserDao {
 	public User getUserByID(int id) {
 		// TODO Auto-generated method stub
 		User user=(User)sessionFactory.getCurrentSession().get(User.class, id);
+		if(user!=null)
+			if(user.getDelete_flag()==1)//删除标志为1，已删除，不能被查询
+				return null;
 		return user;
 	}
 
@@ -74,25 +77,19 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User getUserByName(String name) {
 		// TODO Auto-generated method stub
-		String hql="from User u where name=?";
+		//0没有被删除
+		String hql="from User u where name=? and delete_flag = 0 ";
 		User user=(User)sessionFactory.getCurrentSession().createQuery(hql)
 				.setParameter(0, name)
 				.uniqueResult();
 		return user;
 	}
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
-		String hql="from User u ";
-		List<User> users=(List<User>)sessionFactory.getCurrentSession()
-				.createQuery(hql)		
-				.list();
-		return users;
-	}
+	
+
 	@Override
 	public void deleteUserByID(int id) {
 		// TODO Auto-generated method stub
+		//设置删除标志 1 即 表示删除
 		User user=(User)sessionFactory.getCurrentSession().get(User.class, id);
 		user.setDelete_flag(1);
 		user.setUpdate_at(new Date());
@@ -103,7 +100,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public List<User> getUserByPage(int firstResult, int maxResults) {
 		// TODO Auto-generated method stub
-		String hql="from User order by id";
+		String hql="from User where delete_flag = 0 order by id";
 		List<User> list=(List<User>)sessionFactory.getCurrentSession().createQuery(hql)
 						.setFirstResult(firstResult)
 						.setMaxResults(maxResults)
@@ -114,10 +111,21 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		String hql="select count(*) from User";
+		String hql="select count(*) from User where delete_flag = 0";
 		long count=(Long)sessionFactory.getCurrentSession()
 				.createQuery(hql).uniqueResult();
 		return (int)count;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> getAllUsers() {
+		// TODO Auto-generated method stub
+		String hql="from User u where delete_flag = 0";//删除标志
+		List<User> users=(List<User>)sessionFactory.getCurrentSession()
+				.createQuery(hql)
+				.list();
+		return users;
 	}
 
 

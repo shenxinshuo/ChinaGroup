@@ -2,7 +2,10 @@ package com.zhbit.findwork.service.impl;
 
 import java.util.List;
 
+import com.zhbit.findwork.dao.Collection_BusinessDao;
 import com.zhbit.findwork.dao.UserDao;
+import com.zhbit.findwork.entity.Business;
+import com.zhbit.findwork.entity.Collection_Business;
 import com.zhbit.findwork.entity.User;
 import com.zhbit.findwork.service.UserService;
 /**
@@ -14,7 +17,30 @@ import com.zhbit.findwork.service.UserService;
 public class UserServiceImpl implements UserService{
 	//×¢ÈëUserDao
 	private UserDao userDao;
+	private Collection_BusinessDao collection_BusinessDao;
 	
+	@Override
+	public boolean addCollection_Business(Collection_Business c_b) {
+		// TODO Auto-generated method stub
+		if(collection_BusinessDao.isExist(c_b)){
+			collection_BusinessDao.add(c_b);
+			return true;
+		}
+		else
+			return false;
+		
+	}
+	@Override
+	public List<Business> getBusinessesByUserId(int userid) {
+		// TODO Auto-generated method stub
+		return collection_BusinessDao.getBusinessesByUserId(userid);
+	}
+	@Override
+	public boolean deleteCollection_Business(int userid, int businessid) {
+		// TODO Auto-generated method stub
+		 collection_BusinessDao.delete(userid, businessid);
+		 return true;
+	}
 	@Override
 	public boolean addUser(User user) {
 		// TODO Auto-generated method stub
@@ -25,7 +51,6 @@ public class UserServiceImpl implements UserService{
 			userDao.addUser(user);
 			return true;
 		}
-		
 	}
 
 	@Override
@@ -102,6 +127,17 @@ public class UserServiceImpl implements UserService{
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
+	public Collection_BusinessDao getCollection_BusinessDao() {
+		return collection_BusinessDao;
+	}
 
+	public void setCollection_BusinessDao(Collection_BusinessDao collection_BusinessDao) {
+		this.collection_BusinessDao = collection_BusinessDao;
+	}
+	
+
+
+
+	
 	
 }

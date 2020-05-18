@@ -2,8 +2,6 @@ package com.zhbit.findwork.entity;
 
 import java.util.Date;
 
-import org.hibernate.validator.constraints.Email;
-
 /**
  * 求职用户Bean类
  * 
