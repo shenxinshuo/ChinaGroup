@@ -47,6 +47,7 @@
 			      <value>com/zhbit/findwork/entity/Role.hbm.xml</value>
 			      <value>com/zhbit/findwork/entity/Business.hbm.xml</value>
 			      <value>com/zhbit/findwork/entity/User.hbm.xml</value>
+			      <value>com/zhbit/findwork/entity/Collection_Business.hbm.xml</value>
 			    </list>
 			 </property>
 			 <property name="hibernateProperties">
