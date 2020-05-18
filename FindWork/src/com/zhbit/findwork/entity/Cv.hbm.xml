@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+   <!-- 段世平 -->
+   <!-- Cv映射文件 -->
+<hibernate-mapping package="com.zhbit.findwork.entity">
+	<class name="com.zhbit.findwork.entity.Cv" table="t_cv">
+		<id name="id" column="Cid">
+			<generator class="native" />
+		</id>
+		<property name="name" column="Uname" />
+		<property name="telephone" column="Utelephone" />
+		<property name="self" column="Cself_appraisal" />
+		<property name="education_background" column="Ceducation_background" />
+		<property name="politics_status" column="Upolitics_status" />
+		<property name="skill" column="Cskill" />
+		<property name="experience" column="Cexperience" />
+		<property name="live_province" column="Clive_province" />
+		<property name="want_joy_type" column="Cwant_joy_type" />
+		<property name="live_city" column="Clive_city" />
+		<property name="want_province" column="Cwant_province" />
+		<property name="want_city" column="Cwant_city" />
+		<property name="want_low_wages" column="Cwant_low_wages" />
+		<property name="want_large_wages" column="Cwant_large_wages" />
+		<property name="want_post" column="Cwant_post" />
+		<property name="delete_flag" column="delete_flag" />
+		<property name="comment" column="comment" />
+		<property name="create_at" column="create_at" />
+		<property name="update_at" column="update_at" />
+		<!-- 配置和用户多对一的关系 -->
+		<many-to-one name="user" class="User" column="Uid"  />
+	</class>
+</hibernate-mapping>

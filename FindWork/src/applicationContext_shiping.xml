@@ -11,4 +11,14 @@
            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd"> 
            
+        <!-- 配置dao 注入session工厂 -->
+        <bean id="cvDaoImpl" class="com.zhbit.findwork.dao.impl.CvDaoImpl">
+       		<property name="sessionFactory" ref="sessionFactory" />
+        </bean>
+        
+        <!-- 配置cvServiceImpl -->
+        <bean id="cvServiceImpl" class="com.zhbit.findwork.service.impl.CvServiceImpl">
+        	<!-- 注入属性 -->
+        	<property name="cvDao" ref="cvDaoImpl"></property>
+        </bean>
 </beans>
