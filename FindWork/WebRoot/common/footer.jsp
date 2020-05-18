@@ -20,7 +20,7 @@
   <body>
     <!-- 网站底部 -->
     
-    <div class="navbar-fixed-bottom">
+    <div class="nav-fixed-bottom">
         <div class="panel panel-default" style="margin:0px;">
             <div class="panel-heading">
                 <div style="width: fit-content; margin:0 auto;">
