@@ -17,6 +17,7 @@
 		<property name="address" column="Baddress" />
 		<property name="description" column="Bdescription" />
 		<property name="url" column="Burl" />
+		<property name="license_path" column="Blicense_pic_path" />
 		<property name="password" column="Bpassword"></property>
 		<property name="delete_flag" column="delete_flag" />
 		<property name="comment" column="comment" />

@@ -17,6 +17,7 @@ public class Business {
 	private String address;		//
 	private String description;	//企业简介
 	private String url;			//公司详情超链接
+	private String license_path;//营业执照路径
 	private String password;    //登录密码
 	private String confirmPassword; //确认密码，跟数据库没有关系
 	private int delete_flag = 0;//删除标识   0：正常  1：已删除
@@ -65,6 +66,13 @@ public class Business {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public String getLicense_path() {
+		return license_path;
+	}
+	public void setLicense_path(String license_path) {
+		this.license_path = license_path;
 	}
 	public String getUrl() {
 		return url;

@@ -8,6 +8,11 @@
 
 	<constant name="struts.objectFactory" value="spring"></constant>
 	<constant name="struts.action.extension" value="action" />
+	<constant name="struts.multipart.maxSize" value="5242880" />
+	<constant name="struts.custom.i18n.resources" value="message" />
+	
+	
+	 
 	<package name="student" extends="struts-default" namespace="/">
 		<action name="addStudent" class="studentAction" method="addStudent">
 			

@@ -7,10 +7,16 @@
 
 <struts>
 	<package name="business" extends="struts-default" namespace="/">
-		<action name="business_add" class="businessAction">
+		<action name="business_register" class="businessAction" method="register">
 			<result>/index.jsp</result>
 			<result name="regBusiness">/business/regBusiness.jsp</result>
 			<result name="businessCenter">/business/businessCenter.jsp</result>
+			<result name="input">/business/regBusiness.jsp</result>
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/jpg,image/jpeg</param>
+				<param name="maximumSize">1048576</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" /> 
 		</action>
 	</package>
 

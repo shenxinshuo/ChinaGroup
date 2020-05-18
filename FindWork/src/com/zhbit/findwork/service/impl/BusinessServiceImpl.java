@@ -31,6 +31,7 @@ public class BusinessServiceImpl implements BusinessService {
 		if (!(business.getPassword().equals(business.getConfirmPassword()))) {
 			return 2;
 		}
+		
 		//新增之前先判断数据库中是否已有该记录
 		boolean exist = businessDao.isExist(business.getName());
 		if (exist == true) {
