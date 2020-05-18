@@ -24,6 +24,7 @@
   	<!-- 企业中心具体页面 -->
   	 <!--企业中心-->
     <div class="container">
+    	<p class="bg-success">${message }</p>
         <div class="col-md-8 col-md-offset-1">
             <div class="panel panel-info">
                 <div class="panel-heading">企业中心</div>

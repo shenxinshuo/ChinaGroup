@@ -11,15 +11,16 @@
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<script src="../resource/static/jquery/jquery.min.js"></script>
-    <script src="../resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<script src="<%=request.getContextPath() %>/resource/static/jquery/jquery.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 
   </head>
   
   <body>
     <!-- 网站底部 -->
-    <div class="nav-fixed-bottom">
+    
+    <div class="navbar-fixed-bottom">
         <div class="panel panel-default" style="margin:0px;">
             <div class="panel-heading">
                 <div style="width: fit-content; margin:0 auto;">
