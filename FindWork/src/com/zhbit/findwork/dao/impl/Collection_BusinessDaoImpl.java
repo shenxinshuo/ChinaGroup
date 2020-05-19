@@ -10,7 +10,12 @@ import com.zhbit.findwork.dao.Collection_BusinessDao;
 import com.zhbit.findwork.entity.Business;
 import com.zhbit.findwork.entity.Collection_Business;
 import com.zhbit.findwork.entity.User;
-
+/**
+ * 
+ * @author 王德略
+ * @description 企业收藏中心dao的实现类
+ * @date 2020年5月16日
+ */
 public class Collection_BusinessDaoImpl implements Collection_BusinessDao {
 	// 注入hibernate的session工程，配置文件在application.xml中
 	private SessionFactory sessionFactory;

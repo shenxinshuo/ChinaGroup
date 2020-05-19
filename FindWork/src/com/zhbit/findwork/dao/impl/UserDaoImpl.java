@@ -60,6 +60,7 @@ public class UserDaoImpl implements UserDao {
 	public void updateUser(User user) {
 		// TODO Auto-generated method stub
 		user.setUpdate_at(new Date());
+		System.out.println("dao============================");
 		sessionFactory.getCurrentSession().merge(user);
 	}
 
@@ -126,6 +127,16 @@ public class UserDaoImpl implements UserDao {
 				.createQuery(hql)
 				.list();
 		return users;
+	}
+
+	@Override
+	public User getUserByNameAndPassword(String name,String password) {
+		// TODO Auto-generated method stub
+		String hql = "from User where name = :userName and password=:password";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("userName", name);
+		query.setParameter("password", password);
+		return (User)query.uniqueResult();
 	}
 
 

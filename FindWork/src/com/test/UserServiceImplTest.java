@@ -27,7 +27,16 @@ public class UserServiceImplTest {
 		context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		userService = (UserService) context.getBean("userServiceImpl");
 	}
-	
+	@Test
+	public void testGetUserByNameAndPassword(){
+		User user= userService.getUserByNameAndPassword("发", "123456");
+		System.out.println(user);
+	}
+	@Test
+	public void testIsExistName(){
+		boolean flag=userService.isExistName("dfa");
+		System.out.println(flag);
+	}
 	@Test
 	public void testAddUser() {
 		User user = new User();
@@ -35,6 +44,7 @@ public class UserServiceImplTest {
 		user.setName("小王13");//添加成功
 		user.setPassword("123456");
 		user.setAddress("广东XXXXXX");
+		user.setTelephone("1234567895");
 		RoleService roleService = (RoleService) context.getBean("roleServiceImpl");
 		Role role = roleService.getRoleByID(1);
 		user.setRole(role);
@@ -67,9 +77,8 @@ public class UserServiceImplTest {
 	}
 	@Test
 	public void testUpdateUser() {
-		User user= new User();
-		user.setId(4);
-		user.setName("小王111");
+		User user= userService.getUserByID(1);
+		user.setName("小王1");
 		user.setPassword("123456");
 		boolean fla =userService.updateUser(user);
 		System.out.println(fla);

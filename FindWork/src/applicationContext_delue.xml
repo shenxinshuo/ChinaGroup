@@ -25,6 +25,11 @@
 			<property name="userDao" ref="userDaoImpl"></property>
 			<property name="collection_BusinessDao" ref="collection_BusinessDaoImpl"></property>
 		</bean>
-
+		
+		<!-- 配置action -->
+		<bean id="userAction" class="com.zhbit.findwork.action.UserAction" scope="request">
+			<property name="userService" ref="userServiceImpl"></property>
+			<!-- <property name="roleService" ref="roleServiceImpl"></property> -->
+		</bean>
 
 </beans>

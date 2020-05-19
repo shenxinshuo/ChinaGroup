@@ -48,7 +48,7 @@ public class UserDaoImplTest {
 	@Test
 	public void testUpdateUser() {
 		User user=userDao.getUserByID(1);
-		user.setTelephone(1342170415);
+		user.setTelephone("1342170415");
 		userDao.updateUser(user);
 	}
 

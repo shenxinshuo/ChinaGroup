@@ -19,6 +19,21 @@ public class UserServiceImpl implements UserService{
 	private UserDao userDao;
 	private Collection_BusinessDao collection_BusinessDao;
 	
+	/**
+	 * 判断用户名是否存在
+	 * @retrun 如果用户名存在，返回true 否则，返回flase
+	 * */	
+	@Override
+	public boolean isExistName(String name) {
+		// TODO Auto-generated method stub
+		User user=userDao.getUserByName(name);
+		if(user!=null)
+			return true;
+		else
+			return false;
+	}
+	
+	
 	@Override
 	public boolean addCollection_Business(Collection_Business c_b) {
 		// TODO Auto-generated method stub
@@ -70,8 +85,9 @@ public class UserServiceImpl implements UserService{
 		else{
 			//用户名不在数据，更新成功
 			userDao.updateUser(user);
-			return true;	
+			return true;
 		}
+
 	}
 
 	@Override
@@ -134,10 +150,13 @@ public class UserServiceImpl implements UserService{
 	public void setCollection_BusinessDao(Collection_BusinessDao collection_BusinessDao) {
 		this.collection_BusinessDao = collection_BusinessDao;
 	}
-	
 
 
+	@Override
+	public User getUserByNameAndPassword(String name, String password) {
+		// TODO Auto-generated method stub
+		return 	userDao.getUserByNameAndPassword(name, password);
+		
+	}
 
-	
-	
 }

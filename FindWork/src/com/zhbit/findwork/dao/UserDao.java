@@ -10,6 +10,11 @@ import com.zhbit.findwork.entity.User;
  */
 public interface UserDao {
 	/**
+	 * 根据用户名字和密码查询用户
+	 * @return
+	 */
+	public User getUserByNameAndPassword(String name,String password);
+	/**
 	 * 根据用户名字查询用户是否存在
 	 * @return
 	 */
