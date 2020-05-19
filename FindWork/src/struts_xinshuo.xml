@@ -18,6 +18,12 @@
 			</interceptor-ref>
 			<interceptor-ref name="defaultStack" /> 
 		</action>
+		
+		<action name="business_*" class="businessAction" method="{1}">
+			<result name="businessCenter">/business/businessCenter.jsp</result>
+			<result name="showUpdatePage">/business/updateBusinessInfo.jsp</result>
+		</action>
+		
 	</package>
 
 </struts>

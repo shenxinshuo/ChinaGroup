@@ -1,10 +1,12 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
+<%@ taglib uri="/struts-tags" prefix="s" %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     
-    <title>My JSP 'regBusiness.jsp' starting page</title>
+    <title>企业中心</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -25,7 +27,14 @@
   	 <!--企业中心-->
     <div class="container">
     	<!-- 提示信息 -->
-    	<div class="alert alert-success" role="alert">${message }</div>
+    	
+    	<s:if test="message == null">
+    		
+    	</s:if>
+    	<s:else>
+    		<div class="alert alert-success" role="alert">${message }</div>
+    	</s:else>
+    	
     	
         <div class="col-md-8 col-md-offset-1">
             <div class="panel panel-info">
@@ -94,17 +103,21 @@
                 <div class="panel-body">
                     <label for="">企业名称:</label>
                     &nbsp;
-                    <span>阿里巴巴</span>
+                    <span>${business.getName() }</span>
                     <br>
                     <label for="">所在城市:</label>
                     &nbsp;
-                    <span>杭州</span>
+                    <span>${business.city }</span>
                     <br>
                     <label for="">联系电话:</label>
                     &nbsp;
-                    <span>15019717010</span>
+                    <span>${business.telephone }</span>
+                    <br>
                     <div class="btn btn-group">
-                        <div class="btn btn-info"><a href="" style="color: white;">完善资料</a></div>
+                    	<s:url id="showUpdate" action="business_showUpdatePage" namespace="/">
+                    		<s:param name="business.id">${business.id }</s:param>
+                    	</s:url>
+                        <div class="btn btn-info"><a href="${showUpdate }" style="color: white;">完善资料</a></div>
                     </div>
                     <div class="btn btn-group">
                         <div class="btn btn-info"><a href="../postjob/dashboard-post-a-job.html" style="color: white;">添加招聘信息</a></div>

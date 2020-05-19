@@ -5,41 +5,46 @@
 <html>
   <head>
     
-    <title>注册企业</title>
+    <title>完善企业信息</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 
   </head>
   
   <body>
-  
-  	<!-- 注册企业 -->
+  	
+  	<!-- 引入头部 -->
+    <jsp:include page="/common/header.jsp"/>
+  	
+  	<!-- 完善企业信息 -->
   	 <div class="container" style="margin-top: 50px;">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-primary ">
                 <div class="panel-heading">
                     <a href="javascript:history.go(-1)"><span class="glyphicon glyphicon-arrow-left"
                             style="color: white;"></span> </a>
-                    注册企业
+                    完善企业信息
                 </div>
                 
                 <div class="panel-body">
                 
                 	<!-- 提示信息 -->
-                	<div class="col-md-10 col-md-offset-1"> 
-                		<p class="text-danger"><label>${errorMessage }</label></p>
-                	</div>
+                	<s:if test="errorMessage == null">
+    		
+			    	</s:if>
+			    	<s:else>
+			    		<div class="alert alert-danger" role="alert">${errorMessage }</div>
+			    	</s:else>
                 	
                 
-                    <!-- 注册表单 -->
-                    <s:url id="business_register" action="business_register" namespace="/" />
+                    <!-- 修改表单 -->
+                    <s:url id="business_update" action="business_update" namespace="/" />
                     
-                    <form class="form-horizontal" action="${business_register }" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="${business_update }" method="post" enctype="multipart/form-data">
 
                        <div class="d-inline-block">
                             <div class="col-md-6">
@@ -58,7 +63,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="" class="control-label col-md-4">所在城市</label>
-                                    <select name="business.city" id=""  class="form-control">
+                                    <select name="business.city"  class="form-control">
                                         <option value="shantou">汕头</option>
                                         <option value="zhuhai" >珠海</option>
                                     </select>
@@ -97,7 +102,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                       <%--  <div class="form-group">
                             <div class="form-inline col-md-12">
                                 <div class="form-group col-md-6">
                                     <label for="" class="control-label col-md-4">登录密码</label>
@@ -108,19 +113,21 @@
                                     <input type="password" name="business.confirmPassword" value="${business.confirmPassword }" class="form-control " size="30">
                                 </div>
                             </div>
-                        </div>
+                        </div> --%>
 
                         <div class="d-inline-block">
                             <label for="" class="text-danger col-md-offset-2">${fieldErrors["license"][0] }</label>
                         </div>
 
-                        <!-- <div class="row col-md-offset-2">
+                        <div class="row col-md-offset-2">
                             <div class="col-xs-6 col-md-3">
                                 <a href="#" class="thumbnail">
-                                    <img src="../seecv/img/ss.jpg" alt="...">
+                                    <img src="<%=request.getContextPath() %>/upload/businessLicense/华为.jpg"" alt="...">
                                 </a>
+                                
+                               
                             </div>
-                        </div> -->
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputFile" class="control-label col-md-2">上传营业执照</label>
                             <!-- TODO -->
@@ -159,8 +166,40 @@
                                 <input type="text" name="business.url" value="${business.url }" class="form-control">
                             </div>
                         </div>
+                        
+                        <div class="form-group">
+                            <div class="form-inline col-md-12">
+                                <div class="form-group col-md-6">
+                                    <label for="" class="control-label col-md-4">加入时间</label>
+                                    <input type="text" name=""  value="${business.create_at }" class="form-control" size="25" readonly="readonly">
+                                </div>
+                                <div class="form-group col-md-6 ">
+                                    <label for="" class="control-label col-md-4">系统角色</label>
+                                    <input type="text" name="" value="${business.getRole().name }" class="form-control " size="30" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-inline col-md-12">
+                                <div class="form-group col-md-6">
+                                    <label for="" class="control-label col-md-4">审核状态</label>
+                                    <s:if test="business.check_flag == 0">
+                                    	<s:set name="check_status" value="%{'待审核'}" scope="action"></s:set>
+                                    </s:if>
+                                    <s:if test="business.check_flag == 1">
+                                    	<s:set name="check_status" value="%{'已通过审核'}" scope="action"></s:set>
+                                    </s:if>
+                                    <s:if test="business.check_flag == -1">
+                                    	<s:set name="check_status" value="%{'未通过审核'}" scope="action"></s:set>
+                                    </s:if>
+                                    <input type="text" name=""  value="${check_status }" class="form-control" size="25" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                        
                         <div class="btn-group" style="float: right;">
-                            <button type="submit" class="btn btn-primary">注册</button>
+                            <button type="submit" class="btn btn-primary">修改</button>
                             <button type="reset" class="btn btn-default">重置</button>
                         </div>
 
@@ -171,8 +210,8 @@
 
     </div>
     
+    <!-- 引入底部 -->
+    <jsp:include page="/common/footer.jsp"/>
     
-   <script src="<%=request.getContextPath() %>/resource/static/jquery/jquery.min.js"></script>
-    <script src="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
   </body>
 </html>

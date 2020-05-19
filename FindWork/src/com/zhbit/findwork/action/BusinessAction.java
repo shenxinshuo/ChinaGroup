@@ -142,4 +142,20 @@ public class BusinessAction extends ActionSupport{
 		return SUCCESS;
 	}
 
+	/**
+	 * 显示企业中心
+	 * @return
+	 */
+	public String showBusinessCenter() {
+		business = businessService.getBusinessByID(business.getId());
+		return "businessCenter";
+	}
+	
+	public String showUpdatePage() {
+		business = businessService.getBusinessByID(business.getId());
+		return "showUpdatePage";
+	}
+	
+	
+	
 }

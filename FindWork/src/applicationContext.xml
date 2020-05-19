@@ -48,7 +48,9 @@
 			      <value>com/zhbit/findwork/entity/Business.hbm.xml</value>
 			      <value>com/zhbit/findwork/entity/User.hbm.xml</value>
 			      <value>com/zhbit/findwork/entity/Collection_Business.hbm.xml</value>
-			      <!-- <value>com/zhbit/findwork/entity/Cv.hbm.xml</value> -->
+			      <value>com/zhbit/findwork/entity/Cv.hbm.xml</value>
+			      <value>com/zhbit/findwork/entity/Post_type.hbm.xml</value>
+         		  <value>com/zhbit/findwork/entity/Post.hbm.xml</value>
 			    </list>
 			 </property>
 			 <property name="hibernateProperties">
