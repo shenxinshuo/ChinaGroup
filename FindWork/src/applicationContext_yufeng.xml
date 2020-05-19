@@ -10,5 +10,28 @@
            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd"> 
-           
+          
+       <!-- 配置岗位及岗位类型dao -->
+       <bean id="post_typeDao" class="com.zhbit.findwork.dao.impl.Post_typeDaoImpl">
+			<property name="sessionFactory" ref="sessionFactory" />
+	   </bean>
+	   
+	   <bean id="postDao" class="com.zhbit.findwork.dao.impl.PostDaoImpl">
+			<property name="sessionFactory" ref="sessionFactory" />
+	   </bean>
+	   
+	   <!-- 配置岗位及岗位类型service -->
+	   <bean id="post_typeService" class="com.zhbit.findwork.service.impl.Post_typeServiceImpl">
+			<property name="post_typeDao" ref="post_typeDao" />
+	   </bean>
+	   
+	   <bean id="postService" class="com.zhbit.findwork.service.impl.PostServiceImpl">
+			<property name="postDao" ref="postDao" />
+	   </bean>
+	   
+	   <bean id="postTypeAction" class="com.zhbit.findwork.action.PostTypeAction">
+			<property name="post_typeService" ref="post_typeService" />
+	   </bean>
+
+       
 </beans>

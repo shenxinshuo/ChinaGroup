@@ -6,4 +6,13 @@
 	
 <!-- 宇枫负责模块的Struts配置文件 -->
 
-<struts></struts>
+<struts>
+
+	<package name="post_types" extends="struts-default" namespace="/">
+		<action name="ptypes*" class="postTypeAction"  method="{1}">
+			<result>/index.jsp</result>
+			<result name="showAllPtypes">/homePage/home.jsp</result>
+		</action>
+	</package>
+
+</struts>
