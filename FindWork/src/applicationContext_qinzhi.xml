@@ -9,5 +9,16 @@
            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd"> 
+                    
+        <!-- 配置dao 注入session工厂 -->
+        <bean id="advertiseDaoImpl" class="com.zhbit.findwork.dao.impl.AdvertiseDaoImpl">
+       		<property name="sessionFactory" ref="sessionFactory" />
+        </bean>
+        
+        <!-- 配置advertiseServiceImpl -->
+        <bean id="advertiseServiceImpl" class="com.zhbit.findwork.service.impl.AdvertiseServiceImpl">
+        <!-- 注入属性 -->
+        	<property name="advertiseDao" ref="advertiseDaoImpl"></property>
+        </bean> 
            
 </beans>
