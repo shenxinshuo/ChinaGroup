@@ -1,0 +1,94 @@
+body{
+	
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	background-image: url(../img/鍥炬�吔_f2a4f6ba697741a3542bdf8b310c5bd3_75929.png);
+	
+}
+
+.user_register{
+	
+	width: 40%;
+	height: 550px;
+	margin-left: 30%;
+	margin-top: 30px;
+	border: 1px solid #5E5E5E;
+	border-radius: 30px;
+	background-color: white;
+	
+}
+
+.return_login{
+	
+	width: 100%;
+	height: 20px;
+	margin-top: 10px;
+	text-align: right;
+	
+}
+
+.return_login a{
+	
+	margin-right: 20px;
+	font-size: 17px;
+	font-weight: 600;
+	color: #222222;
+	
+}
+
+.re_title{
+	
+	width: 100%;
+	height: 40px;
+	text-align: center;
+	
+}
+
+.form-group{
+	
+	width: 80%;
+	height: 40px;
+	margin-left: 10%;
+	margin-top: 30px;
+	
+}
+
+.user_bir{
+	
+	width: 80%;
+	height: 40px;
+	margin-left: 10%;
+	margin-top: 40px;
+	
+}
+
+.form-group-year{
+	
+	width: 20%;
+	height: 100%;
+	margin-right: 20px;
+	float: left;
+	
+}
+
+.form-group-btn{
+	
+	width: 100%;
+	height: 40px;
+	margin-top: 80px;
+	
+}
+
+.register{
+	
+	width: 40%;
+	height: 40px;
+	margin-left: 30%;
+	border: 1px solid #31B0D5;
+	border-radius: 5px;
+	background-color: #5BC0DE;
+	color: white;
+	font-size: large;
+	
+}
+

@@ -26,54 +26,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-					 aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<img id="web_logo" src="logo2(已去底)%20(1).jpg" />
-
-				</div>
-
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-					<ul class="nav navbar-nav">
-
-						<li><a href="#">首页</a></li>
-						<li><a href="#">|</a></li>
-						<li><a href="#">岗位</a></li>
-						<li><a href="#">|</a></li>
-						<li><a href="#">公司</a></li>
-						<li><a href="#">|</a></li>
-						<li><a href="#">简历投递</a></li>
-						<li><a href="#">|</a></li>
-						<li><a href="#">其他</a></li>
-
-					</ul>
-
-					<ul class="nav navbar-nav navbar-right">
-						<img class="img-circle" id="user_head" src="微信图片_20200310131209.jpg" />
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">用户名：Colten
-								<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">个人中心</a></li>
-								<li><a href="#">收藏中心</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="#">退出登录</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div><!-- /.navbar-collapse -->
-			</div><!-- /.container-fluid -->
-		</nav>
+		<!-- 引入头部 -->
+    	<jsp:include page="/common/header.jsp"/>
+		
 		<div class="main_body">
 			<div class="div_search">
 				<div class="col-lg-6">
@@ -115,15 +70,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			<div class="ad_info">
 				<div class="row_1">
-					<img class="ad_img1" src="adimg2.jpg" />
-					<img class="ad_img2" src="adimg3.jpg" />
+					<img class="ad_img1" src="resource/image/yufeng/adimg2.jpg" />
+					<img class="ad_img2" src="resource/image/yufeng/adimg3.jpg" />
 				</div>
 				<div class="row_2">
-					<img class="ad_img3" src="adimg4.jpg" />
-					<img class="ad_img4" src="adimg5.jpg" />
+					<img class="ad_img3" src="resource/image/yufeng/adimg4.jpg" />
+					<img class="ad_img4" src="resource/image/yufeng/adimg5.jpg" />
 				</div>
 				<div class="row_3">
-					<img class="ad_img5" src="adimg1.jpg" />
+					<img class="ad_img5" src="resource/image/yufeng/adimg1.jpg" />
 				</div>
 			</div>
 		</div>
@@ -139,14 +94,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="hot_jobs_content">
 				<div class="job1">
 					<div class="job1_left">
-						<img src="jimg2.jpg" />
+						<img src="resource/image/yufeng/jimg2.jpg" />
 					</div>
 					<div class="job1_mid">
 						<div class="mid_img1">
-							<img src="jimg1.jpg" />
+							<img src="resource/image/yufeng/jimg1.jpg" />
 						</div>
 						<div class="mid_img2">
-							<img src="jimg3.jpg" />
+							<img src="resource/image/yufeng/jimg3.jpg" />
 						</div>
 					</div>
 					<div class="job1_right">
@@ -160,14 +115,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="hot_jobs_content">
 				<div class="job1">
 					<div class="job1_left">
-						<img src="jimg5.jpg" />
+						<img src="resource/image/yufeng/jimg5.jpg" />
 					</div>
 					<div class="job1_mid">
 						<div class="mid_img1">
-							<img src="jimg4.jpg" />
+							<img src="resource/image/yufeng/jimg4.jpg" />
 						</div>
 						<div class="mid_img2">
-							<img src="jimg6.jpg" />
+							<img src="resource/image/yufeng/jimg6.jpg" />
 						</div>
 					</div>
 					<div class="job1_right">
@@ -181,14 +136,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="hot_jobs_content">
 				<div class="job1">
 					<div class="job1_left">
-						<img src="jimg7.jpg" />
+						<img src="resource/image/yufeng/jimg7.jpg" />
 					</div>
 					<div class="job1_mid">
 						<div class="mid_img1">
-							<img src="jimg9.jpg" />
+							<img src="resource/image/yufeng/jimg9.jpg" />
 						</div>
 						<div class="mid_img2">
-							<img src="jimg8.jpg" />
+							<img src="resource/image/yufeng/jimg8.jpg" />
 						</div>
 					</div>
 					<div class="job1_right">
@@ -200,25 +155,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 
-		<div>
-			<div class="panel panel-default">
-				<div class="panel-heading"">
-			        <div style=" width: fit-content; margin:0 auto;">
-					<a href="">联系我们</a>
-					&nbsp;|&nbsp;
-					<a href="">用户反馈</a>
-					&nbsp;|&nbsp;
-					<a href="">举报违规行为</a>
-					<br>
-					<p style="width: fit-content; margin:0 auto;" class="text-warning">吃着苦瓜，告诉自己，生活是甜的</p>
-				</div>
-				<div style="display: inline-block;">
-					友情链接：<a href="">
-						<p class="text-info">bootstrap3中文文档</p>
-					</a>
-				</div>
-			</div>
-		</div>
+		<!-- 引入底部 -->
+    	<jsp:include page="/common/footer.jsp"/>
 		<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 	</body>

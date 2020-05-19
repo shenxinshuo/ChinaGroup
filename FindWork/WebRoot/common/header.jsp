@@ -16,22 +16,60 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<style>
 	#web_logo {
-		width:50px;
-		height:50px;
-		float: left;
-	}
-	#user_head{
-		width: 30px;
-		height: 30px;
+	
 		margin-top: 10px;
+		width:125px;
+		height:50px;
+		margin-right: 20px;
 		float: left;
+	
+	}
+
+	#user_head{
+	
+		width: 40px;
+		height: 40px;
+		margin-top: 15px;
+		float: left;
+	
+	}
+
+	.form-group{
+	
+		margin-left: 400px;
+	
+	}
+
+	.nav li{
+	
+		margin-top: 10px;
+		margin-right: 15px;
+		font-size: 17px;
+	
+	}
+
+	.container-fluid{
+	
+		height: 70px;
+	
+	}
+
+	.web_name{
+	
+		margin-top: 30px;
+		margin-left: 10px;
+		margin-right: 30px;
+		font-weight: bold;
+		font-size: 35px;
+		color: #269ABC;
+		text-decoration: none;
+	
 	}
 	</style>
   </head>
   
   <body>
-    <!-- 网站头部 -->
-    <nav class="navbar navbar-default">
+		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
@@ -42,24 +80,29 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<img id="web_logo" src="../resource/image/logo2.jpg" />
-					<a class="navbar-brand" href="#">精英</a>
+					<img id="web_logo" src="<%=request.getContextPath() %>/resource/image/logo1.jpg" />
+		
 				</div>
-
+		
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					
 					<ul class="nav navbar-nav">
-
+					
 						<li><a href="#">首页</a></li>
+						<li><a href="#">|</a></li>
 						<li><a href="#">岗位</a></li>
+						<li><a href="#">|</a></li>
 						<li><a href="#">公司</a></li>
+						<li><a href="#">|</a></li>
 						<li><a href="#">简历投递</a></li>
+						<li><a href="#">|</a></li>
 						<li><a href="#">其他</a></li>
-
+					
 					</ul>
-
+		
 					<ul class="nav navbar-nav navbar-right">
-						<img id="user_head" src="../resource/image/微信图片_20200310131209.jpg" />
+						<img class="img-circle" id="user_head"  />
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">用户名：Colten
 								<span class="caret"></span></a>
@@ -75,5 +118,5 @@
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>
-  </body>
+	</body>
 </html>

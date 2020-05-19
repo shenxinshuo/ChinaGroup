@@ -30,6 +30,7 @@
 		<bean id="userAction" class="com.zhbit.findwork.action.UserAction" scope="request">
 			<property name="userService" ref="userServiceImpl"></property>
 			<!-- <property name="roleService" ref="roleServiceImpl"></property> -->
+			<property name="post_typeService" ref="post_typeService" />
 		</bean>
 
 </beans>

@@ -14,5 +14,21 @@
 			<result name="showAllPtypes">/homePage/home.jsp</result>
 		</action>
 	</package>
+	
+	<package name="userRegis" extends="struts-default" namespace="/">
+		<action name="user_register" class="userAction" method="register">
+			<result>/index.jsp</result>
+			<result name="register">/user/UserLogin.jsp</result>
+			<result name="input">/user/userRegister.jsp</result>
+		</action>
+	</package>
+	
+	<package name="userLogin" extends="struts-default" namespace="/">
+		<action name="user_login" class="userAction" method="login">
+			<result>/index.jsp</result>
+			<result name="login">/homePage/home.jsp</result>
+			<result name="input">/user/userRegister.jsp</result>
+		</action>
+	</package>
 
 </struts>
