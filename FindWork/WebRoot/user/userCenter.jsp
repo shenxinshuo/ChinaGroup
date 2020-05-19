@@ -25,8 +25,8 @@
 		<div class="wdld13" style="margin-left: 10px;">
 			  <ul class="nav nav-pills nav-stacked">
 				<li role="presentation"><a href="/FindWork/user/myResume.jsp" target="showCenterOfPersan" class="glyphicon glyphicon-home">&nbsp;个人简历</a></li>
-				<li role="presentation"><a href="/FindWork/myInformation_show.action" target="showCenterOfPersan"  class="glyphicon glyphicon-user">&nbsp;我的信息</a></li>
-				<li role="presentation"><a href="/FindWork/user/myHeader.jsp" target="showCenterOfPersan"  class="glyphicon glyphicon-picture">&nbsp;我的头像</a></li>
+				<li role="presentation"><a href="/FindWork/user_showMyInformation.action" target="showCenterOfPersan"  class="glyphicon glyphicon-user">&nbsp;我的信息</a></li>
+				<li role="presentation"><a href="/FindWork/user/myHeader_showHeader.action" target="showCenterOfPersan"  class="glyphicon glyphicon-picture">&nbsp;我的头像</a></li>
 				<li role="presentation"><a href="/FindWork/user/accountSecurity.jsp" target="showCenterOfPersan"  class="glyphicon glyphicon-cloud">&nbsp;账号安全</a></li>
 			</ul>
 		</div>

@@ -8,10 +8,27 @@
 
 <struts>
 	<package name="user" extends="struts-default" namespace="/">
-		<action name="myInformation_*" class="userAction" method="{1}">
-			<result name="show">/user/myInformation.jsp</result>
-			<result name="save" type="chain">myInformation_show</result>
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="showMyInformation">/user/myInformation.jsp</result>
+			<result name="saveMyInformation" type="chain">user_showMyInformation</result>
 			<result name="input">/user/myInformation.jsp</result>
+		</action>
+		<action name="myHeader_*" class="userAction" method="{1}">
+			<result name="showHeader">/user/myHeader.jsp</result>
+			<result name="saveHeader" type="chain">myHeader_showHeader</result>
+			<result name="input">/user/myHeader.jsp</result>
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">
+				image/jpeg,image/jpg,image/png
+				</param>
+				<param name="maximumSize">1048576</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<action name="account_*" class="userAction" method="{1}">
+			<result name="showSecurity">/user/accountSecurity.jsp</result>
+			<result name="input">/user/accountSecurity.jsp</result>
+			<result name="delete">/user/myInformation.jsp</result>
 		</action>
 	</package>
 	

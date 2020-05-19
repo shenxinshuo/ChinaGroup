@@ -23,7 +23,7 @@
 	
 	<div style="height: 500px;text-align: center;">
 		<s:form style="margin-top: 40px;" theme="simple" 
-			action="/FindWork/myInformation_save.action"
+			action="/FindWork/user_saveMyInformation.action"
 			method="post" namespace="/">
 			<font color="green">${message}</font>	
 			<font color="red">${fieldErrors.userName[0]}</font>

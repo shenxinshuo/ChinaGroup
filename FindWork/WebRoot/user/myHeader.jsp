@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="/struts-tags" prefix="s"  %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -20,10 +20,15 @@
 </head>
 
 <body>
-	<div style="height: 500px;text-align: center;">
-		<img src="" style="width: 100px;height: 100px;margin-top: 40px;">
-		<form style="margin-top: 40px;">
-			<input type="file" style="margin-left: 350px;" />
+<s:debug></s:debug>
+	<div style="height: 500px;text-align: center;">	
+		<font color="green">${message}</font><br><br>
+		<img src="<s:property value="#session.imagePath"/>" style="width: 100px;height: 100px;margin-top: 40px;">	
+		<form style="margin-top: 40px;" enctype="multipart/form-data" method="post" 
+			 action="/FindWork/user/myHeader_saveHeader.action">
+			<font color="red">${fieldErrors.userHeader[0]}</font>
+			<br>
+			<input type="file" name="Header" style="margin:auto;background-color:#169bd5;color:white"  accept="image/*"/>
 			<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)"
 				width="80%" color=#987cb9 SIZE=3>
 			<button type="submit" value=""

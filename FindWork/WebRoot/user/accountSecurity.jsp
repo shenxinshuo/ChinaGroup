@@ -21,10 +21,15 @@
 
 <body>
 	<div style="height: 500px;text-align: center;">
-	  <form style="margin-top: 40px;">	
-	  <font>原密码：</font><input value="王德略" /><br><br>
-	  <font>新密码：</font><input value="13421704215" /><br><br>
-	  <font>确认：</font><input value="570275507@qq.com" /><br><br>
+	  <form style="margin-top: 40px;" action="/FindWork/account_saveSecurity.action"method="post" >	
+	  <font color="green">${message}</font>
+	  <font color="red">${errorMessage}</font>
+	  <font color="red">${fieldErrors.repwd[0]}</font><br>
+	  <font>原密码：</font><input type="password" name="repwd" value="" /><br><br>
+	  <font color="red">${fieldErrors.newpwd[0]}</font><br>
+	  <font>新密码：</font><input type="password" name="newpwd" value="" /><br><br>
+	  <font color="red">${fieldErrors.confirmpwd[0]}</font><br>
+	  <font>确认：</font><input type="password" name="confirmpwd" value="" /><br><br>
 	   <button type="submit" value="" style="width: 90px;height: 30px;background-color:#169bd5;border: 0px;"><p style="color: white;margin-top: 5px;">确认修改</p></button>
 	  <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="80%" color=#987cb9 SIZE=3>		  
 	  </form>

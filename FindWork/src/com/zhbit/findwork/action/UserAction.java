@@ -1,8 +1,14 @@
 package com.zhbit.findwork.action;
+import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -29,11 +35,22 @@ public class UserAction extends ActionSupport{
 	private UserBirthday ubirthday;     //注册输入的年 月 日信息
 	private List<Post_type> pts;        //岗位类型及岗位
 	
+	private File Header; //头像
+	private String HeaderFileName;//文件名
+	private String HeaderContentType;//文件类型
+
+	private String repwd;
+	private String newpwd;
+	private String confirmpwd;
+
+	
+	
+	
 	/**
 	 * 个人中心 显示我的信息
 	 * @return
 	 */
-	public String show(){
+	public String showMyInformation(){
 		//从登录对象中获取用户，现在暂时从数据库中读取一个用户
 		user=userService.getUserByID(1);
 /*		Rid=user.getRole().getId();
@@ -41,53 +58,55 @@ public class UserAction extends ActionSupport{
 		if(user==null)
 			return ERROR;
 		else{
-			return "show";
+			return "showMyInformation";
 		}
 	}
+
 	//我的信息 验证
-	public void validateSave(){
-		//判断电话号码格式是否正确的正则表达式
-		String tel = "((^(13|15|18)[0-9]{9}$)|(^0[1,2]{1}\\d{1}-?\\d{8}$)|(^0[3-9] {1}\\d{2}-?\\d{7,8}$)|(^0[1,2]{1}\\d{1}-?\\d{8}-(\\d{1,4})$)|(^0[3-9]{1}\\d{2}-? \\d{7,8}-(\\d{1,4})$))";		
-		//判断邮箱正确的正则表达式
-		String em = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";				
-		System.out.println(user.getBirthday());
-		if(user.getName()==null||user.getName().equals("")){
-			this.addFieldError("userName", "用户名不能为空");
-		}
-		if(!user.getEmail().matches(em)){
-			this.addFieldError("userEmail", "邮箱格式不正确");
-		}
-		if(!user.getTelephone().matches(tel)){
-			this.addFieldError("userTelephone", "手机号码格式不正确");
-		}
-		if(user.getBirthday()==null||user.getBirthday().equals("")){
-			this.addFieldError("userBirthday", "时间格式不正确，例如2020-02-02");
-		}
-		if(user.getAddress()==null||user.getAddress().equals("")){
-			this.addFieldError("userAddress", "地址不能为空");
-		}
-		
-	}
-	/**
-	 *个人中心 保存我的信息
-	 * @return
-	 */
-	public String save(){	
-		/*Role role = roleService.getRoleByID(Rid);//保存关联的对象
-		System.out.println(role);
-		user.setRole(role);*/
-		boolean flag= userService.updateUser(user);		
-		if(flag){
-			message="保存成功";
-			return "save";
-		}	
-		else{
-			errorMessage="用户名已经存在";
-			return "input";
-		} 
+		public void validateSaveMyInformation(){
+			//判断电话号码格式是否正确的正则表达式
+			String tel = "((^(13|15|18)[0-9]{9}$)|(^0[1,2]{1}\\d{1}-?\\d{8}$)|(^0[3-9] {1}\\d{2}-?\\d{7,8}$)|(^0[1,2]{1}\\d{1}-?\\d{8}-(\\d{1,4})$)|(^0[3-9]{1}\\d{2}-? \\d{7,8}-(\\d{1,4})$))";		
+			//判断邮箱正确的正则表达式
+			String em = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";				
+			System.out.println(user.getBirthday());
+			if(user.getName()==null||user.getName().equals("")){
+				this.addFieldError("userName", "用户名不能为空");
+			}
+			if(!user.getEmail().matches(em)){
+				this.addFieldError("userEmail", "邮箱格式不正确");
+			}
+			if(!user.getTelephone().matches(tel)){
+				this.addFieldError("userTelephone", "手机号码格式不正确");
+			}
+			if(user.getBirthday()==null||user.getBirthday().equals("")){
+				this.addFieldError("userBirthday", "时间格式不正确，例如2020-02-02");
+			}
+			if(user.getAddress()==null||user.getAddress().equals("")){
+				this.addFieldError("userAddress", "地址不能为空");
+			}
 			
-	}
-	
+		}
+
+		/**
+		 *个人中心 保存我的信息
+		 * @return
+		 */
+		public String saveMyInformation(){	
+			/*Role role = roleService.getRoleByID(Rid);//保存关联的对象
+			System.out.println(role);
+			user.setRole(role);*/
+			boolean flag= userService.updateUser(user);		
+			if(flag){
+				message="保存成功";
+				return "saveMyInformation";
+			}	
+			else{
+				errorMessage="用户名已经存在";
+				return "input";
+			} 
+				
+		}
+
 	/**
 	 *用户注册信息验证
 	 * @return
@@ -175,7 +194,11 @@ public class UserAction extends ActionSupport{
 			this.addFieldError("userPassword", "用户名或密码错误");
 		}
 	}
-		
+
+	/**
+	 * 登录
+	 * @return
+	 */	
 	public String login(){
 		
 		ActionContext ac = ActionContext.getContext();
@@ -185,6 +208,95 @@ public class UserAction extends ActionSupport{
 		
 	}
 	
+	//验证上传的文件是否为空
+		public void validateSaveHeader(){
+			System.out.println("jhhhhhhhhhhhhhhhhhhhhhhh");
+			if(HeaderFileName==null||HeaderFileName.equals("")){
+				this.addFieldError("userHeader", "头像不能为空");
+			}
+		}
+		/**
+		 *个人中心 修改我的头像
+		 * @return
+		 */
+		public String saveHeader(){
+			//建立唯一标识的路径
+			//设置相对路径
+			String imagePath="/upload/Header/"+
+			UUID.randomUUID().toString()+
+					HeaderFileName.substring(HeaderFileName.lastIndexOf("."));		
+			//设置绝对路径
+			String path=ServletActionContext.
+					getServletContext().getRealPath(imagePath);
+			
+			System.out.println(path);
+			//创建新的文件
+			File file=new File(path);
+			try {
+				FileUtils.copyFile(Header, file);
+				user=userService.getUserByID(1);
+				user.setImagepath(imagePath);//用户保存上传的相对路径
+				userService.updateUser(user);
+				//保存当前头像相对路径，页面获取
+				message="头像保存成功";
+				ActionContext.getContext().getSession().put("imagePath", ".."+imagePath);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}		
+			return "saveHeader";
+
+		}
+
+		/**
+		 * 个人中心 显示我的头像
+		 * @return
+		 */
+		//展示我的头像
+		public String showHeader(){
+			//获取当前用户存储的图片路径
+			ActionContext.getContext().getSession().put("imagePath", ".."+userService.getUserByID(1).getImagepath());
+			System.out.println("展示当前用户的头像");
+			return "showHeader";
+		}
+	    public void validateSaveSecurity(){
+			if(repwd.equals("")||repwd==null)
+				this.addFieldError("repwd", "原密码不能为空");
+			if(newpwd.equals("")||newpwd==null)
+				this.addFieldError("newpwd", "新密码不能为空");
+			if(confirmpwd.equals("")||confirmpwd==null)
+				this.addFieldError("confirmpwd", "第二次确认密码不能为空");
+			if(!confirmpwd.equals(newpwd))
+				this.addFieldError("confirmpwd", "密码不一致，请重新输入");
+			if(newpwd.matches("[0-9]{1,}"))
+				this.addFieldError("newpwd", "密码不能是纯数字");
+			if(newpwd.length()<=6)
+				this.addFieldError("newpwd", "密码不能少于6位");
+		}
+
+		/**
+		 * 个人中心 修改密码
+		 * @return
+		 */
+		//修改密码
+		public String saveSecurity(){
+			//假设这个是当前登录用户
+			User olduser=userService.getUserByID(1);
+			User user = userService.getUserByNameAndPassword(olduser.getName(), repwd);
+			//如果能通过旧密码查询到当前用户，说明密码输入正确
+			if(user!=null){
+				user.setPassword(newpwd);//更改当前密码
+				userService.updateUser(user);//持久化
+				message="密码修改成功";
+				return "showSecurity";
+			}
+			else{//密码输入错误
+				errorMessage="原密码输入错误，请重新输入";
+				return "showSecurity";
+			}		
+		}
+		
+
 	public User getUser() {
 		return user;
 	}
@@ -234,5 +346,40 @@ public class UserAction extends ActionSupport{
 		this.pts = pts;
 	}
 	
-	
+	public File getHeader() {
+		return Header;
+	}
+	public void setHeader(File header) {
+		Header = header;
+	}
+	public String getHeaderFileName() {
+		return HeaderFileName;
+	}
+	public void setHeaderFileName(String headerFileName) {
+		HeaderFileName = headerFileName;
+	}
+	public String getHeaderContentType() {
+		return HeaderContentType;
+	}
+	public void setHeaderContentType(String headerContentType) {
+		HeaderContentType = headerContentType;
+	}
+	public String getRepwd() {
+		return repwd;
+	}
+	public void setRepwd(String repwd) {
+		this.repwd = repwd;
+	}
+	public String getNewpwd() {
+		return newpwd;
+	}
+	public void setNewpwd(String newpwd) {
+		this.newpwd = newpwd;
+	}
+	public String getConfirmpwd() {
+		return confirmpwd;
+	}
+	public void setConfirmpwd(String confirmpwd) {
+		this.confirmpwd = confirmpwd;
+	}
 }
