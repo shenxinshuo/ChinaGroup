@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.zhbit.findwork.dao.BusinessDao;
 import com.zhbit.findwork.entity.Business;
+import com.zhbit.findwork.entity.Role;
 import com.zhbit.findwork.service.BusinessService;
+import com.zhbit.findwork.service.RoleService;
 
 
 /**
@@ -16,10 +18,25 @@ import com.zhbit.findwork.service.BusinessService;
 public class BusinessServiceImpl implements BusinessService {
 	
 	private BusinessDao businessDao;
+	private RoleService roleService;
 	public void setBusinessDao(BusinessDao businessDao) {
 		this.businessDao = businessDao;
 	}
-
+	public void setRoleService(RoleService roleService) {
+		this.roleService = roleService;
+	}
+	
+	/**
+	 * 调用该接口时将名字和密码传入
+	 * 然后判断返回的business对象是否为空即可
+	 */
+	@Override
+	public Business login(String name, String password) {
+		List<Business> businesses = businessDao.getBusinessByNameAndPassword(name, password);
+		Business business = businesses.size() == 0 ? null : businesses.get(0);
+		return business;
+	}
+	
 	/**
 	 * 0:数据库中已有该记录
 	 * 1:插入成功
@@ -31,7 +48,8 @@ public class BusinessServiceImpl implements BusinessService {
 		if (!(business.getPassword().equals(business.getConfirmPassword()))) {
 			return 2;
 		}
-		
+		List<Role> roles = roleService.getRolesByName("企业");
+		business.setRole(roles.get(0));
 		//新增之前先判断数据库中是否已有该记录
 		boolean exist = businessDao.isExist(business.getName());
 		if (exist == true) {

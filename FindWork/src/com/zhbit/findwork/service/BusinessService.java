@@ -12,6 +12,15 @@ import com.zhbit.findwork.entity.Business;
  */
 public interface BusinessService {
 	
+	
+	/**
+	 * 登录
+	 * @param name
+	 * @param password
+	 * @return
+	 */
+	public Business login(String name, String password);
+	
 	/**
 	 * 新增企业
 	 * @param business

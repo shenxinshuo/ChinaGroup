@@ -20,6 +20,7 @@ public class Business {
 	private String license_path;//营业执照路径
 	private String password;    //登录密码
 	private String confirmPassword; //确认密码，跟数据库没有关系
+	private int check_flag;		//审核状态	0:待审核 1：通过 -1：未通过  
 	private int delete_flag = 0;//删除标识   0：正常  1：已删除
 	private String comment;		//
 	private Date create_at;		//
@@ -93,6 +94,13 @@ public class Business {
 	}
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+	
+	public int getCheck_flag() {
+		return check_flag;
+	}
+	public void setCheck_flag(int check_flag) {
+		this.check_flag = check_flag;
 	}
 	public int getDelete_flag() {
 		return delete_flag;

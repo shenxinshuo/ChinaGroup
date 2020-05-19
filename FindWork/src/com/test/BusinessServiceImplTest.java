@@ -37,6 +37,18 @@ public class BusinessServiceImplTest {
 	public void tearDown() throws Exception {
 	}
 
+	
+	@Test
+	public void testLogin() {
+		BusinessService businessService = (BusinessService) context.getBean("businessServiceImpl");
+		Business business = businessService.login("百度", "liadanhong");
+		if (business == null) {
+			System.out.println("查无此人");
+		} else {
+			System.out.println("登录成功");
+		}
+	}
+	
 	@Test
 	public void testAddBusiness() {
 		Business business = new Business();
