@@ -28,6 +28,7 @@
 		</bean>
 		<bean id="businessServiceImpl" class="com.zhbit.findwork.service.impl.BusinessServiceImpl">
 			<property name="businessDao" ref="businessDaoImpl"></property>
+			<property name="roleService" ref="roleServiceImpl"></property>
 		</bean>
 		
 		<!-- 配置action -->

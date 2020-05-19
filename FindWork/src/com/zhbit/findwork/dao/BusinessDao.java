@@ -18,6 +18,14 @@ public interface BusinessDao {
 	public boolean isExist(String name);
 	
 	/**
+	 * 根据名字和密码查询企业（登录）
+	 * @param name
+	 * @param password
+	 * @return
+	 */
+	public List<Business> getBusinessByNameAndPassword(String name, String password);
+	
+	/**
 	 * 新增企业
 	 * @param business
 	 */

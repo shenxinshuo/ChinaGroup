@@ -19,6 +19,7 @@
 		<property name="url" column="Burl" />
 		<property name="license_path" column="Blicense_pic_path" />
 		<property name="password" column="Bpassword"></property>
+		<property name="check_flag" column="Bcheck_flag"></property>
 		<property name="delete_flag" column="delete_flag" />
 		<property name="comment" column="comment" />
 		<property name="create_at" column="create_at" />

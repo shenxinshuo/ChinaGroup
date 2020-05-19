@@ -6,4 +6,13 @@
 	
 <!-- 德略负责模块的Struts配置文件 -->
 
-<struts></struts>
+<struts>
+	<package name="user" extends="struts-default" namespace="/">
+		<action name="myInformation_*" class="userAction" method="{1}">
+			<result name="show">/user/myInformation.jsp</result>
+			<result name="save" type="chain">myInformation_show</result>
+			<result name="input">/user/myInformation.jsp</result>
+		</action>
+	</package>
+	
+</struts>

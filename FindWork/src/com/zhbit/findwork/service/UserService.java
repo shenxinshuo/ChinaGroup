@@ -13,7 +13,17 @@ import com.zhbit.findwork.entity.User;
  * @date 2020年5月17日
  */
 public interface UserService {
-	/**
+	/**注册使用接口
+	 * 判断用户名是否已经存在
+	 * @param name
+	 */
+	public boolean isExistName(String name);
+	/**登录使用接口
+	 *根据用户名和密码查询用户
+	 * @param name
+	 */
+	public User getUserByNameAndPassword(String name,String password);
+	 /**注册使用接口
 	 * 新增用户
 	 * @param user
 	 */

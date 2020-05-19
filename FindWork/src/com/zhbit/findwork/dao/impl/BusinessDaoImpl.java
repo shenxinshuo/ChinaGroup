@@ -34,11 +34,21 @@ public class BusinessDaoImpl implements BusinessDao {
 		}
 		return true;
 	}
+	
+	@Override
+	public List<Business> getBusinessByNameAndPassword(String name, String password) {
+		String hql = "from Business where name = :name and password = :password and delete_flag = 0";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("name", name).setParameter("password", password);
+		List<Business> businesses = query.list();
+		return businesses;
+	}
 
 	@Override
 	public void addBusiness(Business business) {
 		business.setCreate_at(new Date());
 		business.setUpdate_at(new Date());
+		business.setCheck_flag(0);
 		sessionFactory.getCurrentSession().save(business);
 	}
 

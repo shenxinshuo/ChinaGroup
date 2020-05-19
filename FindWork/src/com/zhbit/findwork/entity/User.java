@@ -14,7 +14,7 @@ public class User {
 	private String password;    //登录密码
 	private String address;		//用户所在地址
 	private String imagepath;	//用户头像
-	private int telephone;		//
+	private String telephone;		//更新为字符串
 	private String email;		//
 	private Date birthday;		//生日
 	private int delete_flag = 0;//删除标识   0：正常  1：已删除
@@ -53,10 +53,11 @@ public class User {
 	public void setImagepath(String imagepath) {
 		this.imagepath = imagepath;
 	}
-	public int getTelephone() {
+	
+	public String getTelephone() {
 		return telephone;
 	}
-	public void setTelephone(int telephone) {
+	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 	public String getEmail() {

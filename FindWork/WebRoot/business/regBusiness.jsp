@@ -17,10 +17,8 @@
   </head>
   
   <body>
+  <s:debug/>
   
-  
-  <!-- 引入头部 -->
-    <jsp:include page="/common/header.jsp"/>
   	<!-- 注册企业 -->
   	 <div class="container" style="margin-top: 50px;">
         <div class="col-md-10 col-md-offset-1">
@@ -148,8 +146,7 @@
                         <div class="form-group">
                             <label for="" class="control-label col-md-2">企业描述</label>
                             <div class="col-md-9" style="padding: 0;">
-                                <textarea name="business.description"  class="form-control" id="" cols="30" rows="10">${business.description }
-                                </textarea>
+                                <textarea name="business.description"  class="form-control" id="" cols="30" rows="10">${business.description }</textarea>
                             </div>
                         </div>
 
@@ -175,8 +172,6 @@
 
     </div>
     
-    <!-- 引入底部 -->
-    <jsp:include page="/common/footer.jsp"/>
     
    <script src="<%=request.getContextPath() %>/resource/static/jquery/jquery.min.js"></script>
     <script src="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
