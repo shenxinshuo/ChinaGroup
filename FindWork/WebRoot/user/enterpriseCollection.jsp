@@ -20,37 +20,73 @@
 </head>
 
 <body>
-	<div style="text-align: center;height: 460px;">
+	<div style="text-align: center;height: 450px;">
 		<div style="height: 80%;">
-			<s:if test="#request.Businesses==null">
-				没有收藏纪录，快去收藏吧
+			<s:if test="#request.Businesses==null||#request.Businesses.size()==0">
+				<div style="margin:100px auto;">没有收藏的企业，快去收藏吧</div>
 			</s:if>
-			<s:iterator id="business" value="#request.Businesses">
-				<div style=" width: 95%; height: 30%; background-color: #dae9f0;margin: auto;margin-top: 4px;">
-				<span style="color:#169bd5;font-size: 20px;"><b><a
-						href="#"><s:property value="#business.name" /></a></b></span> <a href="#"><span
-					class="glyphicon glyphicon-remove"
-					style="float: right;margin:10px 20px;"></span></a> <br> <span><s:property value="#business.address" /></span><br>
-				<span><s:property value="#business.description" /></span><br> 公司详情连接 <span><s:property value="#business.url"/></span>
-			   </div>		
-			</s:iterator>	  
+			<s:else>
+				<s:iterator id="business" value="#request.Businesses">
+					<div
+						style=" width: 95%; height: 30%; background-color: #dae9f0;margin: auto;margin-top: 4px;">
+						<span style="color:#169bd5;font-size: 20px;"><b><a
+								href="#"><s:property value="#business.name" /></a></b></span> <a href="#"><span
+							class="glyphicon glyphicon-remove"
+							style="float: right;margin:10px 20px;"></span></a> <br> <span><s:property
+								value="#business.address" /></span><br><s:property
+								value="#business.description" /><br> 公司详情连接:<a href="${ business.url}"><s:property
+								value="#business.url" /></a>
+					</div>
+				</s:iterator>
 		</div>
 		<div style="height: 20%;">
 			<nav aria-label="Page navigation">
 			<ul class="pagination">
-				<li><a href="#" aria-label="Previous"> <span
-						aria-hidden="true">&laquo;</span>
+				<s:if test="#request.page.haspre">
+					<s:url id="prePage"
+						action="/FindWork/collection_showBusiness.action? page.current=%{page.current-1}"
+						namespace="/" />
+				</s:if>
+				<s:else>
+					<s:url id="prePage"
+						action="/FindWork/collection_showBusiness.action? page.current=1"
+						namespace="/" />
+				</s:else>
+				<li><a href="${prePage}" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+				</a></li> 
+					<s:if test="#request.page.current!=0">	 
+  				 	<li><a href="collection_showBusiness.action? page.current=${page.current}"><s:property value="#request.page.current"/></a></li>
+					</s:if>	
+					<s:if test="#request.page.current+1<=#request.page.total">
+					  <li><a href="collection_showBusiness.action?page.current=${page.current+1}"><s:property value="%{page.current+1}"/></a></li>
+					</s:if> 
+					<s:if test="#request.page.current+2<=#request.page.total">
+					  <li><a href="collection_showBusiness.action? page.current=${page.current+2}"><s:property value="%{page.current+2}"/></a></li>
+					</s:if> 										
+				<s:if test="#request.page.hasnex">
+				<s:url id="nextPage"
+						action="/FindWork/collection_showBusiness.action? page.current=%{page.current+1}"
+						namespace="/" />
+				</s:if>
+				<s:else>
+					<s:url id="nextPage"
+						action="/FindWork/collection_showBusiness.action? page.current=%{page.total}"
+						namespace="/" />
+				</s:else>
+				<li><a href="${nextPage}" aria-label="Next"> <span
+						aria-hidden="true">&raquo;</span>
 				</a></li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-				</a></li>
+				
 			</ul>
 			</nav>
+			  <div style="float:right;">
+				  <span>当前页数：<s:property value="#request.page.current"/>
+				  <span>共计页数：<s:property value="#request.page.total"/>
+				  </div>
 		</div>
+		     
+		</s:else>
+	        	
 	</div>
 </body>
 </html>
