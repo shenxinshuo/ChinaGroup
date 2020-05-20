@@ -118,5 +118,17 @@ public class BusinessServiceImplTest {
 		business.setCheck_flag(1);
 		businessService.updateBusinessCheckFlag(business);
 	}
-
+	@Test
+	public void testGetBusinessesByNameSearch() {
+		BusinessService businessService = (BusinessService) context.getBean("businessServiceImpl");
+		List<Business> businesses = businessService.getBusinessesByNameSearch(0,5,"");
+		System.out.println(businesses);
+	}
+	
+	@Test
+	public void testGetCountByNameSearch() {
+		BusinessService businessService = (BusinessService) context.getBean("businessServiceImpl");
+		int count = businessService.getCountByNameSearch("11");
+		System.out.println(count);
+	}
 }

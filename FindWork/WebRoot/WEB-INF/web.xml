@@ -10,6 +10,12 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <!-- 配置分页信息 -->
+  <context-param>
+  	<param-name>maxResults</param-name>
+  	<param-value>5</param-value>
+  </context-param>
+  
   
   <!-- 配置spring配置文件 -->
   <context-param>

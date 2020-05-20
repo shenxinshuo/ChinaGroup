@@ -148,5 +148,17 @@ public class BusinessServiceImpl implements BusinessService {
 		int count = businessDao.getCount();
 		return count;
 	}
+	
+	@Override
+	public List<Business> getBusinessesByNameSearch(int firstResult, int maxResults, String name) {
+		List<Business> businesses = businessDao.getBusinessesByNameSearch(firstResult, maxResults, name);
+		return businesses;
+	}
+	
+	@Override
+	public int getCountByNameSearch(String name) {
+		int count = businessDao.getCountByNameSearch(name);
+		return count;
+	}
 
 }

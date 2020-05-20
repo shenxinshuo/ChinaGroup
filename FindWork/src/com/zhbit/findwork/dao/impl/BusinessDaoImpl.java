@@ -141,6 +141,28 @@ public class BusinessDaoImpl implements BusinessDao {
 		return count;
 	}
 
+	@Override
+	public List<Business> getBusinessesByNameSearch(int firstResult, int maxResults, String name) {
+		String searchName = "%"+name+"%";
+		String hql = "from Business where name like :searchName and delete_flag = 0";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("searchName", searchName)
+			.setFirstResult(firstResult)
+			.setMaxResults(maxResults);
+		List<Business> businesses = query.list();
+		return businesses;
+	}
 	
+	@Override
+	public int getCountByNameSearch(String name) {
+		String hql = "select count(id) from Business where name like :searchName and delete_flag = 0";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		String searchName = "%"+name+"%";
+		query.setParameter("searchName", searchName);
+		Long sum = (Long)query.uniqueResult(); //获得的整数只能为Long型，需要自己再转换为int
+		String temp = String.valueOf(sum);  //强制转换会报错Cannot cast from Long to int
+		int count = Integer.parseInt(temp);    //故先转String，再转int
+		return count;
+	}
 
 }
