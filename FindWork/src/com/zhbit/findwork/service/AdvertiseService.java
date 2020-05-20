@@ -1,5 +1,7 @@
 package com.zhbit.findwork.service;
 
+import java.util.List;
+
 import com.zhbit.findwork.entity.Advertise;
 
 
@@ -25,9 +27,17 @@ public interface AdvertiseService {
 	 * @param advertise
 	 */
 	public Advertise getAdvertiseByID(int id);
+	
 	/**
 	 * 根据ID删除职位信息
 	 * @param advertise
 	 */
 	public boolean deleteAdvertiseByID(int id);
+	
+	
+	/**
+	 * 条件查询职位信息
+	 * @param advertise
+	 */
+	public List<Advertise> getAdvertiseByExample(Advertise advertise);
 }

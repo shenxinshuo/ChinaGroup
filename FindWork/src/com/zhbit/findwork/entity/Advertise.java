@@ -2,6 +2,8 @@ package com.zhbit.findwork.entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * 职位Bean类
  * 
@@ -21,8 +23,8 @@ public class Advertise {
 	private int deleteFlag;// 删除标识
 	private String comment;// 备注
 	private Date createAt; // 创建时间
-	private Date updateaAt; // 修改时间
-	private int check;// 是否审核
+	private Date updateAt; // 修改时间
+	private int check;// 是否审核 0否 1是
 	private Business business;// 与企业类多对一关系
 	
 	
@@ -99,11 +101,11 @@ public class Advertise {
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
 	}
-	public Date getUpdateaAt() {
-		return updateaAt;
+	public Date getUpdateAt() {
+		return updateAt;
 	}
-	public void setUpdateaAt(Date updateaAt) {
-		this.updateaAt = updateaAt;
+	public void setUpdateAt(Date updateAt) {
+		this.updateAt = updateAt;
 	}
 	public int getCheck() {
 		return check;
@@ -116,17 +118,6 @@ public class Advertise {
 	}
 	public void setBusiness(Business business) {
 		this.business = business;
-	}
-	@Override
-	public String toString() {
-		return "Advertise [id=" + id + ", title=" + title + ", post=" + post
-				+ ", educationBackground=" + educationBackground
-				+ ", lowWages=" + lowWages + ", largeWages=" + largeWages
-				+ ", ask=" + ask + ", wantJoyType=" + wantJoyType
-				+ ", deadline=" + deadline + ", deleteFlag=" + deleteFlag
-				+ ", comment=" + comment + ", createAt=" + createAt
-				+ ", updateaAt=" + updateaAt + ", check=" + check
-				+ ", business=" + business + "]";
 	}
 	
 }

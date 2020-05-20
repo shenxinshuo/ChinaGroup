@@ -1,5 +1,8 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+String path = request.getContextPath();
+%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -14,10 +17,28 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/colors/blue.css">
-    <link rel="stylesheet" href="css/header.css"/>
-	<link rel="stylesheet" href="../resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="<%=path %>/postjob/css/style.css">
+    <link rel="stylesheet" href="<%=path %>/postjob/css/colors/blue.css">
+    <link rel="stylesheet" href="<%=path %>/postjob/css/header.css"/>
+	<link rel="stylesheet" href="<%=path %>/resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+	
+	<script type="text/javascript">
+	function deleteAdvertise(id) {
+			var msg = "确定删除该条已发布的招聘信息吗？"; 
+		if (confirm(msg)==true){
+    			 $.ajax({
+    			    url:"<%=path %>/deleteAdvertise.action?advertise.id="+id,    //请求的url地址
+    			    //dataType:"json",   //返回格式为json
+    			    async:true,//请求是否异步，默认为异步，这也是ajax重要特性
+    			    success:function(req){
+    			    	window.location.reload();
+    			    	alert("删除成功！");
+    			    }
+    			 }); 
+		}else{ 
+		} 
+	} 
+	</script>
   </head>
   
   <body>
@@ -30,7 +51,7 @@
 	================================================== -->
 
 	<!-- 返回企业中心 -->
-	<a href="../business/businessCenter.jsp"><span class="glyphicon glyphicon-chevron-left"></span>返回企业中心</a>
+	<a href="<%=path %>/business/businessCenter.jsp"><span class="glyphicon glyphicon-chevron-left"></span>返回企业中心</a>
 	<div class="dashboard-content-container" data-simplebar>
 		<div class="dashboard-content-inner" >
 			
@@ -51,106 +72,30 @@
 
 						<div class="content">
 							<ul class="dashboard-box-list">
-								<li>
-									<!-- Job Listing -->
-									<div class="job-listing">
-
-										<!-- Job Listing Details -->
+								<c:forEach items="${requestScope.list}" var="l" varStatus="ss">
+									<li>
+											<div class="job-listing">
 										<div class="job-listing-details">
-
-											<!-- Logo -->
-									<a href="#" class="job-listing-company-logo">
-										<!-- 		<img src="images/company-logo-05.png" >
-											</a> -->
-
-											<!-- Details -->
 											<div class="job-listing-description">
-								
-
-												<!-- Job Listing Footer -->
 												<div class="job-listing-footer">
 													<ul>
-														<li><i class="glyphicon glyphicon-user"></i>aaa</li>
-														
+														<li><i class="glyphicon glyphicon-user"></i>${l.title}</li>
 													</ul>
 												</div>
 											</div>
 										</div>
 									</div>
-
-									<!-- Buttons -->
 									<div class="buttons-to-right always-visible">
-										<a href="./single-job-page.jsp" class="button ripple-effect"><i class="glyphicon glyphicon-ok"></i> 查看详情 </a>
-										<a href="#" class="button gray ripple-effect ico" title="编辑" data-tippy-placement="top"><i class="glyphicon glyphicon-pencil"></i></a>
-										<a href="#" class="button gray ripple-effect ico" title="删除" data-tippy-placement="top"><i class="glyphicon glyphicon-trash"></i></a>
+										<a href="<%=path %>/detailAdvertise.action?advertise.id=${l.id}" class="button ripple-effect"><i class="glyphicon glyphicon-ok"></i> 查看信息 </a>
+										<a href="<%=path %>/toUpdateAdvertise.action?advertise.id=${l.id}&advertise.check=${l.check}" class="button gray ripple-effect ico" title="编辑" data-tippy-placement="top"><i class="glyphicon glyphicon-pencil"></i></a>
+										<a href="#" onclick="javascript:deleteAdvertise(${l.id});" class="button gray ripple-effect ico" title="删除" data-tippy-placement="top"><i class="glyphicon glyphicon-trash"></i></a>
 									</div>
-								</li>
-
-								<li>
-									<!-- Job Listing -->
-									<div class="job-listing">
-
-										<!-- Job Listing Details -->
-										<div class="job-listing-details">
-
-											<!-- Details -->
-											<div class="job-listing-description">
-												
-												<!-- Job Listing Footer -->
-												<div class="job-listing-footer">
-													<ul>
-														<li><i class="glyphicon glyphicon-user"></i> bbb</li>
-														
-													</ul>
-												</div>
-											</div>
-
-										</div>
-									</div>
-
-									<!-- Buttons -->
-									<div class="buttons-to-right always-visible">
-										<a href="./single-job-page.jsp" class="button ripple-effect"><i class="glyphicon glyphicon-ok"></i>  查看详情 </a>
-										<a href="#" class="button gray ripple-effect ico" title="编辑" data-tippy-placement="top"><i class="glyphicon glyphicon-pencil"></i></a>
-										<a href="#" class="button gray ripple-effect ico" title="删除" data-tippy-placement="top"><i class="glyphicon glyphicon-trash"></i></a>
-									
-									</div>
-								</li>
-
-								<li>
-									<!-- Job Listing -->
-									<div class="job-listing">
-
-										<!-- Job Listing Details -->
-										<div class="job-listing-details">
-
-											<!-- Details -->
-											<div class="job-listing-description">
-												
-
-												<!-- Job Listing Footer -->
-												<div class="job-listing-footer">
-													<ul>
-														<li><i class="glyphicon glyphicon-user"></i> ccc</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<!-- Buttons -->
-									<div class="buttons-to-right always-visible" >
-										<a href="./single-job-page.jsp" class="button ripple-effect"><i class="glyphicon glyphicon-ok"></i> 查看详情</a>								
-										<a href="#" class="button gray ripple-effect ico" title="编辑" data-tippy-placement="top"><i class="glyphicon glyphicon-pencil"></i></a>
-										<a href="#" class="button gray ripple-effect ico" title="删除" data-tippy-placement="top"><i class="glyphicon glyphicon-trash"></i></a>
-									
-									</div>
-								</li>
-
+									</li>
+                        			</c:forEach>
 							</ul>
 						</div>
 					</div>
-					<nav aria-label="Page navigation"align="center">
+					<!-- <nav aria-label="Page navigation"align="center">
   <ul class="pagination">
     <li>
       <a href="#" aria-label="Previous">
@@ -168,7 +113,7 @@
       </a>
     </li>
   </ul>
-</nav>
+</nav> -->
 				</div>
 				
 
@@ -190,8 +135,8 @@
     <!-- 引入底部 -->
 		    <jsp:include page="/common/footer.jsp"/>
 
-    <script type="text/javascript" src="../resource/static/jquery/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="../resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<%=path %>/resource/static/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="<%=path %>/resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
   <!-- <script src="../jquery/jquery-3.3.1.min.js"></script>
 	<script src="../jquery/jquery-migrate-3.0.0.min.js"></script>
 	<script src="jquery/bootstrap-slider.min.js"></script>

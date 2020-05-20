@@ -1,5 +1,7 @@
 package com.zhbit.findwork.service.impl;
 
+import java.util.List;
+
 import com.zhbit.findwork.dao.AdvertiseDao;
 import com.zhbit.findwork.entity.Advertise;
 import com.zhbit.findwork.service.AdvertiseService;
@@ -36,6 +38,11 @@ public class AdvertiseServiceImpl implements AdvertiseService {
 
 	public void setAdvertiseDao(AdvertiseDao advertiseDao) {
 		this.advertiseDao = advertiseDao;
+	}
+
+	@Override
+	public List<Advertise> getAdvertiseByExample(Advertise advertise) {
+		return advertiseDao.getAdvertiseByExample(advertise);
 	}
 
 	

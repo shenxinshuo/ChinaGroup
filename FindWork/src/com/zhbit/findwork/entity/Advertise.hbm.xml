@@ -10,7 +10,6 @@
 		<id name="id" column="Aid">
 			<generator class="native" />
 		</id>
-		<property name="name" column="Bname" />
 		<property name="title" column="Atitle" />
 		<property name="post" column="Apost" />
 		<property name="educationBackground" column="Aeducation_background" />
@@ -21,8 +20,8 @@
 		<property name="deadline" column="Adeadline"></property>
 		<property name="deleteFlag" column="delete_flag" />
 		<property name="comment" column="comment" />
-		<property name="create_at" column="create_at" />
-		<property name="update_at" column="update_at" />
+		<property name="createAt" column="create_at" />
+		<property name="updateAt" column="update_at" />
 		<property name="check" column="Acheck" />
 		<!-- 配置和角色多对一的关系 -->
 		<many-to-one name="business" class="Business" column="Bid"></many-to-one>

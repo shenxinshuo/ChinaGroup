@@ -3,6 +3,8 @@ package com.zhbit.findwork.dao;
  * @author 钦治
  */
 
+import java.util.List;
+
 import com.zhbit.findwork.entity.Advertise;
 
 public interface AdvertiseDao {
@@ -28,4 +30,12 @@ public interface AdvertiseDao {
 	 * @param advertise
 	 */
 	public Advertise getAdvertiseByID(int id);
+	
+	
+	/*
+	 *条件查询职位信息
+	 *
+	 * @param advertise
+	 */
+	public List<Advertise> getAdvertiseByExample(Advertise advertise);
 }

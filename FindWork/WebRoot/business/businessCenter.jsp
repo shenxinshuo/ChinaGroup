@@ -113,21 +113,16 @@
                     &nbsp;
                     <span>${business.telephone }</span>
                     <br>
-                    <div class="btn btn-group">
-                    	<s:url id="showUpdate" action="business_showUpdatePage" namespace="/">
-                    		<s:param name="business.id">${business.id }</s:param>
-                    	</s:url>
-                        <div class="btn btn-info"><a href="${showUpdate }" style="color: white;">完善资料</a></div>
+                  <div class="btn btn-group">
+                        <div class="btn btn-info"><a href="<%=request.getContextPath()%>/toAdd.action" style="color: white;">添加招聘信息</a></div>
                     </div>
                     <div class="btn btn-group">
-                        <div class="btn btn-info"><a href="../postjob/dashboard-post-a-job.html" style="color: white;">添加招聘信息</a></div>
+                        <div class="btn btn-info"><a href="<%=request.getContextPath()%>/toFinAdvertise.action" style="color: white;">查看已发布的招聘</a></div>
                     </div>
                     <div class="btn btn-group">
-                        <div class="btn btn-info"><a href="../postjob/dashboard-manage-jobs.html" style="color: white;">查看已发布的招聘</a></div>
-                    </div>
-                    <div class="btn btn-group">
-                        <div class="btn btn-info"><a href="../postjob/weifabujob.html" style="color: white;">查看未发布的招聘</a></div>
-                    </div>
+                        <!-- <div class="btn btn-info"><a href="../postjob/weifabujob.jsp" style="color: white;">查看未发布的招聘</a></div> -->
+                        <div class="btn btn-info"><a href="<%=request.getContextPath()%>/toUnFinAdvertise.action" style="color: white;">查看未发布的招聘</a></div>
+                    </div>  
                 </div>
             </div>
         </div>

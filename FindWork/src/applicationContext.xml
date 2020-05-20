@@ -51,6 +51,7 @@
 			      <value>com/zhbit/findwork/entity/Cv.hbm.xml</value>
 			      <value>com/zhbit/findwork/entity/Post_type.hbm.xml</value>
          		  <value>com/zhbit/findwork/entity/Post.hbm.xml</value>
+         		  <value>com/zhbit/findwork/entity/Advertise.hbm.xml</value>
 			    </list>
 			 </property>
 			 <property name="hibernateProperties">
