@@ -42,16 +42,21 @@
                 	</s:else>
                 	<s:url id="role_add" action="role_add" namespace="/"></s:url>
                     <form action="${role_add }" class="form-horizontal">
+                    	 <div class="col-md-12">
+                            <div class="col-md-6">
+                                <label for="" class="text-danger col-md-offset-4">${fieldErrors["role.name"][0] }</label>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="" class="control-label col-md-2">角色名</label>
                             <div class="col-md-4" style="padding: 0;">
-                                <input type="text" class="form-control">
+                                <input type="text" name="role.name" value="${role.name }" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="control-label col-md-2">备注</label>
                             <div class="col-md-4" style="padding: 0;">
-                                <input type="text" class="form-control">
+                                <input type="text" name="role.comment" value="${role.comment }" class="form-control">
                             </div>
                         </div>
                         

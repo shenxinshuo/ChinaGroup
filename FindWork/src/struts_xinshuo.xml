@@ -29,11 +29,18 @@
 		<!-- Business相关action结束 -->
 		<!-- Role相关action -->
 		<action name="role_add" class="roleAction" method="add">
-			
+			<result name="showAdd">/roleManager/addRole.jsp</result>
+			<result name="showAllRoles">/roleManager/showRoles.jsp</result>
+			<result name="input">/roleManager/addRole.jsp</result>
 		</action>
 		<action name="role_update" class="roleAction" method="update">
+			<result name="showUpdatePage">/roleManager/updateRole.jsp</result>
+			<result name="showAllRoles">/roleManager/showRoles.jsp</result>
+			<result name="input">/roleManager/updateRole.jsp</result>
 		</action>
 		<action name="role_*" class="roleAction" method="{1}">
+			<result name="showAllRoles">/roleManager/showRoles.jsp</result>
+			<result name="showUpdatePage">/roleManager/updateRole.jsp</result>
 		</action>
 		<!-- Role相关action结束 -->
 	</package>

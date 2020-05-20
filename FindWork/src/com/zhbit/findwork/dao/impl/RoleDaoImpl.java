@@ -98,5 +98,12 @@ public class RoleDaoImpl implements RoleDao{
 		List<Role> roles = query.list();
 		return roles;
 	}
-	
+	@Override
+	public List<Role> getRolesByNameInAll(String name) {
+		String hql = "from Role where name = :roleName";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("roleName", name);
+		List<Role> roles = query.list();
+		return roles;
+	}
 }

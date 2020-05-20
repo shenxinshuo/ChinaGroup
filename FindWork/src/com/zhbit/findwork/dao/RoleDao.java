@@ -65,6 +65,12 @@ public interface RoleDao {
 	 */
 	public int getCount();
 	
+	/**
+	 * 根据角色名查询角色信息（全表搜索，不管有没有软删除）
+	 * @param name
+	 * @return
+	 */
+	public List<Role> getRolesByNameInAll(String name);
 	
 
 }

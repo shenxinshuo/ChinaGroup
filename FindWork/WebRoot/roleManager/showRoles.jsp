@@ -48,36 +48,23 @@
                         </tr>
                         <s:iterator value="roles" >
                         	<tr>
-	                            <th><s:property value=""/></th>
-	                            <td>求职者</td>
-	                            <td>找工作</td>
-	                            <td>2020-05-16</td>
+	                            <th><s:property value="id"/></th>
+	                            <td><s:property value="name"/></td>
+	                            <td><s:property value="comment"/></td>
+	                            <td><s:property value="update_at"/></td>
 	                            <th>
-	                                <a href="">修改</a>
-	                                <a href="">删除</a>
+	                            	<s:url id="role_showUpdatePage" action="role_showUpdatePage" namespace="/" >
+	                            		<s:param name="role.id">${id }</s:param>
+	                            	</s:url>
+	                                <a href="${role_showUpdatePage }">修改</a>
+	                                <s:url id="role_delete" action="role_delete" namespace="/" >
+	                                	<s:param name="role.id">${id }</s:param>
+	                                </s:url>
+	                                <a href="${role_delete }">删除</a>
 	                            </th>
 	                        </tr>
                         </s:iterator>
-                        <tr>
-                            <th>1</th>
-                            <td>求职者</td>
-                            <td>找工作</td>
-                            <td>2020-05-16</td>
-                            <th>
-                                <a href="">修改</a>
-                                <a href="">删除</a>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>2</th>
-                            <td>招聘者</td>
-                            <td>提供工作岗位</td>
-                            <td>2020-05-16</td>
-                            <th>
-                                <a href="">修改</a>
-                                <a href="">删除</a>
-                            </th>
-                        </tr>
+                        
                     </table>
                 </div>
             </div>

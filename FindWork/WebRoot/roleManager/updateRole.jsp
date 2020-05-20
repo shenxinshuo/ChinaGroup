@@ -35,18 +35,30 @@
                     <h3 class="panel-title">修改角色</h3>
                 </div>
                 <div class="panel-body">
+                	<s:if test="errorMessage == null">
+                	</s:if>
+                	<s:else>
+                		<div class="alert alert-danger" role="alert">${errorMessage }</div>
+                	</s:else>
                 	<s:url id="role_update" action="role_update" namespace="/"></s:url>
                     <form action="${role_update }" class="form-horizontal">
+                    	
+                    	<div class="col-md-12">
+                            <div class="col-md-6">
+                                <label for="" class="text-danger col-md-offset-4">${fieldErrors["role.name"][0] }</label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="role.id" value="${role.id }" />
                         <div class="form-group">
                             <label for="" class="control-label col-md-2">角色名</label>
                             <div class="col-md-4" style="padding: 0;">
-                                <input type="text" class="form-control">
+                                <input type="text" name="role.name" value="${role.name}" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="control-label col-md-2">备注</label>
                             <div class="col-md-4" style="padding: 0;">
-                                <input type="text" class="form-control">
+                                <input type="text" name="role.comment" value="${role.comment }" class="form-control">
                             </div>
                         </div>
                         

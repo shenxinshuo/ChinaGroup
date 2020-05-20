@@ -32,18 +32,24 @@ public class RoleServiceImpl implements RoleService {
 		}
 	}
 
-
+	/**
+	 * 0:修改成功
+	 * 1:已存在
+	 */
 	@Override
 	public int updateRole(Role role) {
-		List<Role> rolesInDB = (List<Role>) roleDao.getRolesByName(role.getName());
+		List<Role> rolesInDB = (List<Role>) roleDao.getRolesByNameInAll(role.getName());
+		Role roleInDB = roleDao.getRoleByID(role.getId());
 		if (rolesInDB.size() == 0) {
 			//说明数据库中这个名字没人用，也证明修改了角色名 执行修改
-			roleDao.updateRole(role);
+			this.setRoleForUpdate(roleInDB, role);
+			roleDao.updateRole(roleInDB);
 			return 0;
 		} else {
 			if (role.getId() == rolesInDB.get(0).getId()) {
-				//说明要修改信息的企业没有修改名字，修改了别的字段 执行修改
-				roleDao.updateRole(role);
+				//说明要修改信息的角色没有修改名字，修改了别的字段 执行修改
+				this.setRoleForUpdate(roleInDB, role);
+				roleDao.updateRole(roleInDB);
 				return 0;
 			} else {
 				return 1;
@@ -51,6 +57,12 @@ public class RoleServiceImpl implements RoleService {
 		}
 	}
 
+	private void setRoleForUpdate(Role r1, Role r2) {
+		r1.setName(r2.getName());
+		r1.setComment(r2.getComment());
+	}
+	
+	
 
 	@Override
 	public Role getRoleByID(int id) {

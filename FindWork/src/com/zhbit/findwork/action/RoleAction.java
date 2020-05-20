@@ -78,7 +78,10 @@ public class RoleAction extends ActionSupport {
 //		return NONE;
 	}
 	
-	
+	public String showUpdatePage() {
+		role = roleService.getRoleByID(role.getId());
+		return "showUpdatePage";
+	}
 
 	/**
 	 * 修改角色表单验证
@@ -93,7 +96,19 @@ public class RoleAction extends ActionSupport {
 	 * @return
 	 */
 	public String update() {
-		return NONE;
+		int result = roleService.updateRole(role);
+		System.out.println(111);
+		if (result == 0) {
+			//修改成功
+			message = "修改成功";
+			roles = roleService.getAllRoles();
+			return "showAllRoles";
+		} else if (result == 1) {
+			//已存在
+			errorMessage = "该角色已存在";
+			return "showUpdatePage";
+		}
+		return "showUpdatePage";
 	}
 	
 	/**
@@ -110,7 +125,10 @@ public class RoleAction extends ActionSupport {
 	 * @return
 	 */
 	public String delete() {
-		return NONE;
+		roleService.deleteRoleByID(role.getId());
+		message = "角色删除成功";
+		roles = roleService.getAllRoles();
+		return "showAllRoles";
 	}
 	
 }

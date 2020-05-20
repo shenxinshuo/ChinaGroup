@@ -203,7 +203,9 @@ public class BusinessAction extends ActionSupport{
 			errorMessage = "修改失败,该名字被抢先一步注册";
 			Business businessTemp = businessService.getBusinessByID(business.getId());
 			business.setRole(businessTemp.getRole());
-			business.setCheck_flag(business.getCheck_flag());
+			business.setCreate_at(businessTemp.getCreate_at());
+			business.setLicense_path(businessTemp.getLicense_path());
+			business.setCheck_flag(businessTemp.getCheck_flag());
 			return "showUpdatePage";
 		}
 		return NONE;

@@ -48,8 +48,9 @@ public class BusinessServiceImpl implements BusinessService {
 		if (!(business.getPassword().equals(business.getConfirmPassword()))) {
 			return 2;
 		}
-		List<Role> roles = roleService.getRolesByName("企业");
-		business.setRole(roles.get(0));
+		//List<Role> roles = roleService.getRolesByName("企业");
+		Role role = roleService.getRoleByID(2);
+		business.setRole(role);
 		//新增之前先判断数据库中是否已有该记录
 		boolean exist = businessDao.isExist(business.getName());
 		if (exist == true) {
@@ -70,27 +71,33 @@ public class BusinessServiceImpl implements BusinessService {
 	public int updateBusiness(Business business) {
 		List<Business> businessesInDB = (List<Business>) businessDao.getBusinessesByNameInAll(business.getName());
 		Business businessInDB = businessDao.getBusinessByID(business.getId());
-		businessInDB.setName(business.getName());
-		businessInDB.setCity(business.getCity());
-		businessInDB.setTelephone(business.getTelephone());
-		businessInDB.setEmail(business.getEmail());
-		businessInDB.setLicense_path(business.getLicense_path() == null ? businessInDB.getLicense_path() : business.getLicense_path());
-		businessInDB.setAddress(business.getAddress());
-		businessInDB.setDescription(business.getDescription());
-		businessInDB.setUrl(business.getUrl());
+		
 		if (businessesInDB.size() == 0) {
 			//说明数据库中这个名字没人用，也证明企业修改了自己的名字 执行修改
+			this.setBusinessForUpdate(businessInDB, business);
 			businessDao.updateBusiness(businessInDB);
 			return 0;
 		} else {
 			if (business.getId() == businessesInDB.get(0).getId()) {
 				//说明要修改信息的企业没有修改名字，修改了别的字段 执行修改
+				this.setBusinessForUpdate(businessInDB, business);
 				businessDao.updateBusiness(businessInDB);
 				return 0;
 			} else {
 				return 1;
 			}
 		}
+	}
+	//修改企业的辅助方法
+	private void setBusinessForUpdate(Business b1, Business b2) {
+		b1.setName(b2.getName());
+		b1.setCity(b2.getCity());
+		b1.setTelephone(b2.getTelephone());
+		b1.setEmail(b2.getEmail());
+		b1.setLicense_path(b2.getLicense_path() == null ? b1.getLicense_path() : b2.getLicense_path());
+		b1.setAddress(b2.getAddress());
+		b1.setDescription(b2.getDescription());
+		b1.setUrl(b2.getUrl());
 	}
 
 	@Override
