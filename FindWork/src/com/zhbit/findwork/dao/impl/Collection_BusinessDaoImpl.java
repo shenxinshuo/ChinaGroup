@@ -37,7 +37,7 @@ public class Collection_BusinessDaoImpl implements Collection_BusinessDao {
 	public List<Business> getBusinessesByUserId(int userid) {
 		// TODO Auto-generated method stub
 		//从表中根据用户id查找出收藏的对象,删除标志为0
-		String hql="from Collection_Business as cb where Uid =? and delete_flag = 0";
+		String hql="from Collection_Business as cb where Uid =? and delete_flag = 0 ";
 		List<Collection_Business> c_bs=(List<Collection_Business>)sessionFactory.getCurrentSession()
 				.createQuery(hql)
 				.setParameter(0, userid)
@@ -81,6 +81,26 @@ public class Collection_BusinessDaoImpl implements Collection_BusinessDao {
 		}
 		else
 			return true;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Business> getBusinessesByPage(int userid, int firstResult, int maxResults) {
+		// TODO Auto-generated method stub
+		String hql="from Collection_Business as cb where Uid =? and delete_flag = 0 order by id";
+		List<Collection_Business> c_bs=(List<Collection_Business>)sessionFactory.getCurrentSession()
+				.createQuery(hql)
+				.setParameter(0, userid)
+				.setFirstResult(firstResult)
+				.setMaxResults(maxResults)
+				.list();
+		//建立一个企业链表
+		List<Business> businesses= new ArrayList<Business>();
+		for(int i=0;i<c_bs.size();i++){
+			//通过收藏的对象查找出企业，然后加入链表中
+			businesses.add(c_bs.get(i).getBusiness());
+		}
+		return businesses;
 	}
 
 

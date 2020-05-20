@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -21,58 +21,36 @@
 
 <body>
 	<div style="text-align: center;height: 460px;">
-	<div style="height: 80%;">
-		<div style="width: 95%; height: 30%; background-color: #dae9f0;margin: auto;margin-top: 4px;">
-		<span style="color:#169bd5;font-size: 20px;"><b><a href="#" >腾讯有限公司</a></b></span>
-		<a href="#"><span class="glyphicon glyphicon-remove" style="float: right;margin:10px 20px;"></span></a>
-		<br>
-		<span>广东省深圳市XXXXXXX</span><br>
-		<span>公司简介就案发发快递发了大水佛的撒佛i啊的佛i官方</span><br>
-		公司详情连接
-		<span>http:fdlka;jfdkajfdaskfa.com</span>
+		<div style="height: 80%;">
+			<s:if test="#request.Businesses==null">
+				没有收藏纪录，快去收藏吧
+			</s:if>
+			<s:iterator id="business" value="#request.Businesses">
+				<div style=" width: 95%; height: 30%; background-color: #dae9f0;margin: auto;margin-top: 4px;">
+				<span style="color:#169bd5;font-size: 20px;"><b><a
+						href="#"><s:property value="#business.name" /></a></b></span> <a href="#"><span
+					class="glyphicon glyphicon-remove"
+					style="float: right;margin:10px 20px;"></span></a> <br> <span><s:property value="#business.address" /></span><br>
+				<span><s:property value="#business.description" /></span><br> 公司详情连接 <span><s:property value="#business.url"/></span>
+			   </div>		
+			</s:iterator>	  
 		</div>
-		
-		<div style="width: 95%; height: 30%; background-color: #dae9f0;margin: auto;margin-top: 4px;">
-		<span style="color:#169bd5;font-size: 20px;"><b><a href="#" >腾讯有限公司</a></b></span>
-		<a href="#"><span class="glyphicon glyphicon-remove" style="float: right;margin:10px 20px;"></span></a>
-		<br>
-		<span>广东省深圳市XXXXXXX</span><br>
-		<span>公司简介就案发发快递发了大水佛的撒佛i啊的佛i官方</span><br>
-		公司详情连接
-		<span>http:fdlka;jfdkajfdaskfa.com</span>
+		<div style="height: 20%;">
+			<nav aria-label="Page navigation">
+			<ul class="pagination">
+				<li><a href="#" aria-label="Previous"> <span
+						aria-hidden="true">&laquo;</span>
+				</a></li>
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+				</a></li>
+			</ul>
+			</nav>
 		</div>
-		
-		<div style="width: 95%; height: 30%; background-color: #dae9f0;margin: auto;margin-top: 4px;">
-		<span style="color:#169bd5;font-size: 20px;"><b><a href="#" >腾讯有限公司</a></b></span>
-		<a href="#"><span class="glyphicon glyphicon-remove" style="float: right;margin:10px 20px;"></span></a>
-		<br>
-		<span>广东省深圳市XXXXXXX</span><br>
-		<span>公司简介就案发发快递发了大水佛的撒佛i啊的佛i官方</span><br>
-		公司详情连接
-		<span>http:fdlka;jfdkajfdaskfa.com</span>
-		</div>
-	</div>
-	<div style="height: 20%;">		
-		<nav aria-label="Page navigation">
-		  <ul class="pagination">
-		    <li>
-		      <a href="#" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-		      </a>
-		    </li>
-		    <li><a href="#">1</a></li>
-		    <li><a href="#">2</a></li>
-		    <li><a href="#">3</a></li>
-		    <li><a href="#">4</a></li>
-		    <li><a href="#">5</a></li>
-		    <li>
-		      <a href="#" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      </a>
-		    </li>
-		  </ul>
-		</nav>
-	</div>
 	</div>
 </body>
 </html>

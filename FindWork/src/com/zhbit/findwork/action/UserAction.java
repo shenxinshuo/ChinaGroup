@@ -22,7 +22,12 @@ import com.zhbit.findwork.entity.UserBirthday;
 import com.zhbit.findwork.service.Post_typeService;
 import com.zhbit.findwork.service.RoleService;
 import com.zhbit.findwork.service.UserService;
-
+/**
+ * 用户action类
+ * 
+ * @author 王德略
+ *
+ */
 public class UserAction extends ActionSupport{
 	/**
 	 * 

@@ -159,4 +159,11 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
+
+	@Override
+	public List<Business> getBusinessesByPage(int userid, int firstResult, int maxResults) {
+		// TODO Auto-generated method stub
+		return collection_BusinessDao.getBusinessesByPage(userid, firstResult, maxResults);
+	}
+
 }
