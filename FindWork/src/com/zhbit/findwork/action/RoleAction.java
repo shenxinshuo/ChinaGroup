@@ -101,8 +101,8 @@ public class RoleAction extends ActionSupport {
 	 * @return
 	 */
 	public String getAllRoles() {
-//		roleService.g
-		return NONE;
+		roles = roleService.getAllRoles();
+		return "showAllRoles";
 	}
 	
 	/**

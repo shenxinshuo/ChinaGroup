@@ -79,6 +79,13 @@ public interface BusinessService {
 	public void updateBusinessCheckFlag(Business business);
 	
 	/**
+	 * 根据审核状态获取数据条数
+	 * @param flag 审核状态标识（0:待审核 1：通过 -1：未通过）
+	 * @return
+	 */
+	public int getCountByCheckFlag(int flag);
+	
+	/**
 	 * 获取表中数据条数
 	 * @return
 	 */

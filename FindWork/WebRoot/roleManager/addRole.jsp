@@ -35,6 +35,11 @@
                     <h3 class="panel-title">新增角色</h3>
                 </div>
                 <div class="panel-body">
+                	<s:if test="errorMessage == null">
+                	</s:if>
+                	<s:else>
+                		<div class="alert alert-danger" role="alert">${errorMessage }</div>
+                	</s:else>
                 	<s:url id="role_add" action="role_add" namespace="/"></s:url>
                     <form action="${role_add }" class="form-horizontal">
                         <div class="form-group">

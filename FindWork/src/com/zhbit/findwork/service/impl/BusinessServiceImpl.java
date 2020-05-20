@@ -132,6 +132,11 @@ public class BusinessServiceImpl implements BusinessService {
 	}
 
 	@Override
+	public int getCountByCheckFlag(int flag) {
+		int count = businessDao.getCountByCheckFlag(flag);
+		return count;
+	}
+	@Override
 	public int getCount() {
 		int count = businessDao.getCount();
 		return count;

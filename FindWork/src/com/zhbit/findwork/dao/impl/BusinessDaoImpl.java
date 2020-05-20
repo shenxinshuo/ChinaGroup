@@ -120,6 +120,18 @@ public class BusinessDaoImpl implements BusinessDao {
 	}
 	
 	@Override
+	public int getCountByCheckFlag(int flag) {
+		String hql = "select count(id) from Business where delete_flag = 0 and check_flag = :flag";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("flag", flag);
+		Long sum = (Long)query.uniqueResult(); //获得的整数只能为Long型，需要自己再转换为int
+		String temp = String.valueOf(sum);  //强制转换会报错Cannot cast from Long to int
+		int count = Integer.parseInt(temp);    //故先转String，再转int
+		return count;
+		
+	}
+	
+	@Override
 	public int getCount() {
 		String hql = "select count(id) from Business where delete_flag = 0";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);

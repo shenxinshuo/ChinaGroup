@@ -1,10 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     
-    <title>My JSP 'showRoles.jsp' starting page</title>
+    <title>显示所有系统角色</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -33,6 +33,11 @@
                     <h3 class="panel-title">查看角色</h3>
                 </div>
                 <div class="panel-body">
+                	<s:if test="message == null">
+                	</s:if>
+                	<s:else>
+                		<div class="alert alert-success" role="alert">${message }</div>
+                	</s:else>
                     <table class="table table-striped">
                         <tr>
                             <th>角色ID</th>
@@ -41,6 +46,18 @@
                             <th>角色最后修改时间</th>
                             <th>操作</th>
                         </tr>
+                        <s:iterator value="roles" >
+                        	<tr>
+	                            <th><s:property value=""/></th>
+	                            <td>求职者</td>
+	                            <td>找工作</td>
+	                            <td>2020-05-16</td>
+	                            <th>
+	                                <a href="">修改</a>
+	                                <a href="">删除</a>
+	                            </th>
+	                        </tr>
+                        </s:iterator>
                         <tr>
                             <th>1</th>
                             <td>求职者</td>

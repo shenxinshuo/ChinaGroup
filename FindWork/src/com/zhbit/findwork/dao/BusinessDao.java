@@ -85,7 +85,12 @@ public interface BusinessDao {
 	public List<Business> getBusinessesByPageWithCheck(int firstResult, int maxResults, int check_flag);
 	
 	
-	
+	/**
+	 * 获取数据条数（根据审核状态）
+	 * @param flag
+	 * @return
+	 */
+	public int getCountByCheckFlag(int flag);
 	
 	/**
 	 * 获取表中数据条数

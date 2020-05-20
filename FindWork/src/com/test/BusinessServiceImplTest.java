@@ -52,7 +52,7 @@ public class BusinessServiceImplTest {
 	@Test
 	public void testAddBusiness() {
 		Business business = new Business();
-		business.setName("百度");
+		business.setName("oppo");
 		business.setCity("北京");
 		BusinessService businessService = (BusinessService) context.getBean("businessServiceImpl");
 		businessService.addBusiness(business);
