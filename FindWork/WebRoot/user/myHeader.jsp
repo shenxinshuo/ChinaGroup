@@ -23,9 +23,9 @@
 <s:debug></s:debug>
 	<div style="height: 500px;text-align: center;">	
 		<font color="green">${message}</font><br><br>
-		<img src="<s:property value="#session.imagePath"/>" style="width: 100px;height: 100px;margin-top: 40px;">	
+		<img src="/FindWork/myHeader_readHeader.action" style="width: 100px;height: 100px;margin-top: 40px;"/>	
 		<form style="margin-top: 40px;" enctype="multipart/form-data" method="post" 
-			 action="/FindWork/user/myHeader_saveHeader.action">
+			 action="/FindWork/myHeader_saveHeader.action">
 			<font color="red">${fieldErrors.userHeader[0]}</font>
 			<br>
 			<input type="file" name="Header" style="margin:auto;background-color:#169bd5;color:white"  accept="image/*"/>

@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
 		<div class="user_register">
 			<div class="return_login">
-				<a href="login.html">返回登录</a>
+				<a href="/FindWork/user/UserLogin.jsp">返回登录</a>
 			</div>
 			<div class="re_title">
 				<h2>用户注册</h2>

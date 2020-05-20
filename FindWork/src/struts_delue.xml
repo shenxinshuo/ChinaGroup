@@ -17,6 +17,12 @@
 			<result name="showHeader">/user/myHeader.jsp</result>
 			<result name="saveHeader" type="chain">myHeader_showHeader</result>
 			<result name="input">/user/myHeader.jsp</result>
+			<result name="readHeader" type="stream">
+				<param name="contentType">image/jpeg,image/jpg,image/png</param>
+				<param name="inputName">inputStream</param>
+					<!-- <param name="contentDisposition">attachment;filename="${downloadFileName}"</param> -->
+				<param name="bufferSize">1048576</param>
+			</result>
 			<interceptor-ref name="fileUpload">
 				<param name="allowedTypes">
 				image/jpeg,image/jpg,image/png

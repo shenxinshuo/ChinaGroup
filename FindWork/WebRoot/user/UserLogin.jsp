@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="background">
 			<div class="user_login">
 				<div class="login_home">
-					<a href="index.html">首页</a>
+					<a href="/FindWork/homePage/home.jsp">首页</a>
 				</div>
 				<div class="web_title">
 					<img class="web_img" src="resource/image/yufeng/login_title.png"/>
@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="register">
 					<label>没有账号？</label>
-					<a href="register.html">点击注册</a>
+					<a href="/FindWork/user/userRegister.jsp">点击注册</a>
 				</div>
 			</div>
 		</div>

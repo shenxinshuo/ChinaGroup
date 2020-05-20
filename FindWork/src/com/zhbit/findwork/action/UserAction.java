@@ -1,6 +1,9 @@
 package com.zhbit.findwork.action;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -212,7 +215,7 @@ public class UserAction extends ActionSupport{
 		public void validateSaveHeader(){
 			System.out.println("jhhhhhhhhhhhhhhhhhhhhhhh");
 			if(HeaderFileName==null||HeaderFileName.equals("")){
-				this.addFieldError("userHeader", "头像不能为空");
+				this.addFieldError("userHeader", "请选择新的头像");
 			}
 		}
 		/**
@@ -235,7 +238,7 @@ public class UserAction extends ActionSupport{
 			try {
 				FileUtils.copyFile(Header, file);
 				user=userService.getUserByID(1);
-				user.setImagepath(imagePath);//用户保存上传的相对路径
+				user.setImagepath(path);//用户保存上传的相对路径
 				userService.updateUser(user);
 				//保存当前头像相对路径，页面获取
 				message="头像保存成功";
@@ -296,6 +299,34 @@ public class UserAction extends ActionSupport{
 			}		
 		}
 		
+		/**
+		 * 个人中心 获取头像
+		 * @return
+		 */
+		public String readHeader(){
+			System.out.println("读取头像");
+			return "readHeader";
+		}
+		/**
+		 * 个人中心 获取头像数据流
+		 * @return
+		 */
+		public InputStream getInputStream() throws Exception{
+			System.out.println("数据流读取头像");
+			String path=userService.getUserByID(1).getImagepath();
+			System.out.println(path);
+			try{
+				//如果用户有头像，返回用户头像
+				InputStream inputStream = new FileInputStream(path);
+				return inputStream;
+			}catch(Exception e){
+				//用户如果之前没有头像，返回默认头像
+				InputStream inputStream = new FileInputStream("D:\\a.jpg");
+				return inputStream;
+			}
+			
+			
+		}
 
 	public User getUser() {
 		return user;
