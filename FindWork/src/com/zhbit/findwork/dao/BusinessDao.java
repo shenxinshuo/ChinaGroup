@@ -98,6 +98,22 @@ public interface BusinessDao {
 	 */
 	public int getCount();
 	
+	/**
+	 * 根据企业名字搜索企业（模糊查询）
+	 * @param firstResult
+	 * @param maxResults
+	 * @param name要查询的企业名
+	 * @return
+	 */
+	public List<Business> getBusinessesByNameSearch(int firstResult, int maxResults, String name);
+	
+	/**
+	 * 获取模糊查询的数据条数
+	 * @param name
+	 * @return
+	 */
+	public int getCountByNameSearch(String name);
+	
 }
 
 

@@ -44,6 +44,14 @@ public interface UserService {
 	 */
 	public List<Business> getBusinessesByUserId(int userid);
 	/**
+	 * 根据分页返回某一页的用户收藏的企业列表
+	 *  @param userid  当前用户
+	 * @param firstResult 要查询的第一条记录
+	 * @param maxResults  页面大小
+	 * @return
+	 */
+	public List<Business> getBusinessesByPage(int userid,int firstResult, int maxResults);
+	/**
 	 * 修改用户信息
 	 * @param user
 	 */

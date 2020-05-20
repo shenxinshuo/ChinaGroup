@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="/struts-tags"  prefix="s"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -26,8 +26,9 @@
 			<a href="#" style="float: right;margin: 12px 20px ;"><p style="font-size: 20px;color: white;" class="glyphicon glyphicon-share-alt">返回</p></a>				
 			</div>
 			<div>
+			 <s:url id="showbusiness" action="/FindWork/collection_showBusiness.action? page.current=1" namespace="/" />
 			<ul class="nav nav-tabs" style="margin-top: 0px; background-color: white;">
-			  <li role="presentation"  ><a href="/FindWork/user/enterpriseCollection.jsp" target="showCollection" class="glyphicon glyphicon-star">企业收藏夹</a></li>
+			  <li role="presentation"  ><a href="${showbusiness}" target="showCollection" class="glyphicon glyphicon-star">企业收藏夹</a></li>
 			  <li role="presentation"><a href="/FindWork/user/jobCollection.jsp" target="showCollection" class="glyphicon glyphicon-star-empty">招聘收藏夹</a></li>
 			</ul>
 			</div>
@@ -36,7 +37,7 @@
 			<iframe name="showCollection" 
 			frameborder=0 width=950 height=460
 			marginheight=0 marginwidth=0 scrolling=no
-			src="/FindWork/user/enterpriseCollection.jsp"></iframe>
+			src="${showbusiness}"></iframe>
 		</div>
 	</div>
 		

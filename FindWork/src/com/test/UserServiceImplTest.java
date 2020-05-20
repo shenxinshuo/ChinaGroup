@@ -55,9 +55,10 @@ public class UserServiceImplTest {
 	@Test
 	public void testAddCollection_Business(){
 		Collection_Business c_b = new Collection_Business();
-		User user =userService.getUserByID(6);
+		User user =userService.getUserByID(2);
 		BusinessService businessService = (BusinessService) context.getBean("businessServiceImpl");
-		Business business = businessService.getBusinessByID(4);		
+		//这里需要判断business是否能查询到
+		Business business = businessService.getBusinessByID(6);	
 		c_b.setUser(user);
 		c_b.setBusiness(business);
 		boolean t =userService.addCollection_Business(c_b);
@@ -66,14 +67,20 @@ public class UserServiceImplTest {
 	//测试查看收藏企业功能
 	@Test 
 	public void testGetBusinessesByUserId(){
-		List<Business> list=userService.getBusinessesByUserId(6);
-		System.out.println(list);
+		List<Business> list=userService.getBusinessesByUserId(1);
+		System.out.println(list.size());
 	}
 	//测试删除收藏企业
 	@Test 
 	public void testDeleteBusinessesByUserId(){
-		userService.deleteCollection_Business(6, 4);
+		userService.deleteCollection_Business(1, 3);
 		
+	}
+	//按分页查询收藏企业
+	@Test 
+	public void testGetBusinessByPage(){
+		List<Business> list=userService.getBusinessesByPage(2, 0, 1);
+		System.out.println(list);
 	}
 	@Test
 	public void testUpdateUser() {

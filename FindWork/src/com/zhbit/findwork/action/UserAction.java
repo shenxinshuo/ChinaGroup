@@ -22,7 +22,12 @@ import com.zhbit.findwork.entity.UserBirthday;
 import com.zhbit.findwork.service.Post_typeService;
 import com.zhbit.findwork.service.RoleService;
 import com.zhbit.findwork.service.UserService;
-
+/**
+ * 用户action类
+ * 
+ * @author 王德略
+ *
+ */
 public class UserAction extends ActionSupport{
 	/**
 	 * 
@@ -54,8 +59,8 @@ public class UserAction extends ActionSupport{
 	 * @return
 	 */
 	public String showMyInformation(){
-		//从登录对象中获取用户，现在暂时从数据库中读取一个用户
-		user=userService.getUserByID(1);
+		//获取当前用户
+		user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
 /*		Rid=user.getRole().getId();
 		System.out.println(Rid+"dfaaaaaaaaaaaaaaaaaaaaaaaaaaaa");*/
 		if(user==null)
@@ -95,9 +100,6 @@ public class UserAction extends ActionSupport{
 		 * @return
 		 */
 		public String saveMyInformation(){	
-			/*Role role = roleService.getRoleByID(Rid);//保存关联的对象
-			System.out.println(role);
-			user.setRole(role);*/
 			boolean flag= userService.updateUser(user);		
 			if(flag){
 				message="保存成功";
@@ -237,7 +239,8 @@ public class UserAction extends ActionSupport{
 			File file=new File(path);
 			try {
 				FileUtils.copyFile(Header, file);
-				user=userService.getUserByID(1);
+				//获取当前用户
+				user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
 				user.setImagepath(path);//用户保存上传的相对路径
 				userService.updateUser(user);
 				//保存当前头像相对路径，页面获取
@@ -258,7 +261,8 @@ public class UserAction extends ActionSupport{
 		//展示我的头像
 		public String showHeader(){
 			//获取当前用户存储的图片路径
-			ActionContext.getContext().getSession().put("imagePath", ".."+userService.getUserByID(1).getImagepath());
+			user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
+			ActionContext.getContext().getSession().put("imagePath", ".."+user.getImagepath());
 			System.out.println("展示当前用户的头像");
 			return "showHeader";
 		}
@@ -284,7 +288,7 @@ public class UserAction extends ActionSupport{
 		//修改密码
 		public String saveSecurity(){
 			//假设这个是当前登录用户
-			User olduser=userService.getUserByID(1);
+			User olduser=(User)ActionContext.getContext().getSession().get("LOGINED_USER");;
 			User user = userService.getUserByNameAndPassword(olduser.getName(), repwd);
 			//如果能通过旧密码查询到当前用户，说明密码输入正确
 			if(user!=null){
@@ -313,7 +317,9 @@ public class UserAction extends ActionSupport{
 		 */
 		public InputStream getInputStream() throws Exception{
 			System.out.println("数据流读取头像");
-			String path=userService.getUserByID(1).getImagepath();
+			//获取当前用户
+			user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
+			String path=user.getImagepath();
 			System.out.println(path);
 			try{
 				//如果用户有头像，返回用户头像

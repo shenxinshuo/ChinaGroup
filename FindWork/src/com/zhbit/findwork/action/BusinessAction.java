@@ -2,10 +2,14 @@ package com.zhbit.findwork.action;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletContext;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.zhbit.findwork.entity.Business;
 import com.zhbit.findwork.service.BusinessService;
@@ -18,18 +22,48 @@ public class BusinessAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	
 	private Business business;
+	private List<Business> businesses;
 	private BusinessService businessService;
 	private String message;				//用于返回信息给页面，提示用户
 	private String errorMessage;		//显示异常信息
 	private File license;				//营业执照文件
 	private String licenseFileName;		//文件名称
 	private String licenseContentType;	//文件类型
+	private String searchName;			//用户根据企业名字模糊查询时输入的值
+	private int currentPage;			//当前页面（分页）
+	private int firstResult;			//首条记录（分页）
+	private int lastPage;				//最后一页页码
+	private int pageSize = Integer.parseInt(ServletActionContext.getServletContext().getInitParameter("maxResults"));
+	
+	//private int maxResults = 5;
 	
 	
 	public void setBusinessService(BusinessService businessService) {
 		this.businessService = businessService;
 	}
 	
+	public int getFirstResult() {
+		return firstResult;
+	}
+
+	public void setFirstResult(int firstResult) {
+		this.firstResult = firstResult;
+	}
+
+	public int getLastPage() {
+		return lastPage;
+	}
+
+	public void setLastPage(int lastPage) {
+		this.lastPage = lastPage;
+	}
+
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
+	}
+	public int getCurrentPage() {
+		return currentPage;
+	}
 	public String getLicenseFileName() {
 		return licenseFileName;
 	}
@@ -58,6 +92,12 @@ public class BusinessAction extends ActionSupport{
 	public Business getBusiness() {
 		return business;
 	}
+	public void setBusinesses(List<Business> businesses) {
+		this.businesses = businesses;
+	}
+	public List<Business> getBusinesses() {
+		return businesses;
+	}
 	public String getMessage() {
 		return message;
 	}
@@ -69,6 +109,12 @@ public class BusinessAction extends ActionSupport{
 	}
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
+	}
+	public void setSearchName(String searchName) {
+		this.searchName = searchName;
+	}
+	public String getSearchName() {
+		return searchName;
 	}
 	
 	
@@ -211,6 +257,27 @@ public class BusinessAction extends ActionSupport{
 		return NONE;
 	}
 	
+	/**
+	 * 根据企业名字搜索企业
+	 * @return
+	 */
+	public String searchByName() {
+		int count = businessService.getCountByNameSearch(searchName);
+		this.getPagingParameter(count);
+		ActionContext.getContext().put("count", count);
+		ActionContext.getContext().put("searchName", searchName);
+		businesses = businessService.getBusinessesByNameSearch(firstResult, pageSize, searchName);
+		return "showSearchResultByName";
+	}
+	//根据当前页码和页面大小计算出分页需要的数据
+	private void getPagingParameter(int count) {
+		this.firstResult = (this.currentPage-1)*this.pageSize;
+		this.lastPage = (int) Math.ceil(count/(this.pageSize*1.0));
+		return ;
+	}
 	
-	
+	public String showBusinessInfo() {
+		business = businessService.getBusinessByID(business.getId());
+		return "showBusinessInfo";
+	}
 }

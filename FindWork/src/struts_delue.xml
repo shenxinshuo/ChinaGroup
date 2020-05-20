@@ -8,6 +8,9 @@
 
 <struts>
 	<package name="user" extends="struts-default" namespace="/">
+	    <action name="collection_*" class="collection_BusinessAction" method="{1}">
+			<result name="showPage">/user/enterpriseCollection.jsp</result>
+		</action>
 		<action name="user_*" class="userAction" method="{1}">
 			<result name="showMyInformation">/user/myInformation.jsp</result>
 			<result name="saveMyInformation" type="chain">user_showMyInformation</result>
