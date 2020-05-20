@@ -52,6 +52,15 @@ public interface BusinessDao {
 	public List<Business> getBusinessesByName(String name);
 	
 	/**
+	 * 根据企业名字查询企业信息（全表查询，无论是否被删除）
+	 * 因为修改时遇到问题：企业可以修改自己的企业名为被删除的企业名（这不合理），
+	 * 应该等我们把数据库的数据删掉后这个名字才可用，故增加此方法
+	 * @param name
+	 * @return
+	 */
+	public List<Business> getBusinessesByNameInAll(String name);
+	
+	/**
 	 * 根据ID删除企业
 	 * @param id
 	 */
@@ -64,6 +73,19 @@ public interface BusinessDao {
 	 * @return
 	 */
 	public List<Business> getBusinessesByPage(int firstResult, int maxResults);
+	
+	/**
+	 * 获取某一页的企业信息（根据审核状态）
+	 * 0:待审核 1：通过 -1：未通过  
+	 * @param firstResult
+	 * @param maxResults
+	 * @param check_flag 审核状态
+	 * @return
+	 */
+	public List<Business> getBusinessesByPageWithCheck(int firstResult, int maxResults, int check_flag);
+	
+	
+	
 	
 	/**
 	 * 获取表中数据条数

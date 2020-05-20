@@ -7,6 +7,7 @@
 
 <struts>
 	<package name="business" extends="struts-default" namespace="/">
+		<!-- Business相关action -->
 		<action name="business_register" class="businessAction" method="register">
 			<result>/index.jsp</result>
 			<result name="regBusiness">/business/regBusiness.jsp</result>
@@ -22,8 +23,19 @@
 		<action name="business_*" class="businessAction" method="{1}">
 			<result name="businessCenter">/business/businessCenter.jsp</result>
 			<result name="showUpdatePage">/business/updateBusinessInfo.jsp</result>
+			
 		</action>
 		
+		<!-- Business相关action结束 -->
+		<!-- Role相关action -->
+		<action name="role_add" class="roleAction" method="add">
+			
+		</action>
+		<action name="role_update" class="roleAction" method="update">
+		</action>
+		<action name="role_*" class="roleAction" method="{1}">
+		</action>
+		<!-- Role相关action结束 -->
 	</package>
 
 </struts>

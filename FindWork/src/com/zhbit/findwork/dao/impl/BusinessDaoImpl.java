@@ -77,6 +77,15 @@ public class BusinessDaoImpl implements BusinessDao {
 		List<Business> businesses = query.list();
 		return businesses;
 	}
+	
+	@Override
+	public List<Business> getBusinessesByNameInAll(String name) {
+		String hql = "from Business where name = :businessName";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("businessName", name);
+		List<Business> businesses = query.list();
+		return businesses;
+	}
 
 	@Override
 	public void deleteBusinessByID(int id) {
@@ -95,9 +104,21 @@ public class BusinessDaoImpl implements BusinessDao {
 		query.setFirstResult(firstResult)
 			.setMaxResults(maxResults);
 		List<Business> businesses = query.list();
-		return businesses.size() == 0 ? null : businesses;
+		return businesses;
 	}
-
+	
+	
+	@Override
+	public List<Business> getBusinessesByPageWithCheck(int firstResult, int maxResults, int check_flag) {
+		String hql = "from Business where delete_flag = 0 and check_flag= :check_flag order by id";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setFirstResult(firstResult)
+			.setMaxResults(maxResults)
+			.setParameter("check_flag", check_flag);
+		List<Business> businesses = query.list();
+		return businesses;
+	}
+	
 	@Override
 	public int getCount() {
 		String hql = "select count(id) from Business where delete_flag = 0";

@@ -19,6 +19,7 @@ public class RoleServiceImpl implements RoleService {
 
 	/**
 	 * 0:数据库中已有该记录
+	 * 1:插入成功
 	 */
 	@Override
 	public int addRole(Role role) {
@@ -76,7 +77,13 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public List<Role> getRoleByPage(int firstResult, int maxResults) {
 		List<Role> roles = roleDao.getRolesByPage(firstResult, maxResults);
-		return roles.size() == 0 ? null : roles;
+		return roles;
+	}
+	
+	@Override
+	public List<Role> getAllRoles() {
+		List<Role> roles = roleDao.getAllRoles();
+		return roles;
 	}
 
 

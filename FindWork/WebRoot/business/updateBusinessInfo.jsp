@@ -45,6 +45,8 @@
                     <s:url id="business_update" action="business_update" namespace="/" />
                     
                     <form class="form-horizontal" action="${business_update }" method="post" enctype="multipart/form-data">
+                    	
+                    	<input type="hidden" name="business.id" value="${business.id }">
 
                        <div class="d-inline-block">
                             <div class="col-md-6">
@@ -122,7 +124,7 @@
                         <div class="row col-md-offset-2">
                             <div class="col-xs-6 col-md-3">
                                 <a href="#" class="thumbnail">
-                                    <img src="<%=request.getContextPath() %>/upload/businessLicense/华为.jpg"" alt="...">
+                                    <img src="<%=request.getContextPath() %>/${business.getLicense_path() }" alt="...">
                                 </a>
                                 
                                

@@ -47,6 +47,12 @@ public interface RoleService {
 	public List<Role> getRoleByPage(int firstResult, int maxResults);
 	
 	/**
+	 * 获取所有Role
+	 * @return
+	 */
+	public List<Role> getAllRoles();
+	
+	/**
 	 * 获取表中数据条数
 	 * @return
 	 */

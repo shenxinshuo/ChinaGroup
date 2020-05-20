@@ -135,9 +135,12 @@ public class Business {
 	@Override
 	public String toString() {
 		return "Business [id=" + id + ", name=" + name + ", city=" + city + ", telephone=" + telephone + ", email="
-				+ email + ", address=" + address + ", description=" + description + ", url=" + url + ", delete_flag="
-				+ delete_flag + ", comment=" + comment + ", create_at=" + create_at + ", update_at=" + update_at + "]";
+				+ email + ", address=" + address + ", description=" + description + ", url=" + url + ", license_path="
+				+ license_path + ", password=" + password + ", confirmPassword=" + confirmPassword + ", check_flag="
+				+ check_flag + ", delete_flag=" + delete_flag + ", comment=" + comment + ", create_at=" + create_at
+				+ ", update_at=" + update_at + "]";
 	}
+	
 	
 	
 	

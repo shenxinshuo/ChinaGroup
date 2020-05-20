@@ -68,15 +68,24 @@ public class BusinessServiceImpl implements BusinessService {
 	 */
 	@Override
 	public int updateBusiness(Business business) {
-		List<Business> businessesInDB = (List<Business>) businessDao.getBusinessesByName(business.getName());
+		List<Business> businessesInDB = (List<Business>) businessDao.getBusinessesByNameInAll(business.getName());
+		Business businessInDB = businessDao.getBusinessByID(business.getId());
+		businessInDB.setName(business.getName());
+		businessInDB.setCity(business.getCity());
+		businessInDB.setTelephone(business.getTelephone());
+		businessInDB.setEmail(business.getEmail());
+		businessInDB.setLicense_path(business.getLicense_path() == null ? businessInDB.getLicense_path() : business.getLicense_path());
+		businessInDB.setAddress(business.getAddress());
+		businessInDB.setDescription(business.getDescription());
+		businessInDB.setUrl(business.getUrl());
 		if (businessesInDB.size() == 0) {
 			//说明数据库中这个名字没人用，也证明企业修改了自己的名字 执行修改
-			businessDao.updateBusiness(business);
+			businessDao.updateBusiness(businessInDB);
 			return 0;
 		} else {
 			if (business.getId() == businessesInDB.get(0).getId()) {
 				//说明要修改信息的企业没有修改名字，修改了别的字段 执行修改
-				businessDao.updateBusiness(business);
+				businessDao.updateBusiness(businessInDB);
 				return 0;
 			} else {
 				return 1;
@@ -106,6 +115,20 @@ public class BusinessServiceImpl implements BusinessService {
 	public List<Business> getBusinessesByPage(int firstResult, int maxResults) {
 		List<Business> businesses = businessDao.getBusinessesByPage(firstResult, maxResults);
 		return businesses;
+	}
+	
+	@Override
+	public List<Business> getBusinessesByPageWithCheck(int firstResult, int maxResults, int check_flag) {
+		List<Business> businesses = businessDao.getBusinessesByPageWithCheck(firstResult, maxResults, check_flag);
+		return businesses;
+	}
+	
+	@Override
+	public void updateBusinessCheckFlag(Business business) {
+		Business businessInDB = businessDao.getBusinessByID(business.getId());
+		businessInDB.setCheck_flag(business.getCheck_flag());
+		businessDao.updateBusiness(businessInDB);
+		return ;
 	}
 
 	@Override

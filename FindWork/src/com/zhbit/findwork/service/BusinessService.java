@@ -62,6 +62,23 @@ public interface BusinessService {
 	public List<Business> getBusinessesByPage(int firstResult, int maxResults);
 	
 	/**
+	 * 获取某一页的企业信息（根据审核状态）
+	 * 0:待审核 1：通过 -1：未通过  
+	 * @param firstResult
+	 * @param maxResults
+	 * @param check_flag 审核状态
+	 * @return
+	 */
+	public List<Business> getBusinessesByPageWithCheck(int firstResult, int maxResults, int check_flag);
+	
+	/**
+	 * 修改企业的审核状态
+	 * @param business 传入审核过的企业对象(注册check_flag的值，0:待审核 1：通过 -1：未通过  )
+	 * @return
+	 */
+	public void updateBusinessCheckFlag(Business business);
+	
+	/**
 	 * 获取表中数据条数
 	 * @return
 	 */

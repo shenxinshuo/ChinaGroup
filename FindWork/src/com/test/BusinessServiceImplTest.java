@@ -105,5 +105,18 @@ public class BusinessServiceImplTest {
 		int count = businessService.getCount();
 		System.out.println(count);
 	}
+	@Test
+	public void testgetBusinessesByPageWithCheck() {
+		BusinessService businessService = (BusinessService) context.getBean("businessServiceImpl");
+		List<Business> businesses = businessService.getBusinessesByPageWithCheck(0, 8, 0);
+		System.out.println(businesses);
+	}
+	@Test
+	public void testUpdateBusinessCheckFlag() {
+		BusinessService businessService = (BusinessService) context.getBean("businessServiceImpl");
+		Business business = businessService.getBusinessByID(3);
+		business.setCheck_flag(1);
+		businessService.updateBusinessCheckFlag(business);
+	}
 
 }

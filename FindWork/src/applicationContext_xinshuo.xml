@@ -35,5 +35,8 @@
 		<bean id="businessAction" class="com.zhbit.findwork.action.BusinessAction" scope="request">
 			<property name="businessService" ref="businessServiceImpl"></property>
 		</bean>
+		<bean id="roleAction" class="com.zhbit.findwork.action.RoleAction" scope="request">
+			<property name="roleService" ref="roleServiceImpl"/>
+		</bean>
 		
 </beans>

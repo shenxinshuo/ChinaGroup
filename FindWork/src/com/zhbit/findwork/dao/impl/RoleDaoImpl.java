@@ -75,6 +75,13 @@ public class RoleDaoImpl implements RoleDao{
 		return roles;
 	}
 	@Override
+	public List<Role> getAllRoles() {
+		String hql = "from Role where delete_flag = 0";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		List<Role> roles = query.list();
+		return roles;
+	}
+	@Override
 	public int getCount() {
 		String hql = "select count(R.id) from Role R where R.delete_flag = 0";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);

@@ -54,6 +54,12 @@ public interface RoleDao {
 	public List<Role> getRolesByPage(int firstResult, int maxResults);
 	
 	/**
+	 * 获取所有角色
+	 * @return
+	 */
+	public List<Role> getAllRoles();
+	
+	/**
 	 * 获取表中的数据条数
 	 * @return
 	 */

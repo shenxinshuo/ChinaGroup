@@ -86,6 +86,10 @@ public class BusinessAction extends ActionSupport{
 			}
 			if (business.getPassword() == null || "".equals(business.getPassword())) {
 				addFieldError("business.password", "登录密码不能为空");
+			} else {
+				if (business.getPassword().length() < 8 || business.getPassword().length() > 16) {
+					addFieldError("business.password", "密码长度必须在6到18位之间");
+				}
 			}
 			if (business.getConfirmPassword() == null || "".equals(business.getConfirmPassword())) {
 				addFieldError("business.confirmPassword", "确认密码不能为空");
@@ -151,9 +155,58 @@ public class BusinessAction extends ActionSupport{
 		return "businessCenter";
 	}
 	
+	/**
+	 * 显示修改页面
+	 * @return
+	 */
 	public String showUpdatePage() {
 		business = businessService.getBusinessByID(business.getId());
 		return "showUpdatePage";
+	}
+	
+	//修改企业信息表单验证
+		public void validateUpdate() {
+				if (business.getName() == null || "".equals(business.getName())) {
+					addFieldError("business.name", "企业名称不能为空");
+				}
+				if (business.getCity() == null || "".equals(business.getCity())) {
+					addFieldError("business.city", "所在城市不能为空");
+				}
+				if (business.getTelephone() == null || "".equals(business.getTelephone())) {
+					addFieldError("business.telephone", "联系电话不能为空");
+				}
+				if (business.getAddress() == null || "".equals(business.getAddress())) {
+					addFieldError("business.address", "企业地址不能为空");
+				}
+				if (business.getDescription() == null || "".equals(business.getDescription())) {
+					addFieldError("business.description", "企业描述不能为空");
+				}
+				if (business.getUrl() == null || "".equals(business.getUrl())) {
+					addFieldError("business.url", "企业详情链接不能为空");
+				}if (business.getEmail() == null || "".equals(business.getEmail())) {
+					addFieldError("business.email", "企业邮箱不能为空");
+				}
+				
+			}
+	/**
+	 * 修改企业信息
+	 * @return
+	 */
+	public String update() {
+		int result = businessService.updateBusiness(business);
+		if (result == 0) {
+			//修改成功
+			message = "修改成功";
+			return "businessCenter";
+		} else if (result == 1) {
+			//名字被占用
+			errorMessage = "修改失败,该名字被抢先一步注册";
+			Business businessTemp = businessService.getBusinessByID(business.getId());
+			business.setRole(businessTemp.getRole());
+			business.setCheck_flag(business.getCheck_flag());
+			return "showUpdatePage";
+		}
+		return NONE;
 	}
 	
 	
