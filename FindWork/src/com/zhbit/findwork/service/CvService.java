@@ -1,10 +1,12 @@
 package com.zhbit.findwork.service;
 
+import java.util.List;
+
 import com.zhbit.findwork.entity.Cv;
 
 /**
  * 简历业务接口
- * @author tongr
+ * @author 段世平
  *@description
  *@date 2020年5月16日
  */
@@ -18,7 +20,7 @@ public interface CvService {
 	 * 修改简历信息
 	 * @param cv
 	 */
-	public boolean update(Cv cv);
+	public boolean updateCv(Cv cv);
 	/**
 	 * 根据ID查询简历信息
 	 * @param cv
@@ -35,6 +37,11 @@ public interface CvService {
 	 * @return 
 	 */
 	public Cv getCvByName(String name);
+	/**
+	 * 获取简历所有信息
+	 * @return
+	 */
+	public List<Cv> getAllCv();
 	
 
 }
