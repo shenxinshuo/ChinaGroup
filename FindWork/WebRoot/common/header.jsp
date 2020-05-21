@@ -107,11 +107,11 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">用户名：Colten
 								<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
+								<li><a href="#">个人中心</a></li>
+								<li><a href="#">收藏中心</a></li>
+								<li><a href="admin_showAdminCenter.action">管理员中心</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a href="#">Separated link</a></li>
+								<li><a href="#">退出</a></li>
 							</ul>
 						</li>
 					</ul>

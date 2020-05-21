@@ -27,8 +27,26 @@
 		<action name="user_login" class="userAction" method="login">
 			<result>/index.jsp</result>
 			<result name="login">/homePage/home.jsp</result>
-			<result name="input">/user/userRegister.jsp</result>
+			<result name="input">/user/UserLogin.jsp</result>
 		</action>
 	</package>
 
+	<package name="businessLogin" extends="struts-default" namespace="/">
+		<action name="business_login" class="businessLoginAction" method="login">
+			<result>/index.jsp</result>
+			<result name="login">/homePage/home.jsp</result>
+			<result name="input">/business/businessLogin.jsp</result>
+		</action>
+	</package>
+
+	<package name="admin" extends="struts-default" namespace="/">
+		<action name="admin_*" class="adminAction" method="{1}">
+			<result>/index.jsp</result>
+			<result name="login">/admin/checkBRegisList.jsp</result>
+			<result name="center">/admin/checkBRegisList.jsp</result>
+			<result name="showFC">/admin/checkBRegis.jsp</result>
+			<result name="check">/admin/checkBRegisList.jsp</result>
+			<result name="input">/admin/adminLogin.jsp</result>
+		</action>
+	</package>
 </struts>

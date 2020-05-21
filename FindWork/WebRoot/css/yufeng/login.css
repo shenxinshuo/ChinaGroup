@@ -15,7 +15,7 @@ body{
 
 .user_login{
 	
-	width: 30%;
+	width: 35%;
 	height: 450px;
 	margin-left: 35%;
 	margin-top: 100px;
@@ -119,5 +119,24 @@ body{
 .register label{
 	
 	margin-left: 130px;
+	
+}
+
+.row{
+	
+	margin-top: 30px;
+	
+}
+
+.row a{
+	
+	float:right;
+	color:gray;
+	
+}
+
+.row a{
+	
+	text-decoration:none;
 	
 }
