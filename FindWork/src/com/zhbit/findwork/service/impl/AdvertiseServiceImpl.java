@@ -45,5 +45,35 @@ public class AdvertiseServiceImpl implements AdvertiseService {
 		return advertiseDao.getAdvertiseByExample(advertise);
 	}
 
+	@Override
+	public List<Advertise> getUnFinAdvertise() {
+		
+		return advertiseDao.getUnFinAdvertise();
+	}
+
+	@Override
+	public List<Advertise> getAdvertiseByPageWithCheck(int firstResult,
+			int maxResults, int check) {
+		
+		return advertiseDao.getAdvertiseByPageWithCheck(firstResult,maxResults,check);
+	}
+
+	@Override
+	public List<Advertise> getAdvertiseByBid(int bid,int check) {
+	
+		return advertiseDao.getAdvertiseByBid(bid,check);
+	}
+
+	@Override
+	public int getUnFinAdvertiseCount() {
+		
+		return advertiseDao.getUnFinAdvertise().size();
+	}
+
+	@Override
+	public int getAdvertiseCountByBid(int bid,int check) {
+		
+		return advertiseDao.getAdvertiseByBid(bid,check).size();
+	}
 	
 }

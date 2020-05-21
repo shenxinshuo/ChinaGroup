@@ -1,4 +1,4 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+﻿	<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
@@ -9,7 +9,7 @@ String path = request.getContextPath();
     
     <title>My JSP 'regBusiness.jsp' starting page</title>
     
-	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="pragma" content="no-cache">	
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
@@ -17,8 +17,11 @@ String path = request.getContextPath();
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="<%=path %>/postjob/css/style.css">
     <link rel="stylesheet" href="<%=path %>/postjob/css/colors/blue.css">
+    <link rel="stylesheet" href="./header/header.css"/>
+<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css" />
 	<style>
 		.text_time{
 			width: 207px;
@@ -40,7 +43,7 @@ String path = request.getContextPath();
 						return false;
 					}
 				}
-				if(dataArr[i].name=="advertise.post"){
+				if(dataArr[i].name=="advertise.postName"){
 					if(dataArr[i].value==""){
 						alert("招聘岗位不能为空");
 						return false;
@@ -154,7 +157,7 @@ String path = request.getContextPath();
 								<div class="col-xl-4">
 									<div class="submit-field">
 										<h5>招聘岗位</h5>
-										<input  name="advertise.post"  value="${advertise.post}" type="text" class="with-border">
+										<input  name="advertise.postName"  value="${advertise.postName}" type="text" class="with-border">
 									</div>
 								</div>
 								
@@ -297,10 +300,16 @@ String path = request.getContextPath();
 
 
 		<!-- <script src="../jquery/jquery-3.3.1.min.js"></script> -->
-		 <script type="text/javascript" src="<%=path %>/resource/static/jquery/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="<%=path %>/resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+		<script src="../jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
 
+	
+<script src="../jquery/jquery-migrate-3.0.0.min.js"></script>
+<script src="../jquery/bootstrap-slider.min.js"></script>
+<script src="../jquery/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="../jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
 
 </body>

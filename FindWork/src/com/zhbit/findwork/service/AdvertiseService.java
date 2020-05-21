@@ -3,6 +3,7 @@ package com.zhbit.findwork.service;
 import java.util.List;
 
 import com.zhbit.findwork.entity.Advertise;
+import com.zhbit.findwork.entity.Business;
 
 
 /**
@@ -40,4 +41,42 @@ public interface AdvertiseService {
 	 * @param advertise
 	 */
 	public List<Advertise> getAdvertiseByExample(Advertise advertise);
+	
+	
+	/**
+	 * 获取所有企业职位未审核信息
+	 * @param advertise
+	 */
+	public List<Advertise> getUnFinAdvertise();
+	
+	/**
+	 * 获取所有企业职位未审核信息总数
+	 * @param advertise
+	 */
+	public int getUnFinAdvertiseCount();
+	
+	/**
+	 * 分页查询未审核的职位信息（根据审核状态）
+	 * 0:未审核 1：已审核
+	 * @param firstResult
+	 * @param maxResults
+	 * @param check 审核状态
+	 * @return
+	 */
+	public List<Advertise> getAdvertiseByPageWithCheck(int firstResult, int maxResults, int check);
+	
+	/**
+	 * 根据企业id和审核状态获取职位信息
+	 * 0:未审核 1：已审核
+	 * @param advertise
+	 */
+	public List<Advertise> getAdvertiseByBid(int bid,int check);
+	
+	
+	/**
+	 * 根据企业id和审核状态获取职位信息数量
+	 * 0:未审核 1：已审核
+	 * @param advertise
+	 */
+	public int getAdvertiseCountByBid(int bid,int check);
 }

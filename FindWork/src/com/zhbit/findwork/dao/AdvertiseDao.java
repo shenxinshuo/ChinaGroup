@@ -38,4 +38,18 @@ public interface AdvertiseDao {
 	 * @param advertise
 	 */
 	public List<Advertise> getAdvertiseByExample(Advertise advertise);
+	
+	
+	/**
+	 * 获取所有企业职位未审核信息
+	 * @param advertise
+	 */
+	public List<Advertise> getUnFinAdvertise();
+	
+	
+	public List<Advertise> getAdvertiseByPageWithCheck(int firstResult,
+			int maxResults, int check);
+	
+	
+	public List<Advertise> getAdvertiseByBid(int bid,int check);
 }

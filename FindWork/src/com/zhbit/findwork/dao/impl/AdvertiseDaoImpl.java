@@ -3,6 +3,7 @@ package com.zhbit.findwork.dao.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
@@ -48,6 +49,35 @@ public class AdvertiseDaoImpl implements AdvertiseDao {
 		//example.ex
 		List<Advertise> results = sessionFactory.getCurrentSession().createCriteria(Advertise.class).add(example).list();
 		return results;
+	}
+
+	@Override
+	public List<Advertise> getUnFinAdvertise() {
+		String hql = "from Advertise where  check = 0 and deleteFlag = 0 order by id";
+		List<Advertise>  list = sessionFactory.getCurrentSession().createQuery(hql).list();
+		return list;
+	}
+
+	@Override
+	public List<Advertise> getAdvertiseByPageWithCheck(int firstResult,
+			int maxResults, int check) {
+		String hql = "from Advertise where delete_flag = 0 and check= :check order by id";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setFirstResult(firstResult)
+			.setMaxResults(maxResults)
+			.setParameter("check", check);
+		List<Advertise> advertises = query.list();
+		return advertises;
+	}
+
+	@Override
+	public List<Advertise> getAdvertiseByBid(int bid,int check) {
+		String hql = "from Advertise where delete_flag = 0 and business.id= :bid and check = :check order by id";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("bid", bid);
+		query.setParameter("check", check);
+		List<Advertise> advertises = query.list();
+		return advertises;
 	}
 
 }
