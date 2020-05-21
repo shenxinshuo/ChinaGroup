@@ -23,7 +23,12 @@
 		<property name="createAt" column="create_at" />
 		<property name="updateAt" column="update_at" />
 		<property name="check" column="Acheck" />
+		<property name="bcity" column="Bcity" />
+		
 		<!-- 配置和角色多对一的关系 -->
 		<many-to-one name="business" class="Business" column="Bid"></many-to-one>
+		<many-to-one name="post" class="Post" column="PTid"></many-to-one>
+		
+	
 	</class>
 </hibernate-mapping>
