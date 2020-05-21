@@ -152,7 +152,7 @@
 									<s:url id="logout" action="admin_logout" namespace="/"/>				
 								<%}%>
 								<%if(request.getSession().getAttribute("LOGINED_BUSI") != null){ %>
-									<s:url id="logout" action="business_logout" namespace="/"/>
+									<s:url id="logout" action="business2_logout" namespace="/"/>
 								<%} %>
 								<%if(request.getSession().getAttribute("LOGINED_USER") != null){ %>
 									<s:url id="logout" action="user_logout" namespace="/"/>

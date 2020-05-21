@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"  %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -33,21 +34,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul class="nav nav-pills nav-stacked">
 					<li role="presentation"><a href="#">审核企业</a></li>
 					<li role="presentation" class="active"><a href="#">审核招聘信息</a></li>
-					
+					<li role="presentation"><a href="roleManager/addRole.jsp">角色管理</a></li>
 				</ul>
 			</div>
 
 			<div class="check_right">
-				<form class="form-horizontal">
+				<s:url id="admin_checkAdver" action="admin_checkAdver" namespace="/"/>
+				<form class="form-horizontal" action="${admin_checkAdver }">
+				
+					<input type="hidden" name="advertise.id" value="${advertise.id }"/>
 					<div class="form-group">
 						<div class="form-inline col-md-12">
 							<div class="form-group col-md-6">
 								<label for="" class="control-label col-md-4">招聘标题</label>
-								<input value="${advertise.title }" type="text" class="form-control" size="25">
+								<input value="${advertise.title }" readonly="readonly" unselectable="on" type="text" class="form-control" size="25">
 							</div>
 							<div class="form-group col-md-6">
 								<label for="" class="control-label col-md-4">招聘岗位</label>
-								<input value="${advertise.postName }" type="text" class="form-control" size="25">
+								<input value="${advertise.postName }" readonly="readonly" unselectable="on" type="text" class="form-control" size="25">
 							</div>
 						</div>
 					</div>
@@ -56,20 +60,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="form-inline col-md-12">
 							<div class="form-group col-md-6">
 								<label for="" class="control-label col-md-4">工作种类</label>
-								<input value="${advertise.wantJoyType }" type="text" class="form-control" size="25">
+								<input value="${advertise.wantJoyType }" readonly="readonly" unselectable="on" type="text" class="form-control" size="25">
 							</div>
 							<div class="form-group col-md-6 ">
 								<label for="" class="control-label col-md-4">截至日期</label>
-								<input value="${advertise.deadline }" type="text" class="form-control " size="30">
-							</div>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="form-inline col-md-12">
-							<div class="form-group col-md-6">
-								<label for="" class="control-label col-md-4">标签</label>
-								<input value="${advertise.comment }" type="text" class="form-control" size="25">
+								<input value="${advertise.deadline }" readonly="readonly" unselectable="on" type="text" class="form-control " size="30">
 							</div>
 						</div>
 					</div>
@@ -77,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="form-group">
 						<label for="" class="control-label col-md-2">岗位简介</label>
 						<div class="col-md-9" style="padding: 0;">
-							<textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
+							<textarea placeholder="${advertise.ask }" readonly="readonly" unselectable="on" class="form-control" cols="30" rows="10"></textarea>
 						</div>
 					</div>
 					
