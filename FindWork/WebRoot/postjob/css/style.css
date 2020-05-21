@@ -13698,12 +13698,13 @@ ul.dashboard-box-list > li:hover {
 .dashboard-box .button.ico {
 	width: 32px;
 	text-align: center;
+	height: 32px;
 }
 
 .dashboard-box .button.ico i {
 	font-size: 15px;
 	margin-left: -7px;
-	top: 2px;
+	top: 10px;
 	position: relative;
 }
 

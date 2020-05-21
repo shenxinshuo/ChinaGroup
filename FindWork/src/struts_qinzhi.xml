@@ -7,7 +7,7 @@
 <!-- 钦治负责模块的Struts配置文件 -->
 
 <struts>
-<package name="advertise" extends="struts-default" namespace="/">
+	<package name="advertise" extends="struts-default" namespace="/">
 		<action name="addAdvertise" class="advertiseAction" method="addAdvertise">
 		</action>
 		<action name="toUnFinAdvertise" class="advertiseAction" method="toUnFinAdvertise">
@@ -26,8 +26,5 @@
 		<action name="detailAdvertise" class="advertiseAction" method="detailAdvertise">
 			 <result name="detailAdvertise">/postjob/single-job-page.jsp</result>
 		</action>
-		<action name="toAdd" class="advertiseAction" method="toAdd">
-			 <result name="toAdd">/postjob/dashboard-post-a-job.jsp</result>
-		</action>
 	</package>
-	</struts>
+</struts>

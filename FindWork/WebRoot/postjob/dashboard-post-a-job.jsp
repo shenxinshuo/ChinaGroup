@@ -1,6 +1,5 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 String path = request.getContextPath();
 %>
@@ -18,10 +17,8 @@ String path = request.getContextPath();
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<link rel="stylesheet" href="<%=path %>/postjob/css/header.css"/>
-	<link rel="stylesheet" href="<%=path %>/resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="<%=path %>/postjob/css/style.css"/>
-    <link rel="stylesheet" href="<%=path %>/postjob/css/colors/blue.css"/>
+	<link rel="stylesheet" href="<%=path %>/postjob/css/style.css">
+    <link rel="stylesheet" href="<%=path %>/postjob/css/colors/blue.css">
 	<style>
 		.text_time{
 			width: 207px;
@@ -234,7 +231,7 @@ String path = request.getContextPath();
 									<div class="submit-field">
 										<h5>截止日期</h5>
 										<!-- <input type="text" class="with-border"> -->
-										<input type="text" id="time" readonly="readonly"  name="advertise.deadline" value="<fmt:formatDate value="${advertise.deadline}" pattern="yyyy-MM-dd" />" onClick="return Calendar('time');" class="text_time"/>
+										<input type="text" id="time" readonly="readonly"  name="advertise.deadline" value="${advertise.deadline}" onClick="return Calendar('time');" class="text_time"/>
 									</div>
 								</div>
 
