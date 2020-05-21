@@ -21,4 +21,9 @@
         	<!-- 注入属性 -->
         	<property name="cvDao" ref="cvDaoImpl"></property>
         </bean>
+        
+        <!-- 配置action -->
+        <bean id="cvAction" class="com.zhbit.findwork.action.CvAction" scope="request">
+        	<property name="cvService" ref="cvServiceImpl" />
+        </bean>
 </beans>

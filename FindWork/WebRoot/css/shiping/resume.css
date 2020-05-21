@@ -1,0 +1,157 @@
+@CHARSET "UTF-8";
+.off_info{
+	border: 1px solid #3C3C3C;
+	border-radius: 30px;
+	margin-left: 300px;
+	margin-right: 80px;
+	width: 900px;
+}
+.a0{
+	margin-left: 26px;
+	height: 115px;
+}
+.img1{
+	margin-left: 3px;
+	width: 450px;
+	height: 35px;
+}
+.img2{
+	margin-right: 0px;
+	width: 440px;
+}
+.a1{
+	color: white;
+	font-size: 24px;
+	width: 200px;
+	height: 40px;
+	border: 1px solid #31B0D5;
+	border-radius: 5px;
+	background-color: dodgerblue;
+	margin-left: 40px;
+}
+.label-default1{
+	color: white;
+	font-size: 26px;
+	margin-left: 25px;
+}
+.input-group-addon1{
+	margin-left: 60px;
+}
+#basic-addon2{
+	margin-left: 80px;
+	width: 50px;
+}
+.a2{
+	margin-top: 20px;
+}
+.a3{
+	margin-top: 8px;
+}
+.a4{
+	margin-top: 20px;
+	color: white;
+	font-size: 24px;
+	width: 200px;
+	height: 40px;
+	border: 1px solid #31B0D5;
+	border-radius: 5px;
+	background-color: dodgerblue;
+	margin-left: 40px;
+}
+.form-control1{
+	margin-top: 1px;
+	width: 800px;
+	height: 200px;
+}
+.form-control{
+	width: 50px;
+	margin-top: 8px;
+}
+.a5{
+	margin-left: 40px;
+}
+.submit{
+	width: 150px;
+	height: 40px;
+	border: 1px solid #31B0D5;
+	border-radius: 5px;
+	background-color: #5BC0DE;
+	color: white;
+	font-size: large;
+}
+.reset{
+	width: 150px;
+	height: 40px;
+	border: 1px solid #31B0D5;
+	border-radius: 5px;
+	background-color: #5BC0DE;
+	color: white;
+	font-size: large;
+}
+.a6{
+	margin-left: 240px;
+	margin-top: 10px;
+}
+.a7{
+	margin-top: 50px;
+}
+.form-control2{
+	width: 150px;
+	height: 20px;
+	
+}
+#web_logo {
+	
+	margin-top: 10px;
+	width:125px;
+	height:50px;
+	margin-right: 20px;
+	float: left;
+	
+}
+
+#user_head{
+	
+	width: 40px;
+	height: 40px;
+	margin-top: 15px;
+	float: left;
+	
+}
+
+.form-group{
+	
+	margin-left: 400px;
+	
+}
+
+.nav li{
+	
+	margin-top: 10px;
+	margin-right: 15px;
+	font-size: 17px;
+	
+}
+
+.container-fluid{
+	
+	height: 70px;
+	
+}
+
+.web_name{
+	
+	margin-top: 30px;
+	margin-left: 10px;
+	margin-right: 30px;
+	font-weight: bold;
+	font-size: 35px;
+	color: #269ABC;
+	text-decoration: none;
+	
+}
+.glyphicon-remove{
+	margin-left: 250px;
+	width: 60px;
+	height: 45px;
+}

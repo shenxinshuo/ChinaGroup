@@ -8,16 +8,6 @@ import com.zhbit.findwork.entity.Cv;
 
 public interface CvDao {
 
-	/**
-	 * 根据用户名字查询用户是否存在
-	 * @return
-	 */
-	public boolean isExistbyName(String name);
-	/**
-	 * 根据用户id查询用户是否存在
-	 * @return
-	 */
-	public boolean isExistbyId(String id);
 	/*
 	 * 新增简历
 	 * @param cv
@@ -45,4 +35,9 @@ public interface CvDao {
 	 * @return 
 	 */
 	public Cv getCvByName(String name);
+	/**
+	 * 获取简历所有信息
+	 * @return
+	 */
+	public List<Cv> getAllCvList();
 }

@@ -23,32 +23,6 @@ public class CvDaoImpl implements CvDao {
 	}
 
 	@Override
-	public boolean isExistbyName(String name) {
-		// TODO Auto-generated method stub
-		String hql = "from Cv where name = :cvName";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setParameter("cvName", name);
-		List<Cv> cvs = query.list();
-		if (cvs == null || cvs.size() == 0) {
-			return false;
-		}
-		return true;
-	}
-
-	@Override
-	public boolean isExistbyId(String id) {
-		// TODO Auto-generated method stub
-		String hql = "from Cv where id = :cvid";
-		Cv cv = (Cv)sessionFactory.getCurrentSession()
-				.createQuery(hql)
-				.setParameter("cvid", id)
-				.uniqueResult();
-		if (cv== null) {
-			return false;
-		}
-		return true;
-	}
-	@Override
 	public void addCv(Cv cv) {
 		cv.setCreate_at(new Date());
 		cv.setUpdate_at(new Date());
@@ -59,6 +33,7 @@ public class CvDaoImpl implements CvDao {
 	@Override
 	public void updateCv(Cv cv) {
 		cv.setUpdate_at(new Date());
+		System.out.println("cv:"+cv.getCreate_at());
 		sessionFactory.getCurrentSession().merge(cv);
 
 	}
@@ -86,6 +61,12 @@ public class CvDaoImpl implements CvDao {
 				.setParameter(0, name)
 				.uniqueResult();
 		return cv;
+	}
+	
+	@Override
+	public List<Cv> getAllCvList(){
+		List<Cv> list = sessionFactory.getCurrentSession().createQuery("from t_cv").list();
+		return list;
 	}
 
 }

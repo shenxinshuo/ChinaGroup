@@ -1,0 +1,191 @@
+<%@page import="com.zhbit.findwork.entity.Cv"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"  %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <base href="<%=basePath%>">
+    
+    <title>My JSP 'updateResume.jsp' starting page</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" type="text/css" href="css/shiping/updateResume.css">
+
+  </head>
+  
+  <body>
+  <%
+  	Cv cv = (Cv)request.getAttribute("cv");
+   %>
+  	<!-- 引入头部 -->
+	<jsp:include page="/common/header.jsp" />
+	<!-- 提示信息 -->
+    <s:if test="message == null">
+    		
+    </s:if>
+    <s:else>
+    	<div class="alert alert-success" role="alert">${message }</div>
+    </s:else>
+    <s:url id="cv_update" action="cv_update" namespace="/" />
+    <form class="form-horizontal" action="${cv_update }" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="cv.id" value="${cv.id}">
+    	<!-- 修改简历信息页面 -->
+	<div class="off_info">
+		 	<div>
+				<img class="a0" src="cv/image/e1.png" />
+				<span style="font-size: 30px;color: dodgerblue;" class="glyphicon glyphicon-remove"></span>
+			</div>
+			<div>
+				<img class="img1" src="cv/image/u18.png" />
+				<img class="img2" src="cv/image/u16.png" />
+			</div>
+			<div class="a1">
+				<span  class="label label-default1">基本信息</span>
+				<hr width="800px" color="black" size="1"/>
+			</div>
+			<div class="d-inline-block">
+                <div class="col-md-6">
+                	<label for="" class="text-danger col-md-offset-3">${fieldErrors["name"][0] }</label>
+                </div>
+                <div class="col-md-6">
+                	<label for="" class="text-danger col-md-offset-0">${fieldErrors["want_low_wages"][0] }</label>
+                </div>
+            </div>
+			<div class="a2">
+				<span class="input-group-addon1" >姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span>
+  				<input type="text" class="form-control2" name="cv.name" value="${cv.name }" aria-describedby="basic-addon1">
+  				<span  id="basic-addon2">期望最低工资：</span>
+  				<input type="text" class="form-control2" name="cv.want_low_wages" value="${cv.want_low_wages }" >
+			</div>
+			<div class="d-inline-block">
+                <div class="col-md-6">
+                	<label for="" class="text-danger col-md-offset-3">${fieldErrors["telephone"][0] }</label>
+                </div>
+                <div class="col-md-6">
+                	<label for="" class="text-danger col-md-offset-0">${fieldErrors["want_large_wages"][0] }</label>
+                </div>
+            </div>
+			<div class="a3">
+				<span class="input-group-addon1" >联系方式：</span>
+  				<input type="text" class="form-control2" name="cv.telephone" value="${cv.telephone }" >
+ 				<span id="basic-addon2">期望最高工资：</span>
+  				<input type="text" class="form-control2" name="cv.want_large_wages" value="${cv.want_large_wages }" >
+			</div>
+			<div class="d-inline-block">
+                <div class="col-md-6">
+                	<label for="" class="text-danger col-md-offset-3">${fieldErrors["live_province"][0] }</label>
+                </div>
+                <div class="col-md-6">
+                	<label for="" class="text-danger col-md-offset-0">${fieldErrors["want_joy_type"][0] }</label>
+                </div>
+            </div>
+			<div class="a3">
+				<span class="input-group-addon1" >居住省份：</span>
+  				<%-- <input type="text" class="form-control2" name="cv.live_province" value="${cv.live_province }" > --%>
+  				<select name="cv.live_province"  class="form-control2" value="${cv.live_province }">
+                	<option value="广东">广东</option>
+                	<option value="江西" >江西</option>
+                	<option value="湖北" >湖北</option>
+                </select>
+  				<span id="basic-addon2">期望工作类型:</span>
+		 		<input type="radio" name="cv.want_joy_type" value="${cv.want_joy_type }"/>实习
+		 		<input type="radio" name="cv.want_joy_type" value="${cv.want_joy_type }"/>兼职
+		 		<input type="radio" name="cv.want_joy_type" value="${cv.want_joy_type }"/>全职
+			</div>
+			<div class="d-inline-block">
+			 	<div class="col-md-6">
+                	<label for="" class="text-danger col-md-offset-3">${fieldErrors["live_city"][0] }</label>
+                </div>
+                <div class="col-md-6">
+                	<label for="" class="text-danger col-md-offset-0">${fieldErrors["want_province"][0] }</label>
+                </div>
+             </div>
+			<div class="a3">
+				<span class="input-group-addon1" >居住城市：</span>
+  				<%-- <input type="text" class="form-control2" name="cv.live_city" value="${cv.live_city }" > --%>
+		 		<select name="cv.live_city"  class="form-control2" value="${cv.live_city }">
+                	<option value="珠海">珠海</option>
+                	<option value="深圳" >深圳</option>
+                	<option value="武汉" >武汉</option>
+                	<option value="南昌" >南昌</option>
+                </select>
+		 		<span  id="basic-addon2">想&nbsp;去&nbsp;的&nbsp;省份：</span>
+  				<%-- <input type="text" class="form-control2" name="cv.want_province" value="${cv.want_province }" > --%>
+  				<select name="cv.want_province"  class="form-control2" value="${cv.want_province }">
+                	<option value="广东">广东</option>
+                	<option value="江西" >江西</option>
+                	<option value="湖北" >湖北</option>
+                </select>
+			</div>
+			<div class="d-inline-block">
+                <div class="col-md-6">
+                	<label for="" class="text-danger col-md-offset-3">${fieldErrors["politics_status"][0] }</label>
+                </div>
+                <div class="col-md-6">
+                	<label for="" class="text-danger col-md-offset-0">${fieldErrors["want_city"][0] }</label>
+                </div>
+            </div>
+			<div class="a3">
+				<span class="input-group-addon1" >政治面貌：</span>
+  				<input type="text" class="form-control2" name="cv.politics_status" value="${cv.politics_status }" >
+		 		<span id="basic-addon2">想&nbsp;去&nbsp;的&nbsp;城市：</span>
+  				<%-- <input type="text" class="form-control2" name="cv.want_province" value="${cv.want_province }" > --%>
+  				<select name="cv.want_city"  class="form-control2">
+                	<option value="珠海">珠海</option>
+                	<option value="深圳" >深圳</option>
+                	<option value="武汉" >武汉</option>
+                	<option value="南昌" >南昌</option>
+                </select>
+			</div>
+			<div class="d-inline-block">
+                <div class="col-md-6">
+                	<label for="" class="text-danger col-md-offset-3">${fieldErrors["education_background"][0] }</label>
+                </div>
+                <div class="col-md-6">
+                	<label for="" class="text-danger col-md-offset-0">${fieldErrors["want_post"][0] }</label>
+                </div>
+            </div>
+			<div class="a3">
+				<span class="input-group-addon1">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历：</span>
+  				<input type="text" class="form-control2" name="cv.education_background" value="${cv.education_background }" >
+		 		<span id="basic-addon2">求&nbsp;职&nbsp;&nbsp;意&nbsp;向&nbsp;&nbsp;&nbsp;：</span>
+  				<input type="text" class="form-control2" name="cv.want_post" value="${cv.want_post }" >
+			</div>
+			<div class="a4">
+				<span  class="label label-default1">工作经历</span>
+			</div>
+			<div class="a5">
+				<textarea  class="form-control1" name="cv.experience" value="${cv.experience }" ></textarea>
+			</div>
+			<div class="a4">
+				<span  class="label label-default1">特长、技能</span>
+			</div>
+			<div class="a5">
+				<textarea  class="form-control1" name="cv.skill" value="${cv.experience }" ></textarea>
+			</div>
+			<div class="a4">
+				<span  class="label label-default1">自我介绍</span>
+			</div>
+			<div class="a5">
+				<textarea  class="form-control1" name="cv.self" value="${cv.experience }" ></textarea>
+			</div>
+			<div class="a6">
+				<button type="submit" class="submit">保存</button>
+			</div>
+			<div class="a6"></div>
+	</div>
+    </form>
+		 <div class="a7"></div>
+    <!-- 引入底部 -->
+	<jsp:include page="/common/footer.jsp" />
+  </body>
+</html>
