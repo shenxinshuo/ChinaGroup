@@ -5,8 +5,10 @@ import java.util.List;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.zhbit.findwork.entity.Business;
+import com.zhbit.findwork.entity.Collection_Business;
 import com.zhbit.findwork.entity.Page;
 import com.zhbit.findwork.entity.User;
+import com.zhbit.findwork.service.BusinessService;
 import com.zhbit.findwork.service.UserService;
 
 /**
@@ -24,8 +26,43 @@ public class Collection_BusinessAction extends ActionSupport {
 	private UserService userService;
 	private List<Business> Businesses; // 用来存储查询的企业
 	private Page page; // 页操控类
-
+	private Business business;
+	private BusinessService businessService;
+	private String message;				//用于返回信息给页面，提示用户
+	private String errorMessage;		//显示异常信息
 	
+	public String deleteBusiness(){
+		//设置目前登录用户的id是1
+		System.out.println("删除收藏企业");
+		boolean t=userService.deleteCollection_Business(1,business.getId());
+		System.out.println(t);
+		int p=page.getCurrent();
+		System.out.println(p);
+		page.setCurrent(p);//保存当前访问的页面
+		System.out.println(page.getCurrent());
+		System.out.println("dffffffffffffff");
+		return "deleteBusiness";
+	}
+	//添加收藏企业
+	public String addBusiness(){
+		user=userService.getUserByID(1);//获取当前登录的用户
+		business=businessService.getBusinessByID(business.getId());
+		Collection_Business c_b = new Collection_Business();
+		c_b.setUser(user);
+		c_b.setBusiness(business);
+		System.out.println(user);
+		System.out.println(business);
+		System.out.println(c_b);
+		boolean t =userService.addCollection_Business(c_b);
+		if(t){
+			message="收藏成功";
+			return "addBusiness";
+		}else{
+			errorMessage="您已经收藏过,不用再收藏了";
+			return "addBusiness";
+		}
+		
+	}
 	public void checkPage(int total) {
 		page.setMaxSize(3);// 设置当前页面最大的数量
 		int pageCount = total / page.getMaxSize();// 总的页数=总的数量/最大页数（整除情况）
@@ -89,5 +126,29 @@ public class Collection_BusinessAction extends ActionSupport {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-
+	
+	public Business getBusiness() {
+		return business;
+	}
+	public void setBusiness(Business business) {
+		this.business = business;
+	}
+	public BusinessService getBusinessService() {
+		return businessService;
+	}
+	public void setBusinessService(BusinessService businessService) {
+		this.businessService = businessService;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
 }

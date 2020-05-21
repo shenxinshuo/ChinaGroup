@@ -58,7 +58,7 @@ public class UserServiceImplTest {
 		User user =userService.getUserByID(2);
 		BusinessService businessService = (BusinessService) context.getBean("businessServiceImpl");
 		//这里需要判断business是否能查询到
-		Business business = businessService.getBusinessByID(6);	
+		Business business = businessService.getBusinessByID(3);	
 		c_b.setUser(user);
 		c_b.setBusiness(business);
 		boolean t =userService.addCollection_Business(c_b);
@@ -73,7 +73,7 @@ public class UserServiceImplTest {
 	//测试删除收藏企业
 	@Test 
 	public void testDeleteBusinessesByUserId(){
-		userService.deleteCollection_Business(1, 3);
+		userService.deleteCollection_Business(1, 8);
 		
 	}
 	//按分页查询收藏企业

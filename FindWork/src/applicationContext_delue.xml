@@ -35,6 +35,7 @@
 		
 		<bean id="collection_BusinessAction" class="com.zhbit.findwork.action.Collection_BusinessAction" scope="request">
 			<property name="userService" ref="userServiceImpl"></property>
+			<property name="businessService" ref="businessServiceImpl"></property>
 		</bean>
 
 </beans>

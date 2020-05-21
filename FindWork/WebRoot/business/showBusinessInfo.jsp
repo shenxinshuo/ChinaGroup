@@ -28,10 +28,13 @@
 	            <div class="panel-heading">
 	                <a href="javascript:history.go(-1)"><span class="glyphicon glyphicon-arrow-left"
 	                     style="margin-top: 8px;margin-bottom: 8px;"   ></span> </a>
-	                展示企业信息
+	                展示企业信息	                                	               	         
 	                <button class="btn btn-default" style="float: right;">
-	                    <a href="">收藏&nbsp;<span class="glyphicon glyphicon-star" style=""></span></a>
+	                    <a href="collection_addBusiness.action?business.id=${business.id }">收藏&nbsp;<span class="glyphicon glyphicon-star" style=""></span></a>
 	                </button>
+	                	<!-- 提示信息 -->
+	                <p class="text-danger">${errorMessage }</p>
+	                 <p class="text-danger">${message }</p>
 	            </div>
 	            
 	            <div class="panel-body">

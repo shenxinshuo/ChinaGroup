@@ -54,7 +54,7 @@ public class Collection_BusinessDaoImpl implements Collection_BusinessDao {
 	@Override
 	public void delete(int userid, int businessid) {
 		// TODO Auto-generated method stub
-		String hql="from Collection_Business as cb where Uid =? and Bid = ?";
+		String hql="from Collection_Business as cb where Uid =? and Bid = ? and delete_flag = 0";
 		Collection_Business c_b=(Collection_Business)sessionFactory.getCurrentSession().createQuery(hql)
 				.setParameter(0, userid)
 				.setParameter(1, businessid)

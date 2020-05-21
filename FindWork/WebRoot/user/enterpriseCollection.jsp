@@ -22,7 +22,7 @@
 <body>
 	<div style="text-align: center;height: 450px;">
 		<div style="height: 80%;">
-			<s:if test="#request.Businesses==null||#request.Businesses.size()==0">
+			<s:if test="(#request.Businesses==null||#request.Businesses.size()==0)&&#request.page.current==1">
 				<div style="margin:100px auto;">没有收藏的企业，快去收藏吧</div>
 			</s:if>
 			<s:else>
@@ -30,9 +30,15 @@
 					<div
 						style=" width: 95%; height: 30%; background-color: #dae9f0;margin: auto;margin-top: 4px;">
 						<span style="color:#169bd5;font-size: 20px;"><b><a
-								href="#"><s:property value="#business.name" /></a></b></span> <a href="#"><span
-							class="glyphicon glyphicon-remove"
-							style="float: right;margin:10px 20px;"></span></a> <br> <span><s:property
+								href="#"><s:property value="#business.name" /></a></b></span>
+								<s:url id="delete"
+						action="/FindWork/collection_deleteBusiness.action?business.id=%{#business.id}&&page.current=%{#request.page.current}"
+						namespace="/" /> 
+								<a href="${delete}">
+								<span class="glyphicon glyphicon-remove"style="float: right;margin:10px 20px;"></span>
+								</a> 
+								<br> 
+								<span><s:property
 								value="#business.address" /></span><br><s:property
 								value="#business.description" /><br> 公司详情连接:<a href="${ business.url}"><s:property
 								value="#business.url" /></a>
