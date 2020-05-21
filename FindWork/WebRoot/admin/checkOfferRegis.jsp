@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib uri="/struts-tags" prefix="s"  %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -10,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'checkBRegis.jsp' starting page</title>
+    <title>My JSP 'checkOfferRegis.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -32,26 +31,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="Check_div">
 			<div class="check_left">
 				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation" class="active"><a href="#">审核企业</a></li>
-					<li role="presentation"><a href="#">审核招聘信息</a></li>
+					<li role="presentation"><a href="#">审核企业</a></li>
+					<li role="presentation" class="active"><a href="#">审核招聘信息</a></li>
 					
 				</ul>
 			</div>
 
 			<div class="check_right">
-				<s:url id="admin_updateCheckFlag" action="admin_updateCheckFlag" namespace="/"/>
-				<form class="form-horizontal" action="${admin_updateCheckFlag }" method="post">
-					
-					<input type="hidden" name="business.id" value="${business.id }"/>
+				<form class="form-horizontal">
 					<div class="form-group">
 						<div class="form-inline col-md-12">
 							<div class="form-group col-md-6">
-								<label for="" class="control-label col-md-4">企业名称</label>
-								<input value="${business.name }" readonly="readonly" unselectable="on" type="text" class="form-control" size="25">
+								<label for="" class="control-label col-md-4">招聘标题</label>
+								<input value="${advertise.title }" type="text" class="form-control" size="25">
 							</div>
 							<div class="form-group col-md-6">
-								<label for="" class="control-label col-md-4">所在城市</label>
-								<input value="${business.city }" readonly="readonly" unselectable="on" class="form-control " size="30">
+								<label for="" class="control-label col-md-4">招聘岗位</label>
+								<input value="${advertise.postName }" type="text" class="form-control" size="25">
 							</div>
 						</div>
 					</div>
@@ -59,12 +55,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="form-group">
 						<div class="form-inline col-md-12">
 							<div class="form-group col-md-6">
-								<label for="" class="control-label col-md-4">联系电话</label>
-								<input value="${business.telephone }" readonly="readonly" unselectable="on" type="text" class="form-control" size="25">
+								<label for="" class="control-label col-md-4">工作种类</label>
+								<input value="${advertise.wantJoyType }" type="text" class="form-control" size="25">
 							</div>
 							<div class="form-group col-md-6 ">
-								<label for="" class="control-label col-md-4">邮箱</label>
-								<input value="${business.email }" readonly="readonly" unselectable="on" class="form-control " size="30">
+								<label for="" class="control-label col-md-4">截至日期</label>
+								<input value="${advertise.deadline }" type="text" class="form-control " size="30">
 							</div>
 						</div>
 					</div>
@@ -72,31 +68,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="form-group">
 						<div class="form-inline col-md-12">
 							<div class="form-group col-md-6">
-								<label for="" class="control-label col-md-4">登录密码</label>
-								<input value="${business.password }" readonly="readonly" unselectable="on" type="text" class="form-control" size="25">
+								<label for="" class="control-label col-md-4">标签</label>
+								<input value="${advertise.comment }" type="text" class="form-control" size="25">
 							</div>
-							
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="" class="control-label col-md-2">企业地址</label>
+						<label for="" class="control-label col-md-2">岗位简介</label>
 						<div class="col-md-9" style="padding: 0;">
-							<input value="${business.address }" readonly="readonly" unselectable="on" type="text" class="form-control">
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="" class="control-label col-md-2">企业描述</label>
-						<div class="col-md-9" style="padding: 0;">
-							<textarea placeholder="${business.description }" readonly="readonly" unselectable="on" class="form-control" cols="30" rows="10"></textarea>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="" class="control-label col-md-2">企业详情链接</label>
-						<div class="col-md-9" style="padding: 0;">
-							<input value="${business.url }" readonly="readonly" unselectable="on" type="text" class="form-control">
+							<textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
 						</div>
 					</div>
 					

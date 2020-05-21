@@ -41,6 +41,15 @@ public class BusinessLoginAction extends ActionSupport{
 		
 	}
 	
+	public String logout(){
+		
+		ActionContext ac = ActionContext.getContext();
+		ac.getSession().put("LOGINED_BUSI",null);
+		
+		return "logout";
+		
+	}
+	
 	public Business getBusiness() {
 		return business;
 	}
