@@ -89,7 +89,7 @@
 					
 					<ul class="nav navbar-nav">
 					
-						<li><a href="#">首页</a></li>
+						<li><a href="<%=request.getContextPath() %>/homePage/home.jsp">首页</a></li>
 						<li><a href="#">|</a></li>
 						<li><a href="#">岗位</a></li>
 						<li><a href="#">|</a></li>
@@ -107,7 +107,8 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">用户名：Colten
 								<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">个人中心</a></li>
+								<li><a href="<%=request.getContextPath() %>/user/userCenter.jsp">个人中心</a></li>
+								<li><a href="<%=request.getContextPath() %>/user/collectionCenter.jsp">收藏中心</a></li>
 								<s:url id="business_showBusinessCenter" action="business_showBusinessCenter" namespace="/">
 									<s:param name="business.id">7</s:param>
 									<s:param name="currentPage">1</s:param>
