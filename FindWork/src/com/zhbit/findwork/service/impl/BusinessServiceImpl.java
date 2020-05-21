@@ -134,6 +134,7 @@ public class BusinessServiceImpl implements BusinessService {
 	public void updateBusinessCheckFlag(Business business) {
 		Business businessInDB = businessDao.getBusinessByID(business.getId());
 		businessInDB.setCheck_flag(business.getCheck_flag());
+		businessInDB.setComment(business.getComment());
 		businessDao.updateBusiness(businessInDB);
 		return ;
 	}
