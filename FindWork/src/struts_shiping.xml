@@ -9,10 +9,11 @@
 <struts>
 	<package name="cv" extends="struts-default" namespace="/">
 		<action name="cv_*" class="cvAction" method="{1}">
-			<result name="add">/cv/updateResume.jsp</result>
-			<result name="show">/cv/updateResume.jsp</result>
-			<result name="update">/cv/showResume.jsp</result>
-			<result name="delete">/cv/resume.jsp</result>
+			<result name="show">/user/userCenter.jsp</result>
+			<result name="add">/cv/resume.jsp</result>
+			<result name="showResume">/cv/showResume.jsp</result>
+			<result name="showUpdate">/cv/updateResume.jsp</result>
+		<!-- 	<result name="delete">/cv/resume.jsp</result> -->
 			<result name="input">/cv/resume.jsp</result>
 			<result name="error">/cv/updateResume.jsp</result>
 		</action>

@@ -9,6 +9,7 @@ import com.zhbit.findwork.entity.User;
  *
  */
 public interface UserDao {
+
 	/**
 	 * 根据用户名字和密码查询用户
 	 * @return

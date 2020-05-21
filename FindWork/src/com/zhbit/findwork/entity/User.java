@@ -1,6 +1,7 @@
 package com.zhbit.findwork.entity;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 求职用户Bean类
@@ -22,7 +23,6 @@ public class User {
 	private Date create_at;		//创建时间
 	private Date update_at;		//更新时间
 	private Role role;			//与角色类多对一关系
-	
 	public int getId() {
 		return id;
 	}

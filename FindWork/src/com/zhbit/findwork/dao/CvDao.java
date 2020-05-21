@@ -7,12 +7,16 @@ import java.util.List;
 import com.zhbit.findwork.entity.Cv;
 
 public interface CvDao {
-
+	/*
+	 * 根据用户id查找用户的简历
+	 * @param userid
+	 */
+	public List<Cv> getCvListByUserId(int userid);
 	/*
 	 * 新增简历
 	 * @param cv
 	 */
-	public void addCv(Cv cv );
+	public void addCv(Cv cv);
 	/*
 	 * 修改简历信息
 	 * @param cv

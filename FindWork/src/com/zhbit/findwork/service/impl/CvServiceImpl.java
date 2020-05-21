@@ -90,4 +90,10 @@ public class CvServiceImpl implements CvService {
 		return cvDao.getAllCvList();
 	}
 
+	@Override
+	public List<Cv> getCvListByUserId(int userid) {
+		// TODO Auto-generated method stub
+		return cvDao.getCvListByUserId(userid);
+	}
+
 }

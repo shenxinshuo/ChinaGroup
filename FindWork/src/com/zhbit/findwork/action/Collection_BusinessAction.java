@@ -34,7 +34,8 @@ public class Collection_BusinessAction extends ActionSupport {
 	public String deleteBusiness(){
 		//设置目前登录用户的id是1
 		System.out.println("删除收藏企业");
-		boolean t=userService.deleteCollection_Business(1,business.getId());
+		user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
+		boolean t=userService.deleteCollection_Business(user.getId(),business.getId());
 		System.out.println(t);
 		int p=page.getCurrent();
 		System.out.println(p);
@@ -45,7 +46,8 @@ public class Collection_BusinessAction extends ActionSupport {
 	}
 	//添加收藏企业
 	public String addBusiness(){
-		user=userService.getUserByID(1);//获取当前登录的用户
+		//user=userService.getUserByID(1);//获取当前登录的用户
+		user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
 		business=businessService.getBusinessByID(business.getId());
 		Collection_Business c_b = new Collection_Business();
 		c_b.setUser(user);
@@ -86,8 +88,8 @@ public class Collection_BusinessAction extends ActionSupport {
 		}
 		// 获取用户收藏的企业的总数
 		//获取当前用户
-	//	user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
-		user=userService.getUserByID(1);
+		user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
+	//	user=userService.getUserByID(1);
 		int total = userService.getBusinessesByUserId(user.getId()).size();
 		checkPage(total);// 设置页面
 		int start = (page.getCurrent() - 1) * page.getMaxSize();// 设置当前页面开始
