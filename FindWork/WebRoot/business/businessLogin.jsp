@@ -50,8 +50,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				</div>
 				<div class="login_form" style="width: 100%;height: 210px;">
-					<s:url id="business_login" action="business_login" namespace="/" />
-					<form action="${business_login }" method="post">
+					<s:url id="business2_login" action="business2_login" namespace="/" />
+					<form action="${business2_login }" method="post">
 					  <div class="form-group">
 					    <div class="col-md-12">
 						<label for="" style="width:60px;">企业账号</label>
