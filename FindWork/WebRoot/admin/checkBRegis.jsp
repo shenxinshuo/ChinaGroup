@@ -39,9 +39,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 
 			<div class="check_right">
-				<s:url id="admin_updateCheckFlag" action="admin_updateCheckFlag" namespace="/" />
+				<s:url id="admin_updateCheckFlag" action="admin_updateCheckFlag" namespace="/"/>
 				<form class="form-horizontal" action="${admin_updateCheckFlag }" method="post">
-					<s:set name="business.id" value="business.id" scope="action"/>
+					
+					<input type="hidden" name="business.id" value="${business.id }"/>
 					<div class="form-group">
 						<div class="form-inline col-md-12">
 							<div class="form-group col-md-6">
@@ -98,6 +99,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<input value="${business.url }" readonly="readonly" unselectable="on" type="text" class="form-control">
 						</div>
 					</div>
+					
+					<div class="form-group">
+						<label for="" class="control-label col-md-2">审核备注</label>
+						<div class="col-md-9" style="padding: 0;">
+							<textarea name="business.comment" placeholder="此处添加审核信息" class="form-control" cols="30" rows="10"></textarea>
+						</div>
+					</div>
+					
 					<div class="btn-group" style="float: right;margin-top: 60px;">
 						<button type="submit" class="btn btn-primary">审核通过</button>
 						<button type="reset" class="btn btn-default">审核失败</button>

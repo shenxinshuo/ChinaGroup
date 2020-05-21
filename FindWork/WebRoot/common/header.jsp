@@ -80,7 +80,9 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<img id="web_logo" src="<%=request.getContextPath() %>/resource/image/logo1.jpg" />
+					<a href="backHomeAction.action">
+						<img id="web_logo" src="<%=request.getContextPath() %>/resource/image/logo1.jpg" />
+					</a>
 		
 				</div>
 		
@@ -89,7 +91,7 @@
 					
 					<ul class="nav navbar-nav">
 					
-						<li><a href="<%=request.getContextPath() %>/homePage/home.jsp">首页</a></li>
+						<li><a href="backHomeAction.action">首页</a></li>
 						<li><a href="#">|</a></li>
 						<li><a href="#">岗位</a></li>
 						<li><a href="#">|</a></li>

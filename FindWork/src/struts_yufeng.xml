@@ -49,4 +49,11 @@
 			<result name="input">/admin/adminLogin.jsp</result>
 		</action>
 	</package>
+	
+	<package name="backHome" extends="struts-default" namespace="/">
+		<action name="backHomeAction" class="backHomeAction" method="backHome">
+			<result>/index.jsp</result>
+			<result name="backHome">/homePage/home.jsp</result>
+		</action>
+	</package>
 </struts>

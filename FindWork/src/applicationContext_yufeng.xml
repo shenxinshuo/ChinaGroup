@@ -54,5 +54,10 @@
 	   		<property name="post_typeService" ref="post_typeService" />
 			<property name="businessService" ref="businessServiceImpl"></property>
 	   </bean>
+	   
+	   <!-- 返回首页action -->
+	   <bean id="backHomeAction" class="com.zhbit.findwork.action.BackHomeAction" scope="request">
+	   		<property name="post_typeService" ref="post_typeService" />
+	   </bean>
        
 </beans>

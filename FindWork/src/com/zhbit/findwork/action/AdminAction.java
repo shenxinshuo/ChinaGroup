@@ -54,10 +54,9 @@ public class AdminAction extends ActionSupport{
 	
 	public String updateCheckFlag(){
 		
-		System.out.println(business.getId());
-		business = businessService.getBusinessByID(business.getId());
+		System.out.println(business.getId()+business.getComment());
 		business.setCheck_flag(1);
-		businessService.updateBusiness(business);
+		businessService.updateBusinessCheckFlag(business);;
 		
 		lines = businessService.getCountByCheckFlag(0);
 		plist = new ArrayList<String>();
@@ -78,7 +77,7 @@ public class AdminAction extends ActionSupport{
 		
 		business = businessService.getBusinessByID(business.getId());
 		business.setCheck_flag(-1);
-		businessService.updateBusiness(business);
+		businessService.updateBusinessCheckFlag(business);
 		
 		lines = businessService.getCountByCheckFlag(0);
 		plist = new ArrayList<String>();
