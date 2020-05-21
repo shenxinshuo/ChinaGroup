@@ -115,8 +115,9 @@ public class BusinessServiceImplTest {
 	@Test
 	public void testUpdateBusinessCheckFlag() {
 		BusinessService businessService = (BusinessService) context.getBean("businessServiceImpl");
-		Business business = businessService.getBusinessByID(3);
+		Business business = businessService.getBusinessByID(7);
 		business.setCheck_flag(1);
+		business.setComment("ÉóºËÍ¨¹ý");
 		businessService.updateBusinessCheckFlag(business);
 	}
 	@Test

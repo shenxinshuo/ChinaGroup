@@ -41,7 +41,7 @@
                 <div class="panel-heading">企业中心</div>
                 <div class="panel-body">
                     <div class="page-header">
-                        <h1>以往招聘信息 <small> 总数&nbsp;<span class="badge">10</span></small></h1>
+                        <h1>以往招聘信息 <small> 总数&nbsp;<span class="badge">${count }</span></small></h1>
                       </div>
                       <!--显示以往的招聘-->
                       <table class="table table-striped">
@@ -53,7 +53,10 @@
                             <th>截止日期</th>
                             <th>操作 </th>
                         </tr>
-                        <s:iterator value="advertises" begin="0">
+                        <s:if test="advertises == null advertise.size() == 0">
+                        </s:if>
+                        <s:else>
+                        <s:iterator value="advertises">
                         	<tr>
 	                            <td>${id }</td>
 	                            <td>${postName }</td>
@@ -61,29 +64,44 @@
 	                            <td>${lowWages }-${largeWages }</td>
 	                            <td><s:property value="deadline" /></td>
 	                            <td>
-	                                <a href="../postjob/single-job-page.html">查看详情</a>
+	                            	<s:url id="detailAdvertise" action="detailAdvertise" namespace="/">
+	                            		<s:param name="advertise.id">${id }</s:param>
+	                            	</s:url>
+	                                <a href="${detailAdvertise }">查看详情</a>
 	                            </td>
 	                        </tr>
                         </s:iterator>
-                        
+                        </s:else>
                       </table>
                       <!--分页-->
                       <nav aria-label="Page navigation">
                         <ul class="pagination">
+                        	<s:url id="business_showBusinessCenterFirst" action="business_showBusinessCenter" namespace="/">
+	                          	<s:param name="business.id">${business.id }</s:param>
+	                          	<s:param name="currentPage">1</s:param>
+	                          </s:url>
                           <li>
-                            <a href="#" aria-label="Previous">
+                            <a href="${business_showBusinessCenterFirst }" aria-label="Previous">
                               <span aria-hidden="true">&laquo;</span>
                             </a>
                           </li>
-                          <s:url id="business_showBusinessCenter" action="business_showBusinessCenter" namespace="/">
+                          <s:url id="business_showBusinessCenterBefore" action="business_showBusinessCenter" namespace="/">
                           	<s:param name="business.id">${business.id }</s:param>
                           	<s:param name="currentPage">${currentPage - 1 }</s:param>
                           </s:url>
-                          <li><a href="${business_showBusinessCenter }"> < </a></li>
-                          <li><a href="#">${currentPage }</a></li>
-                          <li><a href="#"> > </a></li>
+                          <li><a href="${business_showBusinessCenterBefore }"> < </a></li>
+                          <li><a href="">${currentPage }</a></li>
+                          <s:url id="business_showBusinessCenterNext" action="business_showBusinessCenter" namespace="/">
+                          	<s:param name="business.id">${business.id }</s:param>
+                          	<s:param name="currentPage">${currentPage + 1 }</s:param>
+                          </s:url>
+                          <li><a href="${business_showBusinessCenterNext }"> > </a></li>
+                          <s:url id="business_showBusinessCenterLast" action="business_showBusinessCenter" namespace="/">
+                          	<s:param name="business.id">${business.id }</s:param>
+                          	<s:param name="currentPage">${lastPage }</s:param>
+                          </s:url>
                           <li>
-                            <a href="#" aria-label="Next">
+                            <a href="${business_showBusinessCenterLast }" aria-label="Next">
                               <span aria-hidden="true">&raquo;</span>
                             </a>
                           </li>
@@ -133,6 +151,6 @@
     
     <!-- 引入底部 -->
     <jsp:include page="/common/footer.jsp"/>
-    
+    <script type="text/javascript" src="resource/static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
   </body>
 </html>
