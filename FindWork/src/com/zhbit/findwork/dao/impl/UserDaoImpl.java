@@ -53,7 +53,6 @@ public class UserDaoImpl implements UserDao {
 		user.setCreate_at(new Date());
 		user.setUpdate_at(new Date());
 		sessionFactory.getCurrentSession().save(user);
-		
 	}
 
 	@Override

@@ -29,9 +29,30 @@
 			<property name="postDao" ref="postDao" />
 	   </bean>
 	   
-	   <bean id="postTypeAction" class="com.zhbit.findwork.action.PostTypeAction">
+	   
+	   <bean id="postTypeAction" class="com.zhbit.findwork.action.PostTypeAction" scope="request">
 			<property name="post_typeService" ref="post_typeService" />
 	   </bean>
+	   
+	   <!-- 配置管理员Dao -->
+	   <bean id="adminDao" class="com.zhbit.findwork.dao.impl.AdministratorDaoImpl">
+			<property name="sessionFactory" ref="sessionFactory" />
+	   </bean>
+	   
+	   <!-- 配置管理员Service -->
+	   <bean id="adminService" class="com.zhbit.findwork.service.impl.AdministratorServiceImpl">
+			<property name="adminDao" ref="adminDao" />
+	   </bean>
 
+       <!-- 配置管理员action -->
+       <bean id="adminAction" class="com.zhbit.findwork.action.AdminAction" scope="request">
+			<property name="businessService" ref="businessServiceImpl"></property>
+			<property name="adminService" ref="adminService"></property>
+	   </bean>
+	   
+	   <bean id="businessLoginAction" class="com.zhbit.findwork.action.BusinessLoginAction" scope="request">
+	   		<property name="post_typeService" ref="post_typeService" />
+			<property name="businessService" ref="businessServiceImpl"></property>
+	   </bean>
        
 </beans>

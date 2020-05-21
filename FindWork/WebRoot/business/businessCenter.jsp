@@ -113,8 +113,8 @@
                     &nbsp;
                     <span>${business.telephone }</span>
                     <br>
-                  <div class="btn btn-group">
-                        <div class="btn btn-info"><a href="<%=request.getContextPath()%>/toAdd.action" style="color: white;">添加招聘信息</a></div>
+                   <div class="btn btn-group">
+                        <div class="btn btn-info"><a href="<%=request.getContextPath()%>/postjob/dashboard-post-a-job.jsp" style="color: white;">添加招聘信息</a></div>
                     </div>
                     <div class="btn btn-group">
                         <div class="btn btn-info"><a href="<%=request.getContextPath()%>/toFinAdvertise.action" style="color: white;">查看已发布的招聘</a></div>
@@ -122,7 +122,7 @@
                     <div class="btn btn-group">
                         <!-- <div class="btn btn-info"><a href="../postjob/weifabujob.jsp" style="color: white;">查看未发布的招聘</a></div> -->
                         <div class="btn btn-info"><a href="<%=request.getContextPath()%>/toUnFinAdvertise.action" style="color: white;">查看未发布的招聘</a></div>
-                    </div>  
+                    </div>
                 </div>
             </div>
         </div>

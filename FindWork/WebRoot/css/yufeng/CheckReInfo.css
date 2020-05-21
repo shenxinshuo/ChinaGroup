@@ -1,0 +1,44 @@
+.Check_div{
+	
+	width: 90%;
+	height: 600px;
+	margin-left: 5%;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	
+}
+
+.check_left{
+	
+	width: 20%;
+	height: 100%;
+	float: left;
+	
+}
+
+.check_right{
+	
+	width: 78%;
+	height: 100%;
+	margin-left: 2%;
+	float: left;
+	
+}
+
+.check_right a{
+	
+	background-color:red;
+	padding:5px 15px;
+	border:1px solid #fff;
+	border-radius:5px;
+	color:white;
+	font-weight:lighter;
+	
+}
+
+.check_right a:hover{
+	
+	color:white;
+	text-decoration:none;
+	
+}

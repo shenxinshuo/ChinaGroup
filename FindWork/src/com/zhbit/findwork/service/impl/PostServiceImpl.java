@@ -20,7 +20,7 @@ public class PostServiceImpl implements PostService {
 		if (exist ==  true) {
 			return 0;
 		} else  {
-			postDao.addPost(p);;
+			postDao.addPost(p);
 			return 1;
 		}
 	}
