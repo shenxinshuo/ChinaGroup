@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'checkBRegisList.jsp' starting page</title>
+    <title>My JSP 'checkOfferList.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -32,21 +32,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="Check_div">
 			<div class="check_left">
 				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation" class="active"><a href="#">审核企业</a></li>
-					<li role="presentation"><a href="admin_showAdverList.action">审核招聘信息</a></li>
-					<li role="presentation"><a href="roleManager/addRole.jsp">角色管理</a></li>
+					<li role="presentation"><a href="admin_showAdminCenter.action">审核企业</a></li>
+					<li role="presentation" class="active"><a href="#">审核招聘信息</a></li>
+					
 				</ul>
 			</div>
 
 			<div class="check_right">
 				<table class="table table-hover" style="width: 500px;margin-top: 30px;">
 				
-					<s:if test="bs!=null">
-						<s:iterator value="bs" >
+					<s:if test="as.size() != 0">
+						<s:iterator value="as" >
 							<tr>
-								<th style="width: 400px;"><s:property value="name"/></th>
+								<th style="width: 400px;"><s:property value="title"/></th>
 								<th style="width: 100px;">
-									<a href="admin_showBusinessForCheck.action?business.id=<s:property value='id'/>" style="">审核</a>
+									<a href="admin_showAdvertiseForCheck.action?advertise.id=<s:property value='id'/>" style="">审核</a>
 								</th>
 							</tr>
 						</s:iterator>
@@ -60,19 +60,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<nav aria-label="Page navigation">
 				  <ul class="pagination">
 				    <li>
-				      <a href="admin_showAdminCenter.action?currentPage=1" aria-label="Previous">
+				      <a href="admin_showAdverList.action?currentPage=1" aria-label="Previous">
 				        <span aria-hidden="true">&laquo;</span>
 				      </a>
 				    </li>
 				  
 				    <s:if test="plist!=null">
 						<s:iterator value="plist" id='number'>
-							<li><a href="admin_showAdminCenter.action?currentPage=<s:property value='number'/>"><s:property value='number'/></a></li>
+							<li><a href="admin_showAdverList.action?currentPage=<s:property value='number'/>"><s:property value='number'/></a></li>
 						</s:iterator>
 					</s:if>
 				    
 				    <li>
-				      <a href="admin_showAdminCenter.action?currentPage=${totalPages }" aria-label="Next">
+				      <a href="admin_showAdverList.action?currentPage=${totalPages }" aria-label="Next">
 				        <span aria-hidden="true">&raquo;</span>
 				      </a>
 				    </li>

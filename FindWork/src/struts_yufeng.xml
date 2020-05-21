@@ -32,9 +32,10 @@
 	</package>
 
 	<package name="businessLogin" extends="struts-default" namespace="/">
-		<action name="business_login" class="businessLoginAction" method="login">
+		<action name="business_*" class="businessLoginAction" method="{1}">
 			<result>/index.jsp</result>
 			<result name="login">/homePage/home.jsp</result>
+			<result name="logout">/business/businessLogin.jsp</result>
 			<result name="input">/business/businessLogin.jsp</result>
 		</action>
 	</package>
@@ -47,6 +48,9 @@
 			<result name="showFC">/admin/checkBRegis.jsp</result>
 			<result name="check">/admin/checkBRegisList.jsp</result>
 			<result name="input">/admin/adminLogin.jsp</result>
+			<result name="showAdList">/admin/checkOfferList.jsp</result>
+			<result name="showAd">/admin/checkOfferRegis.jsp</result>
+			<result name="logout">/admin/adminLogin.jsp</result>
 		</action>
 	</package>
 	

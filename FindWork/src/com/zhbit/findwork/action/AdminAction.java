@@ -6,18 +6,23 @@ import java.util.List;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.zhbit.findwork.entity.Administrator;
+import com.zhbit.findwork.entity.Advertise;
 import com.zhbit.findwork.entity.Business;
 import com.zhbit.findwork.service.AdministratorService;
+import com.zhbit.findwork.service.AdvertiseService;
 import com.zhbit.findwork.service.BusinessService;
 
 public class AdminAction extends ActionSupport{
 
 	private AdministratorService adminService;
 	private BusinessService businessService;
+	private AdvertiseService advertiseService;
 	
 	private Administrator admin;
 	private Business business;
+	private Advertise advertise;
 	private List<Business> bs;
+	private List<Advertise> as;
 	private int currentPage;       //当前处于第几页
 	private int lines;             //总条数
 	private int totalPages;        //
@@ -75,7 +80,6 @@ public class AdminAction extends ActionSupport{
 	
 	public String checkNotPass(){
 		
-		business = businessService.getBusinessByID(business.getId());
 		business.setCheck_flag(-1);
 		businessService.updateBusinessCheckFlag(business);
 		
@@ -91,6 +95,74 @@ public class AdminAction extends ActionSupport{
 		bs = businessService.getBusinessesByPageWithCheck(firstResult, page_line, 0);
 		
 		return "notpass";
+		
+	}
+	
+	public String checkAdver(){
+		
+		Advertise ad = advertiseService.getAdvertiseByID(advertise.getId());
+		ad.setCheck(1);
+		ad.setComment(advertise.getComment());
+ 		advertiseService.updateAdvertese(ad);
+ 		
+ 		lines = advertiseService.getUnFinAdvertiseCount();
+		plist = new ArrayList<String>();
+		for(int i=0,j=0;i<lines;i+=2,j++){
+			plist.add(String.valueOf(j+1));
+		}
+		if(currentPage == 0){
+			currentPage = 1;
+		}
+		firstResult = (currentPage-1)*page_line;
+		as = advertiseService.getAdvertiseByPageWithCheck(firstResult, page_line, 0);
+ 		
+		return "checkAdver";
+		
+	}
+	
+	public String checkAdverNotPass(){
+		
+		Advertise ad = advertiseService.getAdvertiseByID(advertise.getId());
+		ad.setCheck(-1);
+		ad.setComment(advertise.getComment());
+ 		advertiseService.updateAdvertese(ad);
+ 		
+ 		lines = advertiseService.getUnFinAdvertiseCount();
+		plist = new ArrayList<String>();
+		for(int i=0,j=0;i<lines;i+=2,j++){
+			plist.add(String.valueOf(j+1));
+		}
+		if(currentPage == 0){
+			currentPage = 1;
+		}
+		firstResult = (currentPage-1)*page_line;
+		as = advertiseService.getAdvertiseByPageWithCheck(firstResult, page_line, 0);
+		
+		return "adnotpass";
+		
+	}
+	
+	public String showAdvertiseForCheck(){
+		
+		advertise = advertiseService.getAdvertiseByID(advertise.getId());
+		return "showAd";
+		
+	}
+	
+	public String showAdverList(){
+		
+		lines = advertiseService.getUnFinAdvertiseCount();
+		plist = new ArrayList<String>();
+		for(int i=0,j=0;i<lines;i+=2,j++){
+			plist.add(String.valueOf(j+1));
+		}
+		if(currentPage == 0){
+			currentPage = 1;
+		}
+		firstResult = (currentPage-1)*page_line;
+		as = advertiseService.getAdvertiseByPageWithCheck(firstResult, page_line, 0);
+		
+		return "showAdList";
 		
 	}
 	
@@ -121,10 +193,21 @@ public class AdminAction extends ActionSupport{
 		firstResult = (currentPage-1)*page_line;
 		bs = businessService.getBusinessesByPageWithCheck(firstResult, page_line, 0);
 		
+		Administrator a = adminService.getAdminByNameAndPassword(admin.getAccount(), admin.getPassword());
 		ActionContext ac = ActionContext.getContext();
-		ac.getSession().put("LOGINED_ADMIN", admin);
+		ac.getSession().put("LOGINED_ADMIN", a);
+		
 		
 		return "login";
+		
+	}
+	
+	public String logout(){
+		
+		ActionContext ac = ActionContext.getContext();
+		ac.getSession().put("LOGINED_ADMIN",null);
+		
+		return "logout";
 		
 	}
 	
@@ -200,5 +283,28 @@ public class AdminAction extends ActionSupport{
 		this.admin = admin;
 	}
 
+	public AdvertiseService getAdvertiseService() {
+		return advertiseService;
+	}
+
+	public void setAdvertiseService(AdvertiseService advertiseService) {
+		this.advertiseService = advertiseService;
+	}
+
+	public Advertise getAdvertise() {
+		return advertise;
+	}
+
+	public void setAdvertise(Advertise advertise) {
+		this.advertise = advertise;
+	}
+
+	public List<Advertise> getAs() {
+		return as;
+	}
+
+	public void setAs(List<Advertise> as) {
+		this.as = as;
+	}
 	
 }
