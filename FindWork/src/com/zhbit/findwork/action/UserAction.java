@@ -65,8 +65,15 @@ public class UserAction extends ActionSupport{
 		cvs=cvService.getCvListByUserId(user.getId());
 		return "showCvList";
 	}
-	
-	
+	//退出
+	public String logout(){
+		  
+		  ActionContext ac = ActionContext.getContext();
+		  ac.getSession().put("LOGINED_USER",null);
+		  
+		  return "logout";
+		  
+		 }
 
 	/**
 	 * 个人中心 显示我的信息
@@ -114,8 +121,12 @@ public class UserAction extends ActionSupport{
 		public String saveMyInformation(){	
 			Role role= user.getRole();
 			user.setRole(role);
-			boolean flag= userService.updateUser(user);		
+			boolean flag= userService.updateUser(user);	
+			
 			if(flag){
+				user=userService.getUserByID(user.getId());
+				ActionContext ac = ActionContext.getContext();
+				  ac.getSession().put("LOGINED_USER", user);
 				message="保存成功";
 				return "saveMyInformation";
 			}	
@@ -222,8 +233,10 @@ public class UserAction extends ActionSupport{
 	 */	
 	public String login(){
 		
+		User u = userService.getUserByNameAndPassword(user.getName(), user.getPassword());
+		
 		ActionContext ac = ActionContext.getContext();
-		ac.getSession().put("LOGINED_USER", user);
+		  ac.getSession().put("LOGINED_USER", u);
 		
 		System.out.println(ActionContext.getContext()
 		.getSession().get("LOGINED_USER"));

@@ -24,10 +24,10 @@
 	<div style="width: 150px;float: left;">	
 	<img src="/FindWork/myHeader_readHeader.action" style="width: 100px;height: 100px;margin: 20px;">	
 	</div>
-	<div style="float:left;margin:20px 10px;">
-		<span><s:property value="#user.name"/></span><br>
-		<span><s:property value="#user.telephone"/></span><br>
-		<span><s:property value="#user.address"/></span><br>
+	<div style="float:left;margin:40px 10px;">
+		<span><s:property value="%{#request.user.name}"/></span><br>
+		<span><s:property value="%{#request.user.telephone}"/></span><br>
+		<span><s:property value="%{#request.user.address}"/></span><br>
 	</div>	
 	<div style="float: right; margin-top: 40px; margin-right: 40px;">
 		<s:url id="addcv" action="/FindWork/cv/cv_showAdd.action" namespace="/"></s:url>
@@ -48,12 +48,11 @@
 	
 	<div style="width: 95%; height: 22%; background-color: #dae9f0;margin:auto;margin-top: 4px;">
 	<div style="float: left; width: 80%;margin-top: 10px;margin-left: 20px;">
-	<span style="color:#169bd5;font-size: 20px;"><b><a href="${showcv}" target="_parent">" >意向：<s:property value="#cv.want_post"/></a></b></span>
+	<span style="color:#169bd5;font-size: 20px;"><b><a href="${showcv}" target="_parent"><s:property value="#cv.want_post"/></a></b></span>
 	<br>
 	<span>技能：<s:property value="#cv.skill"/></span><br>
-	<span><s:property value="#cv.skill"/></span><br>
-	希望的工作类型：
-	<span><s:property value="#cv.want_joy_type"/></span>
+	<span>最高工资：<s:property value="#cv.want_large_wages"/></span><br>
+	<span>工作类型：<s:property value="#cv.want_joy_type"/></span>
 	</div>
 	<div style="text-align: center;float: right;margin-top: 10px; margin-right: 20px;">
 		<s:url id="showcv" action="/FindWork/cv/cv_show.action?cv.id=%{#cv.id}" namespace="/"></s:url>				
