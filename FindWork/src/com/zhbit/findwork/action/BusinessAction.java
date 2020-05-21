@@ -11,6 +11,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.zhbit.findwork.entity.Advertise;
 import com.zhbit.findwork.entity.Business;
 import com.zhbit.findwork.service.BusinessService;
 
@@ -34,6 +35,7 @@ public class BusinessAction extends ActionSupport{
 	private int firstResult;			//首条记录（分页）
 	private int lastPage;				//最后一页页码
 	private int pageSize = Integer.parseInt(ServletActionContext.getServletContext().getInitParameter("maxResults"));
+	private List<Advertise> advertises;	//企业名下的所有招聘信息
 	
 	//private int maxResults = 5;
 	
@@ -42,6 +44,17 @@ public class BusinessAction extends ActionSupport{
 		this.businessService = businessService;
 	}
 	
+	
+	public List<Advertise> getAdvertises() {
+		return advertises;
+	}
+
+
+	public void setAdvertises(List<Advertise> advertises) {
+		this.advertises = advertises;
+	}
+
+
 	public int getFirstResult() {
 		return firstResult;
 	}
@@ -198,6 +211,9 @@ public class BusinessAction extends ActionSupport{
 	 */
 	public String showBusinessCenter() {
 		business = businessService.getBusinessByID(business.getId());
+		List<Advertise> temp = business.getAdvertises();
+		if (currentPage < 1) currentPage = 1;
+		advertises = temp.subList((currentPage-1)*pageSize + 1, pageSize > temp.size() ? temp.size() : pageSize);
 		return "businessCenter";
 	}
 	
@@ -243,6 +259,8 @@ public class BusinessAction extends ActionSupport{
 		if (result == 0) {
 			//修改成功
 			message = "修改成功";
+			Business business = businessService.getBusinessByID(this.business.getId());
+			advertises = business.getAdvertises().subList(1, pageSize > business.getAdvertises().size() ? business.getAdvertises().size() : pageSize);
 			return "businessCenter";
 		} else if (result == 1) {
 			//名字被占用
@@ -280,4 +298,5 @@ public class BusinessAction extends ActionSupport{
 		business = businessService.getBusinessByID(business.getId());
 		return "showBusinessInfo";
 	}
+	
 }

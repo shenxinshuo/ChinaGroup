@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -108,7 +108,11 @@
 								<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="#">个人中心</a></li>
-								<li><a href="#">收藏中心</a></li>
+								<s:url id="business_showBusinessCenter" action="business_showBusinessCenter" namespace="/">
+									<s:param name="business.id">7</s:param>
+									<s:param name="currentPage">1</s:param>
+								</s:url>
+								<li><a href="${business_showBusinessCenter }">企业中心</a></li>
 								<li><a href="admin_showAdminCenter.action">管理员中心</a></li>
 								<li role="separator" class="divider"></li>
 								<li><a href="#">退出</a></li>

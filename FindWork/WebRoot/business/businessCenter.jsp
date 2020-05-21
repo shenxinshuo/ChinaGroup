@@ -53,26 +53,19 @@
                             <th>截止日期</th>
                             <th>操作 </th>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>运维工程师</td>
-                            <td>本科</td>
-                            <td>10K-15K</td>
-                            <td>2020-05-23</td>
-                            <td>
-                                <a href="../postjob/single-job-page.html">查看详情</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>java高级工程师</td>
-                            <td>研究生</td>
-                            <td>25K+</td>
-                            <td>2020-05-23</td>
-                            <td>
-                                <a href="">查看详情</a>
-                            </td>
-                        </tr>
+                        <s:iterator value="advertises" begin="0">
+                        	<tr>
+	                            <td>${id }</td>
+	                            <td>${postName }</td>
+	                            <td>${educationBackground }</td>
+	                            <td>${lowWages }-${largeWages }</td>
+	                            <td><s:property value="deadline" /></td>
+	                            <td>
+	                                <a href="../postjob/single-job-page.html">查看详情</a>
+	                            </td>
+	                        </tr>
+                        </s:iterator>
+                        
                       </table>
                       <!--分页-->
                       <nav aria-label="Page navigation">
@@ -82,11 +75,13 @@
                               <span aria-hidden="true">&laquo;</span>
                             </a>
                           </li>
-                          <li><a href="#">1</a></li>
-                          <li><a href="#">2</a></li>
-                          <li><a href="#">...</a></li>
-                          <li><a href="#">4</a></li>
-                          <li><a href="#">5</a></li>
+                          <s:url id="business_showBusinessCenter" action="business_showBusinessCenter" namespace="/">
+                          	<s:param name="business.id">${business.id }</s:param>
+                          	<s:param name="currentPage">${currentPage - 1 }</s:param>
+                          </s:url>
+                          <li><a href="${business_showBusinessCenter }"> < </a></li>
+                          <li><a href="#">${currentPage }</a></li>
+                          <li><a href="#"> > </a></li>
                           <li>
                             <a href="#" aria-label="Next">
                               <span aria-hidden="true">&raquo;</span>
@@ -113,6 +108,12 @@
                     &nbsp;
                     <span>${business.telephone }</span>
                     <br>
+                    <div class="btn btn-group">
+                    	<s:url id="business_showUpdate" action="business_showUpdatePage" namespace="/">
+                    		<s:param name="business.id">${business.id }</s:param>
+                    	</s:url>
+                        <div class="btn btn-info"><a href="${business_showUpdate }" style="color: white;">完善信息</a></div>
+                    </div>
                    <div class="btn btn-group">
                         <div class="btn btn-info"><a href="<%=request.getContextPath()%>/postjob/dashboard-post-a-job.jsp" style="color: white;">添加招聘信息</a></div>
                     </div>
