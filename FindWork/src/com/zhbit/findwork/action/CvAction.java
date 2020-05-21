@@ -26,6 +26,7 @@ public class CvAction extends ActionSupport{
 	private String errorMessage;		//显示异常信息
 	ActionContext context = ActionContext.getContext();
 	private List<Cv> list = new ArrayList<Cv>();
+	private String[] want_joy_type;
 	
 	public Cv getCv() {
 		return cv;
@@ -58,6 +59,13 @@ public class CvAction extends ActionSupport{
 	}
 	public void setList(List<Cv> list) {
 		this.list = list;
+	}
+	
+	public String[] getWant_joy_type() {
+		return want_joy_type;
+	}
+	public void setWant_joy_type(String[] want_joy_type) {
+		this.want_joy_type = want_joy_type;
 	}
 	//添加信息验证
 	public void validateAdd(){
@@ -107,6 +115,9 @@ public class CvAction extends ActionSupport{
 	 * 新增简历信息
 	 */
 	public String add(){
+		for (String w:want_joy_type) {
+			cv = cvService.getCvByID(Integer.parseInt(w));
+		}
 		cv = cvService.getCvByID(1);
 		boolean result = cvService.addCv(cv);
 		if (result ) {
@@ -166,6 +177,9 @@ public class CvAction extends ActionSupport{
 	 * 修改简历信息
 	 */
 	public String update(){
+		for (String w:want_joy_type) {
+			cv = cvService.getCvByID(Integer.parseInt(w));
+		}
 		boolean result =  cvService.updateCv(cv);
 		if (result) {
 			//修改成功

@@ -97,9 +97,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	<option value="湖北" >湖北</option>
                 </select>
   				<span id="basic-addon2">期望工作类型:</span>
-		 		<input type="radio" name="cv.want_joy_type" value="${cv.want_joy_type }"/>实习
-		 		<input type="radio" name="cv.want_joy_type" value="${cv.want_joy_type }"/>兼职
-		 		<input type="radio" name="cv.want_joy_type" value="${cv.want_joy_type }"/>全职
+		 		<input type="radio" name="want_joy_type" value="#request.cv.want_joy_type "/>实习
+		 		<input type="radio" name="want_joy_type" value="#request.cv.want_joy_type "/>兼职
+		 		<input type="radio" name="want_joy_type" value="$request.cv.want_joy_type "/>全职
 			</div>
 			<div class="d-inline-block">
 			 	<div class="col-md-6">
