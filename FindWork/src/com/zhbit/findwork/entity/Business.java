@@ -1,6 +1,7 @@
 package com.zhbit.findwork.entity;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 企业Bean类
@@ -25,7 +26,8 @@ public class Business {
 	private String comment;		//
 	private Date create_at;		//
 	private Date update_at;		//
-	private Role role;			//与角色类简历多对一关系
+	private Role role;			//与角色类建立多对一关系
+	private List<Advertise> advertises;//与招聘信息建立一对多关系
 	public int getId() {
 		return id;
 	}
@@ -131,6 +133,12 @@ public class Business {
 	}
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	public List<Advertise> getAdvertises() {
+		return advertises;
+	}
+	public void setAdvertises(List<Advertise> advertises) {
+		this.advertises = advertises;
 	}
 	@Override
 	public String toString() {

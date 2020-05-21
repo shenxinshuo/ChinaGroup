@@ -26,5 +26,11 @@
 		<property name="update_at" column="update_at" />
 		<!-- 配置和角色多对一的关系 -->
 		<many-to-one name="role" class="Role" column="Rid"></many-to-one>
+		<!-- 配置和招聘信息一对多的关系 -->
+		<list name="advertises" table="t_advertise" lazy="false">
+			<key column="Bid" />
+			<list-index column="Aid" />
+			<one-to-many class="Advertise"/>
+		</list>
 	</class>
 </hibernate-mapping>

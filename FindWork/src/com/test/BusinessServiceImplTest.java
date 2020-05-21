@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.zhbit.findwork.entity.Advertise;
 import com.zhbit.findwork.entity.Business;
 import com.zhbit.findwork.entity.Role;
 import com.zhbit.findwork.service.BusinessService;
@@ -130,5 +131,13 @@ public class BusinessServiceImplTest {
 		BusinessService businessService = (BusinessService) context.getBean("businessServiceImpl");
 		int count = businessService.getCountByNameSearch("11");
 		System.out.println(count);
+	}
+	
+	@Test
+	public void testGetAdvertise() {
+		BusinessService businessService = (BusinessService) context.getBean("businessServiceImpl");
+		Business business = businessService.getBusinessByID(7);
+		List<Advertise> advertises = business.getAdvertises();
+		System.out.println(advertises.get(1).getBusinessName());
 	}
 }

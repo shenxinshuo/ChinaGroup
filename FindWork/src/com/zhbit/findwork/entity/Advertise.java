@@ -13,7 +13,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Advertise {
 	private int id;// 职位id
 	private String title;// 招聘标题
-	private String post;// 招聘岗位
+	private String postName;// 招聘岗位
+	private String businessName;//企业名字
 	private String educationBackground;// 学历
 	private int lowWages;// 最低工资
 	private int largeWages;// 最高工资
@@ -25,9 +26,30 @@ public class Advertise {
 	private Date createAt; // 创建时间
 	private Date updateAt; // 修改时间
 	private int check;// 是否审核 0否 1是
+	private String city;//城市
 	private Business business;// 与企业类多对一关系
+	private Post post;			//与岗位多对一关系
 	
 	
+	
+	public String getBusinessName() {
+		return businessName;
+	}
+	public void setBusinessName(String businessName) {
+		this.businessName = businessName;
+	}
+	public Post getPost() {
+		return post;
+	}
+	public void setPost(Post post) {
+		this.post = post;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
 	public int getId() {
 		return id;
 	}
@@ -40,11 +62,12 @@ public class Advertise {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getPost() {
-		return post;
+	
+	public String getPostName() {
+		return postName;
 	}
-	public void setPost(String post) {
-		this.post = post;
+	public void setPostName(String postName) {
+		this.postName = postName;
 	}
 	public String getEducationBackground() {
 		return educationBackground;
