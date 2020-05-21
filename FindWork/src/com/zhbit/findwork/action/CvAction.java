@@ -15,7 +15,9 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.zhbit.findwork.entity.Cv;
+import com.zhbit.findwork.entity.User;
 import com.zhbit.findwork.service.CvService;
+import com.zhbit.findwork.service.UserService;
 
 public class CvAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
@@ -28,6 +30,22 @@ public class CvAction extends ActionSupport{
 	private List<Cv> list = new ArrayList<Cv>();
 	private String[] want_joy_type;
 	
+	private User user;
+	private UserService userService;
+	
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public UserService getUserService() {
+		return userService;
+	}
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
 	public Cv getCv() {
 		return cv;
 	}
@@ -111,18 +129,29 @@ public class CvAction extends ActionSupport{
 			this.addFieldError("want_province", "想去的省份不能为空");
 		}
 	}
+	public String showAdd(){
+		user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
+		/*user=userService.getUserByID(1);*/
+		List<Cv>cvs=cvService.getCvListByUserId(user.getId());
+		if(cvs.size()>=3){
+			errorMessage="简历最多不能超过三份,请删除再添加";
+			return "show";
+		}
+		else{
+			return "add";
+		}			
+	}
 	/**
 	 * 新增简历信息
 	 */
 	public String add(){
-		for (String w:want_joy_type) {
-			cv = cvService.getCvByID(Integer.parseInt(w));
-		}
-		cv = cvService.getCvByID(1);
+		user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
+		/*user=userService.getUserByID(1);*/
+		cv.setUser(userService.getUserByID(user.getId()));
 		boolean result = cvService.addCv(cv);
 		if (result ) {
 			message="添加成功";
-			return "add";
+			return "show";
 		}else {
 			errorMessage="添加不成功";
 			return "input";
@@ -173,18 +202,22 @@ public class CvAction extends ActionSupport{
 				this.addFieldError("want_province", "想去的省份不能为空");
 			}
 		}
+	public String showUpdate(){
+		cv=cvService.getCvByID(cv.getId());
+		return "showUpdate";
+	}
 	/**
 	 * 修改简历信息
 	 */
 	public String update(){
-		for (String w:want_joy_type) {
-			cv = cvService.getCvByID(Integer.parseInt(w));
-		}
+		user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
+		/*user=userService.getUserByID(1);*/
+		cv.setUser(userService.getUserByID(user.getId()));
 		boolean result =  cvService.updateCv(cv);
 		if (result) {
 			//修改成功
 			message = "修改成功";
-			return "update";
+			return "show";
 		}else {
 			return "error";
 		}
@@ -196,16 +229,17 @@ public class CvAction extends ActionSupport{
 	public String delete(){
 		int id = cv.getId();
 		cvService.deleteCvByID(id);	
-		return "delete";
+		return "show";
 		
 	}
 	
 	public String show(){
-		cv = cvService.getCvByID(1);
+		cv = cvService.getCvByID(cv.getId());
+		user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
 		if (cv==null) {
 			return "error";
 		}else {
-			return "show";
+			return "showResume";
 		}
 	}
 	

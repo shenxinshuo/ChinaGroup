@@ -69,4 +69,15 @@ public class CvDaoImpl implements CvDao {
 		return list;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Cv> getCvListByUserId(int userid) {
+		// TODO Auto-generated method stub
+		String hql = "from Cv where Uid=? and delete_flag = 0 ";
+		List<Cv> cvs = (List<Cv>)sessionFactory.getCurrentSession().createQuery(hql)
+				.setParameter(0, userid)
+				.list();
+		return cvs;
+	}
+
 }

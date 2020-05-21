@@ -7,6 +7,7 @@ import com.zhbit.findwork.dao.UserDao;
 import com.zhbit.findwork.entity.Business;
 import com.zhbit.findwork.entity.Collection_Business;
 import com.zhbit.findwork.entity.User;
+import com.zhbit.findwork.service.RoleService;
 import com.zhbit.findwork.service.UserService;
 /**
  * 用户业务接口实现类
@@ -18,7 +19,6 @@ public class UserServiceImpl implements UserService{
 	//注入UserDao
 	private UserDao userDao;
 	private Collection_BusinessDao collection_BusinessDao;
-	
 	/**
 	 * 判断用户名是否存在
 	 * @retrun 如果用户名存在，返回true 否则，返回flase
@@ -158,7 +158,6 @@ public class UserServiceImpl implements UserService{
 		return 	userDao.getUserByNameAndPassword(name, password);
 		
 	}
-
 
 	@Override
 	public List<Business> getBusinessesByPage(int userid, int firstResult, int maxResults) {

@@ -25,5 +25,6 @@
         <!-- 配置action -->
         <bean id="cvAction" class="com.zhbit.findwork.action.CvAction" scope="request">
         	<property name="cvService" ref="cvServiceImpl" />
+        	<property name="userService" ref="userServiceImpl"></property>
         </bean>
 </beans>

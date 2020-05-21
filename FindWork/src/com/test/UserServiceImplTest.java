@@ -12,6 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.zhbit.findwork.dao.RoleDao;
 import com.zhbit.findwork.entity.Business;
 import com.zhbit.findwork.entity.Collection_Business;
+import com.zhbit.findwork.entity.Cv;
 import com.zhbit.findwork.entity.Role;
 import com.zhbit.findwork.entity.User;
 import com.zhbit.findwork.service.BusinessService;
@@ -41,7 +42,7 @@ public class UserServiceImplTest {
 	public void testAddUser() {
 		User user = new User();
 		//user.setName("王德略"); 此用户存在，添加失败，返回false
-		user.setName("小王13");//添加成功
+		user.setName("小王2");//添加成功
 		user.setPassword("123456");
 		user.setAddress("广东XXXXXX");
 		user.setTelephone("1234567895");
@@ -84,16 +85,16 @@ public class UserServiceImplTest {
 	}
 	@Test
 	public void testUpdateUser() {
-		User user= userService.getUserByID(1);
-		user.setName("小王1");
-		user.setPassword("123456");
+		User user= userService.getUserByID(3);
+		user.setName("小王2");
+		user.setPassword("123");
 		boolean fla =userService.updateUser(user);
 		System.out.println(fla);
 	}
 
 	@Test
 	public void testGetUserByID() {
-		User user=	userService.getUserByID(1);
+		User user=	userService.getUserByID(3);
 	   System.out.println(user);
 	}
 	@Test
@@ -101,7 +102,7 @@ public class UserServiceImplTest {
 		User user=	userService.getUserByName("小王");
 	   System.out.println(user);
 	}
-
+	
 	@Test
 	public void testGetAllUser() {
 		List<User> users=userService.getAllUsers();

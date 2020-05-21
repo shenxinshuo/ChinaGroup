@@ -30,6 +30,6 @@
 		<property name="create_at" column="create_at" />
 		<property name="update_at" column="update_at" />
 		<!-- 配置和用户多对一的关系 -->
-		<many-to-one name="user" class="User" column="Uid"  />
+		<many-to-one name="user" class="User" column="Uid"/>
 	</class>
 </hibernate-mapping>

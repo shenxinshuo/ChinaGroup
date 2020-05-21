@@ -15,10 +15,12 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.zhbit.findwork.entity.Cv;
 import com.zhbit.findwork.entity.Post_type;
 import com.zhbit.findwork.entity.Role;
 import com.zhbit.findwork.entity.User;
 import com.zhbit.findwork.entity.UserBirthday;
+import com.zhbit.findwork.service.CvService;
 import com.zhbit.findwork.service.Post_typeService;
 import com.zhbit.findwork.service.RoleService;
 import com.zhbit.findwork.service.UserService;
@@ -36,7 +38,6 @@ public class UserAction extends ActionSupport{
 	private User user;
 	private UserService userService;
 	private Post_typeService post_typeService;
-
 	private String message;				//用于返回信息给页面，提示用户
 	private String errorMessage;		//显示异常信息
 	private String spassword;           //第二次输入的密码
@@ -50,10 +51,30 @@ public class UserAction extends ActionSupport{
 	private String repwd;
 	private String newpwd;
 	private String confirmpwd;
+	//简历
+	private CvService cvService;
+	private List<Cv> cvs;
+	
+	private RoleService roleService;
+	
+	//显示用户的简历
+	public String showCvList(){
+		//假设当前用户是登录用户
+		/*User user =userService.getUserByID(1);*/
+		user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
+		cvs=cvService.getCvListByUserId(user.getId());
+		return "showCvList";
+	}
+	//退出
+	public String logout(){
+		  
+		  ActionContext ac = ActionContext.getContext();
+		  ac.getSession().put("LOGINED_USER",null);
+		  
+		  return "logout";
+		  
+		 }
 
-	
-	
-	
 	/**
 	 * 个人中心 显示我的信息
 	 * @return
@@ -61,8 +82,6 @@ public class UserAction extends ActionSupport{
 	public String showMyInformation(){
 		//获取当前用户
 		user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
-/*		Rid=user.getRole().getId();
-		System.out.println(Rid+"dfaaaaaaaaaaaaaaaaaaaaaaaaaaaa");*/
 		if(user==null)
 			return ERROR;
 		else{
@@ -100,8 +119,14 @@ public class UserAction extends ActionSupport{
 		 * @return
 		 */
 		public String saveMyInformation(){	
-			boolean flag= userService.updateUser(user);		
+			Role role= user.getRole();
+			user.setRole(role);
+			boolean flag= userService.updateUser(user);	
+			
 			if(flag){
+				user=userService.getUserByID(user.getId());
+				ActionContext ac = ActionContext.getContext();
+				  ac.getSession().put("LOGINED_USER", user);
 				message="保存成功";
 				return "saveMyInformation";
 			}	
@@ -177,6 +202,8 @@ public class UserAction extends ActionSupport{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		Role role= roleService.getRoleByID(1);//求职者
+		user.setRole(role);
 		userService.addUser(user);
 		return "register";
 		
@@ -206,8 +233,13 @@ public class UserAction extends ActionSupport{
 	 */	
 	public String login(){
 		
+		User u = userService.getUserByNameAndPassword(user.getName(), user.getPassword());
+		
 		ActionContext ac = ActionContext.getContext();
-		ac.getSession().put("LOGINED_USER", user);
+		  ac.getSession().put("LOGINED_USER", u);
+		
+		System.out.println(ActionContext.getContext()
+		.getSession().get("LOGINED_USER"));
 		pts = post_typeService.getAllPost_type();
 		return "login";
 		
@@ -288,7 +320,7 @@ public class UserAction extends ActionSupport{
 		//修改密码
 		public String saveSecurity(){
 			//假设这个是当前登录用户
-			User olduser=(User)ActionContext.getContext().getSession().get("LOGINED_USER");;
+			User olduser=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
 			User user = userService.getUserByNameAndPassword(olduser.getName(), repwd);
 			//如果能通过旧密码查询到当前用户，说明密码输入正确
 			if(user!=null){
@@ -319,6 +351,8 @@ public class UserAction extends ActionSupport{
 			System.out.println("数据流读取头像");
 			//获取当前用户
 			user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
+			System.out.println(user);
+			System.out.println(user.getId());
 			String path=user.getImagepath();
 			System.out.println(path);
 			try{
@@ -333,7 +367,24 @@ public class UserAction extends ActionSupport{
 			
 			
 		}
+    
 
+		public CvService getCvService() {
+			return cvService;
+		}
+
+		public void setCvService(CvService cvService) {
+			this.cvService = cvService;
+		}
+
+		public List<Cv> getCvs() {
+			return cvs;
+		}
+
+		public void setCvs(List<Cv> cvs) {
+			this.cvs = cvs;
+		}
+		
 	public User getUser() {
 		return user;
 	}
@@ -419,4 +470,12 @@ public class UserAction extends ActionSupport{
 	public void setConfirmpwd(String confirmpwd) {
 		this.confirmpwd = confirmpwd;
 	}
+	public RoleService getRoleService() {
+		return roleService;
+	}
+
+	public void setRoleService(RoleService roleService) {
+		this.roleService = roleService;
+	}
+
 }

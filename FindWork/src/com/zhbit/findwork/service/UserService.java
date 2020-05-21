@@ -13,6 +13,7 @@ import com.zhbit.findwork.entity.User;
  * @date 2020年5月17日
  */
 public interface UserService {
+	
 	/**注册使用接口
 	 * 判断用户名是否已经存在
 	 * @param name

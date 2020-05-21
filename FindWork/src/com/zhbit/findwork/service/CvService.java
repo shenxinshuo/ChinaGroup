@@ -12,6 +12,11 @@ import com.zhbit.findwork.entity.Cv;
  */
 public interface CvService {
 	/**
+	 * 根据用户id查找用户的简历
+	 * @param userid
+	 */
+	public List<Cv> getCvListByUserId(int userid);
+	/**
 	 * 新增简历信息
 	 * @param cv
 	 */
