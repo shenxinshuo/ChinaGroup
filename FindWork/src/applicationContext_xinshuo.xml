@@ -34,6 +34,7 @@
 		<!-- 配置action -->
 		<bean id="businessAction" class="com.zhbit.findwork.action.BusinessAction" scope="request">
 			<property name="businessService" ref="businessServiceImpl"></property>
+			<property name="advertiseService" ref="advertiseServiceImpl"></property>
 		</bean>
 		<bean id="roleAction" class="com.zhbit.findwork.action.RoleAction" scope="request">
 			<property name="roleService" ref="roleServiceImpl"/>

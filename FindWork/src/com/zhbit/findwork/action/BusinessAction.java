@@ -13,6 +13,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.zhbit.findwork.entity.Advertise;
 import com.zhbit.findwork.entity.Business;
+import com.zhbit.findwork.service.AdvertiseService;
 import com.zhbit.findwork.service.BusinessService;
 
 public class BusinessAction extends ActionSupport{
@@ -25,6 +26,7 @@ public class BusinessAction extends ActionSupport{
 	private Business business;
 	private List<Business> businesses;
 	private BusinessService businessService;
+	private AdvertiseService advertiseService;
 	private String message;				//用于返回信息给页面，提示用户
 	private String errorMessage;		//显示异常信息
 	private File license;				//营业执照文件
@@ -43,7 +45,9 @@ public class BusinessAction extends ActionSupport{
 	public void setBusinessService(BusinessService businessService) {
 		this.businessService = businessService;
 	}
-	
+	public void setAdvertiseService(AdvertiseService advertiseService) {
+		this.advertiseService = advertiseService;
+	}
 	
 	public List<Advertise> getAdvertises() {
 		return advertises;
@@ -212,8 +216,13 @@ public class BusinessAction extends ActionSupport{
 	public String showBusinessCenter() {
 		business = businessService.getBusinessByID(business.getId());
 		List<Advertise> temp = business.getAdvertises();
+		int count = advertiseService.getAdvertiseCountByBid(business.getId(), 0) + advertiseService.getAdvertiseCountByBid(business.getId(), 1);
+		this.getPagingParameter(count);
 		if (currentPage < 1) currentPage = 1;
+		if (currentPage > this.lastPage) currentPage = lastPage;
 		advertises = temp.subList((currentPage-1)*pageSize + 1, pageSize > temp.size() ? temp.size() : pageSize);
+		ActionContext.getContext().put("count", count);
+		
 		return "businessCenter";
 	}
 	
