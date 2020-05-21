@@ -80,7 +80,8 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="backHomeAction.action">
+					<s:url id="backHome" action="backHomeAction" namespace="/" ></s:url>
+					<a href="${backHome }">
 						<img id="web_logo" src="<%=request.getContextPath() %>/resource/image/logo1.jpg" />
 					</a>
 		
@@ -91,7 +92,7 @@
 					
 					<ul class="nav navbar-nav">
 					
-						<li><a href="backHomeAction.action">首页</a></li>
+						<li><a href="${backHome }">首页</a></li>
 						<li><a href="#">|</a></li>
 						<li><a href="#">岗位</a></li>
 						<li><a href="#">|</a></li>
@@ -106,19 +107,57 @@
 					<ul class="nav navbar-nav navbar-right">
 						<img class="img-circle" id="user_head"  />
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">用户名：Colten
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								
+								<%if(request.getSession().getAttribute("LOGINED_USER") != null){%>
+								用户名：<s:property value='#session.LOGINED_USER.name'/>
+								<%} else%>
+								
+								<%if(request.getSession().getAttribute("LOGINED_BUSI") != null){%>
+								企业：<s:property value='#session.LOGINED_BUSI.name'/>
+								<%} else%>
+								
+								<%if(request.getSession().getAttribute("LOGINED_ADMIN") != null){%>
+								管理员：<s:property value='#session.LOGINED_ADMIN.account'/>
+								<%} %>
 								<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=request.getContextPath() %>/user/userCenter.jsp">个人中心</a></li>
-								<li><a href="<%=request.getContextPath() %>/user/collectionCenter.jsp">收藏中心</a></li>
-								<s:url id="business_showBusinessCenter" action="business_showBusinessCenter" namespace="/">
-									<s:param name="business.id">7</s:param>
-									<s:param name="currentPage">1</s:param>
-								</s:url>
-								<li><a href="${business_showBusinessCenter }">企业中心</a></li>
-								<li><a href="admin_showAdminCenter.action">管理员中心</a></li>
+								
+								
+								<%
+								if(request.getSession().getAttribute("LOGINED_USER") != null){
+								%>
+									<li><a href="<%=request.getContextPath() %>/user/userCenter.jsp">个人中心</a></li>
+									<li><a href="<%=request.getContextPath() %>/user/collectionCenter.jsp">收藏中心</a></li>					
+								<% }%>
+								
+								<%
+								if(request.getSession().getAttribute("LOGINED_BUSI") != null){
+								%>
+									<s:url id="business_showBusinessCenter" action="business_showBusinessCenter" namespace="/">
+										<s:param name="business.id">7</s:param>
+										<s:param name="currentPage">1</s:param>
+									</s:url>
+									<li><a href="${business_showBusinessCenter }">企业中心</a></li>
+								<% }%>
+								
+								<%
+								if(request.getSession().getAttribute("LOGINED_ADMIN") != null){
+								%>
+									<li><a href="admin_showAdminCenter.action">管理员中心</a></li>
+								<% }%>
+
 								<li role="separator" class="divider"></li>
-								<li><a href="#">退出</a></li>
+								<%if(request.getSession().getAttribute("LOGINED_ADMIN") != null){ %>
+									<s:url id="logout" action="admin_logout" namespace="/"/>				
+								<%}%>
+								<%if(request.getSession().getAttribute("LOGINED_BUSI") != null){ %>
+									<s:url id="logout" action="business_logout" namespace="/"/>
+								<%} %>
+								<%if(request.getSession().getAttribute("LOGINED_USER") != null){ %>
+									<s:url id="logout" action="user_logout" namespace="/"/>
+								<%} %>
+								<li><a href="${logout }">退出</a></li>	
 							</ul>
 						</li>
 					</ul>
