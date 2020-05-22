@@ -67,13 +67,19 @@ public class AdvertiseServiceImpl implements AdvertiseService {
 	@Override
 	public int getUnFinAdvertiseCount() {
 		
-		return advertiseDao.getUnFinAdvertise().size();
+		return advertiseDao.getUnFinAdvertiseCount();
 	}
 
 	@Override
 	public int getAdvertiseCountByBid(int bid,int check) {
 		
-		return advertiseDao.getAdvertiseByBid(bid,check).size();
+		return advertiseDao.getAdvertiseCountByBid(bid,check);
+	}
+
+	@Override
+	public int getAdvertiseCountByBid(int bid) {
+		
+		return advertiseDao.getAdvertiseCountByBid1(bid);
 	}
 	
 }
