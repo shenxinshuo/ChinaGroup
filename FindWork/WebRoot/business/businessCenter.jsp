@@ -53,7 +53,10 @@
                             <th>截止日期</th>
                             <th>操作 </th>
                         </tr>
-                        <s:if test="advertises == null advertise.size() == 0">
+                        <s:if test="advertises == null || advertises.size() == 0">
+                        	<tr>
+                        	 	<td colspan="6">您还为发布招聘信息，点击右方添加招聘信息</td>
+                        	</tr>
                         </s:if>
                         <s:else>
                         <s:iterator value="advertises">

@@ -175,7 +175,7 @@ String path = request.getContextPath();
 								<li>
 									
 									<span>工作类型：
-										<c:choose> 
+										<%-- <c:choose> 
 										<c:when test="${as.wantJoyType==0}">    <!--如果 --> 
 											全职
 										 </c:when>
@@ -185,7 +185,8 @@ String path = request.getContextPath();
 										 <c:when test="${as.wantJoyType==2}">    <!--如果 --> 
 											兼职
 										 </c:when>
-										 </c:choose>
+										 </c:choose> --%>
+										 ${as.wantJoyType }
 									</span>
 									<h5></h5>
 								</li>

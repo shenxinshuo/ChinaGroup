@@ -135,7 +135,7 @@ String path = request.getContextPath();
     <jsp:include page="/common/header.jsp"/>
 		
 		<!-- 返回企业中心 -->
-		<a href="<%=path %>/business/businessCenter.jsp"><span class="glyphicon glyphicon-chevron-left"></span>返回企业中心</a>
+		<a href="javascript:history.go(-1)"><span class="glyphicon glyphicon-chevron-left"></span>返回企业中心</a>
 			<!-- Row -->
 			<div class="row">
 

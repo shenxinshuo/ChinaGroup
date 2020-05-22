@@ -30,7 +30,8 @@
 					<div
 						style=" width: 95%; height: 30%; background-color: #dae9f0;margin: auto;margin-top: 4px;">
 						<span style="color:#169bd5;font-size: 20px;"><b><a
-								href="#"><s:property value="#business.name" /></a></b></span>
+								href="/FindWork/business_showBusinessInfo.action?business.id=${business.id }"
+								target="_parent"><s:property value="#business.name" /></a></b></span>
 								<s:url id="delete"
 						action="/FindWork/collection_deleteBusiness.action?business.id=%{#business.id}&&page.current=%{#request.page.current}"
 						namespace="/" /> 

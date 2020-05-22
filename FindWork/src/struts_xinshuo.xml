@@ -14,6 +14,7 @@
 			<result name="regBusiness">/business/regBusiness.jsp</result>
 			<result name="businessCenter">/business/businessCenter.jsp</result>
 			<result name="input">/business/regBusiness.jsp</result>
+			<result name="businessLogin">/business/businessLogin.jsp</result>
 			<interceptor-ref name="fileUpload">
 				<param name="allowedTypes">image/jpg,image/jpeg</param>
 				<param name="maximumSize">1048576</param>

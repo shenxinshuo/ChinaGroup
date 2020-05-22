@@ -14,7 +14,8 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<script type="text/javascript" src="resource/static/jquery/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="resource/static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
   </head>
   
   <body>
@@ -122,7 +123,7 @@
 	                    
 	                    <div class="form-group col-md-11">
 	                        <div class="btn-group" style="float: right;">
-	                            <button type="button" class="btn btn-success">查看该企业发布的招聘信息</button>
+	                            <a type="button" class="btn btn-success" href="<%=request.getContextPath()%>/toFinAdvertise.action">查看该企业发布的招聘信息</a>
 	                            <!-- <button type="reset" class="btn btn-default">重置</button> -->
 	                        </div>
 	                    </div>

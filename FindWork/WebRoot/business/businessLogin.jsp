@@ -74,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="register">
 					<label>没有账号？</label>
-					<a href="/business/regBusiness.jsp">点击注册</a>
+					<a href="<%=request.getContextPath() %>/business/regBusiness.jsp">点击注册</a>
 				</div>
 			</div>
 		</div>

@@ -150,7 +150,7 @@ public class BusinessAction extends ActionSupport{
 			if (business.getPassword() == null || "".equals(business.getPassword())) {
 				addFieldError("business.password", "登录密码不能为空");
 			} else {
-				if (business.getPassword().length() < 8 || business.getPassword().length() > 16) {
+				if (business.getPassword().length() < 6 || business.getPassword().length() > 16) {
 					addFieldError("business.password", "密码长度必须在6到18位之间");
 				}
 			}
@@ -201,7 +201,7 @@ public class BusinessAction extends ActionSupport{
 				e.printStackTrace();
 			}
 			message = "注册成功";
-			return "businessCenter";
+			return "businessLogin";
 		} else if (result == 2) {
 			errorMessage = "登录密码和确认密码不一致";
 			return "regBusiness";
@@ -215,12 +215,13 @@ public class BusinessAction extends ActionSupport{
 	 */
 	public String showBusinessCenter() {
 		business = businessService.getBusinessByID(business.getId());
-		List<Advertise> temp = business.getAdvertises();
+		//List<Advertise> temp = business.getAdvertises();
 		int count = advertiseService.getAdvertiseCountByBid(business.getId(), 0) + advertiseService.getAdvertiseCountByBid(business.getId(), 1);
 		this.getPagingParameter(count);
 		if (currentPage < 1) currentPage = 1;
 		if (currentPage > this.lastPage) currentPage = lastPage;
-		advertises = temp.subList((currentPage-1)*pageSize + 1, pageSize > temp.size() ? temp.size() : pageSize);
+		//advertises = temp.subList((currentPage-1)*pageSize + 1, pageSize > temp.size() ? temp.size() : pageSize);
+		advertises = advertiseService.getAdvertiseByBid(business.getId(), firstResult, pageSize);
 		ActionContext.getContext().put("count", count);
 		
 		return "businessCenter";
@@ -269,7 +270,8 @@ public class BusinessAction extends ActionSupport{
 			//修改成功
 			message = "修改成功";
 			Business business = businessService.getBusinessByID(this.business.getId());
-			advertises = business.getAdvertises().subList(1, pageSize > business.getAdvertises().size() ? business.getAdvertises().size() : pageSize);
+			//advertises = business.getAdvertises().subList(1, pageSize > business.getAdvertises().size() ? business.getAdvertises().size() : pageSize);
+			advertises = advertiseService.getAdvertiseByBid(business.getId(), firstResult, pageSize);
 			return "businessCenter";
 		} else if (result == 1) {
 			//名字被占用

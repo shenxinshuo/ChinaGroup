@@ -25,7 +25,7 @@
         <a href="" class="btn btn-default ${param.currentPage == 'update' ? 'btn-primary' : '' }">修改角色</a>
         <s:url id="role_showAll" action="role_getAllRoles" namespace="/" />
         <a href="${role_showAll }" class="btn btn-default  ${param.currentPage == 'show' ? 'btn-primary' : '' }">查看角色</a>
-        <a href="../管理员/审核/CheckReInfoList.html" class="btn btn-default">返回管理员中心</a>
+        <a href="admin_showAdminCenter.action" class="btn btn-default">返回管理员中心</a>
         
     </div>
 

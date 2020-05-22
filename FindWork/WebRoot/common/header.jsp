@@ -1,3 +1,4 @@
+<%@page import="com.zhbit.findwork.entity.Business"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -108,7 +109,7 @@
 					if(request.getSession().getAttribute("LOGINED_TOURIST")==null){
 					%>
 					<ul class="nav navbar-nav navbar-right">
-						<img class="img-circle" id="user_head"  />
+						<img class="img-circle" src="/FindWork/myHeader_readHeader.action" id="user_head"  />
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 								
@@ -138,7 +139,7 @@
 								if(request.getSession().getAttribute("LOGINED_BUSI") != null){
 								%>
 									<s:url id="business_showBusinessCenter" action="business_showBusinessCenter" namespace="/">
-										<s:param name="business.id">7</s:param>
+										<s:param name="business.id"><%=((Business)session.getAttribute("LOGINED_BUSI")).getId() %></s:param>
 										<s:param name="currentPage">1</s:param>
 									</s:url>
 									<li><a href="${business_showBusinessCenter }">企业中心</a></li>

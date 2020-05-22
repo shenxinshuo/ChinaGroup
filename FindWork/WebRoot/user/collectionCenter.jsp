@@ -23,7 +23,8 @@
 		<div class="wdlC2">	
 			<div style="background-color:#337ab7; height: 60px;">
 			<p class="glyphicon glyphicon-th" style="width: 150px; margin: 10px 0px 0px 10px; font-size: 20px;color: white;">收藏中心</p>			
-			<a href="/FindWork/homePage/home.jsp" style="float: right;margin: 12px 20px ;"><p style="font-size: 20px;color: white;" class="glyphicon glyphicon-share-alt">返回</p></a>				
+			<s:url id="backHome" action="backHomeAction" namespace="/" ></s:url>
+			<a href="${backHome }" style="float: right;margin: 12px 20px ;"><p style="font-size: 20px;color: white;" class="glyphicon glyphicon-share-alt">返回</p></a>				
 			</div>
 			<div>
 			 <s:url id="showbusiness" action="/FindWork/collection_showBusiness.action? page.current=1" namespace="/" />

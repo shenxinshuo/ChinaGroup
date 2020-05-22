@@ -51,7 +51,7 @@ String path = request.getContextPath();
 	================================================== -->
 
 	<!-- 返回企业中心 -->
-	<a href="<%=path %>/business/businessCenter.jsp"><span class="glyphicon glyphicon-chevron-left"></span>返回企业中心</a>
+	<a href="FindWork/business_showBusinessCenter.action?business.id=7&currentPage=1"><span class="glyphicon glyphicon-chevron-left"></span>返回企业中心</a>
 	<div class="dashboard-content-container" data-simplebar>
 		<div class="dashboard-content-inner" >
 			
