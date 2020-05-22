@@ -16,7 +16,7 @@
 	src="../resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="../resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-<link href="../css/delue/wangdelue.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath() %>/css/delue/wangdelue.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>

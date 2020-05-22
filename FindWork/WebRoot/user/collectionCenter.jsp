@@ -11,7 +11,7 @@
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<link href="../css/delue/wangdelue.css" rel="stylesheet" type="text/css" />
+	<link href="<%=request.getContextPath() %>/css/delue/wangdelue.css" rel="stylesheet" type="text/css" />
   </head>
    
   <body> 
@@ -43,8 +43,7 @@
 		
 	   <!-- 引入底部 -->
     <jsp:include page="/common/footer.jsp"/>	
-        <script src="<%=request.getContextPath() %>/resource/static/jquery/jquery.min.js"></script>
-    <script src="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script> </body>
-   
+      <script src="<%=request.getContextPath() %>/resource/static/jquery/jquery.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script> 
   </body>
 </html>
