@@ -62,9 +62,9 @@
             </div>
 			<div class="a2">
 				<span class="input-group-addon1">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span>
-				<input type="text" class="form-control2" name="cv.name" > 
+				<s:textfield name="cv.name" class="form-control2" /> 
 				<span id="basic-addon2">期望最低工资：</span>
-				<input type="text" class="form-control2" name="cv.want_low_wages" >
+				<s:textfield name="cv.want_low_wages" class="form-control2" />
 			</div>
 			<div class="d-inline-block">
                 <div class="col-md-6">
@@ -76,9 +76,9 @@
             </div>
 			<div class="a3">
 				<span class="input-group-addon1">联系方式：</span> 
-				<input type="text" class="form-control2" name="cv.telephone" > 
+				<s:textfield name="cv.telephone" class="form-control2" /> 
 				<span id="basic-addon2">期望最高工资：</span>
-				<input type="text" class="form-control2" name="cv.want_large_wages" >
+				<s:textfield name="cv.want_large_wages" class="form-control2" />
 			</div>
 			<div class="d-inline-block">
                 <div class="col-md-6">
@@ -96,10 +96,8 @@
                 	<option value="江西" >江西</option>
                 	<option value="湖北" >湖北</option>
                 </select>
-				<span id="basic-addon2">期望工作类型:</span>
-				<input type="radio" name="cv.want_joy_type" value="实习" />实习 
-				<input type="radio" name="cv.want_joy_type" value="兼职" />兼职 
-				<input type="radio" name="cv.want_joy_type" value="全职" />全职
+				<span id="basic-addon3">期望工作类型:</span>
+				<s:radio list="{'实习','兼职','全职'}" name="cv.want_joy_type"></s:radio>
 			</div>
 			<div class="d-inline-block">
 			 	<div class="col-md-6">
@@ -118,7 +116,7 @@
                 	<option value="武汉" >武汉</option>
                 	<option value="南昌" >南昌</option>
                 </select>
-				<span id="basic-addon2">想&nbsp;去&nbsp;的&nbsp;省份：</span>
+				<span id="basic-addon3">想&nbsp;去&nbsp;的&nbsp;省份：</span>
 				<!-- <input type="text" class="form-control2" name="cv.want_province" > -->
 				 <select name="cv.want_province"  class="form-control2">
                 	<option value="广东">广东</option>
@@ -136,9 +134,8 @@
             </div>
 			<div class="a3">
 				<span class="input-group-addon1">政治面貌：</span> 
-				<input type="text" class="form-control2" name="cv.politics_status" > 
+				<s:textfield name="cv.politics_status" class="form-control2" /> 
 				<span id="basic-addon2">想&nbsp;去&nbsp;的&nbsp;城市：</span>
-				<!-- <input type="text" class="form-control2" name="cv.want_city" > -->
 				<select name="cv.want_city"  class="form-control2">
                 	<option value="珠海">珠海</option>
                 	<option value="深圳" >深圳</option>
@@ -156,27 +153,27 @@
             </div>
 			<div class="a3">
 				<span class="input-group-addon1">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历：</span>
-				<input type="text" class="form-control2" name="cv.education_background"> 
+				<s:textfield name="cv.education_background" class="form-control2" />
 				<span id="basic-addon2">求&nbsp;职&nbsp;&nbsp;意&nbsp;向&nbsp;&nbsp;&nbsp;：</span>
-				<input type="text" class="form-control2" name="cv.want_post" >
+				<s:textfield name="cv.want_post" class="form-control2" />
 			</div>
 			<div class="a4">
 				<span class="label label-default1">工作经历</span>
 			</div>
 			<div class="a5">
-				<textarea  class="form-control1" name="cv.experience"  ></textarea>
+				<textarea  class="form-control1" name="cv.experience"  >${cv.experience}</textarea>
 			</div>
 			<div class="a4">
 				<span class="label label-default1">特长、技能</span>
 			</div>
 			<div class="a5">
-				<textarea class="form-control1" name="cv.skill" ></textarea>
+				<textarea class="form-control1" name="cv.skill" >${cv.skill}</textarea>
 			</div>
 			<div class="a4">
 				<span class="label label-default1">自我介绍</span>
 			</div>
 			<div class="a5">
-				<textarea  class="form-control1" name="cv.self" ></textarea>
+				<textarea  class="form-control1" name="cv.self" >${cv.self}</textarea>
 			</div>
 			<div class="a6">
 				<button type="submit" class="submit">保存</button>

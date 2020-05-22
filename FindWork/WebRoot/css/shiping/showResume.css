@@ -37,10 +37,13 @@
 .input-group-addon1{
 	margin-left: 60px;
 }
+.input-group-addon2{
+	margin-left: 60px;
+}
 #basic-addon2{
 	margin-left: 230px;
-	width: 50px;
 }
+
 .a2{
 	margin-top: 20px;
 }
@@ -58,15 +61,7 @@
 	background-color: dodgerblue;
 	margin-left: 40px;
 }
-.form-control1{
-	margin-top: 1px;
-	width: 800px;
-	height: 200px;
-}
-.form-control{
-	width: 50px;
-	margin-top: 8px;
-}
+
 .a5{
 	margin-left: 40px;
 }
@@ -96,7 +91,7 @@
 	margin-top: 50px;
 }
 .form-control2{
-	width: 50px;
+	width: 120px;
 	
 	
 }
