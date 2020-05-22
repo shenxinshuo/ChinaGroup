@@ -20,7 +20,7 @@
 </head>
 
 <body>
-<s:debug></s:debug>
+
 	<div style="height: 500px;text-align: center;">	
 		<font color="green">${message}</font><br><br>
 		<img src="/FindWork/myHeader_readHeader.action" style="width: 100px;height: 100px;margin-top: 40px;"/>	

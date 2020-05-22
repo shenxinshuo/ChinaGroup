@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="/struts-tags"  prefix="s"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -32,8 +32,14 @@
 	  <font>确认：</font><input type="password" name="confirmpwd" value="" /><br><br>
 	   <button type="submit" value="" style="width: 90px;height: 30px;background-color:#169bd5;border: 0px;"><p style="color: white;margin-top: 5px;">确认修改</p></button>
 	  <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="80%" color=#987cb9 SIZE=3>		  
-	  </form>
-		<a href="#"><font>注销此账号</font></a>
+	  </form><br><br>
+	  <form action="/FindWork/account_delete.action" method="post">
+	  	 <s:if test="#request.repwd2!=null">
+	  	     <font color="red">${deleteMessage}</font><br>
+	  	 	 <font>密码：</font><input type="password" name="repwd2" value="" /><br><br>
+	  	 </s:if>  	
+		 <button type="submit" value="" style="width: 90px;height: 25px;background-color:#e1e6f6;border: 0px;"><p style="color: white;margin-top: 2px;">点击注销</p></button>
+		</form>
   </div>
 </body>
 </html>

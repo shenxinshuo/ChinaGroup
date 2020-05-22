@@ -21,7 +21,7 @@
   <div class="wdld11">
 		<div class="wdld12">
 			<p class="glyphicon glyphicon-th" style="width: 150px;margin: 10px 0px 0px 10px; font-size: 20px;color: white;">个人中心</p>
-			<a href="#" style="float: right;margin: 12px 20px ;"><p style="font-size: 20px;color: white;" class="glyphicon glyphicon-share-alt">返回</p></a>
+			<a href="/FindWork/homePage/home.jsp" style="float: right;margin: 12px 20px ;"><p style="font-size: 20px;color: white;" class="glyphicon glyphicon-share-alt">返回</p></a>
 			</div>			
 		<div class="wdld13" style="margin-left: 10px;">
 			  <ul class="nav nav-pills nav-stacked">
@@ -41,7 +41,7 @@
 	</div>	
 	   <!-- 引入底部 -->
     <jsp:include page="/common/footer.jsp"/>	
-   
-  </body>
+       <script src="<%=request.getContextPath() %>/resource/static/jquery/jquery.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script> </body>
 </html>
 
