@@ -52,4 +52,11 @@ public interface AdvertiseDao {
 	
 	
 	public List<Advertise> getAdvertiseByBid(int bid,int check);
+	
+	
+	public int getAdvertiseCountByBid1(int bid);
+	
+	public int getAdvertiseCountByBid(int bid, int check);
+	
+	public int getUnFinAdvertiseCount();
 }

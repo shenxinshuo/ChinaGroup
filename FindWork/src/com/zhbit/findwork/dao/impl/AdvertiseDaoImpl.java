@@ -80,4 +80,34 @@ public class AdvertiseDaoImpl implements AdvertiseDao {
 		return advertises;
 	}
 
+	@Override
+	public int getAdvertiseCountByBid1(int bid) {
+		String hql = "select count(*) from Advertise where delete_flag = 0 and business.id= :bid";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("bid", bid);
+		Object  o =  query.iterate().next();
+		String so = o.toString();
+		return Integer.valueOf(so);
+	}
+
+	@Override
+	public int getAdvertiseCountByBid(int bid, int check) {
+		String hql = "select count(*)  from Advertise where delete_flag = 0 and business.id= :bid and check = :check order by id";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("bid", bid);
+		query.setParameter("check", check);
+		Object  o =  query.iterate().next();
+		String so = o.toString();
+		return Integer.valueOf(so);
+	}
+
+	@Override
+	public int getUnFinAdvertiseCount() {
+		String hql = "select count(*) from Advertise where  check = 0 and deleteFlag = 0 order by id";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		Object  o =  query.iterate().next();
+		String so = o.toString();
+		return Integer.valueOf(so);
+	}
+
 }
