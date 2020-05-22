@@ -81,5 +81,11 @@ public class AdvertiseServiceImpl implements AdvertiseService {
 		
 		return advertiseDao.getAdvertiseCountByBid1(bid);
 	}
+
+	@Override
+	public List<Advertise> getAdvertiseByBid(int bid) {
+		
+		return advertiseDao.getAdvertiseByBid(bid) ;
+	}
 	
 }

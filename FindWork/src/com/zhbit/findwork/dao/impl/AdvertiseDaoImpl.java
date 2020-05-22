@@ -110,4 +110,13 @@ public class AdvertiseDaoImpl implements AdvertiseDao {
 		return Integer.valueOf(so);
 	}
 
+	@Override
+	public List<Advertise> getAdvertiseByBid(int bid) {
+		String hql = "from Advertise where delete_flag = 0 and business.id= :bid  order by id";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("bid", bid);
+		List<Advertise> advertises = query.list();
+		return advertises;
+	}
+
 }

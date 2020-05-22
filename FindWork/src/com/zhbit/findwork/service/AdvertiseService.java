@@ -87,4 +87,11 @@ public interface AdvertiseService {
 	 * @param advertise
 	 */
 	public int getAdvertiseCountByBid(int bid);
+	
+	/**
+	 * 根据企业id获取职位信息
+	 * 
+	 * @param advertise
+	 */
+	public List<Advertise> getAdvertiseByBid(int bid);
 }
