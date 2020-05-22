@@ -48,7 +48,10 @@ public class UserAction extends ActionSupport{
 	private String HeaderFileName;//文件名
 	private String HeaderContentType;//文件类型
 
-	private String repwd;
+	private String repwd;//修改密码
+	private String repwd2;//注销密码
+	private String deleteMessage;//注销提示
+	
 	private String newpwd;
 	private String confirmpwd;
 	//简历
@@ -56,6 +59,34 @@ public class UserAction extends ActionSupport{
 	private List<Cv> cvs;
 	
 	private RoleService roleService;
+	
+	
+
+	/**
+	 * 个人中心 注销用户
+	 * @return
+	 */
+	public String delete(){
+		user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
+		if(repwd2==null){
+			deleteMessage="请再次确认注销，确认请输入密码";
+			repwd2="";
+			return "showSecurity";//返回注销页面
+		}
+		if(repwd2.equals("")){
+			deleteMessage="密码不能为空";
+			return "showSecurity";
+		}
+		if(userService.getUserByNameAndPassword(user.getName(), repwd2)==null){
+			deleteMessage="密码错误";
+			return "showSecurity";
+		}
+		else{
+			userService.deleteUserByID(user.getId());
+			return "delete";
+		}
+		
+	}
 	
 	//显示用户的简历
 	public String showCvList(){
@@ -477,5 +508,19 @@ public class UserAction extends ActionSupport{
 	public void setRoleService(RoleService roleService) {
 		this.roleService = roleService;
 	}
+	
+	public String getRepwd2() {
+		return repwd2;
+	}
+	public String getDeleteMessage() {
+		return deleteMessage;
+	}
 
+	public void setDeleteMessage(String deleteMessage) {
+		this.deleteMessage = deleteMessage;
+	}
+
+	public void setRepwd2(String repwd2) {
+		this.repwd2 = repwd2;
+	}
 }

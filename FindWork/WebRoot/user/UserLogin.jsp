@@ -21,7 +21,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
 	<script type="text/javascript" src="resource/static/jquery/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="resource/static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-
+	<script language="JavaScript"> 
+	if (window.top != window.self) {
+  	top.location = "/FindWork/user/UserLogin.jsp";
+	}
+</script>
   </head>
   
   <body>

@@ -105,7 +105,7 @@
 					</ul>
 		
 					<ul class="nav navbar-nav navbar-right">
-						<img class="img-circle" id="user_head"  />
+						<img class="img-circle" id="user_head" src="/FindWork/myHeader_readHeader.action" />
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 								
