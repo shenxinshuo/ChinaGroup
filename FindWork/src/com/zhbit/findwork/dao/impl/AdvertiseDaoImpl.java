@@ -111,10 +111,11 @@ public class AdvertiseDaoImpl implements AdvertiseDao {
 	}
 
 	@Override
-	public List<Advertise> getAdvertiseByBid(int bid) {
+	public List<Advertise> getAdvertiseByBid(int bid,int firstResult,int maxResults) {
 		String hql = "from Advertise where delete_flag = 0 and business.id= :bid  order by id";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setParameter("bid", bid);
+		query.setFirstResult(firstResult)
+		.setMaxResults(maxResults).setParameter("bid", bid);
 		List<Advertise> advertises = query.list();
 		return advertises;
 	}

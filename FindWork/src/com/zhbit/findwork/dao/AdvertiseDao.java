@@ -61,5 +61,5 @@ public interface AdvertiseDao {
 	public int getUnFinAdvertiseCount();
 	
 	
-	public List<Advertise> getAdvertiseByBid(int bid);
+	public List<Advertise> getAdvertiseByBid(int bid,int firstResult,int maxResults);
 }

@@ -93,5 +93,5 @@ public interface AdvertiseService {
 	 * 
 	 * @param advertise
 	 */
-	public List<Advertise> getAdvertiseByBid(int bid);
+	public List<Advertise> getAdvertiseByBid(int bid,int firstResult, int maxResults);
 }
