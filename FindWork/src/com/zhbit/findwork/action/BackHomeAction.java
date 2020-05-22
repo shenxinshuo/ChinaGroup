@@ -21,6 +21,7 @@ public class BackHomeAction extends ActionSupport{
 	
 	public String noLogin(){
 		
+		pts = post_typeService.getAllPost_type();
 		ActionContext ac = ActionContext.getContext();
 		ac.getSession().put("LOGINED_TOURIST", 1);
 		return "noLogin";
