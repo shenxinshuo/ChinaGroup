@@ -104,8 +104,13 @@
 					
 					</ul>
 		
+					<%
+					if(request.getSession().getAttribute("LOGINED_TOURIST")!=null){
+					int i = (Integer)request.getSession().getAttribute("LOGINED_TOURIST");
+					if(i!=1) {
+					%>
 					<ul class="nav navbar-nav navbar-right">
-						<img class="img-circle" id="user_head" src="/FindWork/myHeader_readHeader.action" />
+						<img class="img-circle" id="user_head"  />
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 								
@@ -161,6 +166,16 @@
 							</ul>
 						</li>
 					</ul>
+					<%}} else{%>
+					
+						
+					<ul class="nav navbar-nav" style="float:right">
+						<s:url id="tourist_logoutToLogin" action="tourist_logoutToLogin" namespace="/" />
+						<li><a href="${tourist_logoutToLogin } ">登录</a></li>
+						<s:url id="tourist_logoutToRegis" action="tourist_logoutToRegis" namespace="/" />
+						<li><a href="${tourist_logoutToRegis } ">注册</a></li>
+					</ul>
+					<%} %>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>

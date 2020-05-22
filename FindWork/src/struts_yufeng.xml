@@ -60,5 +60,14 @@
 			<result>/index.jsp</result>
 			<result name="backHome">/homePage/home.jsp</result>
 		</action>
+		<action name="touristAction" class="backHomeAction" method="noLogin">
+			<result>/index.jsp</result>
+			<result name="noLogin">/homePage/home.jsp</result>
+		</action>
+		<action name="tourist_*" class="backHomeAction" method="{1}">
+			<result>/index.jsp</result>
+			<result name="toregis">/user/userRegister.jsp</result>
+			<result name="tologin">/user/UserLogin.jsp</result>
+		</action>
 	</package>
 </struts>
