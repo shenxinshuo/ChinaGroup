@@ -241,7 +241,7 @@ String path = request.getContextPath();
 
 								<div class="col-xl-4">
 									<div class="submit-field">
-										<h5>标签   </h5>
+										<h5>学历背景   </h5>
 										<input type="text" name="advertise.comment" value="${advertise.comment}" class="with-border">										
 									</div>
 								</div>

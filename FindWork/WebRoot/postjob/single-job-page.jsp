@@ -42,7 +42,7 @@ String path = request.getContextPath();
 			<div class="col-md-12">
 				<div class="single-page-header-inner">
 					<div class="left-side">
-						<div class="header-image"><a href="single-company-profile.html"><img src="images/company-logo-03a.png" alt=""></a></div>
+						
 						<div class="header-details">
 							<h3>${as.title}</h3>
 							
