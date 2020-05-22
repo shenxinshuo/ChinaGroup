@@ -2,6 +2,7 @@ package com.zhbit.findwork.action;
 
 import java.util.List;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.zhbit.findwork.entity.Post_type;
 import com.zhbit.findwork.service.Post_typeService;
@@ -15,6 +16,30 @@ public class BackHomeAction extends ActionSupport{
 		
 		pts = post_typeService.getAllPost_type();
 		return "backHome";
+		
+	}
+	
+	public String noLogin(){
+		
+		ActionContext ac = ActionContext.getContext();
+		ac.getSession().put("LOGINED_TOURIST", 1);
+		return "noLogin";
+		
+	}
+	
+	public String logoutToLogin(){
+		
+		ActionContext ac = ActionContext.getContext();
+		ac.getSession().put("LOGINED_TOURIST", null);
+		return "tologin";
+		
+	}
+	
+	public String logoutToRegis(){
+	
+		ActionContext ac = ActionContext.getContext();
+		ac.getSession().put("LOGINED_TOURIST", null);
+		return "toregis";
 		
 	}
 	

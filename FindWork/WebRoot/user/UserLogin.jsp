@@ -32,7 +32,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="background">
 			<div class="user_login">
 				<div class="login_home">
-					<a href="/FindWork/homePage/home.jsp">首页</a>
+					<s:url id="touristAction" action="touristAction" namespace="/" />
+					<a href="${touristAction }">首页</a>
 				</div>
 				<div class="web_title">
 					<img class="web_img" src="resource/image/yufeng/login_title.png"/>

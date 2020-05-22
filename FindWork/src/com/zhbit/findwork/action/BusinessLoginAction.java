@@ -34,8 +34,9 @@ public class BusinessLoginAction extends ActionSupport{
 	
 	public String login(){
 		
+		Business b = businessService.login(business.getName(), business.getPassword());
 		ActionContext ac = ActionContext.getContext();
-		ac.getSession().put("LOGINED_BUSI", business);
+		ac.getSession().put("LOGINED_BUSI", b);
 		pts = post_typeService.getAllPost_type();
 		return "login";
 		
