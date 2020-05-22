@@ -70,10 +70,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					  </div>
 					</form>
 				</div>
-				<div class="register" style="margin-top: 10px;">
-					<label>没有账号？</label>
-					<a href="register.html">点击注册</a>
-				</div>
 			</div>
 		</div>
   </body>

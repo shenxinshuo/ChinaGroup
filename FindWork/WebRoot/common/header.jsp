@@ -105,8 +105,10 @@
 					</ul>
 		
 					<%
+					if(request.getSession().getAttribute("LOGINED_TOURIST")!=null){
 					int i = (Integer)request.getSession().getAttribute("LOGINED_TOURIST");
-					if(i!=1) {%>
+					if(i!=1) {
+					%>
 					<ul class="nav navbar-nav navbar-right">
 						<img class="img-circle" id="user_head"  />
 						<li class="dropdown">
@@ -164,7 +166,7 @@
 							</ul>
 						</li>
 					</ul>
-					<%} else{%>
+					<%}} else{%>
 					
 						
 					<ul class="nav navbar-nav" style="float:right">
