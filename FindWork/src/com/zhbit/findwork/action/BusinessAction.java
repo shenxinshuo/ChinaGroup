@@ -219,7 +219,10 @@ public class BusinessAction extends ActionSupport{
 		int count = advertiseService.getAdvertiseCountByBid(business.getId(), 0) + advertiseService.getAdvertiseCountByBid(business.getId(), 1);
 		this.getPagingParameter(count);
 		if (currentPage < 1) currentPage = 1;
-		if (currentPage > this.lastPage) currentPage = lastPage;
+		if (currentPage > this.lastPage){
+			currentPage = lastPage;
+			this.firstResult = (this.currentPage-1)*this.pageSize;
+		}
 		//advertises = temp.subList((currentPage-1)*pageSize + 1, pageSize > temp.size() ? temp.size() : pageSize);
 		advertises = advertiseService.getAdvertiseByBid(business.getId(), firstResult, pageSize);
 		ActionContext.getContext().put("count", count);

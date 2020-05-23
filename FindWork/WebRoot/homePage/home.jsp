@@ -28,21 +28,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
 		<!-- 引入头部 -->
     	<jsp:include page="/common/header.jsp"/>
-		
+
 		<div class="main_body">
-			<div class="div_search">
-				<div class="col-lg-6">
+			<div class="div_search col-md-offset-1">
+				<%-- <div class="col-lg-6">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="岗位 / 公司">
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="button">Go!</button>
 						</span>
 					</div><!-- /input-group -->
-				</div><!-- /.col-lg-6 -->
+				</div><!-- /.col-lg-6 --> --%>
+				
+				 <div class="col-lg-6 ">
+				    <div class="input-group col-md-8">
+				      <input type="text" id="searchName" class="form-control" aria-label="..."  placeholder="岗位 / 公司   点击右方按钮切换搜索方式">
+				      <div class="input-group-btn">
+				        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">GO! <span class="caret"></span></button>
+				        <ul class="dropdown-menu dropdown-menu-right">
+				          <li><a href="#">招聘信息</a></li>
+				          <%-- <s:url id="business_searchByName" action="business_searchByName" namespace="/">
+				          	<s:param name="searchName">
+				          		
+				          	</s:param>
+				          	<s:param name="currentPage">1</s:param>
+				          </s:url> --%>
+				          
+				          <li><a id="businessSearch" href="" onclick="searchWithBusiness()">公司</a></li>
+				        </ul>
+				      </div><!-- /btn-group -->
+				    </div><!-- /input-group -->
+				  </div><!-- /.col-lg-6 -->
+				
 			</div><!-- /.row -->
 		</div>
-
-		<div class="div_title">
+		<!-- 根据搜索方式的不同去不同的action搜索 -->
+		<!-- 动态设置a标签的href属性，接收用户输入的值 -->
+		<script type="text/javascript">
+			function searchWithBusiness() {
+				var searchName = document.getElementById("searchName").value;
+				var requestPath = "business_searchByName.action?currentPage=1&searchName="+searchName;
+				//alert(requestPath);
+				document.getElementById("businessSearch").href=requestPath;
+			}
+			/* function rethtml() {
+                var $html = "<div><s:url id='business_searchByName' action='business_searchByName' namespace='/'><s:param name='searchName'></s:param><s:param name='currentPage'>1</s:param></s:url></div>";
+                return $html;
+            }
+            $("#h").append(rethtml()); */
+		</script>
+		<div class="div_title  text-left col-md-offset-1"style="width:100%" >
 			<label class="label label-danger">热门岗位</label>
 			<a class="types" href="#">证券</a>
 			<a class="types" href="#">C++</a>

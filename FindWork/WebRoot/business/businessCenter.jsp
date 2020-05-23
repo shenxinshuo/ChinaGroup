@@ -93,7 +93,7 @@
                           	<s:param name="currentPage">${currentPage - 1 }</s:param>
                           </s:url>
                           <li><a href="${business_showBusinessCenterBefore }"> < </a></li>
-                          <li><a href="">${currentPage }</a></li>
+                          <li><a href="">${currentPage }/${lastPage }</a></li>
                           <s:url id="business_showBusinessCenterNext" action="business_showBusinessCenter" namespace="/">
                           	<s:param name="business.id">${business.id }</s:param>
                           	<s:param name="currentPage">${currentPage + 1 }</s:param>
