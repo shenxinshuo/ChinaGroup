@@ -66,7 +66,7 @@ public class Collection_BusinessAction extends ActionSupport {
 		
 	}
 	public void checkPage(int total) {
-		page.setMaxSize(3);// 设置当前页面最大的数量
+		page.setMaxSize(4);// 设置当前页面最大的数量
 		int pageCount = total / page.getMaxSize();// 总的页数=总的数量/最大页数（整除情况）
 		if (total % page.getMaxSize() != 0)
 			pageCount++;// （不整除情况）
