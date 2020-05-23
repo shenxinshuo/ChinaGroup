@@ -56,15 +56,10 @@ public class UserServiceImpl implements UserService{
 	}
 	@Override
 	public boolean deleteCollection_Business(int userid, int businessid) {
-		// TODO Auto-generated method stub
-		List<Business> list= (List<Business>)collection_BusinessDao.getBusinessesByUserId(userid);
-		if(list.size()!=1){
-			return false;//²»Î¨Ò»£¬É¾³ýÊ§°Ü
-		} 
-		else{
+		// TODO Auto-generated method stub	
+		System.out.println("·þÎñÀà£ºÉ¾³ý");
 			collection_BusinessDao.delete(userid, businessid);
-			 return true;
-		}
+			return true;
 		
 	}
 	@Override
@@ -199,15 +194,9 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public boolean deleteCollection_Advertise(int userid, int advertiseid) {
-		// TODO Auto-generated method stub
-		List<Advertise> list=(List<Advertise>)collection_AdvertiseDao.getAdvertisesByUserId(userid);
-		if(list.size()!=1){
-			return false;//²»Î¨Ò»£¬É¾³ýÊ§°Ü
-		}
-		else{
+		// TODO Auto-generated method stub		
 			collection_AdvertiseDao.delete(userid, advertiseid);
-			return true;
-		}
+			return true;		
 	}
 
 

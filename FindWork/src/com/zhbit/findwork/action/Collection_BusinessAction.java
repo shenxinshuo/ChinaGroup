@@ -35,6 +35,8 @@ public class Collection_BusinessAction extends ActionSupport {
 		//设置目前登录用户的id是1
 		System.out.println("删除收藏企业");
 		user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
+		System.out.println(user.getId());
+		System.out.println(business.getId());
 		boolean t=userService.deleteCollection_Business(user.getId(),business.getId());
 		System.out.println(t);
 		int p=page.getCurrent();

@@ -61,6 +61,7 @@ public class Collection_BusinessDaoImpl implements Collection_BusinessDao {
 				.uniqueResult();
 		c_b.setDelete_flag(1);//设置删除标志为1即删除
 		sessionFactory.getCurrentSession().merge(c_b);//更新
+		System.out.println("删除成功");
 	}
 
 	@SuppressWarnings("unchecked")
