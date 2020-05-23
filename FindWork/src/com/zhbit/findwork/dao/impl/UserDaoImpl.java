@@ -131,7 +131,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User getUserByNameAndPassword(String name,String password) {
 		// TODO Auto-generated method stub
-		String hql = "from User where name = :userName and password=:password";
+		String hql = "from User where name = :userName and password=:password and delete_flag = 0 ";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setParameter("userName", name);
 		query.setParameter("password", password);

@@ -42,7 +42,8 @@
 	
     		<div>
 			<img class="a0" src="cv/image/e1.png" /> 
-			<span style="font-size: 30px;color: dodgerblue;" class="glyphicon glyphicon-remove"></span>
+			<a href="<%=request.getContextPath() %>/user/userCenter.jsp"><span style="font-size: 30px;color: dodgerblue;" class="glyphicon glyphicon-remove"></span>
+			</a>
 			</div>
 			<div>
 				<img class="img1" src="cv/image/u18.png" /> 

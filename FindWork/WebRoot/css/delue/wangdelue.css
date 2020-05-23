@@ -1,3 +1,28 @@
+table td{
+	width: 20%;
+	height: 50px;
+	color: #555555;
+	font-size: 17px;
+}
+         
+tr:nth-child(2n){
+ background:#c6e1c6;
+   }
+tr:nth-child(3n){
+   background:white;
+     }
+.table2 td{
+	width: 25%;
+	height: 50px;
+	color: #555555;
+	font-size: 20px;
+}
+.table2 tr:nth-child(2n){
+ background:#dae9f0;
+   }
+.table2 tr:nth-child(3n){
+   background:#ffffff;
+     }
 .wdld11{
 	width:1000px;
 	margin: auto;

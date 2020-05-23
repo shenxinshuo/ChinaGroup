@@ -101,7 +101,8 @@ public class UserAction extends ActionSupport{
 		  
 		  ActionContext ac = ActionContext.getContext();
 		  ac.getSession().put("LOGINED_USER",null);
-		  
+		
+		  ac.getSession().put("LOGINED_ROLE", null);
 		  return "logout";
 		  
 		 }
@@ -268,7 +269,7 @@ public class UserAction extends ActionSupport{
 		
 		ActionContext ac = ActionContext.getContext();
 		  ac.getSession().put("LOGINED_USER", u);
-		
+		  ac.getSession().put("LOGINED", 1);
 		System.out.println(ActionContext.getContext()
 		.getSession().get("LOGINED_USER"));
 		pts = post_typeService.getAllPost_type();

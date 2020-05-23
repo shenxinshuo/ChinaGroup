@@ -42,8 +42,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="off_info">
 		 	<div>
 				<img class="a0" src="cv/image/e1.png" />
-				<span style="font-size: 30px;color: dodgerblue;" class="glyphicon glyphicon-remove"></span>
-			</div>
+		 	 <a href="<%=request.getContextPath() %>/user/userCenter.jsp"><span style="font-size: 30px;color: dodgerblue;" class="glyphicon glyphicon-remove"></span>			
+			</a></div>
 			<div>
 				<img class="img1" src="cv/image/u18.png" />
 				<img class="img2" src="cv/image/u16.png" />

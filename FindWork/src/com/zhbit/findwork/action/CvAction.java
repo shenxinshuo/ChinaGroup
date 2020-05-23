@@ -133,11 +133,13 @@ public class CvAction extends ActionSupport{
 		user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
 		/*user=userService.getUserByID(1);*/
 		List<Cv>cvs=cvService.getCvListByUserId(user.getId());
-		if(cvs.size()>=3){
-			errorMessage="简历最多不能超过三份,请删除再添加";
+		System.out.println(cvs.size()+"dfsaaaaaaaaaaafsda");
+		if(cvs.size()>=4){
+			System.out.println(cvs.size()+"showd     dddddddddd");
 			return "show";
 		}
 		else{
+			System.out.println(cvs.size()+"add dddddddddddddddddddd");
 			return "add";
 		}			
 	}

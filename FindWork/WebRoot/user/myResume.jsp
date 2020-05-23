@@ -16,57 +16,69 @@
     <link rel="stylesheet" href="../resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link href="<%=request.getContextPath() %>/css/delue/wangdelue.css" rel="stylesheet" type="text/css" />
    <link rel="stylesheet" href="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	 <script>
+  function myFunction() {
+    alert("简历数量已达上限，添加请先删除");
+  }
+  </script>
+
   </head>
    
   <body> 
   <div style="height: 500px;">
 	<div style=" width: 100%;height: 120px;">		
 	<div style="width: 150px;float: left;">	
-	<img src="/FindWork/myHeader_readHeader.action" style="width: 100px;height: 100px;margin: 20px;">	
+	<img src="/FindWork/myHeader_readHeader.action" style="width: 100px;height: 100px;margin: 20px 0px 0px 80px;">	
 	</div>
-	<div style="float:left;margin:40px 10px;">
-		<span><s:property value="%{#request.user.name}"/></span><br>
-		<span><s:property value="%{#request.user.telephone}"/></span><br>
-		<span><s:property value="%{#request.user.address}"/></span><br>
-	</div>	
-	<div style="float: right; margin-top: 40px; margin-right: 40px;">
+	
+	<div style="float:left;margin: 40px 0px 0px 50px; text-align: left;">   
+		<span style="color: #337ab7; font-weight: 600;">姓名：<s:property value="%{#request.user.name}"/></span><br><br>
+		<span style="color: #337ab7; font-weight: 600;">电话：<s:property value="%{#request.user.telephone}"/></span><br>
+   </div>	
+	<div style="float: right; margin-top: 40px; margin-right: 80px;">
 		<s:url id="addcv" action="/FindWork/cv/cv_showAdd.action" namespace="/"></s:url>
-		<a href="${addcv}" target="_parent"><p class="glyphicon glyphicon-pencil" style="font-size: 20px;">&nbsp;新增用户简历</p></a><br>
+		<s:if test="#request.cvs.size()!=4">
+	     <a href="${addcv}" target="_parent"><button  style="width: 120px;height: 40px;background-color:#169bd5;border: 0px;"><p  class="glyphicon glyphicon-plus" style="color: white;margin-top: 5px;">&nbsp添加简历</p></button></a>		
+		</s:if>
+		<s:else>
+		<button onclick="myFunction()" value="" style="width: 120px;height: 40px;background-color:#169bd5;border: 0px;"><p  class="glyphicon glyphicon-plus" style="color: white;margin-top: 5px;">&nbsp添加简历</p></button>
+		</s:else>
 	</div>
 	</div>
 	
 	
 	<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="80%" color=#987cb9 SIZE=3>
-
-	<s:if test="#request.cvs==null||#request.cvs.size()==0">
-				<div style="margin:100px 200px;">您还没有创建简历，赶快创建属于你的简历吧</div>
-	</s:if>
+		    
+	<table style="width: 95%;text-align:center; margin: 30px auto;"   cellspacing=0  >
+		<tr style="background-color: #f5f5f5;"><td style="color: #8C8C8C; height: 35px;">求职意向</td>
+		<td style="color: #8C8C8C;height: 35px;">工作类型</td>
+		<td style="color: #8C8C8C;height: 35px;">工作城市</td>
+		<td style="color: #8C8C8C;height: 35px;">最高工资</td><td style="color: #8C8C8C;height: 35px;">操作</td></tr>
+		
+		<s:if test="#request.cvs==null||#request.cvs.size()==0">
+			<tr><td colspan="5">您还没有创建简历，赶快创建属于你的简历吧</td></tr>
+		</s:if>		
+		<s:else>
 	
-	<s:else>
-	
-	<s:iterator id="cv" value="#request.cvs">
-	
-	<div style="width: 95%; height: 22%; background-color: #dae9f0;margin:auto;margin-top: 4px;">
-	<div style="float: left; width: 80%;margin-top: 10px;margin-left: 20px;">
-	<span style="color:#169bd5;font-size: 20px;"><b><a href="${showcv}" target="_parent"><s:property value="#cv.want_post"/></a></b></span>
-	<br>
-	<span>技能：<s:property value="#cv.skill"/></span><br>
-	<span>最高工资：<s:property value="#cv.want_large_wages"/></span><br>
-	<span>工作类型：<s:property value="#cv.want_joy_type"/></span>
-	</div>
-	<div style="text-align: center;float: right;margin-top: 10px; margin-right: 20px;">
-		<s:url id="showcv" action="/FindWork/cv/cv_show.action?cv.id=%{#cv.id}" namespace="/"></s:url>				
+	   <s:iterator id="cv" value="#request.cvs">
+				<s:url id="showcv" action="/FindWork/cv/cv_show.action?cv.id=%{#cv.id}" namespace="/"></s:url>				
 		<s:url id="update" action="/FindWork/cv/cv_showUpdate.action?cv.id=%{#cv.id}" namespace="/"></s:url>
 	    <s:url id="delete" action="/FindWork/cv/cv_delete.action?cv.id=%{#cv.id}" namespace="/"></s:url>
-		<a href="${showcv}" target="_parent"><p class="glyphicon glyphicon-eye-open" style="">&nbsp;查看简历</p></a><br>
-		<a href="${update}" target="_parent"><p class="glyphicon glyphicon-pencil">&nbsp;修改简历</p></a><br>
-		<a href="${delete}" target="_parent"><p class="glyphicon glyphicon-trash" style="">&nbsp;删除简历</p></a><br>
-	</div>
-	</div>
+		
+		<tr><td><a href="${showcv}" target="_parent"><s:property value="#cv.want_post"/></a></td> 
+		<td><s:property value="#cv.want_joy_type"/></td>
+		<td><s:property value="#cv.want_city"/></td>
+		<td>
+		<s:property value="#cv.want_large_wages"/></td>
+		<td>
+			<a href="${update}" target="_parent">编辑</a>&nbsp|
+			<a href="${delete}" target="_parent">删除</p></a>
+		</td></tr>
+		
+		</s:iterator>
 	
-	</s:iterator>
-	
-	</s:else>
+	     </s:else>	
+	</table>	
 	</div>
   </body>
 </html>
