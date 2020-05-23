@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<link rel="stylesheet" href="css/yufeng/login.css"/>
+	<link rel="stylesheet" href="css/yufeng/adminlogin.css"/>
 	<link rel="stylesheet" href="resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
 	<script type="text/javascript" src="resource/static/jquery/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="resource/static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
@@ -38,14 +38,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img class="web_img" src="resource/image/yufeng/login_title.png"/>
 			</div>
 			<div class="login_type">
-					<div class="row">
-  						<div class="col-xs-6">
-								<a href="/FindWork/business/businessLogin.jsp">企业登录</a>
-  						</div>
- 	 					<div class="col-xs-6">
-								<a href="/FindWork/user/UserLogin.jsp" style="float:left;">用户登录</a>
+					
+						<div style="width:20%;margin-left:17.5%;">
+ 	 						<a href="/FindWork/business/businessLogin.jsp">企业登录</a>
  	 					</div>
-					</div>
+ 	 					<div style="width:25%">
+ 	 						<a style="font-size:large;font-weight:bold;">管理员登录</a>
+ 	 					</div>
+ 	 					<div style="width:20%">
+ 	 						<a href="/FindWork/user/UserLogin.jsp">用户登录</a>
+						</div>
+					
 			</div>
 			<div class="login_form">
 				<s:url id="admin_login" action="admin_login" namespace="/" />
