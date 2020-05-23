@@ -2,19 +2,19 @@ body{
 	
 	background-attachment: fixed;
 	background-size: 100% 100%;
-	background-image: url(../img/background.png);
+	background-image: url(/resource/image/yufeng/background.png);
 	
 }
 
 .user_login{
 	
-	width: 35%;
-	height: 450px;
+	width:35%;
+	height:450px;
 	margin-left: 35%;
 	margin-top: 100px;
 	border: 1px solid #999999;
 	border-radius: 30px;
-	background-color: white;
+	
 	
 }
 
@@ -35,6 +35,7 @@ body{
 	margin-right: 20px;
 	
 }
+
 .web_title{
 	
 	width: 100%;
@@ -47,6 +48,30 @@ body{
 	width: 40%;
 	height: 100%;
 	margin-left: 30%;
+	
+}
+
+.login_type{
+	
+	width: 100%;
+	height: 30px;
+	margin-top: 30px;
+	
+	
+}
+
+.login_type div{
+	
+	float:left;
+	width:25%;
+	text-align:center;
+	
+}
+
+.login_type a:hover{
+	
+	color: #EC971F;
+	text-decoration: none;
 	
 }
 
@@ -77,30 +102,6 @@ body{
 	background-color: #5BC0DE;
 	color: white;
 	font-size: large;
-	
-}
-
-.login_type{
-	
-	width: 100%;
-	height: 30px;
-	margin-top: 30px;
-	
-	
-}
-
-.login_type div{
-	
-	float:left;
-	width:25%;
-	text-align:center;
-	
-}
-
-.login_type a:hover{
-	
-	color: #EC971F;
-	text-decoration: none;
 	
 }
 
