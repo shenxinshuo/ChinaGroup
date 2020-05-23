@@ -1,4 +1,4 @@
-<%@page import="com.zhbit.findwork.entity.Business"%>
+<%@page import="com.zhbit.findwork.entity.*"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -106,66 +106,52 @@
 					</ul>
 		
 					<%
-					if(request.getSession().getAttribute("LOGINED_TOURIST")==null){
+					if(request.getSession().getAttribute("LOGINED_USER")!=null){
 					%>
 					<ul class="nav navbar-nav navbar-right">
 						<img class="img-circle" src="/FindWork/myHeader_readHeader.action" id="user_head"  />
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 								
-								<%if(request.getSession().getAttribute("LOGINED_USER") != null){%>
+								<%
+								if(request.getSession().getAttribute("LOGINED_ROLE") != null){
+								int i = (Integer)request.getSession().getAttribute("LOGINED_ROLE");
+								if(i == 1){%>
 								用户名：<s:property value='#session.LOGINED_USER.name'/>
-								<%} else%>
-								
-								<%if(request.getSession().getAttribute("LOGINED_BUSI") != null){%>
-								企业：<s:property value='#session.LOGINED_BUSI.name'/>
-								<%} else%>
-								
-								<%if(request.getSession().getAttribute("LOGINED_ADMIN") != null){%>
-								管理员：<s:property value='#session.LOGINED_ADMIN.account'/>
-								<%} %>
 								<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								
-								
-								<%
-								if(request.getSession().getAttribute("LOGINED_USER") != null){
-								%>
+								<ul class="dropdown-menu">
 									<li><a href="<%=request.getContextPath() %>/user/userCenter.jsp">个人中心</a></li>
-									<li><a href="<%=request.getContextPath() %>/user/collectionCenter.jsp">收藏中心</a></li>					
-								<% }%>
-								
-								<%
-								if(request.getSession().getAttribute("LOGINED_BUSI") != null){
-								%>
-									<s:url id="business_showBusinessCenter" action="business_showBusinessCenter" namespace="/">
-										<s:param name="business.id"><%=((Business)session.getAttribute("LOGINED_BUSI")).getId() %></s:param>
-										<s:param name="currentPage">1</s:param>
-									</s:url>
-									<li><a href="${business_showBusinessCenter }">企业中心</a></li>
-								<% }%>
-								
-								<%
-								if(request.getSession().getAttribute("LOGINED_ADMIN") != null){
-								%>
-									<li><a href="admin_showAdminCenter.action">管理员中心</a></li>
-								<% }%>
-
-								<li role="separator" class="divider"></li>
-								<%if(request.getSession().getAttribute("LOGINED_ADMIN") != null){ %>
-									<s:url id="logout" action="admin_logout" namespace="/"/>				
-								<%}%>
-								<%if(request.getSession().getAttribute("LOGINED_BUSI") != null){ %>
-									<s:url id="logout" action="business2_logout" namespace="/"/>
-								<%} %>
-								<%if(request.getSession().getAttribute("LOGINED_USER") != null){ %>
+									<li><a href="<%=request.getContextPath() %>/user/collectionCenter.jsp">收藏中心</a></li>
 									<s:url id="logout" action="user_logout" namespace="/"/>
+									<li role="separator" class="divider"></li>
+									<li><a href="${logout }">退出</a></li>	
+								</ul>
+								<%} else if(i == 2){%>
+								企业：<s:property value='#session.LOGINED_USER.name'/>
+									<span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<s:url id="business_showBusinessCenter" action="business_showBusinessCenter" namespace="/">
+											<s:param name="business.id"><%=((Business)session.getAttribute("LOGINED_USER")).getId() %></s:param>
+											<s:param name="currentPage">1</s:param>
+										</s:url>
+										<li><a href="${business_showBusinessCenter }">企业中心</a></li>
+										<li role="separator" class="divider"></li>
+										<s:url id="logout" action="business2_logout" namespace="/"/>
+										<li><a href="${logout }">退出</a></li>
+								<%} else if(i == 5){%>
+								管理员：<s:property value='#session.LOGINED_USER.account'/>
+									 <span class="caret"></span></a>
+									 <ul class="dropdown-menu">
+									 	<li><a href="admin_showAdminCenter.action">管理员中心</a></li>
+									 	<li role="separator" class="divider"></li>
+									 	<s:url id="logout" action="admin_logout" namespace="/"/>
+									 	<li><a href="${logout }">退出</a></li>
 								<%} %>
-								<li><a href="${logout }">退出</a></li>	
+									
 							</ul>
 						</li>
 					</ul>
-					<%} else{%>
+					<%}} else{%>
 					
 						
 					<ul class="nav navbar-nav" style="float:right">

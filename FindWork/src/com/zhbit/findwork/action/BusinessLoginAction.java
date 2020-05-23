@@ -36,7 +36,8 @@ public class BusinessLoginAction extends ActionSupport{
 		
 		Business b = businessService.login(business.getName(), business.getPassword());
 		ActionContext ac = ActionContext.getContext();
-		ac.getSession().put("LOGINED_BUSI", b);
+		ac.getSession().put("LOGINED_USER", b);
+		ac.getSession().put("LOGINED_ROLE", 2);
 		pts = post_typeService.getAllPost_type();
 		return "login";
 		
@@ -45,8 +46,8 @@ public class BusinessLoginAction extends ActionSupport{
 	public String logout(){
 		
 		ActionContext ac = ActionContext.getContext();
-		ac.getSession().put("LOGINED_BUSI",null);
-		
+		ac.getSession().put("LOGINED_USER",null);
+		ac.getSession().put("LOGINED_ROLE", null);
 		return "logout";
 		
 	}

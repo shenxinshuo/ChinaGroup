@@ -195,8 +195,8 @@ public class AdminAction extends ActionSupport{
 		
 		Administrator a = adminService.getAdminByNameAndPassword(admin.getAccount(), admin.getPassword());
 		ActionContext ac = ActionContext.getContext();
-		ac.getSession().put("LOGINED_ADMIN", a);
-		
+		ac.getSession().put("LOGINED_USER", a);
+		ac.getSession().put("LOGINED_ROLE", 5);
 		
 		return "login";
 		
@@ -205,8 +205,8 @@ public class AdminAction extends ActionSupport{
 	public String logout(){
 		
 		ActionContext ac = ActionContext.getContext();
-		ac.getSession().put("LOGINED_ADMIN",null);
-		
+		ac.getSession().put("LOGINED_USER",null);
+		ac.getSession().put("LOGINED_ROLE", null);
 		return "logout";
 		
 	}

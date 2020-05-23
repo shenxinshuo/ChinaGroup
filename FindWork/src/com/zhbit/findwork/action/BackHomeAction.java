@@ -23,7 +23,7 @@ public class BackHomeAction extends ActionSupport{
 		
 		pts = post_typeService.getAllPost_type();
 		ActionContext ac = ActionContext.getContext();
-		ac.getSession().put("LOGINED_TOURIST", 1);
+		ac.getSession().put("LOGINED_USER", null);
 		return "noLogin";
 		
 	}
