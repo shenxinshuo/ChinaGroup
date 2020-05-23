@@ -18,12 +18,16 @@
 		<bean id="collection_BusinessDaoImpl" class="com.zhbit.findwork.dao.impl.Collection_BusinessDaoImpl">
 			<property name="sessionFactory" ref="sessionFactory" />
 		</bean>
+		 <bean id="collection_AdvertiseDaoImpl" class="com.zhbit.findwork.dao.impl.Collection_AdvertiseDaoImpl">
+			<property name="sessionFactory" ref="sessionFactory" />
+		</bean>
 		
 		<!-- 配置userServiceImpl -->
 		<bean id="userServiceImpl" class="com.zhbit.findwork.service.impl.UserServiceImpl">
 			<!-- 注入属性 -->
 			<property name="userDao" ref="userDaoImpl"></property>
 			<property name="collection_BusinessDao" ref="collection_BusinessDaoImpl"></property>
+			<property name="collection_AdvertiseDao" ref="collection_AdvertiseDaoImpl"></property>
 		</bean>
 		
 		<!-- 配置action -->
@@ -37,6 +41,11 @@
 		<bean id="collection_BusinessAction" class="com.zhbit.findwork.action.Collection_BusinessAction" scope="request">
 			<property name="userService" ref="userServiceImpl"></property>
 			<property name="businessService" ref="businessServiceImpl"></property>
+		</bean>
+		
+		<bean id="collection_AdvertiseAction" class="com.zhbit.findwork.action.Collection_AdvertiseAction" scope="request">
+			<property name="userService" ref="userServiceImpl"></property>
+			<property name="advertiseService" ref="advertiseServiceImpl"></property>
 		</bean>
 
 </beans>

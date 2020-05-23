@@ -28,9 +28,10 @@
 			</div>
 			<div>
 			 <s:url id="showbusiness" action="/FindWork/collection_showBusiness.action? page.current=1" namespace="/" />
+			 <s:url id="showAdvertise" action="/FindWork/collection_advertise_showAdvertise.action? page.current=1" namespace="/" />
 			<ul class="nav nav-tabs" style="margin-top: 0px; background-color: white;">
 			  <li role="presentation"  ><a href="${showbusiness}" target="showCollection" class="glyphicon glyphicon-star">企业收藏夹</a></li>
-			  <li role="presentation"><a href="/FindWork/user/jobCollection.jsp" target="showCollection" class="glyphicon glyphicon-star-empty">招聘收藏夹</a></li>
+			  <li role="presentation"><a href="${showAdvertise}" target="showCollection" class="glyphicon glyphicon-star-empty">招聘收藏夹</a></li>
 			</ul>
 			</div>
 		</div>			

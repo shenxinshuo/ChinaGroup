@@ -63,21 +63,17 @@ public class Collection_BusinessDaoImpl implements Collection_BusinessDao {
 		sessionFactory.getCurrentSession().merge(c_b);//¸üÐÂ
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean isExist(Collection_Business c_b) {
 		// TODO Auto-generated method stub
 		String hql="from Collection_Business as cb where Uid =? and Bid = ? and delete_flag = 0 ";
-		Collection_Business cb=(Collection_Business)sessionFactory.getCurrentSession().createQuery(hql)
+		List<Collection_Business> cb=(List<Collection_Business>)sessionFactory.getCurrentSession().createQuery(hql)
 				.setParameter(0,c_b.getUser().getId() )
 				.setParameter(1, c_b.getBusiness().getId())
-				.uniqueResult();
-		if(cb!=null){
-			if(cb.getDelete_flag()==0){
-				System.out.println(cb);
-				return false;			
-			}
-		
-			return true;
+				.list();
+		if(cb.size()==0){				
+			return false;
 		}
 		else
 			return true;

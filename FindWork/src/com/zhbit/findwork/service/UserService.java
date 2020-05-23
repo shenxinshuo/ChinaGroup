@@ -2,7 +2,9 @@ package com.zhbit.findwork.service;
 
 import java.util.List;
 
+import com.zhbit.findwork.entity.Advertise;
 import com.zhbit.findwork.entity.Business;
+import com.zhbit.findwork.entity.Collection_Advertise;
 import com.zhbit.findwork.entity.Collection_Business;
 import com.zhbit.findwork.entity.User;
 
@@ -35,15 +37,30 @@ public interface UserService {
 	 */
 	public boolean addCollection_Business(Collection_Business c_b);
 	/**
+	 * 新增招聘收藏
+	 * @param c_a
+	 */
+	public boolean addCollection_Advertise(Collection_Advertise c_a);
+	/**
 	 * 删除收藏的企业
 	 * @param userid businessid
 	 */
 	public boolean deleteCollection_Business(int userid,int businessid);
 	/**
+	 * 删除收藏的招聘
+	 * @param userid advertiseid
+	 */
+	public boolean deleteCollection_Advertise(int userid,int advertiseid);
+	/**
 	 * 查看收藏的企业
 	 * @param userid
 	 */
 	public List<Business> getBusinessesByUserId(int userid);
+	/**
+	 * 查看收藏的招聘
+	 * @param userid
+	 */
+	public List<Advertise> getAdvertisesByUserId(int userid);
 	/**
 	 * 根据分页返回某一页的用户收藏的企业列表
 	 *  @param userid  当前用户
@@ -52,6 +69,15 @@ public interface UserService {
 	 * @return
 	 */
 	public List<Business> getBusinessesByPage(int userid,int firstResult, int maxResults);
+	/**
+	 * 根据分页返回某一页的用户收藏的招聘列表
+	 *  @param userid  当前用户
+	 * @param firstResult 要查询的第一条记录
+	 * @param maxResults  页面大小
+	 * @return
+	 */
+	public List<Advertise> getAdvertisesByPage(int userid,int firstResult, int maxResults);
+
 	/**
 	 * 修改用户信息
 	 * @param user

@@ -2,12 +2,14 @@ package com.zhbit.findwork.service.impl;
 
 import java.util.List;
 
+import com.zhbit.findwork.dao.Collection_AdvertiseDao;
 import com.zhbit.findwork.dao.Collection_BusinessDao;
 import com.zhbit.findwork.dao.UserDao;
+import com.zhbit.findwork.entity.Advertise;
 import com.zhbit.findwork.entity.Business;
+import com.zhbit.findwork.entity.Collection_Advertise;
 import com.zhbit.findwork.entity.Collection_Business;
 import com.zhbit.findwork.entity.User;
-import com.zhbit.findwork.service.RoleService;
 import com.zhbit.findwork.service.UserService;
 /**
  * 用户业务接口实现类
@@ -19,6 +21,8 @@ public class UserServiceImpl implements UserService{
 	//注入UserDao
 	private UserDao userDao;
 	private Collection_BusinessDao collection_BusinessDao;
+	private Collection_AdvertiseDao collection_AdvertiseDao;
+	
 	/**
 	 * 判断用户名是否存在
 	 * @retrun 如果用户名存在，返回true 否则，返回flase
@@ -37,7 +41,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean addCollection_Business(Collection_Business c_b) {
 		// TODO Auto-generated method stub
-		if(collection_BusinessDao.isExist(c_b)){
+		if(!collection_BusinessDao.isExist(c_b)){
 			collection_BusinessDao.add(c_b);
 			return true;
 		}
@@ -53,8 +57,15 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean deleteCollection_Business(int userid, int businessid) {
 		// TODO Auto-generated method stub
-		 collection_BusinessDao.delete(userid, businessid);
-		 return true;
+		List<Business> list= (List<Business>)collection_BusinessDao.getBusinessesByUserId(userid);
+		if(list.size()!=1){
+			return false;//不唯一，删除失败
+		} 
+		else{
+			collection_BusinessDao.delete(userid, businessid);
+			 return true;
+		}
+		
 	}
 	@Override
 	public boolean addUser(User user) {
@@ -164,5 +175,54 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return collection_BusinessDao.getBusinessesByPage(userid, firstResult, maxResults);
 	}
+	public Collection_AdvertiseDao getCollection_AdvertiseDao() {
+		return collection_AdvertiseDao;
+	}
+
+
+	public void setCollection_AdvertiseDao(Collection_AdvertiseDao collection_AdvertiseDao) {
+		this.collection_AdvertiseDao = collection_AdvertiseDao;
+	}
+
+
+	@Override
+	public boolean addCollection_Advertise(Collection_Advertise c_a) {
+		// TODO Auto-generated method stub
+		if(!collection_AdvertiseDao.isExist(c_a)){
+			collection_AdvertiseDao.add(c_a);
+			return true;
+		}
+		else
+			return false;
+	}
+
+
+	@Override
+	public boolean deleteCollection_Advertise(int userid, int advertiseid) {
+		// TODO Auto-generated method stub
+		List<Advertise> list=(List<Advertise>)collection_AdvertiseDao.getAdvertisesByUserId(userid);
+		if(list.size()!=1){
+			return false;//不唯一，删除失败
+		}
+		else{
+			collection_AdvertiseDao.delete(userid, advertiseid);
+			return true;
+		}
+	}
+
+
+	@Override
+	public List<Advertise> getAdvertisesByUserId(int userid) {
+		// TODO Auto-generated method stub
+		return collection_AdvertiseDao.getAdvertisesByUserId(userid);
+	}
+
+
+	@Override
+	public List<Advertise> getAdvertisesByPage(int userid, int firstResult, int maxResults) {
+		// TODO Auto-generated method stub
+		return collection_AdvertiseDao.getAdvertiseByPage(userid, firstResult, maxResults);
+	}
+
 
 }

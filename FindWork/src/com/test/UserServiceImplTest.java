@@ -10,11 +10,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.zhbit.findwork.dao.RoleDao;
+import com.zhbit.findwork.entity.Advertise;
 import com.zhbit.findwork.entity.Business;
+import com.zhbit.findwork.entity.Collection_Advertise;
 import com.zhbit.findwork.entity.Collection_Business;
 import com.zhbit.findwork.entity.Cv;
 import com.zhbit.findwork.entity.Role;
 import com.zhbit.findwork.entity.User;
+import com.zhbit.findwork.service.AdvertiseService;
 import com.zhbit.findwork.service.BusinessService;
 import com.zhbit.findwork.service.RoleService;
 import com.zhbit.findwork.service.UserService;
@@ -65,10 +68,32 @@ public class UserServiceImplTest {
 		boolean t =userService.addCollection_Business(c_b);
 		System.out.println(t);
 	}
+	//测试添加收藏招聘信息功能
+	@Test
+	public void testAddCollection_Advertise(){
+		Collection_Advertise ca= new Collection_Advertise();
+		User user =userService.getUserByID(3);
+		
+		AdvertiseService as=(AdvertiseService)context.getBean("advertiseServiceImpl");
+		Advertise a=as.getAdvertiseByID(4);
+		System.out.println(user);
+		System.out.println(a);
+		ca.setUser(user);
+		ca.setAdvertise(a);
+		System.out.println(ca);
+		boolean t= userService.addCollection_Advertise(ca);
+		System.out.println(t);
+	}
 	//测试查看收藏企业功能
 	@Test 
 	public void testGetBusinessesByUserId(){
 		List<Business> list=userService.getBusinessesByUserId(1);
+		System.out.println(list.size());
+	}
+	//测试查看收藏招聘信息功能
+	@Test
+	public void testGetAdvertiseByUserId(){
+		List<Advertise> list = userService.getAdvertisesByUserId(3);
 		System.out.println(list.size());
 	}
 	//测试删除收藏企业
@@ -77,11 +102,21 @@ public class UserServiceImplTest {
 		userService.deleteCollection_Business(1, 8);
 		
 	}
+	@Test
+	public void testDeleteBusinessByUserId(){
+		boolean t =userService.deleteCollection_Advertise(3,4);
+		System.out.println(t);
+	}
 	//按分页查询收藏企业
 	@Test 
 	public void testGetBusinessByPage(){
 		List<Business> list=userService.getBusinessesByPage(2, 0, 1);
 		System.out.println(list);
+	}
+	@Test
+	public void testGetAdvertiseByPage(){
+		List<Advertise> list=userService.getAdvertisesByPage(3, 0, 1);
+		System.out.println(list.size());
 	}
 	@Test
 	public void testUpdateUser() {

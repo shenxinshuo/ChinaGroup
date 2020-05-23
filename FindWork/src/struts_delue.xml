@@ -8,8 +8,14 @@
 
 <struts>
 	<package name="user" extends="struts-default" namespace="/">
+		
 		<action name="resume_showCvList" class="userAction" method="showCvList">
 			<result name="showCvList">/user/myResume.jsp</result>	
+		</action>
+		<action name="collection_advertise_*" class="collection_AdvertiseAction" method="{1}">
+			<result name="deleteAdvertise" type="chain">collection_advertise_showAdvertise</result>
+			<result name="showPage">/user/jobCollection.jsp</result>
+			<result name="addAdvertise">/postjob/single-job-page.jsp</result>
 		</action>
 	    <action name="collection_*" class="collection_BusinessAction" method="{1}">
 			<result name="showPage">/user/enterpriseCollection.jsp</result>

@@ -11,11 +11,11 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<script src="../resource/static/jquery/jquery.min.js"></script>
+<script src="<%=request.getContextPath() %>/resource/static/jquery/jquery.min.js"></script>
 <script
-	src="../resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	src="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
-	href="../resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	href="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 <link href="<%=request.getContextPath() %>/css/delue/wangdelue.css" rel="stylesheet" type="text/css" />
 </head>
 
