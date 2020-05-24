@@ -47,6 +47,31 @@
 				});
 			});
 		</script>
+		<script>
+			
+
+			$(document).ready(function() {
+				for (var i = 0; i < pro.length; i++) {
+					$option = $("<option/>");
+					$option.attr("value", pro[i]);
+					$option.text(pro[i]);
+					$("#province1").append($option);
+				}
+				$("#province1").change(function() {
+
+					var cities = city[$(this).val()];
+					$("#city1").empty();
+					$("#city1").append("<option value=''>请选择</option>");
+					for (var i = 0; i < cities.length; i++) {
+
+						$option = $("<option/>");
+						$option.attr("value", cities[i]);
+						$option.text(cities[i]);
+						$("#city1").append($option);
+					}
+				});
+			});
+		</script>
 </head>
 
 <body>
@@ -91,7 +116,7 @@
 				<span class="input-group-addon1">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span>
 				<s:textfield name="cv.name" class="form-control2" /> 
 				<span id="basic-addon2">期望最低工资：</span>
-				<input type="text" name="cv.want_low_wages" value="${cv.want_low_wages }" class="form-control2" >
+				<input type="text" name="cv.want_low_wages" value="${cv.want_low_wages }" class="form-control3" >
 			</div>
 			<div class="d-inline-block col-md-12">
                 <div class="col-md-6">
@@ -105,76 +130,69 @@
 				<span class="input-group-addon1">联系方式：</span> 
 				<s:textfield name="cv.telephone" class="form-control2" /> 
 				<span id="basic-addon2">期望最高工资：</span>
-				<input type="text" name="cv.want_large_wages" value="${cv.want_large_wages }" class="form-control2" />
+				<input type="text" name="cv.want_large_wages" value="${cv.want_large_wages }" class="form-control3" />
 			</div>
 			<div class="d-inline-block col-md-12">
                 <div class="col-md-6">
                 	<label for="" class="text-danger col-md-offset-3">${fieldErrors["live_province"][0] }</label>
                 </div>
                 <div class="col-md-6">
-                	<label for="" class="text-danger col-md-offset-0">${fieldErrors["want_joy_type"][0] }</label>
+                	<label for="" class="text-danger col-md-offset-0">${fieldErrors["want_province"][0] }</label>
                 </div>
             </div>
 			<div class="a3">
 				<span class="input-group-addon1">居住省份：</span> 
-				<!-- <input type="text" class="form-control2" name="cv.live_province" > --> 
-<%--                 <select name="cv.live_province"  class="form-control2"> --%>
-<!--                 	<option value="广东">广东</option> -->
-<!--                 	<option value="江西" >江西</option> -->
-<!--                 	<option value="湖北" >湖北</option> -->
-<%--                 </select> --%>
-                <select class="form-control" name="cv.live_province" id="province" msgEmpty="请选择省份" style="width: 100px;">
+                <select class="form-control2" name="cv.live_province" id="province"  style="width: 100px;">
 					<option value="">请选择</option>
 				</select>
-				<span id="basic-addon3">期望工作类型:</span>
-				<s:radio list="{'实习','兼职','全职'}" name="cv.want_joy_type"></s:radio>
+				<span id="basic-addon3">想&nbsp;去&nbsp;的&nbsp;省份：</span>
+				<select class="form-control2" name="cv.want_province" id="province1"  style="width: 100px;">
+					<option value="">请选择</option>
+				</select>
 			</div>
 			<div class="d-inline-block col-md-12">
 			 	<div class="col-md-6">
                 	<label for="" class="text-danger col-md-offset-3">${fieldErrors["live_city"][0] }</label>
                 </div>
                 <div class="col-md-6">
-                	<label for="" class="text-danger col-md-offset-0">${fieldErrors["want_province"][0] }</label>
+                	<label for="" class="text-danger col-md-offset-0">${fieldErrors["want_city"][0] }</label>
                 </div>
              </div>
 			<div class="a3">
 				<span class="input-group-addon1">居住城市：</span> 
-				<!-- <input type="text" class="form-control2" name="cv.live_city" >  -->
-<%-- 				<select name="cv.live_city"  class="form-control2"> --%>
-<!--                 	<option value="珠海">珠海</option> -->
-<!--                 	<option value="深圳" >深圳</option> -->
-<!--                 	<option value="武汉" >武汉</option> -->
-<!--                 	<option value="南昌" >南昌</option> -->
-<%--                 </select> --%>
-                <select class="form-control" name="cv.live_city" id="city" msgEmpty="请选择城市" style="width: 100px;">
+                <select class="form-control2" name="cv.live_city" id="city"  style="width: 100px;">
 					<option value="">请选择</option>
 				</select>
-				<span id="basic-addon3">想&nbsp;去&nbsp;的&nbsp;省份：</span>
+				<span id="basic-addon3">想&nbsp;去&nbsp;的&nbsp;城市：</span>
+				<select class="form-control2" name="cv.want_city" id="city1"  style="width: 100px;">
+					<option value="">请选择</option>
+				</select>
 				<!-- <input type="text" class="form-control2" name="cv.want_province" > -->
-				 <select name="cv.want_province"  class="form-control2">
+				 <%-- <select name="cv.want_province"  class="form-control2">
                 	<option value="广东">广东</option>
                 	<option value="江西" >江西</option>
                 	<option value="湖北" >湖北</option>
-                </select>
+                </select> --%>
 			</div>
 			<div class="d-inline-block col-md-12">
                 <div class="col-md-6">
                 	<label for="" class="text-danger col-md-offset-3">${fieldErrors["politics_status"][0] }</label>
                 </div>
                 <div class="col-md-6">
-                	<label for="" class="text-danger col-md-offset-0">${fieldErrors["want_city"][0] }</label>
+                	<label for="" class="text-danger col-md-offset-0">${fieldErrors["want_joy_type"][0] }</label>
                 </div>
             </div>
 			<div class="a3">
 				<span class="input-group-addon1">政治面貌：</span> 
 				<s:textfield name="cv.politics_status" class="form-control2" /> 
-				<span id="basic-addon2">想&nbsp;去&nbsp;的&nbsp;城市：</span>
-				<select name="cv.want_city"  class="form-control2">
+				<span id="basic-addon2">期望工作类型:</span>
+				<s:radio list="{'实习','兼职','全职'}" name="cv.want_joy_type"></s:radio>
+				<%-- <select name="cv.want_city"  class="form-control2">
                 	<option value="珠海">珠海</option>
                 	<option value="深圳" >深圳</option>
                 	<option value="武汉" >武汉</option>
                 	<option value="南昌" >南昌</option>
-                </select>
+                </select> --%>
 			</div>
 			<div class="d-inline-block col-md-12">
                 <div class="col-md-6">

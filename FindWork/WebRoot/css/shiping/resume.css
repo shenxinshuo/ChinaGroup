@@ -42,7 +42,7 @@
 	width: 50px;
 }
 #basic-addon3{
-	margin-left: 110px;
+	margin-left: 160px;
 	width: 50px;
 }
 .a2{
@@ -101,7 +101,12 @@
 }
 .form-control2{
 	width: 150px;
-	height: 20px;
+	height: 23px;
+	
+}
+.form-control3{
+	width: 170px;
+	height: 25px;
 	
 }
 #web_logo {
