@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span  class="label label-default1">基本信息</span>
 				<hr width="800px" color="black" size="1"/>
 			</div>
-			<div class="d-inline-block">
+			<div class="d-inline-block col-md-12">
                 <div class="col-md-6">
                 	<label for="" class="text-danger col-md-offset-3">${fieldErrors["name"][0] }</label>
                 </div>
@@ -64,9 +64,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span class="input-group-addon1" >姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span>
   				<s:textfield name="cv.name" value="%{#request.cv.name}" /> 
   				<span  id="basic-addon2">期望最低工资：</span>
-  				<s:textfield name="cv.want_low_wages" vlaue="%{#request.cv.want_low_wages}" />
+  				<input type="text" name="cv.want_low_wages" value="${cv.want_low_wages }" >
 			</div>
-			<div class="d-inline-block">
+			<div class="d-inline-block col-md-12">
                 <div class="col-md-6">
                 	<label for="" class="text-danger col-md-offset-3">${fieldErrors["telephone"][0] }</label>
                 </div>
@@ -78,9 +78,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span class="input-group-addon1" >联系方式：</span>
   				<s:textfield name="cv.telephone" vlaue="%{#request.cv.telephone}" />
  				<span id="basic-addon2">期望最高工资：</span>
-  				<s:textfield name="cv.want_large_wages" vlaue="%{#request.cv.want_large_wages}" />
+  				<input type="text" name="cv.want_large_wages" value="${cv.want_large_wages}" >
 			</div>
-			<div class="d-inline-block">
+			<div class="d-inline-block col-md-12">
                 <div class="col-md-6">
                 	<label for="" class="text-danger col-md-offset-3">${fieldErrors["live_province"][0] }</label>
                 </div>
@@ -98,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   				<span id="basic-addon3">期望工作类型:</span>
 		 		<s:radio list="{'实习','兼职','全职'}" name="cv.want_joy_type" value="#request.cv.want_joy_type" />
 			</div>
-			<div class="d-inline-block">
+			<div class="d-inline-block col-md-12">
 			 	<div class="col-md-6">
                 	<label for="" class="text-danger col-md-offset-3">${fieldErrors["live_city"][0] }</label>
                 </div>
@@ -123,7 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	<option value="湖北" >湖北</option>
                 </select>
 			</div>
-			<div class="d-inline-block">
+			<div class="d-inline-block col-md-12">
                 <div class="col-md-6">
                 	<label for="" class="text-danger col-md-offset-3">${fieldErrors["politics_status"][0] }</label>
                 </div>
@@ -143,7 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	<option value="南昌" >南昌</option>
                 </select>
 			</div>
-			<div class="d-inline-block">
+			<div class="d-inline-block col-md-12">
                 <div class="col-md-6">
                 	<label for="" class="text-danger col-md-offset-3">${fieldErrors["education_background"][0] }</label>
                 </div>

@@ -1,6 +1,8 @@
 package com.zhbit.findwork.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 用户简历Bean类
@@ -11,7 +13,7 @@ public class Cv {
 	private int id;                     //主键
 	private String name;                //姓名
 	private String telephone;           //联系方式
-	private String self;      //自我评价
+	private String self;                //自我评价
 	private String education_background;//学历
 	private String politics_status;     //政治面貌
 	private String skill;               //技能
@@ -29,6 +31,7 @@ public class Cv {
 	private Date create_at;		        //创建时间
 	private Date update_at;		        //更新时间
 	private User user;                  //与用户基于外键单向一对一关联
+	private Set<Advertise> advertises = new HashSet<Advertise>();//与招聘信息多对多关系
 	
 	public int getId() {
 		return id;
@@ -158,6 +161,12 @@ public class Cv {
 		this.user = user;
 	}
 	
+	public Set<Advertise> getAdvertises() {
+		return advertises;
+	}
+	public void setAdvertises(Set<Advertise> advertises) {
+		this.advertises = advertises;
+	}
 	@Override
 	public String toString(){
 		return "Cv [id=" + id + ", name=" + name + ", telephone=" + telephone + ",education_background=" + education_background + ", self_appraisal=" +self + ", politics_status=" + politics_status + ", skill="

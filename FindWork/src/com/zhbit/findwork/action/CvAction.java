@@ -91,7 +91,7 @@ public class CvAction extends ActionSupport{
 		String tel = "((^(13|15|18|17|19)[0-9]{9}$)|(^0[1,2]{1}\\d{1}-?\\d{8}$)|(^0[3-9] {1}\\d{2}-?\\d{7,8}$)|(^0[1,2]{1}\\d{1}-?\\d{8}-(\\d{1,4})$)|(^0[3-9]{1}\\d{2}-? \\d{7,8}-(\\d{1,4})$))";
 		String na = "(^[0-9]*$)";
 		if (cv.getName()==null||cv.getName().equals(na)||cv.getName().equals("")) {
-			this.addFieldError("name", "用户名格式不正确（不能有数字出现）");
+			this.addFieldError("name", "用户名格式不正确");
 			System.out.println("0");
 		}
 		if (!cv.getTelephone().matches(tel)) {
@@ -101,8 +101,8 @@ public class CvAction extends ActionSupport{
 			this.addFieldError("want_low_wages", "工资填写不正确");
 			this.addFieldError("want_large_wages", "工资填写不正确");
 		}else if (cv.getWant_low_wages()>cv.getWant_large_wages()||cv.getWant_low_wages()<1000 ||cv.getWant_large_wages()>99999) {
-			this.addFieldError("want_low_wages", "工资填写不正确");
-			this.addFieldError("want_large_wages", "工资填写不正确");
+			this.addFieldError("want_low_wages", "工资填写不正确（1000-99999）");
+			this.addFieldError("want_large_wages", "工资填写不正确（1000-99999）");
 		}
 		if (cv.getPolitics_status()==null ||cv.getPolitics_status().equals("")) {
 			this.addFieldError("politics_status", "政治面貌不能为空");
@@ -166,7 +166,7 @@ public class CvAction extends ActionSupport{
 			String tel = "((^(13|15|18|17|19)[0-9]{9}$)|(^0[1,2]{1}\\d{1}-?\\d{8}$)|(^0[3-9] {1}\\d{2}-?\\d{7,8}$)|(^0[1,2]{1}\\d{1}-?\\d{8}-(\\d{1,4})$)|(^0[3-9]{1}\\d{2}-? \\d{7,8}-(\\d{1,4})$))";
 			String na = "(^[0-9]*$)";
 			if (cv.getName()==null||cv.getName().equals(na)||cv.getName().equals("")) {
-				this.addFieldError("name", "用户名格式不正确（不能有数字出现）");
+				this.addFieldError("name", "用户名格式不正确");
 				System.out.println("0");
 			}
 			if (!cv.getTelephone().matches(tel)) {
@@ -176,8 +176,8 @@ public class CvAction extends ActionSupport{
 				this.addFieldError("want_low_wages", "工资填写不正确");
 				this.addFieldError("want_large_wages", "工资填写不正确");
 			}else if (cv.getWant_low_wages()>cv.getWant_large_wages()||cv.getWant_low_wages()<1000 ||cv.getWant_large_wages()>99999) {
-				this.addFieldError("want_low_wages", "工资填写不正确");
-				this.addFieldError("want_large_wages", "工资填写不正确");
+				this.addFieldError("want_low_wages", "工资填写不正确（1000-99999）");
+				this.addFieldError("want_large_wages", "工资填写不正确（1000-99999）");
 			}
 			if (cv.getPolitics_status()==null ||cv.getPolitics_status().equals("")) {
 				this.addFieldError("politics_status", "政治面貌不能为空");

@@ -31,5 +31,10 @@
 		<property name="update_at" column="update_at" />
 		<!-- 配置和用户多对一的关系 -->
 		<many-to-one name="user" class="User" column="Uid"/>
+		<!-- 配置和招聘信息表多对多关系 -->
+		<set name="advertises" table="t_cv_advertise">
+			<key not-null="false" column="Cid"/>
+			<many-to-many class="Advertise" column="Aid" />
+		</set>
 	</class>
 </hibernate-mapping>

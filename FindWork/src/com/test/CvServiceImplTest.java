@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import javax.persistence.Id;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -12,14 +14,17 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.zhbit.findwork.entity.Advertise;
 import com.zhbit.findwork.entity.Cv;
 import com.zhbit.findwork.entity.User;
+import com.zhbit.findwork.service.AdvertiseService;
 import com.zhbit.findwork.service.CvService;
 import com.zhbit.findwork.service.UserService;
 
 public class CvServiceImplTest {
 	private static ApplicationContext context;
 	private static CvService cvService;
+	private static AdvertiseService advertiseService;
 
 
 	@BeforeClass
@@ -70,7 +75,9 @@ public class CvServiceImplTest {
 		cv.setWant_post("java");
 		//cv.setSelf_appraisal("goodluck51");
 		UserService userService = (UserService)context.getBean("userServiceImpl");
-		
+		AdvertiseService advertiseService = (AdvertiseService)context.getBean("advertiseServiceImpl");
+		Advertise advertise = advertiseService.getAdvertiseByID(1);
+		cv.getAdvertises().add(advertise);
 		cv.setUser(userService.getUserByID(3));
 		cvService.addCv(cv);
 	}
