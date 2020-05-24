@@ -53,6 +53,7 @@
          		  <value>com/zhbit/findwork/entity/Post.hbm.xml</value>
          		  <value>com/zhbit/findwork/entity/Advertise.hbm.xml</value>
          		  <value>com/zhbit/findwork/entity/Administrator.hbm.xml</value>
+         		  <value>com/zhbit/findwork/entity/Collection_Advertise.hbm.xml</value>
 			    </list>
 			 </property>
 			 <property name="hibernateProperties">
