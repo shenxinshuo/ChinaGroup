@@ -19,8 +19,34 @@
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
 		<link rel="stylesheet" type="text/css" href="css/shiping/resume.css">
+		<script type="text/javascript" src="resource/static/jquery/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="resource/static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/yufeng/pro_cites.js"></script>
+		<script>
+			
 
+			$(document).ready(function() {
+				for (var i = 0; i < pro.length; i++) {
+					$option = $("<option/>");
+					$option.attr("value", pro[i]);
+					$option.text(pro[i]);
+					$("#province").append($option);
+				}
+				$("#province").change(function() {
 
+					var cities = city[$(this).val()];
+					$("#city").empty();
+					$("#city").append("<option value=''>请选择</option>");
+					for (var i = 0; i < cities.length; i++) {
+
+						$option = $("<option/>");
+						$option.attr("value", cities[i]);
+						$option.text(cities[i]);
+						$("#city").append($option);
+					}
+				});
+			});
+		</script>
 </head>
 
 <body>
@@ -92,11 +118,14 @@
 			<div class="a3">
 				<span class="input-group-addon1">居住省份：</span> 
 				<!-- <input type="text" class="form-control2" name="cv.live_province" > --> 
-                <select name="cv.live_province"  class="form-control2">
-                	<option value="广东">广东</option>
-                	<option value="江西" >江西</option>
-                	<option value="湖北" >湖北</option>
-                </select>
+<%--                 <select name="cv.live_province"  class="form-control2"> --%>
+<!--                 	<option value="广东">广东</option> -->
+<!--                 	<option value="江西" >江西</option> -->
+<!--                 	<option value="湖北" >湖北</option> -->
+<%--                 </select> --%>
+                <select class="form-control" name="cv.live_province" id="province" msgEmpty="请选择省份" style="width: 100px;">
+					<option value="">请选择</option>
+				</select>
 				<span id="basic-addon3">期望工作类型:</span>
 				<s:radio list="{'实习','兼职','全职'}" name="cv.want_joy_type"></s:radio>
 			</div>
@@ -111,12 +140,15 @@
 			<div class="a3">
 				<span class="input-group-addon1">居住城市：</span> 
 				<!-- <input type="text" class="form-control2" name="cv.live_city" >  -->
-				<select name="cv.live_city"  class="form-control2">
-                	<option value="珠海">珠海</option>
-                	<option value="深圳" >深圳</option>
-                	<option value="武汉" >武汉</option>
-                	<option value="南昌" >南昌</option>
-                </select>
+<%-- 				<select name="cv.live_city"  class="form-control2"> --%>
+<!--                 	<option value="珠海">珠海</option> -->
+<!--                 	<option value="深圳" >深圳</option> -->
+<!--                 	<option value="武汉" >武汉</option> -->
+<!--                 	<option value="南昌" >南昌</option> -->
+<%--                 </select> --%>
+                <select class="form-control" name="cv.live_city" id="city" msgEmpty="请选择城市" style="width: 100px;">
+					<option value="">请选择</option>
+				</select>
 				<span id="basic-addon3">想&nbsp;去&nbsp;的&nbsp;省份：</span>
 				<!-- <input type="text" class="form-control2" name="cv.want_province" > -->
 				 <select name="cv.want_province"  class="form-control2">
