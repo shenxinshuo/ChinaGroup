@@ -32,9 +32,18 @@
 		<!-- 配置和用户多对一的关系 -->
 		<many-to-one name="user" class="User" column="Uid"/>
 		<!-- 配置和招聘信息表多对多关系 -->
-		<set name="advertises" table="t_cv_advertise">
+		<!-- <set name="advertises" table="t_cv_advertise">
 			<key not-null="false" column="Cid"/>
 			<many-to-many class="Advertise" column="Aid" />
-		</set>
+		</set> -->
+		<set name="advertises" table="t_cv_advertise">
+             <!-- key的 column表示当前类在中间表中的外键 -->
+             <key column="Cid" />
+                 <!-- many-to-many表示多对多关系
+                     column:表示另一方在中间表中的外键
+                     class:表示另一方类的全限定名
+               -->
+             <many-to-many column="Aid" class="com.zhbit.findwork.entity.Advertise" ></many-to-many>
+         </set>
 	</class>
 </hibernate-mapping>

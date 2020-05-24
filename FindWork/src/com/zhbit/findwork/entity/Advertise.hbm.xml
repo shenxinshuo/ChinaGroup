@@ -10,6 +10,7 @@
 		<id name="id" column="Aid">
 			<generator class="native" />
 		</id>
+		<!-- <property name="bid" column="Bid" /> -->
 		<property name="title" column="Atitle" />
 		<property name="postName" column="Apost" />
 		<property name="businessName" column="Bname" />
@@ -27,9 +28,18 @@
 		<property name="city" column="Bcity" />
 		
 		<!-- 配置和角色多对一的关系 -->
-		<many-to-one name="business" class="Business" column="Bid"></many-to-one>
-		<many-to-one name="post" class="Post" column="PTid"></many-to-one>
+		<many-to-one name="business" class="com.zhbit.findwork.entity.Business" column="Bid" ></many-to-one>
+		<many-to-one name="post" class="com.zhbit.findwork.entity.Post" column="PTid" ></many-to-one>
 		
-	
+		<set name="cvs" table="t_cv_advertise">
+             <!-- key的 column表示当前类在中间表中的外键 -->
+             <key column="Aid" />
+                 <!-- many-to-many表示多对多关系
+                     column:表示另一方在中间表中的外键
+                     class:表示另一方类的全限定名
+               -->
+             <many-to-many column="Cid" class="com.zhbit.findwork.entity.Cv" ></many-to-many>
+         </set>
+		
 	</class>
 </hibernate-mapping>

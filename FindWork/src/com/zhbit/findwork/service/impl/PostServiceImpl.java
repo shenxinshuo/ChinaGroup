@@ -87,5 +87,11 @@ public class PostServiceImpl implements PostService {
 	public void setPostDao(PostDao postDao) {
 		this.postDao = postDao;
 	}
+	@Override
+	public List<Post> getAllPost() {
+		
+		return postDao.getAllPost();
+	}
+
 	
 }

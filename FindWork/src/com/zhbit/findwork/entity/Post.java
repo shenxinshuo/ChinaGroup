@@ -1,6 +1,8 @@
 package com.zhbit.findwork.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Post {
 	
@@ -11,6 +13,8 @@ public class Post {
 	private Date create_at;
 	private Date update_at;
 	private Post_type ptype;
+	private Set<Advertise> advertises = new HashSet<Advertise>();
+
 	
 	
 	public Post_type getPtype() {
@@ -54,6 +58,12 @@ public class Post {
 	}
 	public void setUpdate_at(Date update_at) {
 		this.update_at = update_at;
+	}
+	public Set<Advertise> getAdvertises() {
+		return advertises;
+	}
+	public void setAdvertises(Set<Advertise> advertises) {
+		this.advertises = advertises;
 	}
 	
 	

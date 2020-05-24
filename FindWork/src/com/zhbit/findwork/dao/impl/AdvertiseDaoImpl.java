@@ -45,10 +45,15 @@ public class AdvertiseDaoImpl implements AdvertiseDao {
 
 	@Override
 	public List<Advertise> getAdvertiseByExample(Advertise advertise) {
-		Example   example  = Example.create(advertise).excludeProperty("lowWages").excludeProperty("largeWages");
+		//Example   example  = Example.create(advertise).excludeProperty("lowWages").excludeProperty("largeWages");
 		//example.ex
-		List<Advertise> results = sessionFactory.getCurrentSession().createCriteria(Advertise.class).add(example).list();
-		return results;
+		String hql = "from Advertise where  check = :check and deleteFlag = :deleteFlag and bid=:bid order by id";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("check", advertise.getCheck());
+		query.setParameter("deleteFlag", advertise.getDeleteFlag());
+		query.setParameter("bid", advertise.getBid());
+		//List<Advertise> results = sessionFactory.getCurrentSession().createCriteria(Advertise.class).add(example).list();
+		return query.list();
 	}
 
 	@Override

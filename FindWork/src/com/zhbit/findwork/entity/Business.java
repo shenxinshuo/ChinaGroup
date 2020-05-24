@@ -1,7 +1,9 @@
 package com.zhbit.findwork.entity;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 企业Bean类
@@ -27,7 +29,8 @@ public class Business {
 	private Date create_at;		//
 	private Date update_at;		//
 	private Role role;			//与角色类建立多对一关系
-	private List<Advertise> advertises;//与招聘信息建立一对多关系
+	//private List<Advertise> advertises;//与招聘信息建立一对多关系
+	private Set<Advertise> advertises = new HashSet<Advertise>();//与招聘信息建立一对多关系
 	public int getId() {
 		return id;
 	}
@@ -134,12 +137,13 @@ public class Business {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	public List<Advertise> getAdvertises() {
+	/*public List<Advertise> getAdvertises() {
 		return advertises;
 	}
 	public void setAdvertises(List<Advertise> advertises) {
 		this.advertises = advertises;
-	}
+	}*/
+	
 	@Override
 	public String toString() {
 		return "Business [id=" + id + ", name=" + name + ", city=" + city + ", telephone=" + telephone + ", email="
@@ -147,6 +151,12 @@ public class Business {
 				+ license_path + ", password=" + password + ", confirmPassword=" + confirmPassword + ", check_flag="
 				+ check_flag + ", delete_flag=" + delete_flag + ", comment=" + comment + ", create_at=" + create_at
 				+ ", update_at=" + update_at + "]";
+	}
+	public Set<Advertise> getAdvertises() {
+		return advertises;
+	}
+	public void setAdvertises(Set<Advertise> advertises) {
+		this.advertises = advertises;
 	}
 	
 	

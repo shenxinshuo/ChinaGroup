@@ -20,5 +20,8 @@ public interface PostService {
 	PostDao getPostDao();
 
 	void setPostDao(PostDao postDao);
+	
+	//获取所有岗位
+		List<Post> getAllPost();
 
 }

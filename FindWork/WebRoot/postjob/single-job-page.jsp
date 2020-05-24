@@ -23,7 +23,25 @@ String path = request.getContextPath();
     <link rel="stylesheet" href="<%=path %>/postjob/css/header.css">
     <link rel="stylesheet" href="<%=path %>/resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
   </head>
+  <script type="text/javascript">
   
+  	function toudi() {
+  		var val = $('input[name="optionsRadios"]:checked').val(); 
+  		if(val==undefined){
+  			alert("请选中一个简历！");
+  			return;
+  		}
+  		$.ajax({
+		    url:"<%=path %>/toudiAdvertise.action?cid="+val+"&advertise.id=${as.id}",    //请求的url地址
+		    //dataType:"json",   //返回格式为json
+		    async:true,//请求是否异步，默认为异步，这也是ajax重要特性
+		    success:function(req){
+		    	alert("投递成功！"); 
+		    	window.location.reload();
+		    }
+		 }); 
+	}
+  </script>
   <body>
   	<!-- 引入头部 -->
     <jsp:include page="/common/header.jsp"/>
@@ -158,8 +176,13 @@ String path = request.getContextPath();
 		<!-- Sidebar -->
 		<div class="col-xl-4 col-lg-4">
 			<div class="sidebar-container">
-
-				<a href="../seeCV/seeCV.html" class="apply-now-button popup-with-zoom-anim">查看已收简历 </a>
+				<c:if test="${isUser==1}">
+						<a href="<%=path %>/getCvs.action?advertise.id=${as.id}" class="apply-now-button popup-with-zoom-anim">查看已收简历 </a>		  			
+				 </c:if>
+				<c:if test="${isUser==0}">
+						<a data-toggle="modal" href="#mymodal" class="apply-now-button popup-with-zoom-anim">投递简历 </a>
+						<a  href="<%=path %>/getCvs.action?advertise.id=${as.id}" class="apply-now-button popup-with-zoom-anim">收藏职位 </a>								
+				 </c:if>
 					
 				<!-- Sidebar Widget -->
 				 <div class="sidebar-widget">
@@ -222,6 +245,36 @@ String path = request.getContextPath();
 </div>
 
 
+<!-- 模态弹出窗内容 -->
+<div class="modal" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mymodal-link">
+    <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">选择简历：</h4>
+         </div>
+         <div class="modal-body">
+            <table >
+            	<c:forEach items="${cvs}" var="d">
+            		<tr>
+            		    <td>求职意向：${d.want_post}</td>  <td style="width: 250px;"></td>  <td><input type="radio" name="optionsRadios"  value="${d.id}"></td>   
+            		</tr>
+                   	<tr>
+            		    <td><br></td>  <td style="width: 250px;"></td>  <td></td>   
+            		</tr>
+                </c:forEach>
+            </table>
+            	
+            
+            
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" onclick="javascript:toudi();"  class="btn btn-primary">确认投递</button>
+         </div>
+      </div>
+   </div>
+   </div>
 <!-- Wrapper / End -->
 
    <!-- 引入底部 -->

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+	<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
@@ -136,7 +136,7 @@
                         <div class="btn btn-info"><a href="${business_showUpdate }" style="color: white;">完善信息</a></div>
                     </div>
                    <div class="btn btn-group">
-                        <div class="btn btn-info"><a href="<%=request.getContextPath()%>/postjob/dashboard-post-a-job.jsp" style="color: white;">添加招聘信息</a></div>
+                        <div class="btn btn-info"><a href="<%=request.getContextPath()%>/toAddAdvertise.action" style="color: white;">添加招聘信息</a></div>
                     </div>
                     <div class="btn btn-group">
                         <div class="btn btn-info"><a href="<%=request.getContextPath()%>/toFinAdvertise.action" style="color: white;">查看已发布的招聘</a></div>

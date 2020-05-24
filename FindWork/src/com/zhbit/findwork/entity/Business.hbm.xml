@@ -27,10 +27,16 @@
 		<!-- 配置和角色多对一的关系 -->
 		<many-to-one name="role" class="Role" column="Rid"></many-to-one>
 		<!-- 配置和招聘信息一对多的关系 -->
-		<list name="advertises" table="t_advertise" lazy="false">
+		<!-- <list name="advertises" table="t_advertise" lazy="false">
 			<key column="Bid" />
 			<list-index column="Aid" />
 			<one-to-many class="Advertise"/>
-		</list>
+		</list> -->
+		<set name="advertises">
+            <!--3.2 key的 column表示多的一方外键名 -->
+            <key column="Bid"/>
+            <!--3.3 one-to-many的class属性表示多的一方类的全限定名  -->
+            <one-to-many class="com.zhbit.findwork.entity.Advertise"/>
+        </set>
 	</class>
 </hibernate-mapping>

@@ -1,5 +1,7 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="com.zhbit.findwork.entity.Business"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 String path = request.getContextPath();
 %>
@@ -50,7 +52,7 @@ String path = request.getContextPath();
 					}
 				}
 				if(dataArr[i].name=="advertise.wantJoyType"){
-					if(dataArr[i].value!="0"&&dataArr[i].value!="1"&&dataArr[i].value!="2"){
+					if(dataArr[i].value=="请选择工作类型"){
 						alert("请选择工作种类");
 						return false;
 					}
@@ -135,7 +137,7 @@ String path = request.getContextPath();
     <jsp:include page="/common/header.jsp"/>
 		
 		<!-- 返回企业中心 -->
-		<a href="javascript:history.go(-1)"><span class="glyphicon glyphicon-chevron-left"></span>返回企业中心</a>
+		<a href="FindWork/business_showBusinessCenter.action?business.id=<%=((Business)session.getAttribute("LOGINED_USER")).getId() %>&currentPage=1"><span class="glyphicon glyphicon-chevron-left"></span>返回企业中心</a>
 			<!-- Row -->
 			<div class="row">
 
@@ -157,7 +159,14 @@ String path = request.getContextPath();
 								<div class="col-xl-4">
 									<div class="submit-field">
 										<h5>招聘岗位</h5>
-										<input  name="advertise.postName"  value="${advertise.postName}" type="text" class="with-border">
+										<%-- <input  name="advertise.postName"  value="${advertise.postName}" type="text" class="with-border"> --%>
+										<select  name="advertise.post.Pid"  style="width: 250px;" class="combobox">
+										                <c:forEach items="${l}" var="d">
+										                    <option value="${d.value}" <c:if test="${d.value==advertise.post.Pid}"> selected</c:if> >
+										                            ${d.name}
+										                    </option>
+										                </c:forEach>
+										</select>
 									</div>
 								</div>
 								
@@ -181,9 +190,9 @@ String path = request.getContextPath();
 										     <c:otherwise>  <!--否则 -->    
 														<select  name="advertise.wantJoyType"  value="${advertise.wantJoyType}" style="width: 250px;" class="combobox">
 															  <option>请选择工作类型</option>
-															  <option value="0">全职</option>
-															  <option value="1">实习</option>
-															  <option value="2">兼职</option>
+															  <option value="全职">全职</option>
+															  <option value="实习">实习</option>
+															  <option value="兼职">兼职</option>
 														</select> 
 										  	</c:otherwise> 
 										
@@ -234,7 +243,7 @@ String path = request.getContextPath();
 									<div class="submit-field">
 										<h5>截止日期</h5>
 										<!-- <input type="text" class="with-border"> -->
-										<input type="text" id="time" readonly="readonly"  name="advertise.deadline" value="${advertise.deadline}" onClick="return Calendar('time');" class="text_time"/>
+										<input type="text" id="time" readonly="readonly"  name="advertise.deadline" value="<fmt:formatDate value="${advertise.deadline}" pattern="yyyy-MM-dd" />" onClick="return Calendar('time');" class="text_time"/>
 									</div>
 								</div>
 
@@ -264,6 +273,9 @@ String path = request.getContextPath();
 						</div>
 							<input type="hidden"  name="advertise.id" value="${advertise.id}">
 							<input type="hidden"  name="advertise.check" value="${advertise.check}">
+							<input type="hidden"  name="advertise.business.id" value="${advertise.business.id}">
+							<input type="hidden"  name="advertise.city" value="${advertise.city}">
+							<input type="hidden"  name="advertise.businessName" value="${advertise.businessName}">
 						</form>
 					</div>
 				</div>

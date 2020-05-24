@@ -16,5 +16,13 @@
 		<property name="create_at" column="create_at" />
 		<property name="update_at" column="update_at" />
 		<many-to-one name="ptype" class="Post_type" column="PTid" cascade="none" />
+		
+		
+		<set name="advertises">
+            <!--3.2 key的 column表示多的一方外键名 -->
+            <key column="PTid"/>
+            <!--3.3 one-to-many的class属性表示多的一方类的全限定名  -->
+            <one-to-many class="com.zhbit.findwork.entity.Advertise"/>
+        </set>
 	</class>
 </hibernate-mapping>

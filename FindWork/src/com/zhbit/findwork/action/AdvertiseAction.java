@@ -5,17 +5,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.zhbit.findwork.dao.AdvertiseDao;
 import com.zhbit.findwork.entity.Advertise;
+import com.zhbit.findwork.entity.Business;
+import com.zhbit.findwork.entity.Cv;
+import com.zhbit.findwork.entity.Post;
+import com.zhbit.findwork.entity.User;
 import com.zhbit.findwork.service.AdvertiseService;
 import com.zhbit.findwork.service.BusinessService;
+import com.zhbit.findwork.service.CvService;
+import com.zhbit.findwork.service.PostService;
 
 public class AdvertiseAction extends ActionSupport{
 
@@ -29,14 +37,24 @@ public class AdvertiseAction extends ActionSupport{
 	
 	private Advertise advertise;
 	private AdvertiseService advertiseService;
+	private PostService postService;
 	private String message;				//用于返回信息给页面，提示用户
 	private String errorMessage;		//显示异常信息
-	
+	private CvService cvService;
+	private int cid;
 	
 	public void addAdvertise(){
 		/*HttpServletResponse response=ServletActionContext.getResponse(); 
 		response.setContentType("text/html;charset=utf-8"); */
 		// PrintWriter out = null;
+		Business b =  (Business) ServletActionContext.getRequest().getSession().getAttribute("LOGINED_USER");
+		advertise.setCity(b.getCity());
+		advertise.setBusiness(b);
+		advertise.setBid(b.getId());
+		advertise.setBusinessName(b.getName());
+		Post p = postService.getPostByID(advertise.getPost().getPid());
+		advertise.setPost(p);
+		advertise.setPostName(p.getPname());
 		try {
 			advertiseService.addAdvertese(advertise);
 			//out = response.getWriter();
@@ -52,9 +70,11 @@ public class AdvertiseAction extends ActionSupport{
 	
 	
 	public String toUnFinAdvertise(){
+		Business b =  (Business) ServletActionContext.getRequest().getSession().getAttribute("LOGINED_USER");
 		Advertise advertise = new Advertise();
 		advertise.setCheck(0);
 		advertise.setDeleteFlag(0);
+		advertise.setBid(b.getId());
 		List<Advertise>  l = advertiseService.getAdvertiseByExample(advertise);
 		HttpServletRequest req = ServletActionContext.getRequest();
 		req.setAttribute("list", l);
@@ -78,15 +98,15 @@ public class AdvertiseAction extends ActionSupport{
 		List<Map<String,String>> l = new ArrayList<Map<String,String>>();
 		Map<String, String> m = new HashMap<String, String>();
 		m.put("name", "全职");
-		m.put("value", "0");
+		m.put("value", "全职");
 		l.add(m);
 		m = new HashMap<String, String>();
 		m.put("name", "实习");
-		m.put("value", "1");
+		m.put("value", "实习");
 		l.add(m);
 		m = new HashMap<String, String>();
 		m.put("name", "兼职");
-		m.put("value", "2");
+		m.put("value", "兼职");
 		l.add(m);
 		req.setAttribute("advertiseType", l);
 		req.setAttribute("isEdit", 1);
@@ -96,6 +116,11 @@ public class AdvertiseAction extends ActionSupport{
 	
 	public void updateAdvertise(){
 		try {
+			/*Business b =  (Business) ServletActionContext.getRequest().getSession().getAttribute("LOGINED_USER");
+			advertise.setCity(b.getCity());
+			advertise.setBusiness(b);
+			advertise.setBid(b.getId());
+			advertise.setBusinessName(b.getName());*/
 			advertiseService.updateAdvertese(advertise);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -103,9 +128,11 @@ public class AdvertiseAction extends ActionSupport{
 	}
 	
 	public String toFinAdvertise(){
+		Business b =  (Business) ServletActionContext.getRequest().getSession().getAttribute("LOGINED_USER");
 		Advertise advertise = new Advertise();
 		advertise.setCheck(1);
 		advertise.setDeleteFlag(0);
+		advertise.setBid(b.getId());
 		List<Advertise>  l = advertiseService.getAdvertiseByExample(advertise);
 		HttpServletRequest req = ServletActionContext.getRequest();
 		req.setAttribute("list", l);
@@ -116,9 +143,70 @@ public class AdvertiseAction extends ActionSupport{
 		Advertise  as =  advertiseService.getAdvertiseByID(advertise.getId());
 		HttpServletRequest req = ServletActionContext.getRequest();
 		req.setAttribute("as", as);
+		//Business b =  (Business) ServletActionContext.getRequest().getSession().getAttribute("LOGINED_USER");
+		/*User user= new User();
+		user.setId(1);
+		ActionContext ac = ActionContext.getContext();
+		  ac.getSession().put("LOGINED_USER", user);*/
+		//User user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
+		Integer s = (Integer) ActionContext.getContext().getSession().get("LOGINED_ROLE");
+		int isUser = 9;
+		if(s==2){
+			isUser=1;
+			List<Cv> cvs = new ArrayList<Cv>();
+			req.setAttribute("cvs", cvs);
+		}
+		if(s==1){
+			isUser=0;
+			User user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
+			List<Cv> cvs = cvService.getCvListByUserId(user.getId());
+			req.setAttribute("cvs", cvs);
+		}
+		req.setAttribute("isUser", isUser);
 		return "detailAdvertise";
 	}
 	
+	
+	public void toudiAdvertise(){
+		Cv c = cvService.getCvByID(cid);
+		Advertise as =  advertiseService.getAdvertiseByID(advertise.getId());
+		/*Advertise as =  new Advertise();
+		Post p = new Post();
+		p.setPid(1);
+		as.setPost(p);*/
+		Set<Cv> set =  as.getCvs(); 
+		set.add(c);
+		as.setCvs(set);
+		try {
+			advertiseService.updateAdvertese(as);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public String getCvs(){
+		Advertise as =  advertiseService.getAdvertiseByID(advertise.getId());
+		Set<Cv> set = as.getCvs();
+		HttpServletRequest req = ServletActionContext.getRequest();
+		req.setAttribute("set", set);
+		req.setAttribute("sets", set.size());
+		return "getCvs";
+	}
+	
+	public String toAddAdvertise(){
+		List<Post> posts = postService.getAllPost();
+		HttpServletRequest req = ServletActionContext.getRequest();
+		List<Map<String,Object>> l = new ArrayList<Map<String,Object>>();
+		for (Post p : posts) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("value", p.getPid());
+			map.put("name", p.getPname());
+			l.add(map);
+		}
+		req.setAttribute("l", l);
+		return "toAddAdvertise";
+	}
 	
 	public String toAdd(){
 		return "toAdd";
@@ -149,4 +237,22 @@ public class AdvertiseAction extends ActionSupport{
 		this.advertiseService = advertiseService;
 	}
 
+	public void setCvService(CvService cvService) {
+		this.cvService = cvService;
+	}
+
+	public int getCid() {
+		return cid;
+	}
+
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+
+
+
+	public void setPostService(PostService postService) {
+		this.postService = postService;
+	}
+	
 }

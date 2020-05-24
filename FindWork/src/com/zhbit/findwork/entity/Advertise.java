@@ -1,6 +1,8 @@
 package com.zhbit.findwork.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -12,6 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 public class Advertise {
 	private int id;// 职位id
+	private int bid;//企业id
 	private String title;// 招聘标题
 	private String postName;// 招聘岗位
 	private String businessName;//企业名字
@@ -29,7 +32,7 @@ public class Advertise {
 	private String city;//城市
 	private Business business;// 与企业类多对一关系
 	private Post post;			//与岗位多对一关系
-	
+	private Set<Cv> cvs = new HashSet<Cv>();//与简历多对多;
 	
 	
 	public String getBusinessName() {
@@ -63,6 +66,13 @@ public class Advertise {
 		this.title = title;
 	}
 	
+	
+	public int getBid() {
+		return bid;
+	}
+	public void setBid(int bid) {
+		this.bid = bid;
+	}
 	public String getPostName() {
 		return postName;
 	}
@@ -142,5 +152,10 @@ public class Advertise {
 	public void setBusiness(Business business) {
 		this.business = business;
 	}
-	
+	public Set<Cv> getCvs() {
+		return cvs;
+	}
+	public void setCvs(Set<Cv> cvs) {
+		this.cvs = cvs;
+	}
 }

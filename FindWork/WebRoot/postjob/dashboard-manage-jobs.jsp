@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="com.zhbit.findwork.entity.Business"%>
 <%
 String path = request.getContextPath();
 %>
@@ -51,7 +52,7 @@ String path = request.getContextPath();
 	================================================== -->
 
 	<!-- 返回企业中心 -->
-	<a href="FindWork/business_showBusinessCenter.action?business.id=7&currentPage=1"><span class="glyphicon glyphicon-chevron-left"></span>返回企业中心</a>
+	<a href="FindWork/business_showBusinessCenter.action?business.id=<%=((Business)session.getAttribute("LOGINED_USER")).getId() %>&currentPage=1"><span class="glyphicon glyphicon-chevron-left"></span>返回企业中心</a>
 	<div class="dashboard-content-container" data-simplebar>
 		<div class="dashboard-content-inner" >
 			

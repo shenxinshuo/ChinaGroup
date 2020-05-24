@@ -23,6 +23,8 @@
 		<!-- 配置action -->
         <bean id="advertiseAction" class="com.zhbit.findwork.action.AdvertiseAction" scope="request">
 			<property name="advertiseService" ref="advertiseServiceImpl"></property>
+			<property name="cvService" ref="cvServiceImpl" />
+			<property name="postService" ref="postService" />
 		</bean>
            
 </beans>

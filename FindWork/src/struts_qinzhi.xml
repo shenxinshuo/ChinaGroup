@@ -10,6 +10,9 @@
 	<package name="advertise" extends="struts-default" namespace="/">
 		<action name="addAdvertise" class="advertiseAction" method="addAdvertise">
 		</action>
+		<action name="toAddAdvertise" class="advertiseAction" method="toAddAdvertise">
+			 <result name="toAddAdvertise">/postjob/dashboard-post-a-job.jsp</result>
+		</action>
 		<action name="toUnFinAdvertise" class="advertiseAction" method="toUnFinAdvertise">
 			 <result name="toUnFinAdvertise">/postjob/weifabujob.jsp</result>
 		</action>
@@ -25,6 +28,11 @@
 		</action>
 		<action name="detailAdvertise" class="advertiseAction" method="detailAdvertise">
 			 <result name="detailAdvertise">/postjob/single-job-page.jsp</result>
+		</action>
+		<action name="toudiAdvertise" class="advertiseAction" method="toudiAdvertise">
+		</action>
+		<action name="getCvs" class="advertiseAction" method="getCvs">
+			<result name="getCvs">/postjob/seeCV.jsp</result>
 		</action>
 	</package>
 </struts>

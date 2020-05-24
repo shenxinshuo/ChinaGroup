@@ -96,5 +96,12 @@ public class PostDaoImpl implements PostDao {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
+	@Override
+	public List<Post> getAllPost() {
+		String hql = "from Post where delete_flag = 0";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		List<Post> ps = query.list();
+		return ps;
+	}
 	
 }

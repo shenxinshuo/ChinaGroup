@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="com.zhbit.findwork.entity.Business"%>
 <%
 String path = request.getContextPath();
 %>
@@ -38,6 +39,15 @@ String path = request.getContextPath();
     		}else{ 
     		} 
 		} 
+ 		
+ 		function fabu() {
+ 			var msg = "确发布吗？"; 
+    		if (confirm(msg)==true){
+    			window.location.href="FindWork/business_showBusinessCenter.action?business.id=<%=((Business)session.getAttribute("LOGINED_USER")).getId() %>&currentPage=1";
+    		}else{
+    			
+    		} 
+		}
   </script>
   <body>
   	<!-- 引入头部 -->
@@ -50,7 +60,7 @@ String path = request.getContextPath();
 	================================================== -->
 
 	<!-- 返回企业中心 -->
-	<a href="FindWork/business_showBusinessCenter.action?business.id=7&currentPage=1"><span class="glyphicon glyphicon-chevron-left"></span>返回企业中心</a>
+	<a href="FindWork/business_showBusinessCenter.action?business.id=<%=((Business)session.getAttribute("LOGINED_USER")).getId() %>&currentPage=1"><span class="glyphicon glyphicon-chevron-left"></span>返回企业中心</a>
 	<div class="dashboard-content-container" data-simplebar>
 		<div class="dashboard-content-inner" >
 			
@@ -105,7 +115,7 @@ String path = request.getContextPath();
 										</div>
 									</div>
 									<div class="buttons-to-right always-visible">
-										<a href="dashboard-manage-candidates.jsp" class="button ripple-effect"><i class="glyphicon glyphicon-ok"></i> 发布工作 </a>
+										<a href="#" onclick="javascript:fabu();" class="button ripple-effect"><i class="glyphicon glyphicon-ok"></i> 发布工作 </a>
 										<a href="<%=path %>/toUpdateAdvertise.action?advertise.id=${l.id}" class="button gray ripple-effect ico" title="编辑" data-tippy-placement="top"><i class="glyphicon glyphicon-pencil"></i></a>
 										<a href="#" onclick="javascript:deleteAdvertise(${l.id});" class="button gray ripple-effect ico" title="删除" data-tippy-placement="top"><i class="glyphicon glyphicon-trash"></i></a>
 									</div>
