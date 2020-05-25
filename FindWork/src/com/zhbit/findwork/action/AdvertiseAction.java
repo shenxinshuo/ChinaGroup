@@ -48,20 +48,25 @@ public class AdvertiseAction extends ActionSupport{
 		response.setContentType("text/html;charset=utf-8"); */
 		// PrintWriter out = null;
 		Business b =  (Business) ServletActionContext.getRequest().getSession().getAttribute("LOGINED_USER");
-		advertise.setCity(b.getCity());
-		advertise.setBusiness(b);
-		advertise.setBid(b.getId());
-		advertise.setBusinessName(b.getName());
-		Post p = postService.getPostByID(advertise.getPost().getPid());
-		advertise.setPost(p);
-		advertise.setPostName(p.getPname());
-		try {
-			advertiseService.addAdvertese(advertise);
-			//out = response.getWriter();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+		//advertise.setCity(b.getCity());
+		
+		System.out.println(advertise.getCity());
+		
+		
+		
+//		advertise.setBusiness(b);
+//		advertise.setBid(b.getId());
+//		advertise.setBusinessName(b.getName());
+//		Post p = postService.getPostByID(advertise.getPost().getPid());
+//		advertise.setPost(p);
+//		advertise.setPostName(p.getPname());
+//		try {
+//			advertiseService.addAdvertese(advertise);
+//			//out = response.getWriter();
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} 
 		/* out.println("success"); 
 		 out.flush(); 
 		 out.close(); */

@@ -93,9 +93,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<s:if test="pts!=null">
 					<s:iterator value="pts">
 					<div class="type">
-						<a class="offer_type" href="#"><s:property value="PTname"/></a>
+						<label class="offer_type"><s:property value="PTname"/></label>
+						<%-- <a class="offer_type" href="#"><s:property value="PTname"/></a> --%>
 						<s:iterator value="posts">
-							<s:url id="search_getAdvertisesByPostSearch" action="search_getAdvertisesByPostSearch?postName=<s:property value='Pname'/>" namespace="/" />
+							<s:url id="search_getAdvertisesByPostSearch" action="search_getAdvertisesByPostSearch" namespace="/" >
+								<s:param name="postName">${Pname }</s:param>
+							</s:url>
 							<a class="types" href="${search_getAdvertisesByPostSearch }"><s:property value="Pname"/></a>
 						</s:iterator>
 					</div>
