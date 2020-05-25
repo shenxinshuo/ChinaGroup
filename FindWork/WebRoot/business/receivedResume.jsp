@@ -43,13 +43,15 @@
 		<td style="color: #8C8C8C;height: 35px;">求职意向</td>
 		<td style="color: #8C8C8C;height: 35px;">最低工资</td>
 		<td style="color: #8C8C8C;height: 35px;">工作类型</td></tr>
-		<s:if test="#request.cvs==null||#request.cvs.size()==0">
+		<s:if test="cvs1==null||cvs1.size()==0">
 			<tr><td colspan="5">还没有投递的简历，尽请期待。</td></tr>
 		</s:if>		
 		<s:else>
 	
-	   <s:iterator id="cv" value="#request.cvs">
-				<s:url id="showcv" action="/FindWork/cv/cv_show.action?cv.id=%{#cv.id}" namespace="/"></s:url>					
+	   <s:iterator id="cv" value="cvs1">
+				<s:url id="showcv" action="cv_showCV" namespace="/">
+					<s:param name="cv.id">${cv.id }</s:param>
+				</s:url>					
 		<tr><td><a href="${showcv}" target="_parent"><s:property value="#cv.name"/></a></td> 
 		<td><s:property value="#cv.education_background"/></td>
 		<td><s:property value="#cv.want_post"/></td>

@@ -35,7 +35,7 @@
 			<result name="getCvs">/postjob/seeCV.jsp</result>
 		</action>
 		<action name="showReceivedCV" class="advertiseAction" method="showReceivedCV">
-			<result name="showReceivedCV">/postjob/single-job-page.jsp</result>
+			<result name="showReceivedCV">/business/receivedResume.jsp</result>
 		</action>
 	</package>
 </struts>

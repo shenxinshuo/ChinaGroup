@@ -244,7 +244,14 @@ public class CvAction extends ActionSupport{
 			return "showResume";
 		}
 	}
-	
+	public String showCV(){
+		cv = cvService.getCvByID(cv.getId());
+		if (cv==null) {
+			return "error";
+		}else {
+			return "showResume";
+		}
+	}
 	public String showDetail(){
 		int id = cv.getId();
 		cv = cvService.getCvByID(id);

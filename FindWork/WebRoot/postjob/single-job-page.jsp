@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 String path = request.getContextPath();
@@ -178,7 +179,10 @@ String path = request.getContextPath();
 			<div class="sidebar-container">
 				
 				<c:if test="${isUser==1}">
-						<a href="<%=path %>/getCvs.action?advertise.id=${as.id}" class="apply-now-button popup-with-zoom-anim">查看已收简历 </a>		  			
+					<s:url id="showReceivedCV" action="showReceivedCV" namespace="/">
+						<s:param name="advertise.id">${as.id }</s:param>
+					</s:url>
+						<a href="${showReceivedCV }" class="apply-now-button popup-with-zoom-anim">查看已收简历 </a>		  			
 				 </c:if>
 				<c:if test="${isUser==0}">	
 										

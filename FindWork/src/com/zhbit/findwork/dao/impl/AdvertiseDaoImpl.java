@@ -162,7 +162,8 @@ public class AdvertiseDaoImpl implements AdvertiseDao {
 		while (it.hasNext()) {
 			cvs.add(it.next());
 		}
-		return cvs.subList(firstResult, firstResult+maxResults);
+		int toIndex = firstResult+maxResults;
+		return cvs.subList(firstResult, toIndex > cvs.size() ? cvs.size() : toIndex);
 		
 	}
 
