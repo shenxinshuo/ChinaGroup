@@ -22,8 +22,8 @@ String path = request.getContextPath();
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="<%=path %>/postjob/css/style.css">
     <link rel="stylesheet" href="<%=path %>/postjob/css/colors/blue.css">
-    <link rel="stylesheet" href="./header/header.css"/>
-<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="<%=path %>/header/header.css"/>
+	<link rel="stylesheet" href="<%=path %>/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
 	<style>
 		.text_time{
 			width: 207px;
@@ -32,6 +32,27 @@ String path = request.getContextPath();
 			border:1px solid #56da9e;		
 	}
 </style>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/yufeng/pro_cites.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			for(var i=0; i<pro.length; i++) {
+				$option = $("<option>");
+				$option.attr("value", pro[i]);
+				$option.text(pro[i]);
+				$("#province").append($option);
+			}
+			$("#province").change(function() {
+				var cities = city[$(this).val()];
+				$("#city").empty();
+				for (var i=0; i<cities.length; i++) {
+					$option = $("<option>");
+					$option.attr("value", cities[i]);
+					$option.text(cities[i]);
+					$("#city").append($option);
+				}
+			})
+		})
+	</script>
 	<script type="text/javascript" src="<%=path %>/postjob/js/showdate.js"></script>
 	<script type="text/javascript">
 		
@@ -251,7 +272,29 @@ String path = request.getContextPath();
 								<div class="col-xl-4">
 									<div class="submit-field">
 										<h5>学历背景   </h5>
-										<input type="text" name="advertise.comment" value="${advertise.comment}" class="with-border">										
+										<input type="text" name="advertise.educationBackground" value="${advertise.educationBackground}" class="with-border">										
+									</div>
+								</div>
+								
+								<div class="col-xl-4">
+									<div class="submit-field">
+										<h5>地区</h5>
+										<div class="row">
+											<div class="col-xl-6">
+												<div class="input-with-icon">
+													<select name="advertise.province" id="province"  class="form-control" style="width:130px;">
+				                                        <option value="" >选择省份</option>
+				                                    </select>
+												</div>
+											</div>
+											<div class="col-xl-6">
+												<div class="input-with-icon">
+													<select name="advertise.city" id="city"  class="form-control" style="width:130px;">
+				                                        <option value="" >选择城市</option>
+				                                    </select>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 								
@@ -317,11 +360,11 @@ String path = request.getContextPath();
 
 
 	
-<script src="../jquery/jquery-migrate-3.0.0.min.js"></script>
-<script src="../jquery/bootstrap-slider.min.js"></script>
-<script src="../jquery/bootstrap-select.min.js"></script>
-<script type="text/javascript" src="../jquery/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="<%=path %>/jquery/jquery-migrate-3.0.0.min.js"></script>
+<script src="<%=path %>/jquery/bootstrap-slider.min.js"></script>
+<script src="<%=path %>/jquery/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="<%=path %>/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="<%=path %>/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
 
 </body>
