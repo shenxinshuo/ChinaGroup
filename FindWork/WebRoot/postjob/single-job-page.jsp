@@ -181,7 +181,7 @@ String path = request.getContextPath();
 				 </c:if>
 				<c:if test="${isUser==0}">
 						<a data-toggle="modal" href="#mymodal" class="apply-now-button popup-with-zoom-anim">投递简历 </a>
-						<a  href="<%=path %>/getCvs.action?advertise.id=${as.id}" class="apply-now-button popup-with-zoom-anim">收藏职位 </a>								
+						<a  href="collection_advertise_addadvertise.action?advertise.id=${as.id }" class="apply-now-button popup-with-zoom-anim">收藏职位 </a>								
 				 </c:if>
 					
 				<!-- Sidebar Widget -->

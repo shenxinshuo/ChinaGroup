@@ -107,5 +107,6 @@
     
     
     <jsp:include page="/common/footer.jsp" />
+    <script type="text/javascript" src="resource/static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
   </body>
 </html>

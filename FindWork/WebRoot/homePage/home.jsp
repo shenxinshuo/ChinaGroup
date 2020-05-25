@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				      <div class="input-group-btn">
 				        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">GO! <span class="caret"></span></button>
 				        <ul class="dropdown-menu dropdown-menu-right">
-				          <li><a href="#">招聘信息</a></li>
+				          <li><a id="advertiseSearch" href="" onclick="searchWithAdvertise()">招聘信息</a></li>
 				         
 				          <li><a id="businessSearch" href="" onclick="searchWithBusiness()">公司</a></li>
 				        </ul>
@@ -65,13 +65,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				//alert(requestPath);
 				document.getElementById("businessSearch").href=requestPath;
 			}
+			function searchWithAdvertise() {
+				var searchName = document.getElementById("searchName").value;
+				var requestPath = "search_getAdvertisesByPostSearch.action?postName="+searchName;
+				//alert(requestPath);
+				document.getElementById("advertiseSearch").href=requestPath;
+			}
 			/* function rethtml() {
                 var $html = "<div><s:url id='business_searchByName' action='business_searchByName' namespace='/'><s:param name='searchName'></s:param><s:param name='currentPage'>1</s:param></s:url></div>";
                 return $html;
             }
             $("#h").append(rethtml()); */
 		</script>
-		<div class="div_title col-md-offset-1">
+		<div class="div_title">
 			<label class="label label-danger">热门岗位</label>
 			<a class="types" href="#">证券</a>
 			<a class="types" href="#">C++</a>
