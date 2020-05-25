@@ -93,7 +93,7 @@
 	
     		<div>
 			<img class="a0" src="cv/image/e1.png" /> 
-			<a href="<%=request.getContextPath() %>/user/userCenter.jsp"><span style="font-size: 30px;color: dodgerblue;" class="glyphicon glyphicon-remove"></span>
+			<a href="javascript:history.go(-1)"><span style="font-size: 30px;color: dodgerblue;" class="glyphicon glyphicon-remove"></span>
 			</a>
 			</div>
 			<div>

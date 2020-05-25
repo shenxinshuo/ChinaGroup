@@ -2,6 +2,10 @@ package com.zhbit.findwork.action;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.zhbit.findwork.entity.Advertise;
@@ -32,11 +36,21 @@ public class Collection_AdvertiseAction extends ActionSupport {
 	private AdvertiseService advertiseService;
 	private String message;				//用于返回信息给页面，提示用户
 	private String errorMessage;		//显示异常信息
-	
+	private Advertise as;
+	public Advertise getAs() {
+		return as;
+	}
+	public void setAs(Advertise as) {
+		this.as = as;
+	}
 	public String addadvertise(){
 		//user=userService.getUserByID(1);//获取当前登录的用户
 		user=(User)ActionContext.getContext().getSession().get("LOGINED_USER");
 		advertise=advertiseService.getAdvertiseByID(advertise.getId());
+		as=advertise;
+		int isUser=0;
+		HttpServletRequest req = ServletActionContext.getRequest();
+		req.setAttribute("isUser", isUser);
 		Collection_Advertise ca = new Collection_Advertise();
 		ca.setUser(user);
 		ca.setAdvertise(advertise);

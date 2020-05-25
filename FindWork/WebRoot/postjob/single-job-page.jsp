@@ -176,11 +176,15 @@ String path = request.getContextPath();
 		<!-- Sidebar -->
 		<div class="col-xl-4 col-lg-4">
 			<div class="sidebar-container">
+				
 				<c:if test="${isUser==1}">
 						<a href="<%=path %>/getCvs.action?advertise.id=${as.id}" class="apply-now-button popup-with-zoom-anim">查看已收简历 </a>		  			
 				 </c:if>
-				<c:if test="${isUser==0}">
+				<c:if test="${isUser==0}">	
+										
 						<a data-toggle="modal" href="#mymodal" class="apply-now-button popup-with-zoom-anim">投递简历 </a>
+						<span style="color:red">${message}</span>
+				        <span style="color:red">${errorMessage }</span><br>	
 						<a  href="collection_advertise_addadvertise.action?advertise.id=${as.id }" class="apply-now-button popup-with-zoom-anim">收藏职位 </a>								
 				 </c:if>
 					
