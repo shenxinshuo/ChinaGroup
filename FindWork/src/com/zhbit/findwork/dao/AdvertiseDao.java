@@ -6,6 +6,7 @@ package com.zhbit.findwork.dao;
 import java.util.List;
 
 import com.zhbit.findwork.entity.Advertise;
+import com.zhbit.findwork.entity.Cv;
 
 public interface AdvertiseDao {
 
@@ -89,4 +90,10 @@ public interface AdvertiseDao {
 	//根据城市搜索
 	
 	//根据工资搜索
+	
+	//企业查看已收简历
+	public List<Cv> getCVOfAdvertise(int aID, int firstResult, int maxResults);
+	
+	//企业查看已收简历的总数
+	public int getCVCountOfAdvertise(int aID);
 }

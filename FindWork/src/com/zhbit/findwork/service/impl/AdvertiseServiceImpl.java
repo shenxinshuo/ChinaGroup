@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.zhbit.findwork.dao.AdvertiseDao;
 import com.zhbit.findwork.entity.Advertise;
+import com.zhbit.findwork.entity.Cv;
 import com.zhbit.findwork.service.AdvertiseService;
 
 public class AdvertiseServiceImpl implements AdvertiseService {
@@ -99,5 +100,14 @@ public class AdvertiseServiceImpl implements AdvertiseService {
 		int count = advertiseDao.getCountByPostSearch(postName);
 		return count;
 	}
-	
+	@Override
+	public List<Cv> getCVOfAdvertise(int aID, int firstResult, int maxResults) {
+		List<Cv> cvs = advertiseDao.getCVOfAdvertise(aID, firstResult, maxResults);
+		return cvs;
+	}
+	@Override
+	public int getCVCountOfAdvertise(int aID) {
+		int count = advertiseDao.getCVCountOfAdvertise(aID);
+		return count;
+	}
 }

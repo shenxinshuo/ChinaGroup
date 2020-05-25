@@ -13,6 +13,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.zhbit.findwork.entity.Advertise;
+import com.zhbit.findwork.entity.Cv;
 import com.zhbit.findwork.service.AdvertiseService;
 
 public class AdvertiseServiceImplTest {
@@ -120,5 +121,15 @@ public class AdvertiseServiceImplTest {
 	public void testGetAdvertisesByPostSearch() {
 		List<Advertise> advertises = advertiseService.getAdvertisesByPostSearch("นคตุ", 0, 5);
 		System.out.println(advertises);
+	}
+	@Test
+	public void testGetCVOfAdvertise() {
+		List<Cv> advertises = advertiseService.getCVOfAdvertise(1, 0, 2);
+		System.out.println(advertises);
+	}
+	@Test
+	public void testGetCVCountOfAdvertise() {
+		int count = advertiseService.getCVCountOfAdvertise(1);
+		System.out.println(count);
 	}
 }

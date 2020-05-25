@@ -1,7 +1,10 @@
 package com.zhbit.findwork.dao.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
@@ -9,6 +12,7 @@ import org.hibernate.criterion.Example;
 
 import com.zhbit.findwork.dao.AdvertiseDao;
 import com.zhbit.findwork.entity.Advertise;
+import com.zhbit.findwork.entity.Cv;
 
 public class AdvertiseDaoImpl implements AdvertiseDao {
 	private SessionFactory sessionFactory;
@@ -148,5 +152,29 @@ public class AdvertiseDaoImpl implements AdvertiseDao {
 		int count = Integer.parseInt(temp);    //故先转String，再转int
 		return count;
 	}
+	
+	@Override
+	public List<Cv> getCVOfAdvertise(int aID, int firstResult, int maxResults) {
+		Advertise advertise = (Advertise) sessionFactory.getCurrentSession().get(Advertise.class, aID);
+		Set<Cv> temp = advertise.getCvs();
+		List<Cv> cvs = new ArrayList<Cv>();
+		Iterator<Cv> it = temp.iterator();
+		while (it.hasNext()) {
+			cvs.add(it.next());
+		}
+		return cvs.subList(firstResult, firstResult+maxResults);
+		
+	}
 
+	@Override
+	public int getCVCountOfAdvertise(int aID) {
+		Advertise advertise = (Advertise) sessionFactory.getCurrentSession().get(Advertise.class, aID);
+		Set<Cv> temp = advertise.getCvs();
+		List<Cv> cvs = new ArrayList<Cv>();
+		Iterator<Cv> it = temp.iterator();
+		while (it.hasNext()) {
+			cvs.add(it.next());
+		}
+		return cvs.size();
+	}
 }
