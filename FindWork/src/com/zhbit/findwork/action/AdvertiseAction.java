@@ -42,6 +42,13 @@ public class AdvertiseAction extends ActionSupport{
 	private String errorMessage;		//显示异常信息
 	private CvService cvService;
 	private int cid;
+	private int currentPage;
+	private int lines;             //总条数
+	private int totalPages; 
+	private List<Cv> cvs;
+	private List<String> plist;
+	private static int page_line = 5;
+	private int firstResult;
 	
 	public void addAdvertise(){
 		/*HttpServletResponse response=ServletActionContext.getResponse(); 
@@ -72,7 +79,25 @@ public class AdvertiseAction extends ActionSupport{
 		 out.close(); */
 	}
 	
-	
+	public String showReceivedCV(){
+		
+		//投递总数
+		lines = advertiseService.getCVCountOfAdvertise(advertise.getId());
+		plist = new ArrayList<String>();
+		
+		for(int i=0,j=0;i<lines;i+=5,j++){
+			plist.add(String.valueOf(j+1));
+		}
+		
+		totalPages = plist.size();
+		if(currentPage == 0){
+			currentPage = 1;
+		}
+		firstResult = (currentPage-1)*page_line;
+		cvs = advertiseService.getCVOfAdvertise(advertise.getId(), firstResult, page_line);
+		return "showReceivedCV";
+		
+	}
 	
 	public String toUnFinAdvertise(){
 		Business b =  (Business) ServletActionContext.getRequest().getSession().getAttribute("LOGINED_USER");
@@ -258,6 +283,66 @@ public class AdvertiseAction extends ActionSupport{
 
 	public void setPostService(PostService postService) {
 		this.postService = postService;
+	}
+
+	public int getCurrentPage() {
+		return currentPage;
+	}
+
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
+	}
+
+	public int getLines() {
+		return lines;
+	}
+
+	public void setLines(int lines) {
+		this.lines = lines;
+	}
+
+	public int getTotalPages() {
+		return totalPages;
+	}
+
+	public void setTotalPages(int totalPages) {
+		this.totalPages = totalPages;
+	}
+
+	public List<String> getPlist() {
+		return plist;
+	}
+
+	public void setPlist(List<String> plist) {
+		this.plist = plist;
+	}
+
+	public static int getPage_line() {
+		return page_line;
+	}
+
+	public static void setPage_line(int page_line) {
+		AdvertiseAction.page_line = page_line;
+	}
+
+	public int getFirstResult() {
+		return firstResult;
+	}
+
+	public void setFirstResult(int firstResult) {
+		this.firstResult = firstResult;
+	}
+
+	public PostService getPostService() {
+		return postService;
+	}
+
+	public CvService getCvService() {
+		return cvService;
+	}
+
+	public void setCvs(List<Cv> cvs) {
+		this.cvs = cvs;
 	}
 	
 }
