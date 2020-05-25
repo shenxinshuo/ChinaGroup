@@ -50,7 +50,7 @@
 		
 		<!-- SearchAction开始 -->
 		<action name="search_*" class="searchAction" method="{1}">
-			<result name="showAdvertisesByPostSearch">/index.jsp</result>
+			<result name="showAdvertisesByPostSearch">/postjob/searchAdvertise.jsp</result>
 		</action>
 		<!-- SearchAction结束 -->
 	</package>
