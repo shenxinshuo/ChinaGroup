@@ -45,7 +45,7 @@ public class AdvertiseAction extends ActionSupport{
 	private int currentPage;
 	private int lines;             //×ÜÌõÊý
 	private int totalPages; 
-	private List<Cv> cvs;
+	private List<Cv> cvs1;
 	private List<String> plist;
 	private static int page_line = 5;
 	private int firstResult;
@@ -94,7 +94,7 @@ public class AdvertiseAction extends ActionSupport{
 			currentPage = 1;
 		}
 		firstResult = (currentPage-1)*page_line;
-		cvs = advertiseService.getCVOfAdvertise(advertise.getId(), firstResult, page_line);
+		cvs1 = advertiseService.getCVOfAdvertise(advertise.getId(), firstResult, page_line);
 		return "showReceivedCV";
 		
 	}
@@ -341,8 +341,13 @@ public class AdvertiseAction extends ActionSupport{
 		return cvService;
 	}
 
-	public void setCvs(List<Cv> cvs) {
-		this.cvs = cvs;
+	public List<Cv> getCvs1() {
+		return cvs1;
 	}
+
+	public void setCvs1(List<Cv> cvs1) {
+		this.cvs1 = cvs1;
+	}
+
 	
 }
