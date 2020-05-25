@@ -133,8 +133,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
             </div>
 			<div class="a3">
-				<span class="input-group-addon1 " >居住省份：</span>
-				<select class="form-control2" name="cv.live_province" id="province"  value="${request.cv.live_province }" style="width: 100px;">
+				<span class="input-group-addon1 " >居住省份：</span>${request.cv.live_province }
+				<select class="form-control2" name="cv.live_province" id="province"  value="广东" style="width: 100px;">
 					<option value="">请选择</option>
 				</select>
   				<span  id="basic-addon3">想&nbsp;去&nbsp;的&nbsp;省份：</span>

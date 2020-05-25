@@ -39,5 +39,10 @@
 		<bean id="roleAction" class="com.zhbit.findwork.action.RoleAction" scope="request">
 			<property name="roleService" ref="roleServiceImpl"/>
 		</bean>
+		<!-- 搜索相关Action -->
+		<bean id="searchAction" class="com.zhbit.findwork.action.SearchAction" scope="request">
+			<!-- 注入advertiseService -->
+			<property name="advertiseService" ref="advertiseServiceImpl"></property>
+		</bean>
 		
 </beans>

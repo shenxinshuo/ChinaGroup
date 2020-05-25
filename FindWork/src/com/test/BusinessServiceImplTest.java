@@ -138,7 +138,7 @@ public class BusinessServiceImplTest {
 	public void testGetAdvertise() {
 		BusinessService businessService = (BusinessService) context.getBean("businessServiceImpl");
 		Business business = businessService.getBusinessByID(7);
-		List<Advertise> advertises = business.getAdvertises();
-		System.out.println(advertises.get(1).getBusinessName());
+//		List<Advertise> advertises = business.getAdvertises();
+//		System.out.println(advertises.get(1).getBusinessName());
 	}
 }

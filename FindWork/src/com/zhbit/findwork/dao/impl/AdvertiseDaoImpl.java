@@ -124,5 +124,29 @@ public class AdvertiseDaoImpl implements AdvertiseDao {
 		List<Advertise> advertises = query.list();
 		return advertises;
 	}
+	
+	@Override
+	public List<Advertise> getAdvertisesByPostSearch(String postName, int firstResult, int maxResults) {
+		String searchPost = "%"+postName+"%";
+		String hql = "from Advertise where delete_flag = 0 and postName like :searchPost";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("searchPost", searchPost)
+			.setFirstResult(firstResult)
+			.setMaxResults(maxResults);
+		List<Advertise> advertises = query.list();
+		return advertises;
+	}
+	
+	@Override
+	public int getCountByPostSearch(String postName) {
+		String searchPost = "%"+postName+"%";
+		String hql = "select count(id) from Advertise where delete_flag = 0 and postName like :searchPost";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("searchPost", searchPost);
+		Long sum = (Long)query.uniqueResult(); //获得的整数只能为Long型，需要自己再转换为int
+		String temp = String.valueOf(sum);  //强制转换会报错Cannot cast from Long to int
+		int count = Integer.parseInt(temp);    //故先转String，再转int
+		return count;
+	}
 
 }

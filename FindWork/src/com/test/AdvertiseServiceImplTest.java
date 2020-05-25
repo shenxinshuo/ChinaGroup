@@ -2,6 +2,8 @@ package com.test;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -114,4 +116,9 @@ public class AdvertiseServiceImplTest {
 		fail("Not yet implemented");
 	}
 
+	@Test
+	public void testGetAdvertisesByPostSearch() {
+		List<Advertise> advertises = advertiseService.getAdvertisesByPostSearch("นคตุ", 0, 5);
+		System.out.println(advertises);
+	}
 }

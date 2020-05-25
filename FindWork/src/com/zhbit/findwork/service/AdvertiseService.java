@@ -94,4 +94,11 @@ public interface AdvertiseService {
 	 * @param advertise
 	 */
 	public List<Advertise> getAdvertiseByBid(int bid,int firstResult, int maxResults);
+	
+	
+	//根据岗位搜索招聘信息列表（分页）
+	public List<Advertise> getAdvertisesByPostSearch(String postName, int firstResult, int maxResults);
+	
+	//根据岗位搜索招聘信息数据条数
+	public int getCountByPostSearch(String postName);
 }

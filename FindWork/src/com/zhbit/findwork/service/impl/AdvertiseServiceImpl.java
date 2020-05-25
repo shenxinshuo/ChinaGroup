@@ -88,4 +88,16 @@ public class AdvertiseServiceImpl implements AdvertiseService {
 		return advertiseDao.getAdvertiseByBid(bid,firstResult,maxResults) ;
 	}
 	
+	@Override
+	public List<Advertise> getAdvertisesByPostSearch(String postName, int firstResult, int maxResults) {
+		List<Advertise> advertises = advertiseDao.getAdvertisesByPostSearch(postName, firstResult, maxResults);
+		return advertises;
+	}
+	
+	@Override
+	public int getCountByPostSearch(String postName) {
+		int count = advertiseDao.getCountByPostSearch(postName);
+		return count;
+	}
+	
 }
