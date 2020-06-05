@@ -12,7 +12,33 @@
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-
+	<script src="<%=request.getContextPath() %>/resource/static/jquery/jquery.min.js"></script>
+	<script src="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/yufeng/pro_cites.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			for(var i=0; i<pro.length; i++) {
+				$option = $("<option>");
+				$option.attr("value", pro[i]);
+				//console.log(123)
+				if ("${business.province}" == pro[i]) {
+					$option.attr("selected",true);
+				}
+				$option.text(pro[i]);
+				$("#province").append($option);
+			}
+			$("#province").change(function() {
+				var cities = city[$(this).val()];
+				$("#city").empty();
+				for (var i=0; i<cities.length; i++) {
+					$option = $("<option>");
+					$option.attr("value", cities[i]);
+					$option.text(cities[i]);
+					$("#city").append($option);
+				}
+			})
+		})
+	</script>
   </head>
   
   <body>
@@ -40,7 +66,7 @@
 			    		<div class="alert alert-danger" role="alert">${errorMessage }</div>
 			    	</s:else>
                 	
-                
+               
                     <!-- 修改表单 -->
                     <s:url id="business_update" action="business_update" namespace="/" />
                     
@@ -65,9 +91,14 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="" class="control-label col-md-4">所在城市</label>
-                                    <select name="business.city"  class="form-control">
-                                        <option value="shantou">汕头</option>
-                                        <option value="zhuhai" >珠海</option>
+                                    <select name="business.province" id="province"  class="form-control" style="width:130px;">
+                                        <option value="" >选择省份</option>
+                                    </select>
+                                    <select name="business.city" id="city" class="form-control">
+                                        <option value="" >选择城市</option>
+                                        <s:if test="business.city != null">
+                                        	<option value="${business.city }" selected="selected">${business.city }</option>
+                                        </s:if>
                                     </select>
                                 </div>
                             </div>

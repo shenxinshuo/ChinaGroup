@@ -55,6 +55,10 @@ public class RoleAction extends ActionSupport {
 	public void validateAdd() {
 		if (role.getName() == null || "".equals(role.getName())) {
 			addFieldError("role.name", "角色名不能为空");
+		} else {
+			if (role.getName().length()>20) {
+				this.addFieldError("role.name", "角色名长度不能超过20");
+			}
 		}
 	}
 	/**'

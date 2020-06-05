@@ -14,6 +14,7 @@ import java.util.Set;
 public class Business {
 	private int id;				//
 	private String name;		//
+	private String province;
 	private String city;		//企业所在城市
 	private String telephone;		//
 	private String email;		//
@@ -42,6 +43,13 @@ public class Business {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getProvince() {
+		return province;
+	}
+	public void setProvince(String province) {
+		this.province = province;
 	}
 	public String getCity() {
 		return city;

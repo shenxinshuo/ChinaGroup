@@ -20,6 +20,10 @@
 			for(var i=0; i<pro.length; i++) {
 				$option = $("<option>");
 				$option.attr("value", pro[i]);
+				//console.log(123)
+				if ("${business.province}" == pro[i]) {
+					$option.attr("selected",true);
+				}
 				$option.text(pro[i]);
 				$("#province").append($option);
 			}
@@ -38,13 +42,13 @@
   </head>
   
   <body>
-  
+ 
   	<!-- 注册企业 -->
   	 <div class="container" style="margin-top: 50px;">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-primary ">
                 <div class="panel-heading">
-                    <a href="javascript:history.go(-1)"><span class="glyphicon glyphicon-arrow-left"
+                    <a href="<%=request.getContextPath()%>/business/businessLogin.jsp"><span class="glyphicon glyphicon-arrow-left"
                             style="color: white;"></span> </a>
                     注册企业
                 </div>
@@ -82,8 +86,11 @@
                                     <select name="business.province" id="province"  class="form-control" style="width:130px;">
                                         <option value="" >选择省份</option>
                                     </select>
-                                    <select name="business.city" id="city"  class="form-control">
+                                    <select name="business.city" id="city" class="form-control">
                                         <option value="" >选择城市</option>
+                                        <s:if test="business.city != null">
+                                        	<option value="${business.city }" selected="selected">${business.city }</option>
+                                        </s:if>
                                     </select>
                                 </div>
                             </div>

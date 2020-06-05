@@ -91,6 +91,7 @@ public class BusinessServiceImpl implements BusinessService {
 	//修改企业的辅助方法
 	private void setBusinessForUpdate(Business b1, Business b2) {
 		b1.setName(b2.getName());
+		b1.setProvince(b2.getProvince());
 		b1.setCity(b2.getCity());
 		b1.setTelephone(b2.getTelephone());
 		b1.setEmail(b2.getEmail());

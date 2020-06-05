@@ -11,6 +11,7 @@
 			<generator class="native" />
 		</id>
 		<property name="name" column="Bname" />
+		<property name="province" column="Bprovince"></property>
 		<property name="city" column="Bcity" />
 		<property name="telephone" column="Btelephone" />
 		<property name="email" column="Bemail" />

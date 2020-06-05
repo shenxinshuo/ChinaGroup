@@ -38,12 +38,18 @@ public class BusinessAction extends ActionSupport{
 	private int lastPage;				//最后一页页码
 	private int pageSize = Integer.parseInt(ServletActionContext.getServletContext().getInitParameter("maxResults"));
 	private List<Advertise> advertises;	//企业名下的所有招聘信息
-	
+	private String businessProvince;	//接收企业所在省份的值
 	//private int maxResults = 5;
 	
 	
 	public void setBusinessService(BusinessService businessService) {
 		this.businessService = businessService;
+	}
+	public String getBusinessProvince() {
+		return businessProvince;
+	}
+	public void setBusinessProvince(String businessProvince) {
+		this.businessProvince = businessProvince;
 	}
 	public void setAdvertiseService(AdvertiseService advertiseService) {
 		this.advertiseService = advertiseService;
@@ -146,6 +152,10 @@ public class BusinessAction extends ActionSupport{
 			}
 			if (business.getTelephone() == null || "".equals(business.getTelephone())) {
 				addFieldError("business.telephone", "联系电话不能为空");
+			} else {
+				if (!business.getTelephone().matches("(13|14|15|18|17)[0-9]{9}")) {
+					this.addFieldError("business.telephone", "请输入正确的手机号码");
+				}
 			}
 			if (business.getPassword() == null || "".equals(business.getPassword())) {
 				addFieldError("business.password", "登录密码不能为空");
@@ -159,14 +169,26 @@ public class BusinessAction extends ActionSupport{
 			}
 			if (business.getAddress() == null || "".equals(business.getAddress())) {
 				addFieldError("business.address", "企业地址不能为空");
+			} else {
+				if (business.getAddress().length()>255) {
+					this.addFieldError("business.address", "企业地址长度不能超过255");
+				}
 			}
 			if (business.getDescription() == null || "".equals(business.getDescription())) {
 				addFieldError("business.description", "企业描述不能为空");
+			} else {
+				if (business.getDescription().length() > 255) {
+					this.addFieldError("business.description", "企业描述长度不能超过255");
+				}
 			}
 			if (business.getUrl() == null || "".equals(business.getUrl())) {
 				addFieldError("business.url", "企业详情链接不能为空");
 			}if (business.getEmail() == null || "".equals(business.getEmail())) {
 				addFieldError("business.email", "企业邮箱不能为空");
+			} else {
+				if (!business.getEmail().matches("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$")) {
+					this.addFieldError("business.email", "请输入正确的邮箱地址");
+				}
 			}
 			if (license == null) {
 				addFieldError("license", "必须上传营业执照（审核用）");
@@ -249,17 +271,33 @@ public class BusinessAction extends ActionSupport{
 				}
 				if (business.getTelephone() == null || "".equals(business.getTelephone())) {
 					addFieldError("business.telephone", "联系电话不能为空");
+				} else {
+					if (!business.getTelephone().matches("(13|14|15|18|17)[0-9]{9}")) {
+						this.addFieldError("business.telephone", "请输入正确的手机号码");
+					}
 				}
 				if (business.getAddress() == null || "".equals(business.getAddress())) {
 					addFieldError("business.address", "企业地址不能为空");
+				} else {
+					if (business.getAddress().length()>255) {
+						this.addFieldError("business.address", "企业地址长度不能超过255");
+					}
 				}
 				if (business.getDescription() == null || "".equals(business.getDescription())) {
 					addFieldError("business.description", "企业描述不能为空");
+				} else {
+					if (business.getDescription().length() > 255) {
+						this.addFieldError("business.description", "企业描述长度不能超过255");
+					}
 				}
 				if (business.getUrl() == null || "".equals(business.getUrl())) {
 					addFieldError("business.url", "企业详情链接不能为空");
 				}if (business.getEmail() == null || "".equals(business.getEmail())) {
 					addFieldError("business.email", "企业邮箱不能为空");
+				} else {
+					if (!business.getEmail().matches("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$")) {
+						this.addFieldError("business.email", "请输入正确的邮箱地址");
+					}
 				}
 				
 			}
