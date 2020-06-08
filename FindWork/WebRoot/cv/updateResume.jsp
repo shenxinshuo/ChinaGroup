@@ -11,22 +11,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'updateResume.jsp' starting page</title>
-    
+    <title>修改简历</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<link rel="stylesheet" type="text/css" href="css/shiping/updateResume.css">
-	<script type="text/javascript" src="resource/static/jquery/jquery-1.11.2.min.js"></script>
-	<script type="text/javascript" src="resource/static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-		<script type="text/javascript" src="js/yufeng/pro_cites.js"></script>
-		<script>
-			$(document).ready(function() {
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<script src="<%=request.getContextPath() %>/resource/static/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/yufeng/pro_cites.js"></script>
+	<script type="text/javascript">
+	
+			$(document).ready(function(){
 				for (var i = 0; i < pro.length; i++) {
 					$option = $("<option/>");
 					$option.attr("value", pro[i]);
+					if("${cv.live_province}" == pro[i]){
+						$option.attr("selected",true);
+					}
 					$option.text(pro[i]);
 					$("#province").append($option);
 				}
@@ -48,6 +51,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				for (var i = 0; i < pro.length; i++) {
 					$option = $("<option/>");
 					$option.attr("value", pro[i]);
+					if("${cv.want_province}" == pro[i]){
+						$option.attr("selected",true);
+					}
 					$option.text(pro[i]);
 					$("#province1").append($option);
 				}
@@ -133,12 +139,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
             </div>
 			<div class="a3">
-				<span class="input-group-addon1 " >居住省份：</span>${request.cv.live_province }
-				<select class="form-control2" name="cv.live_province" id="province"  value="广东" style="width: 100px;">
+				<span class="input-group-addon1 " >居住省份：</span>
+				<select class="form-control2" name="cv.live_province" id="province"   style="width: 100px;">
 					<option value="">请选择</option>
 				</select>
   				<span  id="basic-addon3">想&nbsp;去&nbsp;的&nbsp;省份：</span>
-  				<select class="form-control2" name="cv.want_province" id="province1"  style="width: 100px;" value="${request.cv.want_province }">
+  				<select class="form-control2" name="cv.want_province" id="province1"  style="width: 100px;" >
 					<option value="">请选择</option>
 				</select>
 			</div>
@@ -152,12 +158,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              </div>
 			<div class="a3">
 				<span class="input-group-addon1 " >居住城市：</span>
-		 		<select class="form-control2" name="cv.live_city" id="city"  value="%{#request.cv.live_city }" style="width: 100px;">
+		 		<select class="form-control2" name="cv.live_city" id="city"   style="width: 100px;">
 					<option value="">请选择</option>
+					<s:if test="cv.live_city !=null">
+						<option value="${cv.live_city }" selected="selected">${cv.live_city }</option>
+					</s:if>
 				</select>
 		 		<span id="basic-addon3">想&nbsp;去&nbsp;的&nbsp;城市：</span>
-		 		<select class="form-control2" name="cv.want_city" id="city1"  value="${request.cv.want_city }" style="width: 100px;">
+		 		<select class="form-control2" name="cv.want_city" id="city1"   style="width: 100px;">
 					<option value="">请选择</option>
+					<s:if test="cv.want_city !=null">
+						<option value="${cv.want_city }" selected="selected">${cv.want_city }</option>
+					</s:if>
 				</select>
 			</div>
 			<div class="d-inline-block col-md-12">
@@ -171,7 +183,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="a3">
 				<span class="input-group-addon1" >政治面貌：</span>
   				<s:textfield name="cv.politics_status" vlaue="%{#request.cv.politics_status}" />
-		 		<span id="basic-addon2">期望工作类型:</span>
+		 		<span id="basic-addon2">期望工作类型：</span>
 		 		<s:radio list="{'实习','兼职','全职'}" name="cv.want_joy_type" value="#request.cv.want_joy_type" />
 			</div>
 			<div class="d-inline-block col-md-12">

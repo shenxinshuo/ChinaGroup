@@ -19,16 +19,17 @@
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
 		<link rel="stylesheet" type="text/css" href="css/shiping/resume.css">
-		<script type="text/javascript" src="resource/static/jquery/jquery-1.11.2.min.js"></script>
-	<script type="text/javascript" src="resource/static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-		<script type="text/javascript" src="js/yufeng/pro_cites.js"></script>
-		<script>
-			
-
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+		<script src="<%=request.getContextPath() %>/resource/static/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath() %>/js/yufeng/pro_cites.js"></script>
+		<script type="text/javascript">
 			$(document).ready(function() {
 				for (var i = 0; i < pro.length; i++) {
 					$option = $("<option/>");
 					$option.attr("value", pro[i]);
+					if("${cv.live_province}" == pro[i]){
+						$option.attr("selected",true);
+					}
 					$option.text(pro[i]);
 					$("#province").append($option);
 				}
@@ -48,12 +49,13 @@
 			});
 		</script>
 		<script>
-			
-
 			$(document).ready(function() {
 				for (var i = 0; i < pro.length; i++) {
 					$option = $("<option/>");
 					$option.attr("value", pro[i]);
+					if("${cv.want_province}" == pro[i]){
+						$option.attr("selected",true);
+					}
 					$option.text(pro[i]);
 					$("#province1").append($option);
 				}
@@ -162,17 +164,17 @@
 				<span class="input-group-addon1">居住城市：</span> 
                 <select class="form-control2" name="cv.live_city" id="city"  style="width: 100px;">
 					<option value="">请选择</option>
+					<s:if test="cv.live_city !=null">
+						<option value="${cv.live_city }" selected="selected">${cv.live_city }</option>
+					</s:if>
 				</select>
 				<span id="basic-addon3">想&nbsp;去&nbsp;的&nbsp;城市：</span>
 				<select class="form-control2" name="cv.want_city" id="city1"  style="width: 100px;">
 					<option value="">请选择</option>
+					<s:if test="cv.want_city !=null">
+						<option value="${cv.want_city }" selected="selected">${cv.want_city }</option>
+					</s:if>
 				</select>
-				<!-- <input type="text" class="form-control2" name="cv.want_province" > -->
-				 <%-- <select name="cv.want_province"  class="form-control2">
-                	<option value="广东">广东</option>
-                	<option value="江西" >江西</option>
-                	<option value="湖北" >湖北</option>
-                </select> --%>
 			</div>
 			<div class="d-inline-block col-md-12">
                 <div class="col-md-6">
@@ -185,14 +187,8 @@
 			<div class="a3">
 				<span class="input-group-addon1">政治面貌：</span> 
 				<s:textfield name="cv.politics_status" class="form-control2" /> 
-				<span id="basic-addon2">期望工作类型:</span>
+				<span id="basic-addon2">期望工作类型：</span>
 				<s:radio list="{'实习','兼职','全职'}" name="cv.want_joy_type"></s:radio>
-				<%-- <select name="cv.want_city"  class="form-control2">
-                	<option value="珠海">珠海</option>
-                	<option value="深圳" >深圳</option>
-                	<option value="武汉" >武汉</option>
-                	<option value="南昌" >南昌</option>
-                </select> --%>
 			</div>
 			<div class="d-inline-block col-md-12">
                 <div class="col-md-6">
