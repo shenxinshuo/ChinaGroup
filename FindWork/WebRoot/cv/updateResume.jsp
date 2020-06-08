@@ -22,7 +22,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script src="<%=request.getContextPath() %>/resource/static/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath() %>/js/yufeng/pro_cites.js"></script>
 	<script type="text/javascript">
-	
 			$(document).ready(function(){
 				for (var i = 0; i < pro.length; i++) {
 					$option = $("<option/>");
