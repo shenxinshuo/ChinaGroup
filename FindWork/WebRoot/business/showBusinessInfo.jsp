@@ -29,10 +29,14 @@
 	            <div class="panel-heading">
 	                <a href="javascript:history.go(-1)"><span class="glyphicon glyphicon-arrow-left"
 	                     style="margin-top: 8px;margin-bottom: 8px;"   ></span> </a>
-	                展示企业信息	                                	               	         
+	                展示企业信息	                          
+	                      	               	         
 	                <button class="btn btn-default" style="float: right;">
 	                    <a href="collection_addBusiness.action?business.id=${business.id }">收藏&nbsp;<span class="glyphicon glyphicon-star" style=""></span></a>
 	                </button>
+	                <button type="button" class="btn btn-default" style="float:right;" data-toggle="modal" data-target="#myModal">
+  						举报
+					</button>
 	                	<!-- 提示信息 -->
 	                <p class="text-danger">${errorMessage }</p>
 	                 <p class="text-danger">${message }</p>
@@ -137,6 +141,31 @@
 	
 	</div>
    	
+   	<!-- 举报弹出框 -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">举报该企业</h4>
+	      </div>
+	      <div class="modal-body">
+	        <form action="" class="form-horizontal" method="post">
+	        	<input type="hidden" name="userid" value="${sessionScope.LOGINED_USER.id }">
+	        	<input type="hidden" name="businessid" value="${business.id }">
+	        	<label>为什么举报该企业</label>
+	        	<textarea cols="30" rows="10" name="complainReason" class="form-control"></textarea>
+	        </form>
+	        <button type="button" class="btn btn-default"  data-dismiss="modal">取消</button>
+	        <button type="submit" class="btn btn-primary">举报</button>
+	      </div>
+	      <div class="modal-footer">
+	        
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	   	
    	
    	<jsp:include page="/common/footer.jsp"></jsp:include>
   </body>

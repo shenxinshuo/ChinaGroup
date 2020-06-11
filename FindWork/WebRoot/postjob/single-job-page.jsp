@@ -9,7 +9,7 @@ String path = request.getContextPath();
 <html>
   <head>
     
-    <title>My JSP 'regBusiness.jsp' starting page</title>
+    <title>招聘详情</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -185,7 +185,7 @@ String path = request.getContextPath();
 						<a href="${showReceivedCV }" class="apply-now-button popup-with-zoom-anim">查看已收简历 </a>		  			
 				 </c:if>
 				<c:if test="${isUser==0}">	
-										
+						<a data-toggle="modal" href="#complain" class="apply-now-button popup-with-zoom-anim">举报 </a>		
 						<a data-toggle="modal" href="#mymodal" class="apply-now-button popup-with-zoom-anim">投递简历 </a>
 						<span style="color:red">${message}</span>
 				        <span style="color:red">${errorMessage }</span><br>	
@@ -289,7 +289,30 @@ String path = request.getContextPath();
 		    <jsp:include page="/common/footer.jsp"/>
 	
 
-
+<!-- 举报弹出框 -->
+	<div class="modal fade" id="complain" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">举报该企业</h4>
+	      </div>
+	      <div class="modal-body">
+	        <form action="" class="form-horizontal" method="post">
+	        	<input type="hidden" name="userid" value="${sessionScope.LOGINED_USER.id }">
+	        	<input type="hidden" name="advertiseid" value="${as.id }">
+	        	<label>为什么举报该企业</label>
+	        	<textarea cols="30" rows="10" name="complainReason" class="form-control"></textarea>
+	        </form>
+	        <button type="button" class="btn btn-default"  data-dismiss="modal">取消</button>
+	        <button type="submit" class="btn btn-primary">举报</button>
+	      </div>
+	      <div class="modal-footer">
+	        
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
  <script type="text/javascript" src="<%=path %>/resource/static/jquery/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="<%=path %>/resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
