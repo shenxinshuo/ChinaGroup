@@ -25,5 +25,8 @@ public interface PostDao {
 	void setSessionFactory(SessionFactory sessionFactory);
 	
 	List<Post> getAllPost();
+	
+	int getCountByCheckFlag(int checkFlag);
 
+	List<Post> getPostsByPageWithCheck(int firstResult, int maxResults, int check_flag);
 }

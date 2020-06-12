@@ -24,4 +24,7 @@ public interface PostService {
 	//获取所有岗位
 		List<Post> getAllPost();
 
+	int getCountByCheckFlag(int checkFlag);
+	
+	List<Post> getPostsByPageWithCheck(int firstResult, int maxResults, int check_flag);
 }

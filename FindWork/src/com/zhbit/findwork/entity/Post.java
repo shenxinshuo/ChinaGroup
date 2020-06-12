@@ -65,6 +65,6 @@ public class Post {
 	public void setAdvertises(Set<Advertise> advertises) {
 		this.advertises = advertises;
 	}
-	
+
 	
 }

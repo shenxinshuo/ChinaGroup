@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
 import com.zhbit.findwork.dao.PostDao;
+import com.zhbit.findwork.entity.Business;
 import com.zhbit.findwork.entity.Post;
 import com.zhbit.findwork.entity.Post_type;
 import com.zhbit.findwork.entity.Role;
@@ -59,7 +60,7 @@ public class PostDaoImpl implements PostDao {
 	
 	@Override
 	public List<Post> getPostByName(String name) {
-		String hql = "from Post where name = :Name and delete_flag = 0";
+		String hql = "from Post where Pname = :Name and delete_flag = 0";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setParameter("Name", name);
 		List<Post> ps = query.list();
@@ -102,6 +103,26 @@ public class PostDaoImpl implements PostDao {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<Post> ps = query.list();
 		return ps;
+	}
+
+	@Override
+	public int getCountByCheckFlag(int checkFlag) {
+		String hql = "select count(Pid) from Post where delete_flag = 0 ";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		Long sum = (Long)query.uniqueResult(); //获得的整数只能为Long型，需要自己再转换为int
+		String temp = String.valueOf(sum);  //强制转换会报错Cannot cast from Long to int
+		int count = Integer.parseInt(temp);    //故先转String，再转int
+		return count;
+	}
+
+	@Override
+	public List<Post> getPostsByPageWithCheck(int firstResult, int maxResults, int check_flag) {
+		String hql = "from Post where delete_flag = 0 order by Pid";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setFirstResult(firstResult)
+			.setMaxResults(maxResults);
+		List<Post> posts = query.list();
+		return posts;
 	}
 	
 }

@@ -70,4 +70,16 @@
 			<result name="tologin">/user/UserLogin.jsp</result>
 		</action>
 	</package>
+	
+	<package name="post" extends="struts-default" namespace="/">
+		<action name="post_*" class="postAction" method="{1}">
+			<result>/index.jsp</result>
+			<result name="showAdd">/admin/addPost.jsp</result>
+			<result name="showAllPosts">/admin/showPosts.jsp</result>
+			<result name="toAddPost">/admin/addPost.jsp</result>
+			<result name="toUpdatePost">/admin/updatePostList.jsp</result>
+			<result name="showUpdatePost">/admin/updatePost.jsp</result>
+			<result name="deletePost">/admin/updatePostList.jsp</result>
+		</action>
+	</package>
 </struts>

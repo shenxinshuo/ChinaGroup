@@ -60,5 +60,11 @@
 	   <bean id="backHomeAction" class="com.zhbit.findwork.action.BackHomeAction" scope="request">
 	   		<property name="post_typeService" ref="post_typeService" />
 	   </bean>
+	   
+	   <!-- 配置岗位action -->
+	   <bean id="postAction" class="com.zhbit.findwork.action.PostAction" scope="request">
+	   		<property name="postService" ref="postService" />
+	   		<property name="post_typeService" ref="post_typeService" />
+	   </bean>
        
 </beans>

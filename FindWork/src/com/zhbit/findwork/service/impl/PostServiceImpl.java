@@ -3,6 +3,7 @@ package com.zhbit.findwork.service.impl;
 import java.util.List;
 
 import com.zhbit.findwork.dao.PostDao;
+import com.zhbit.findwork.entity.Business;
 import com.zhbit.findwork.entity.Post;
 import com.zhbit.findwork.entity.Post_type;
 import com.zhbit.findwork.service.PostService;
@@ -16,6 +17,7 @@ public class PostServiceImpl implements PostService {
 	 */
 	@Override
 	public int addPost(Post p) {
+		System.out.println(p.getPname());
 		boolean exist = postDao.isExist(p.getPname());
 		if (exist ==  true) {
 			return 0;
@@ -91,6 +93,19 @@ public class PostServiceImpl implements PostService {
 	public List<Post> getAllPost() {
 		
 		return postDao.getAllPost();
+	}
+
+	@Override
+	public int getCountByCheckFlag(int checkFlag) {
+		// TODO Auto-generated method stub
+		int count = postDao.getCountByCheckFlag(checkFlag);
+		return count;
+	}
+
+	@Override
+	public List<Post> getPostsByPageWithCheck(int firstResult, int maxResults, int check_flag) {
+		List<Post> posts = postDao.getPostsByPageWithCheck(firstResult, maxResults, check_flag);
+		return posts;
 	}
 
 	
