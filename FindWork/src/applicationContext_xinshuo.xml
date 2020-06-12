@@ -44,5 +44,12 @@
 			<!-- 注入advertiseService -->
 			<property name="advertiseService" ref="advertiseServiceImpl"></property>
 		</bean>
+		<!-- 举报相关Action -->
+		<bean id="complainAction" class="com.zhbit.findwork.action.ComplainAction" scope="request">
+			<!-- 注入blackListService -->
+			<property name="businessService" ref="businessServiceImpl"></property>
+			<property name="blackListService" ref="blackListServiceImpl"></property>
+			<property name="advertiseService" ref="advertiseServiceImpl"></property>
+		</bean>
 		
 </beans>

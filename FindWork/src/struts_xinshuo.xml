@@ -53,6 +53,13 @@
 			<result name="showAdvertisesByPostSearch">/postjob/searchAdvertise.jsp</result>
 		</action>
 		<!-- SearchAction结束 -->
+		
+		<!-- ComplainAction开始 -->
+		<action name="complain_*" class="complainAction" method="{1}">
+			<result name="showBusiness">/business/showBusinessInfo.jsp</result>
+			<result name="showAdvertise">/postjob/single-job-page.jsp</result>
+		</action>
+		<!-- ComplainAction结束 -->
 	</package>
 
 </struts>

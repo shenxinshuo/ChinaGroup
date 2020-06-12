@@ -22,6 +22,14 @@
    	<jsp:include page="/common/header.jsp"></jsp:include>
    	
    	
+   	<script type="text/javascript">
+   		//接收举报处理结果
+   		
+   		if ("${message}" != "") {
+   			alert("${message}");
+   		}
+   	</script>
+   	
    	<!-- 显示企业信息 -->
    	<div class="container" style="margin-top: 50px;">
 	    <div class="col-md-10 col-md-offset-1">
@@ -39,7 +47,7 @@
 					</button>
 	                	<!-- 提示信息 -->
 	                <p class="text-danger">${errorMessage }</p>
-	                 <p class="text-danger">${message }</p>
+	                <%--  <p class="text-danger">${message }</p> --%>
 	            </div>
 	            
 	            <div class="panel-body">
@@ -111,13 +119,13 @@
 	                            </div>
 	                            <div class="form-group col-md-6">
 	                                <label for="" class="control-label col-md-4">审核状态</label>
-	                                <s:if test="business.check_flag == 0">
+	                                <s:if test="#business.check_flag == 0">
 	                                    <s:set name="check_status" value="%{'待审核'}" scope="action"></s:set>
 	                                </s:if>
-	                                <s:if test="business.check_flag == 1">
+	                                <s:if test="#business.check_flag == 1">
 	                                    <s:set name="check_status" value="%{'已通过审核'}" scope="action"></s:set>
 	                                </s:if>
-	                                <s:if test="business.check_flag == -1">
+	                                <s:if test="#business.check_flag == -1">
 	                                    <s:set name="check_status" value="%{'未通过审核'}" scope="action"></s:set>
 	                                </s:if>
 	                                <input type="text" name=""  value="${check_status }" class="form-control" size="30" readonly="readonly">
@@ -150,14 +158,14 @@
 	        <h4 class="modal-title" id="myModalLabel">举报该企业</h4>
 	      </div>
 	      <div class="modal-body">
-	        <form action="" class="form-horizontal" method="post">
+	        <form action="complain_dealBusinessComplain.action" class="form-horizontal" method="post">
 	        	<input type="hidden" name="userid" value="${sessionScope.LOGINED_USER.id }">
 	        	<input type="hidden" name="businessid" value="${business.id }">
 	        	<label>为什么举报该企业</label>
 	        	<textarea cols="30" rows="10" name="complainReason" class="form-control"></textarea>
+		        <button type="button" class="btn btn-default"  data-dismiss="modal">取消</button>
+		        <input type="submit" class="btn btn-primary" value="举报">
 	        </form>
-	        <button type="button" class="btn btn-default"  data-dismiss="modal">取消</button>
-	        <button type="submit" class="btn btn-primary">举报</button>
 	      </div>
 	      <div class="modal-footer">
 	        

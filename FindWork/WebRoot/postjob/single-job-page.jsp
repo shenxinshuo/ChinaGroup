@@ -48,6 +48,13 @@ String path = request.getContextPath();
     <jsp:include page="/common/header.jsp"/>
     
 
+	<script type="text/javascript">
+   		//接收举报处理结果
+   		
+   		if ("${message}" != "") {
+   			alert("${message}");
+   		}
+   	</script>
 
 
 <!-- Titlebar
@@ -298,14 +305,14 @@ String path = request.getContextPath();
 	        <h4 class="modal-title" id="myModalLabel">举报该企业</h4>
 	      </div>
 	      <div class="modal-body">
-	        <form action="" class="form-horizontal" method="post">
+	        <form action="complain_dealAdvertiseComplain.action" class="form-horizontal" method="post">
 	        	<input type="hidden" name="userid" value="${sessionScope.LOGINED_USER.id }">
 	        	<input type="hidden" name="advertiseid" value="${as.id }">
-	        	<label>为什么举报该企业</label>
+	        	<label>为什么举报该招聘信息</label>
 	        	<textarea cols="30" rows="10" name="complainReason" class="form-control"></textarea>
+		        <button type="button" class="btn btn-default"  data-dismiss="modal">取消</button>
+		        <input type="submit" class="btn btn-primary" value="举报">
 	        </form>
-	        <button type="button" class="btn btn-default"  data-dismiss="modal">取消</button>
-	        <button type="submit" class="btn btn-primary">举报</button>
 	      </div>
 	      <div class="modal-footer">
 	        
