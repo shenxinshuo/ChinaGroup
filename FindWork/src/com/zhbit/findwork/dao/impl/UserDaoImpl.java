@@ -24,7 +24,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public boolean isExistbyName(String name) {
 		// TODO Auto-generated method stub
-		String hql = "from User where name = :userName";
+		String hql = "from User where name = :userName and delete_flag = 0";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setParameter("userName", name);
 		List<User> users = query.list();

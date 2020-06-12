@@ -140,9 +140,12 @@ public class UserAction extends ActionSupport{
 			if(user.getBirthday()==null||user.getBirthday().equals("")){
 				this.addFieldError("userBirthday", "时间格式不正确，例如2020-02-02");
 			}
+			if(user.getAddress().length()>100)
+				this.addFieldError("userAddress", "地址长度不能超过100");
 			if(user.getAddress()==null||user.getAddress().equals("")){
 				this.addFieldError("userAddress", "地址不能为空");
 			}
+
 			
 		}
 
@@ -330,6 +333,7 @@ public class UserAction extends ActionSupport{
 			System.out.println("展示当前用户的头像");
 			return "showHeader";
 		}
+		
 	    public void validateSaveSecurity(){
 			if(repwd.equals("")||repwd==null)
 				this.addFieldError("repwd", "原密码不能为空");
@@ -341,8 +345,8 @@ public class UserAction extends ActionSupport{
 				this.addFieldError("confirmpwd", "密码不一致，请重新输入");
 			if(newpwd.matches("[0-9]{1,}"))
 				this.addFieldError("newpwd", "密码不能是纯数字");
-			if(newpwd.length()<=6)
-				this.addFieldError("newpwd", "密码不能少于6位");
+			if(newpwd.length()<=8||newpwd.length()>16)
+				this.addFieldError("newpwd", "密码不能少于8位或大于16位");
 		}
 
 		/**

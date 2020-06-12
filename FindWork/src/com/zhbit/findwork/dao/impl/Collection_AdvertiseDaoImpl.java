@@ -13,6 +13,7 @@ import com.zhbit.findwork.entity.Collection_Advertise;
 public class Collection_AdvertiseDaoImpl implements Collection_AdvertiseDao{
 
 	private SessionFactory sessionFactory;
+	
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}

@@ -4,7 +4,7 @@
 <html>
 <head>
 
-<title>收藏中心</title>
+<title>我的头像</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -13,9 +13,9 @@
 <meta http-equiv="description" content="This is my page">
 <script src="../resource/static/jquery/jquery.min.js"></script>
 <script
-	src="../resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	src="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
-	href="../resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	href="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 <link href="<%=request.getContextPath() %>/css/delue/wangdelue.css" rel="stylesheet" type="text/css" />
 </head>
 

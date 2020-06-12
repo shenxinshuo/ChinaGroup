@@ -4,7 +4,7 @@
 <html>
 <head>
 
-<title>收藏中心</title>
+<title>个人信息</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">

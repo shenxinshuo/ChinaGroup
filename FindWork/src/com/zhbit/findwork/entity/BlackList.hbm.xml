@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+   <!-- 王德略 -->
+   <!--黑名单映射文件 -->
+<hibernate-mapping package="com.zhbit.findwork.entity">
+	<class name="com.zhbit.findwork.entity.BlackList" table="t_blacklist">
+		<id name="id" column="Bid">
+			<generator class="native" />
+		</id>
+		<many-to-one name="user" class="User" column="Uid" lazy="false"></many-to-one>
+		<many-to-one name="business" class="Business" column="BusinessID" lazy="false"></many-to-one>
+		<many-to-one name="advertise" class="Advertise" column="AdvertiseID" lazy="false"></many-to-one>
+		<property name="delete_flag" column="delete_flag" />
+		<property name="comment" column="comment" />
+		<property name="create_at" column="create_at" />
+		<property name="update_at" column="update_at" />
+		<property name="status" column="status"></property>		
+	</class>
+</hibernate-mapping>
