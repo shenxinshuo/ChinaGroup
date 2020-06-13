@@ -49,6 +49,7 @@
 			<property name="businessService" ref="businessServiceImpl"></property>
 			<property name="adminService" ref="adminService"></property>
 			<property name="advertiseService" ref="advertiseServiceImpl"></property>
+			<property name="blackListService" ref="blackListServiceImpl" />
 	   </bean>
 	   
 	   <bean id="businessLoginAction" class="com.zhbit.findwork.action.BusinessLoginAction" scope="request">
@@ -65,6 +66,11 @@
 	   <bean id="postAction" class="com.zhbit.findwork.action.PostAction" scope="request">
 	   		<property name="postService" ref="postService" />
 	   		<property name="post_typeService" ref="post_typeService" />
+	   </bean>
+	   
+	   <!-- 配置黑名单action -->
+	   <bean id="blackListAction" class="com.zhbit.findwork.action.BlackListAction" scope="request">
+	   		<property name="blackListService" ref="blackListServiceImpl" />
 	   </bean>
        
 </beans>

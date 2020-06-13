@@ -3,6 +3,8 @@ package com.zhbit.findwork.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.dom4j.tree.BackedList;
+
 import com.zhbit.findwork.dao.AdvertiseDao;
 import com.zhbit.findwork.dao.BlackListDao;
 import com.zhbit.findwork.dao.BusinessDao;
@@ -121,5 +123,33 @@ public class BlackListServiceImpl implements BlackListService{
 		// TODO Auto-generated method stub
 		blackListDao.complainsAdvertiseOfFaile(advertiseId);
 	}
+
+	@Override
+	public int getCountByStatus(int status) {
+		int count = blackListDao.getCountByStatus(status);
+		return count;
+	}
+
+	@Override
+	public List<BlackList> getBlackListsByPageWithStatus(int firstResult, int maxResults, int status) {
+		List<BlackList> blackList = blackListDao.getBlackListByPageWithStatus(firstResult, maxResults, status);
+		return blackList;
+	}
+
+	@Override
+	public BlackList getBlackListById(int id) {
+		return blackListDao.getBlackListById(id);
+	}
+
+	@Override
+	public void updateBlackListStatus(BlackList blackList) {
+		// TODO Auto-generated method stub
+/*		System.out.println(blackList.getStatus());
+		BlackList blackListInDB = blackListDao.getBlackListById(blackList.getId());
+		blackListInDB.setStatus(blackList.getStatus());
+		blackListInDB.setDelete_flag(blackList.getDelete_flag());*/
+		blackListDao.updateBlackList(blackList);
+	}
+
 
 }

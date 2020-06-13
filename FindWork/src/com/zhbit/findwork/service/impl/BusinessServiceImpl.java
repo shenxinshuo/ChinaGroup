@@ -139,6 +139,7 @@ public class BusinessServiceImpl implements BusinessService {
 		businessDao.updateBusiness(businessInDB);
 		return ;
 	}
+	
 
 	@Override
 	public int getCountByCheckFlag(int flag) {
