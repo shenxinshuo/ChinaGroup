@@ -70,12 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var requestPath = "search_getAdvertisesByPostSearch.action?postName="+searchName;
 				//alert(requestPath);
 				document.getElementById("advertiseSearch").href=requestPath;
-			}
-			/* function rethtml() {
-                var $html = "<div><s:url id='business_searchByName' action='business_searchByName' namespace='/'><s:param name='searchName'></s:param><s:param name='currentPage'>1</s:param></s:url></div>";
-                return $html;
-            }
-            $("#h").append(rethtml()); */
+			}		
 		</script>
 		<div class="div_title">
 			<label class="label label-danger">热门岗位</label>
@@ -109,8 +104,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			<div class="ad_info">
 				<div class="row_1">
-					<img class="ad_img1" src="resource/image/yufeng/adimg2.jpg" />
-					<img class="ad_img2" src="resource/image/yufeng/adimg3.jpg" />
+					<img class="ad_img1" src="ad_readHeader.action?ad.id=1" />
+					<img class="ad_img2" src="ad_readHeader.action?ad.id=2" />
 				</div>
 				<div class="row_2">
 					<img class="ad_img3" src="resource/image/yufeng/adimg4.jpg" />

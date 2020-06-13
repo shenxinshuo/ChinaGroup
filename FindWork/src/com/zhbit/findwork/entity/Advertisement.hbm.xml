@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+   <!-- 王德略 -->
+   <!--广告映射文件 -->
+<hibernate-mapping package="com.zhbit.findwork.entity">
+	<class name="com.zhbit.findwork.entity.Advertisement" table="t_advertisement">
+		<id name="id" column="Aid">
+		</id>
+		<property name="topic" column="Atopic"></property>
+		<many-to-one name="business" class="Business" column="Bid" lazy="false"></many-to-one>	
+		<property name="cost" column="Acost"></property>
+		<property name="picture" column="Apicture"></property>
+		<property name="url" column="Aurl"></property>
+		<property name="delete_flag" column="delete_flag" />
+		<property name="comment" column="comment" />
+		<property name="create_at" column="create_at" />
+		<property name="update_at" column="update_at" />		
+	</class>
+</hibernate-mapping>

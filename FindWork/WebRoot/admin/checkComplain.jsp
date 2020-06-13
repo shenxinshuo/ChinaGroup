@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'checkOfferList.jsp' starting page</title>
+    <title>My JSP 'checkComplain.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<link rel="stylesheet" href="css/yufeng/CheckReInfo.css" />
+<link rel="stylesheet" href="css/yufeng/CheckReInfo.css" />
 	<link rel="stylesheet" href="resource/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
 
   </head>
@@ -33,8 +33,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="check_left">
 				<ul class="nav nav-pills nav-stacked">
 					<li role="presentation"><a href="admin_showAdminCenter.action">审核企业</a></li>
-					<li role="presentation" class="active"><a href="#">审核招聘信息</a></li>
-					<li role="presentation"><a href="blacklist_toCheckComplain.action">处理投诉</a></li>
+					<li role="presentation"><a href="admin_showAdverList.action">审核招聘信息</a></li>
+					<li role="presentation" class="active"><a href="#">处理投诉</a></li>
 					<li role="presentation"><a href="roleManager/addRole.jsp">角色管理</a></li>
 					<li role="presentation"><a href="post_toAddPost.action">岗位管理</a></li>
 				</ul>
@@ -43,12 +43,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="check_right">
 				<table class="table table-hover" style="width: 500px;margin-top: 30px;">
 				
-					<s:if test="as.size() != 0">
-						<s:iterator value="as" >
+					<s:if test="blist!=null">
+						<s:iterator value="blist" >
 							<tr>
-								<th style="width: 400px;"><s:property value="title"/></th>
+								<th style="width: 400px;"><s:property value="comment"/></th>
 								<th style="width: 100px;">
-									<a href="admin_showAdvertiseForCheck.action?advertise.id=<s:property value='id'/>" style="">审核</a>
+									<a href="blacklist_toShowComplain.action?blackList.id=<s:property value='id'/>" style="">处理</a>
 								</th>
 							</tr>
 						</s:iterator>
@@ -59,27 +59,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 				</table>
 				
+				<s:if test="blist!=null">
 				<nav aria-label="Page navigation">
 				  <ul class="pagination">
 				    <li>
-				      <a href="admin_showAdverList.action?currentPage=1" aria-label="Previous">
+				      <a href="admin_showAdminCenter.action?currentPage=1" aria-label="Previous">
 				        <span aria-hidden="true">&laquo;</span>
 				      </a>
 				    </li>
 				  
 				    <s:if test="plist!=null">
 						<s:iterator value="plist" id='number'>
-							<li><a href="admin_showAdverList.action?currentPage=<s:property value='number'/>"><s:property value='number'/></a></li>
+							<li><a href="admin_showAdminCenter.action?currentPage=<s:property value='number'/>"><s:property value='number'/></a></li>
 						</s:iterator>
 					</s:if>
 				    
 				    <li>
-				      <a href="admin_showAdverList.action?currentPage=${totalPages }" aria-label="Next">
+				      <a href="admin_showAdminCenter.action?currentPage=${totalPages }" aria-label="Next">
 				        <span aria-hidden="true">&raquo;</span>
 				      </a>
 				    </li>
 				  </ul>
 				</nav>
+				</s:if>
 			</div>
 		</div>
 		
@@ -87,5 +89,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<jsp:include page="/common/footer.jsp"/>
 		<script src="<%=request.getContextPath() %>/resource/static/jquery/jquery.min.js"></script>
     	<script src="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-  </body>
 </html>

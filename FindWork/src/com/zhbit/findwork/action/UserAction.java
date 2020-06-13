@@ -100,8 +100,7 @@ public class UserAction extends ActionSupport{
 	public String logout(){
 		  
 		  ActionContext ac = ActionContext.getContext();
-		  ac.getSession().put("LOGINED_USER",null);
-		
+		  ac.getSession().put("LOGINED_USER",null);	
 		  ac.getSession().put("LOGINED_ROLE", null);
 		  return "logout";
 		  

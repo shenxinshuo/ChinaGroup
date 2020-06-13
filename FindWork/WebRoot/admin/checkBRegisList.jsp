@@ -34,8 +34,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul class="nav nav-pills nav-stacked">
 					<li role="presentation" class="active"><a href="#">审核企业</a></li>
 					<li role="presentation"><a href="admin_showAdverList.action">审核招聘信息</a></li>
+					<li role="presentation"><a href="blacklist_toCheckComplain.action">处理投诉</a></li>
 					<li role="presentation"><a href="roleManager/addRole.jsp">角色管理</a></li>
 					<li role="presentation"><a href="post_toAddPost.action">岗位管理</a></li>
+					<li role="presentation"><a href="ad_showAddAD.action">广告管理</a></li>
 				</ul>
 			</div>
 
@@ -58,6 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 				</table>
 				
+				<s:if test="bs!=null">
 				<nav aria-label="Page navigation">
 				  <ul class="pagination">
 				    <li>
@@ -79,6 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    </li>
 				  </ul>
 				</nav>
+				</s:if>
 			</div>
 		</div>
 		

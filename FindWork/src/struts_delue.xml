@@ -8,7 +8,27 @@
 
 <struts>
 	<package name="user" extends="struts-default" namespace="/">
+		<action name="ad_*" class="advertisementAction" method="{1}">
+			<result name="add" type="chain">ad_getAllAdvertisements</result>
+			<result name="showAddAD">/Advertisement/addAdvertisement.jsp</result>
+			<result name="getAllAdvertisements">/Advertisement/updateAdvertisement.jsp</result>
+			<result name="deleteById" type="chain">ad_getAllAdvertisements</result>	
+			<result name="input">/Advertisement/addAdvertisement.jsp</result>
+		    <result name="readHeader" type="stream">
+				<param name="contentType">image/jpeg,image/jpg,image/png</param>
+				<param name="inputName">inputStream</param>
+					<!-- <param name="contentDisposition">attachment;filename="${downloadFileName}"</param> -->
+				<param name="bufferSize">1048576</param>
+			</result>		
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">
+				image/jpeg,image/jpg,image/png
+				</param>
+				<param name="maximumSize">1048576</param>
+			</interceptor-ref>		
+			<interceptor-ref name="defaultStack"/>
 		
+		</action>
 		<action name="resume_showCvList" class="userAction" method="showCvList">
 			<result name="showCvList">/user/myResume.jsp</result>	
 		</action>

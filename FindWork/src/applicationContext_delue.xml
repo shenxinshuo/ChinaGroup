@@ -24,6 +24,9 @@
 		<bean id="blackListDaoImpl" class="com.zhbit.findwork.dao.impl.BlackListDaoImpl">
 			<property name="sessionFactory" ref="sessionFactory" />
 		</bean>
+		<bean id="advertisementDaoImpl" class="com.zhbit.findwork.dao.impl.AdvertisementDaoImpl" >
+			<property name="sessionFactory" ref="sessionFactory" />
+		</bean>
 		
 		<!-- 配置ServiceImpl -->
 		<bean id="userServiceImpl" class="com.zhbit.findwork.service.impl.UserServiceImpl">
@@ -38,6 +41,9 @@
 			<property name="advertiseDao" ref="advertiseDaoImpl"></property>
 		</bean>
 		
+		<bean id="advertisementServiceImpl" class="com.zhbit.findwork.service.impl.AdvertisementServiceImpl">
+			<property name="advertisementDao" ref="advertisementDaoImpl"></property>
+		</bean>
 		
 		
 		
@@ -57,6 +63,11 @@
 		<bean id="collection_AdvertiseAction" class="com.zhbit.findwork.action.Collection_AdvertiseAction" scope="request">
 			<property name="userService" ref="userServiceImpl"></property>
 			<property name="advertiseService" ref="advertiseServiceImpl"></property>
+		</bean>
+		
+		<bean id="advertisementAction" class="com.zhbit.findwork.action.AdvertisementAction" scope="request" >
+			<property name="advertisementService" ref="advertisementServiceImpl"></property>
+			<property name="businessService" ref="businessServiceImpl"></property>
 		</bean>
 
 </beans>
