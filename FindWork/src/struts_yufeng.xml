@@ -52,6 +52,8 @@
 			<result name="showAd">/admin/checkOfferRegis.jsp</result>
 			<result name="logout">/admin/adminLogin.jsp</result>
 			<result name="checkAdver">/admin/checkOfferList.jsp</result>
+			<result name="checkBComplain">/admin/checkComplain.jsp</result>
+			<result name="checkBComplainNotPass">/admin/checkComplain.jsp</result>
 		</action>
 	</package>
 	
@@ -80,6 +82,15 @@
 			<result name="toUpdatePost">/admin/updatePostList.jsp</result>
 			<result name="showUpdatePost">/admin/updatePost.jsp</result>
 			<result name="deletePost">/admin/updatePostList.jsp</result>
+		</action>
+	</package>
+	
+	<package name="blacklist" extends="struts-default" namespace="/">
+		<action name="blacklist_*" class="blackListAction" method="{1}">
+			<result>/index.jsp</result>
+			<result name="toCheckComplain">/admin/checkComplain.jsp</result>
+			<result name="toShowComplainForAdvertise">/admin/showComplainForAdvertise.jsp</result>
+			<result name="toShowComplainForBusiness">/admin/showComplainForBusiness.jsp</result>
 		</action>
 	</package>
 </struts>

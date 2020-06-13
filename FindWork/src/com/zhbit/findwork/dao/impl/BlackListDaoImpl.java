@@ -1,7 +1,10 @@
 package com.zhbit.findwork.dao.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import com.zhbit.findwork.dao.BlackListDao;
 import com.zhbit.findwork.entity.Advertise;
@@ -9,6 +12,7 @@ import com.zhbit.findwork.entity.BlackList;
 import com.zhbit.findwork.entity.Business;
 import com.zhbit.findwork.entity.Collection_Advertise;
 import com.zhbit.findwork.entity.Collection_Business;
+import com.zhbit.findwork.entity.Post;
 /**
  * 
  * @author 王德略
@@ -153,6 +157,47 @@ public class BlackListDaoImpl implements BlackListDao{
 		for(int i=0;i<bls.size();i++){
 			bls.get(i).setStatus(-1);
 		}
+	}
+
+	@Override
+	public int getCountByStatus(int status) {
+		String hql = "select count(id) from BlackList where delete_flag = 0 and status = :status";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("status", status);
+		Long sum = (Long)query.uniqueResult(); //获得的整数只能为Long型，需要自己再转换为int
+		String temp = String.valueOf(sum);  //强制转换会报错Cannot cast from Long to int
+		int count = Integer.parseInt(temp);    //故先转String，再转int
+		return count;
+	}
+
+	@Override
+	public List<BlackList> getBlackListByPageWithStatus(int firstResult, int maxResults, int status) {
+		String hql = "from BlackList where delete_flag = 0 and status= :status order by id";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setFirstResult(firstResult)
+			.setMaxResults(maxResults)
+			.setParameter("status", status);
+		List<BlackList> blackList = query.list();
+		return blackList;
+	}
+
+	@Override
+	public BlackList getBlackListById(int id) {
+		BlackList blackList = (BlackList) sessionFactory.getCurrentSession().get(BlackList.class, id);
+		if (blackList != null) {
+			if (blackList.getDelete_flag() == 1) {
+				//说明该记录已被删除
+				return null;
+			}
+		}
+		return blackList;
+	}
+
+	@Override
+	public void updateBlackList(BlackList blackList) {
+		// TODO Auto-generated method stub
+		blackList.setUpdate_at(new Date());
+		sessionFactory.getCurrentSession().merge(blackList);
 	}
 
 

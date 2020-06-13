@@ -3,6 +3,7 @@ package com.zhbit.findwork.service;
 import java.util.List;
 
 import com.zhbit.findwork.entity.Advertise;
+import com.zhbit.findwork.entity.BlackList;
 import com.zhbit.findwork.entity.Business;
 import com.zhbit.findwork.entity.User;
 /**
@@ -52,5 +53,20 @@ public interface BlackListService {
 	 * 审核投诉招聘信息失败
 	 * */
 	public void complainsAdvertiseOfFaile(int advertiseId);
-	
+	/**
+	 * 查询未处理的投诉总数
+	 * */
+	public int getCountByStatus(int status);
+	/**
+	 * 分页查询未处理的投诉
+	 * */
+	public List<BlackList> getBlackListsByPageWithStatus(int firstResult, int maxResults, int status);
+	/**
+	 * 根据id查询
+	 * */
+	public BlackList getBlackListById(int id);
+	/**
+	 * 更新黑名单
+	 * */
+	public void updateBlackListStatus(BlackList blackList);
 }

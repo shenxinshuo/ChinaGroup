@@ -49,4 +49,18 @@ public interface BlackListDao {
 	 * 审核投诉招聘信息失败
 	 * */
 	public void complainsAdvertiseOfFaile(int AdvertiseId);
+	/**
+	 * 查询未处理的投诉总数
+	 * */
+	public int getCountByStatus(int status);
+	/**
+	 * 分页查询未处理的投诉
+	 * */
+	public List<BlackList> getBlackListByPageWithStatus(int firstResult, int maxResults, int status);
+	/**
+	 * 根据id查询
+	 * */
+	public BlackList getBlackListById(int id);
+	
+	public void updateBlackList(BlackList blackList);
 }

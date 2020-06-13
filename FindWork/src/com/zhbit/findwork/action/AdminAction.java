@@ -7,9 +7,11 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.zhbit.findwork.entity.Administrator;
 import com.zhbit.findwork.entity.Advertise;
+import com.zhbit.findwork.entity.BlackList;
 import com.zhbit.findwork.entity.Business;
 import com.zhbit.findwork.service.AdministratorService;
 import com.zhbit.findwork.service.AdvertiseService;
+import com.zhbit.findwork.service.BlackListService;
 import com.zhbit.findwork.service.BusinessService;
 
 public class AdminAction extends ActionSupport{
@@ -17,7 +19,10 @@ public class AdminAction extends ActionSupport{
 	private AdministratorService adminService;
 	private BusinessService businessService;
 	private AdvertiseService advertiseService;
+	private BlackListService blackListService;
 	
+	private BlackList blackList;
+	private List<BlackList> blist;
 	private Administrator admin;
 	private Business business;
 	private Advertise advertise;
@@ -142,6 +147,100 @@ public class AdminAction extends ActionSupport{
 		
 	}
 	
+	public String checkBComplain(){
+		blackList = blackListService.getBlackListById(blackList.getId());
+		advertise = advertiseService.getAdvertiseByID(advertise.getId());
+		blackList.setDelete_flag(1);
+		blackList.setStatus(1);
+		advertise.setDeleteFlag(1);
+		blackListService.updateBlackListStatus(blackList);
+		advertiseService.updateAdvertese(advertise);
+		
+		lines = blackListService.getCountByStatus(0);
+		plist = new ArrayList<String>();
+		
+		for(int i=0,j=0;i<lines;i+=6,j++){
+			plist.add(String.valueOf(j+1));
+		}
+		
+		totalPages = plist.size();
+		if(currentPage == 0){
+			currentPage = 1;
+		}
+		firstResult = (currentPage-1)*page_line;
+		blist = blackListService.getBlackListsByPageWithStatus(firstResult, page_line, 0);
+		
+		return "checkBComplain";
+	}
+	
+	public String checkBComplainNotPass(){
+		blackList = blackListService.getBlackListById(blackList.getId());
+		blackList.setStatus(-1);
+		blackListService.updateBlackListStatus(blackList);
+		
+		lines = blackListService.getCountByStatus(0);
+		plist = new ArrayList<String>();
+		
+		for(int i=0,j=0;i<lines;i+=6,j++){
+			plist.add(String.valueOf(j+1));
+		}
+		
+		totalPages = plist.size();
+		if(currentPage == 0){
+			currentPage = 1;
+		}
+		firstResult = (currentPage-1)*page_line;
+		blist = blackListService.getBlackListsByPageWithStatus(firstResult, page_line, 0);
+		
+		return "checkBComplainNotPass";
+	}
+	
+	public String checkBComplainForBusiness(){
+		blackList = blackListService.getBlackListById(blackList.getId());
+		blackList.setDelete_flag(1);
+		blackList.setStatus(1);
+		blackListService.updateBlackListStatus(blackList);
+		businessService.deleteBusinessByID(business.getId());
+		
+		lines = blackListService.getCountByStatus(0);
+		plist = new ArrayList<String>();
+		
+		for(int i=0,j=0;i<lines;i+=6,j++){
+			plist.add(String.valueOf(j+1));
+		}
+		
+		totalPages = plist.size();
+		if(currentPage == 0){
+			currentPage = 1;
+		}
+		firstResult = (currentPage-1)*page_line;
+		blist = blackListService.getBlackListsByPageWithStatus(firstResult, page_line, 0);
+		
+		return "checkBComplain";
+	}
+	
+	public String checkBComplainForBusinessNotPass(){
+		blackList = blackListService.getBlackListById(blackList.getId());
+		blackList.setStatus(-1);
+		blackListService.updateBlackListStatus(blackList);
+		
+		lines = blackListService.getCountByStatus(0);
+		plist = new ArrayList<String>();
+		
+		for(int i=0,j=0;i<lines;i+=6,j++){
+			plist.add(String.valueOf(j+1));
+		}
+		
+		totalPages = plist.size();
+		if(currentPage == 0){
+			currentPage = 1;
+		}
+		firstResult = (currentPage-1)*page_line;
+		blist = blackListService.getBlackListsByPageWithStatus(firstResult, page_line, 0);
+		
+		return "checkBComplainNotPass";
+	}
+	
 	public String showAdvertiseForCheck(){
 		
 		advertise = advertiseService.getAdvertiseByID(advertise.getId());
@@ -210,6 +309,7 @@ public class AdminAction extends ActionSupport{
 		return "logout";
 		
 	}
+
 	
 	public AdministratorService getAdminService() {
 		return adminService;
@@ -305,6 +405,30 @@ public class AdminAction extends ActionSupport{
 
 	public void setAs(List<Advertise> as) {
 		this.as = as;
+	}
+
+	public BlackList getBlackList() {
+		return blackList;
+	}
+
+	public void setBlackList(BlackList blackList) {
+		this.blackList = blackList;
+	}
+
+	public BlackListService getBlackListService() {
+		return blackListService;
+	}
+
+	public void setBlackListService(BlackListService blackListService) {
+		this.blackListService = blackListService;
+	}
+
+	public List<BlackList> getBlist() {
+		return blist;
+	}
+
+	public void setBlist(List<BlackList> blist) {
+		this.blist = blist;
 	}
 	
 }
