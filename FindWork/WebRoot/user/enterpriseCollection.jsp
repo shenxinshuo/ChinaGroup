@@ -41,7 +41,7 @@
 				target="_parent" style="font-weight: 600;"><s:property value="#business.name" /></a></td> 
 		<td><s:property value="#business.city" /></td>
 		<td><s:property value="#business.telephone" /></td>
-		<td><a href="${ business.url}" target="_blank"><s:property value="#business.url" /></a></td> 	
+		<td><a href="${business.url}" target="_blank"><s:property value="#business.url" /></a></td> 	
 		<s:url id="delete" action="/FindWork/collection_deleteBusiness.action?business.id=%{#business.id}&&page.current=%{#request.page.current}" namespace="/" /> 
 		<td style="width:10px"><a href="${delete}"><span class="glyphicon glyphicon-remove" style="float: right;margin:10px 20px;"></span></a></td>
 		</tr>

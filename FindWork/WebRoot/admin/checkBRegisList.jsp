@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li role="presentation"><a href="blacklist_toCheckComplain.action">处理投诉</a></li>
 					<li role="presentation"><a href="roleManager/addRole.jsp">角色管理</a></li>
 					<li role="presentation"><a href="post_toAddPost.action">岗位管理</a></li>
-					<li role="presentation"><a href="ad_showAddAD.action">广告管理</a></li>
+					<li role="presentation"><a href="ad_getAllAdvertisements.action">广告管理</a></li>
 				</ul>
 			</div>
 

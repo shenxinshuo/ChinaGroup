@@ -23,7 +23,12 @@ public interface AdvertisementService {
 	 * 修改广告
 	 * */
 	public boolean changeAD(Advertisement ad);
+	
 	/**
+	*  通过位置获取广告
+	 **/
+   public Advertisement getAdvertisementByPosition(int position);
+   /**
 	 * 通过广告id获取该广告
 	 * */
 	public Advertisement getAdvertisementById(int adId);

@@ -8,7 +8,12 @@
 
 <struts>
 	<package name="user" extends="struts-default" namespace="/">
+		<action name="changeAD" class="advertisementAction" method="change">
+			<result name="add" type="chain">ad_getAllAdvertisements</result>
+			<result name="input">/Advertisement/changeAdvertisement.jsp</result>
+		</action>
 		<action name="ad_*" class="advertisementAction" method="{1}">
+			<result name="showChange">/Advertisement/changeAdvertisement.jsp</result>
 			<result name="add" type="chain">ad_getAllAdvertisements</result>
 			<result name="showAddAD">/Advertisement/addAdvertisement.jsp</result>
 			<result name="getAllAdvertisements">/Advertisement/updateAdvertisement.jsp</result>

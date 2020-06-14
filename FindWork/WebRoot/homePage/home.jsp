@@ -104,15 +104,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			<div class="ad_info">
 				<div class="row_1">
-					<img class="ad_img1" src="ad_readHeader.action?ad.id=1" />
-					<img class="ad_img2" src="ad_readHeader.action?ad.id=2" />
+				    <img class="ad_img1" src="ad_readHeader.action?ad.position=1" />
+					<img class="ad_img2" src="ad_readHeader.action?ad.position=2" />
 				</div>
 				<div class="row_2">
-					<img class="ad_img3" src="resource/image/yufeng/adimg4.jpg" />
-					<img class="ad_img4" src="resource/image/yufeng/adimg5.jpg" />
+					<img class="ad_img3" src="ad_readHeader.action?ad.position=3" />
+					<img class="ad_img4" src="ad_readHeader.action?ad.position=4" />
 				</div>
 				<div class="row_3">
-					<img class="ad_img5" src="resource/image/yufeng/adimg1.jpg" />
+					<img class="ad_img5" src="ad_readHeader.action?ad.position=5" />
 				</div>
 			</div>
 		</div>

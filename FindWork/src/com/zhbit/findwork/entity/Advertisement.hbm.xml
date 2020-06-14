@@ -17,6 +17,7 @@
 		<property name="delete_flag" column="delete_flag" />
 		<property name="comment" column="comment" />
 		<property name="create_at" column="create_at" />
-		<property name="update_at" column="update_at" />		
+		<property name="update_at" column="update_at" />
+		<property name="position" column="Aposition"></property>		
 	</class>
 </hibernate-mapping>

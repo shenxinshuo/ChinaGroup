@@ -18,6 +18,10 @@ public interface AdvertisementDao {
 *  通过id获取广告
  **/
 	public Advertisement getAdvertisementById(int adId);
+	/**
+	*  通过位置获取广告
+	 **/
+	public Advertisement getAdvertisementByPosition(int position);
 /**
 *  修改广告
 **/

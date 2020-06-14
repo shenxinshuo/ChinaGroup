@@ -27,11 +27,6 @@ public class AdvertisementServiceImpl implements AdvertisementService {
 		return true;
 	}
 
-	@Override
-	public Advertisement getAdvertisementById(int adId) {
-		// TODO Auto-generated method stub
-		return advertisementDao.getAdvertisementById(adId);
-	}
 
 	@Override
 	public boolean changeAD(Advertisement ad) {
@@ -52,6 +47,18 @@ public class AdvertisementServiceImpl implements AdvertisementService {
 	public List<Advertisement> getAllAdvertisements() {
 		// TODO Auto-generated method stub
 		return advertisementDao.getAllAdvertisements();
+	}
+
+	@Override
+	public Advertisement getAdvertisementByPosition(int position) {
+		// TODO Auto-generated method stub
+		return advertisementDao.getAdvertisementByPosition(position);
+	}
+
+	@Override
+	public Advertisement getAdvertisementById(int adId) {
+		// TODO Auto-generated method stub
+		return advertisementDao.getAdvertisementById(adId);
 	}
 
 }

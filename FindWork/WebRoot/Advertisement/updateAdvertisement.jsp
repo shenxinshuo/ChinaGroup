@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<s:iterator value="ads" >
 							<tr>
 								<th style="width: 100px;"><s:property value="topic"/></th>
-								<th style="width: 100px;"><s:property value="id"/></th>	
+								<th style="width: 100px;"><s:property value="position"/></th>	
 								<th style="width: 200px;">
 									<a  onclick ="js_method()" href="ad_deleteById.action?ad.id=<s:property value='id'/>" style="">删除</a>
 									<a href="ad_showChange.action?ad.id=<s:property value='id'/>" style="">修改</a>

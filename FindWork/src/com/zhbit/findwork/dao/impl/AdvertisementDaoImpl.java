@@ -26,7 +26,7 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
 	@Override
 	public void add(Advertisement ad) {
 		// TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().merge(ad);
+		sessionFactory.getCurrentSession().save(ad);
 	}
 
 	@Override
@@ -60,6 +60,16 @@ public class AdvertisementDaoImpl implements AdvertisementDao {
 		String hql="from Advertisement where delete_flag = 0 ";
 		List<Advertisement> ads=(List<Advertisement>)sessionFactory.getCurrentSession().createQuery(hql).list();
 		return ads;
+	}
+
+	@Override
+	public Advertisement getAdvertisementByPosition(int position) {
+		// TODO Auto-generated method stub
+		String hql="from Advertisement where Aposition =? and delete_flag = 0 ";
+		Advertisement ad=(Advertisement)sessionFactory.getCurrentSession().createQuery(hql)
+			.setParameter(0, position)
+			.uniqueResult();
+		return ad;
 	}
 
 }

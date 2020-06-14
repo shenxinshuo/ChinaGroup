@@ -55,18 +55,23 @@ public class AdvertisementAction extends ActionSupport  {
 	private String message;				//用于返回信息给页面，提示用户
 	private String errorMessage;		//显示异常信息
 	
+	private String url;
+	
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	
 	public String readHeader(){
-		ad=advertisementService.getAdvertisementById(ad.getId());
-		System.out.println("广告获取对象");
-		System.out.println(ad.getTopic());
+		ad=advertisementService.getAdvertisementByPosition(ad.getPosition());
 		return "readHeader";
 	}
 	public InputStream getInputStream() throws Exception{
-	
-		System.out.println("广告读取头像");
-		System.out.println(ad.getPicture());
-		System.out.println("ddddddddddddddddddddddd");
+		
 		try{
 			InputStream inputStream = new FileInputStream(ad.getPicture());
 			return inputStream;
@@ -101,29 +106,32 @@ public class AdvertisementAction extends ActionSupport  {
 			   if(businessService.getBusinessesByName(businessName).size()==0){
 				   this.addFieldError("business", "企业名字不存在");		   
 			   }
-			   if(ad.getId()==0){
+			   if(ad.getPosition()==0){
 				   this.addFieldError("id", "广告位不能为空");	
-			   }
-			   getallADs();
-		       adids.add(ad.getId()+1);
+			   }			 
+			   getallADs();			   
+		       adids.add(advertisementService.getAdvertisementById(ad.getId()).getPosition());
 		}
-	public String change(){			
-		if(Header.getClass()!=null)//如果有图片更新则更新
-			setADPicture();		
+	public String change(){					
 		Business business =businessService.getBusinessesByName(businessName).get(0);
+		Advertisement temp=advertisementService.getAdvertisementById(ad.getId());
+		ad.setPicture(temp.getPicture());
+		ad.setCreate_at(temp.getCreate_at());
+		ad.setComment(temp.getComment());
 		ad.setBusiness(business);	
-		advertisementService.addAD(ad);
+		advertisementService.changeAD(ad);
 		return "add";
 	}
 	
 	//展示修改页面
 	public String showChange(){
+		
 		getallADs();		
 		ad=advertisementService.getAdvertisementById(ad.getId());
 		businessName=ad.getBusiness().getName();
-		adids.add(ad.getId());
+		adids.add(ad.getPosition());
 		target="change";
-		return "showAddAD";
+		return "showChange";
 	}
 	
 	//验证添加广告表单
@@ -152,9 +160,10 @@ public class AdvertisementAction extends ActionSupport  {
 	   if(businessService.getBusinessesByName(businessName).size()==0){
 		   this.addFieldError("business", "企业名字不存在");		   
 	   }
-	   if(ad.getId()==0){
+	   if(ad.getPosition()==0){
 		   this.addFieldError("id", "广告位不能为空");	
 	   }
+	 
 	   getallADs();
 	}
 	public String add(){	
@@ -186,9 +195,9 @@ public class AdvertisementAction extends ActionSupport  {
 				}		
 	}
 	
-	public String showAddAD(){
-		getallADs();
+	public String showAddAD(){	
 		target="add";
+		getallADs();
 		return "showAddAD";
 	}
 	
@@ -198,10 +207,10 @@ public class AdvertisementAction extends ActionSupport  {
 		for(int i=0;i<5;i++){
 			adids.add(i+1);
 		}	
-		for(int i=0;i<adids.size();i++){
-			for(int j=0;j<ads.size();j++){
-				if(ads.get(j).getId()==adids.get(i)){
-					adids.remove(i);
+		for(int j=0;j<ads.size();j++){
+			for(int i=0;i<adids.size();i++){			
+				if(ads.get(j).getPosition()==adids.get(i)){
+					adids.remove(i);					
 				}
 			}
 		}
@@ -217,6 +226,7 @@ public class AdvertisementAction extends ActionSupport  {
 		ads = advertisementService.getAllAdvertisements();
 		return "getAllAdvertisements";		
 	}
+	
 	
 	public AdvertisementService getAdvertisementService() {
 		return advertisementService;

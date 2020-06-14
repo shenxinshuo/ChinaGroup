@@ -6,7 +6,7 @@
 <html>
   <head>
     
-    <title>添加广告</title>
+    <title>修改广告</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -32,19 +32,15 @@
         <div class="col-md-8">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">新增广告</h3>
+                    <h3 class="panel-title">修改广告</h3>
                 </div>
                 <div class="panel-body">
                 	<s:if test="errorMessage == null">
                 	</s:if>
                 	<s:else>
                 		<div class="alert alert-danger" role="alert">${errorMessage }</div>
-                	</s:else>  
-                	<s:if test="adids.size()==0">
-                		广告位已经满了，请删除再添加
-                	</s:if>        	
-                	<s:else>
-                    <form action="ad_add.action" class="form-horizontal" method="post" enctype="multipart/form-data">
+                	</s:else>
+                    <form action="changeAD.action" class="form-horizontal" method="post" enctype="multipart/form-data">
                     	 <div class="col-md-12">
                             <div class="col-md-6">
                                 <label for="" class="text-danger col-md-offset-4">${fieldErrors.topic[0] }</label>
@@ -82,13 +78,8 @@
                             <div class="col-md-6">
                                 <label for="" class="text-danger col-md-offset-4">${fieldErrors.picture[0] }</label>
                             </div>
-                        </div>         
-                        <div class="form-group">
-                            <label for="" class="control-label col-md-2">宣传图片</label>
-                            <div class="col-md-4" style="padding: 0;">
-                                <input type="file" name="Header" accept="image/*">
-                            </div>
-                        </div>                                    
+                        </div>            
+                         <s:hidden name="ad.id" value="%{#request.ad.id}"></s:hidden>                   
                          <div class="col-md-12">
                             <div class="col-md-6">
                                 <label for="" class="text-danger col-md-offset-4">${fieldErrors.business[0] }</label>
@@ -119,7 +110,6 @@
                             <input type="reset" class="btn btn-default">
                         </div>
                     </form>
-                </s:else>   
                 </div>
             </div>
         </div>

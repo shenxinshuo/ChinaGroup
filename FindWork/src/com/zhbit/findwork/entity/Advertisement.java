@@ -19,6 +19,13 @@ public class Advertisement {
 	private String comment;		//
 	private Date create_at;		//创建时间
 	private Date update_at;		//更新时间
+	private int position;
+	public int getPosition() {
+		return position;
+	}
+	public void setPosition(int position) {
+		this.position = position;
+	}
 	public int getId() {
 		return id;
 	}
