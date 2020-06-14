@@ -121,7 +121,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			<div class="hot_jobs_title">
 				<label>______</label>
-				<label>热招职位</label>
+				<label>热门公司</label>
 				<label>______</label>
 			</div>
 
@@ -139,9 +139,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</div>
 					<div class="job1_right">
-						<a href="#">网络工程师</a>
-						<label>腾讯 | 本科</label>
-						<h3>15k - 25k</h3>
+						<a href="business_searchByName.action?searchName=腾讯">腾讯</a>
+						<label>广东 | 深圳</label>
+						<!-- <h3>15k - 25k</h3> -->
 					</div>
 				</div>
 			</div>
@@ -160,9 +160,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</div>
 					<div class="job1_right">
-						<a href="#">网络工程师</a>
-						<label>腾讯 | 本科</label>
-						<h3>15k - 25k</h3>
+						<a href="business_searchByName.action?searchName=远光">远光</a>
+						<label>广东 | 珠海</label>
+						<!-- <h3>15k - 25k</h3> -->
 					</div>
 				</div>
 			</div>
@@ -181,9 +181,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</div>
 					<div class="job1_right">
-						<a href="#">网络工程师</a>
-						<label>腾讯 | 本科</label>
-						<h3>15k - 25k</h3>
+						<a href="business_searchByName.action?searchName=华为">华为</a>
+						<label>中国 | 深圳</label>
+						<!-- <h3>15k - 25k</h3> -->
 					</div>
 				</div>
 			</div>

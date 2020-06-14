@@ -35,13 +35,21 @@ public class PostAction extends ActionSupport{
 	 * 添加岗位表单验证
 	 */
 	public void validateAdd() {
+		postTypes = post_typeService.getAllPost_type();
 		if (post.getPname() == null || "".equals(post.getPname())) {
 			addFieldError("post.name", "岗位名称不能为空");
+			postTypes = post_typeService.getAllPost_type();
 		} else {
 			if (post.getPname().length()>20) {
 				this.addFieldError("post.name", "岗位名称长度不能超过20");
+			}else {
+				if(postService.getPostByName(post.getPname())!=null){
+					this.addFieldError("post.name", "该岗位名称已被使用");
+					
+				}
 			}
 		}
+		
 	}
 	
 	//新增岗位
@@ -57,10 +65,22 @@ public class PostAction extends ActionSupport{
 		} else if (result == 1) {
 			//插入成功
 			message = "岗位新增成功";
-			posts = postService.getAllPost();
+			lines = postService.getCountByCheckFlag(0);
+			plist = new ArrayList<String>();
+			System.out.println("size:"+lines);
+			for(int i=0,j=0;i<lines;i+=6,j++){
+				plist.add(String.valueOf(j+1));
+			}
+			
+			totalPages = plist.size();
+			if(currentPage == 0){
+				currentPage = 1;
+			}
+			firstResult = (currentPage-1)*page_line;
+			posts = postService.getPostsByPageWithCheck(firstResult, page_line, 0);
 			return "showAllPosts";
 		}
-		return "showAllRoles";
+		return "showAllPosts";
 	}
 	
 	//跳转新增岗位页面

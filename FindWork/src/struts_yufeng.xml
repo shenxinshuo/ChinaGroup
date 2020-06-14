@@ -77,11 +77,12 @@
 		<action name="post_*" class="postAction" method="{1}">
 			<result>/index.jsp</result>
 			<result name="showAdd">/admin/addPost.jsp</result>
-			<result name="showAllPosts">/admin/showPosts.jsp</result>
+			<result name="showAllPosts">/admin/updatePostList.jsp</result>
 			<result name="toAddPost">/admin/addPost.jsp</result>
 			<result name="toUpdatePost">/admin/updatePostList.jsp</result>
 			<result name="showUpdatePost">/admin/updatePost.jsp</result>
 			<result name="deletePost">/admin/updatePostList.jsp</result>
+			<result name="input">/admin/addPost.jsp</result>
 		</action>
 	</package>
 	

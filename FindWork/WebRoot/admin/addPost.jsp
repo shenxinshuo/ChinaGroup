@@ -50,13 +50,13 @@
                         <div class="form-group">
                             <label for="" class="control-label col-md-2">岗位名称</label>
                             <div class="col-md-4" style="padding: 0;">
-                                <input type="text" name="post.Pname" value="${post.name }" class="form-control">
+                                <input type="text" name="post.Pname"  class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="control-label col-md-2">备注</label>
                             <div class="col-md-4" style="padding: 0;">
-                                <input type="text" name="post.Comment" value="${post.comment }" class="form-control">
+                                <input type="text" name="post.Comment"  class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
@@ -78,8 +78,8 @@
                             </div>
                         </div> --%>
                         <div class="btn btn-group form-group">
-                            <input type="submit" class="btn btn-primary">
-                            <input type="reset" class="btn btn-default">
+                            <input type="submit" class="btn btn-primary" value="添加">
+                            <input type="reset" class="btn btn-default" value="重置">
                         </div>
                     </form>
                 </div>
