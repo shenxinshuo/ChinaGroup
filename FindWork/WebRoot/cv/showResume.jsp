@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="a2">
 				<span class="input-group-addon1" >姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span>
-				<input type="text" class="form-control2" value="${cv.live_province }"  readonly>
+				<input type="text" class="form-control2" value="${cv.name }"  readonly>
 				<span  id="basic-addon2">期望最低工资：</span>
 				<input type="text" class="form-control2" value="${cv.want_low_wages }"  readonly>
 			</div>
