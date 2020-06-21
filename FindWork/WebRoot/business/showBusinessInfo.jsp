@@ -145,7 +145,7 @@
 	                    
 	                    <div class="form-group col-md-11">
 	                        <div class="btn-group" style="float: right;">
-	                            <a type="button" class="btn btn-success" href="<%=request.getContextPath()%>/toFinAdvertise.action">查看该企业发布的招聘信息</a>
+	                            <a type="button" class="btn btn-success" href="<%=request.getContextPath()%>/toFindAdvertise.action?bid=${business.id}">查看该企业发布的招聘信息</a>
 	                            <!-- <button type="reset" class="btn btn-default">重置</button> -->
 	                        </div>
 	                    </div>

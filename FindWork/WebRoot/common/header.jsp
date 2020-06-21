@@ -95,13 +95,13 @@
 					
 						<li><a href="${backHome }">首页</a></li>
 						<li><a href="#">|</a></li>
-						<li><a href="#">岗位</a></li>
+						<li><a href="<%=request.getContextPath() %>/search_getAdvertisesByPostSearch.action?postName=">我要工作</a></li>
 						<li><a href="#">|</a></li>
-						<li><a href="#">公司</a></li>
+						<li><a href="<%=request.getContextPath() %>/business_searchByName.action?currentPage=1&searchName=">公司</a></li>
 						<li><a href="#">|</a></li>
 						<li><a href="#">简历投递</a></li>
 						<li><a href="#">|</a></li>
-						<li><a href="#">其他</a></li>
+						<li><a href="#">加入我们</a></li>
 					
 					</ul>
 		

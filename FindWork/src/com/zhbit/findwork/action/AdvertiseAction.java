@@ -49,6 +49,7 @@ public class AdvertiseAction extends ActionSupport{
 	private List<String> plist;
 	private static int page_line = 5;
 	private int firstResult;
+	private int bid;		//鑫烁添加，接受查询企业发布招聘信息时传的企业id
 	
 	public void addAdvertise(){
 		/*HttpServletResponse response=ServletActionContext.getResponse(); 
@@ -163,6 +164,18 @@ public class AdvertiseAction extends ActionSupport{
 		advertise.setCheck(1);
 		advertise.setDeleteFlag(0);
 		advertise.setBid(b.getId());
+		List<Advertise>  l = advertiseService.getAdvertiseByExample(advertise);
+		HttpServletRequest req = ServletActionContext.getRequest();
+		req.setAttribute("list", l);
+		return "toFinAdvertise";
+	}
+	
+	public String toFindAdvertise(){
+		//Business b =  (Business) ServletActionContext.getRequest().getSession().getAttribute("LOGINED_USER");
+		Advertise advertise = new Advertise();
+		advertise.setCheck(1);
+		advertise.setDeleteFlag(0);
+		advertise.setBid(bid);
 		List<Advertise>  l = advertiseService.getAdvertiseByExample(advertise);
 		HttpServletRequest req = ServletActionContext.getRequest();
 		req.setAttribute("list", l);
@@ -347,6 +360,14 @@ public class AdvertiseAction extends ActionSupport{
 
 	public void setCvs1(List<Cv> cvs1) {
 		this.cvs1 = cvs1;
+	}
+
+	public int getBid() {
+		return bid;
+	}
+
+	public void setBid(int bid) {
+		this.bid = bid;
 	}
 
 	

@@ -23,6 +23,7 @@ public class SearchAction extends ActionSupport{
 	private int lastPage;				//最后一页页码
 	private int pageSize = Integer.parseInt(ServletActionContext.getServletContext().getInitParameter("maxResults"));
 	private List<Advertise> advertises;	//返回搜索的招聘信息列表
+	private int count;					//结果数据条数
 	
 	
 	
@@ -65,16 +66,20 @@ public class SearchAction extends ActionSupport{
 	public void setPostName(String postName) {
 		this.postName = postName;
 	}
-
-
-
-
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
+	
 	/**
 	 * 根据岗位模糊搜索招聘信息
 	 * @return
 	 */
 	public String getAdvertisesByPostSearch() {
-		int count = advertiseService.getCountByPostSearch(postName);
+		count = advertiseService.getCountByPostSearch(postName);
 		this.getPagingParameter(count);
 		advertises = advertiseService.getAdvertisesByPostSearch(postName, firstResult, pageSize);
 		return "showAdvertisesByPostSearch";

@@ -309,6 +309,17 @@ public class BusinessAction extends ActionSupport{
 		int result = businessService.updateBusiness(business);
 		if (result == 0) {
 			//修改成功
+			//修改营业执照
+			if (license != null) {
+				String[] temp = licenseFileName.split("\\.");
+				business.setLicense_path("/upload/businessLicense/"+business.getName()+"."+temp[temp.length-1]);
+				File destFile = new File(ServletActionContext.getServletContext().getRealPath(business.getLicense_path()));
+				try {
+					FileUtils.copyFile(license, destFile);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 			message = "修改成功";
 			Business business = businessService.getBusinessByID(this.business.getId());
 			//advertises = business.getAdvertises().subList(1, pageSize > business.getAdvertises().size() ? business.getAdvertises().size() : pageSize);

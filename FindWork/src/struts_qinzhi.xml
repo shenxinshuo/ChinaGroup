@@ -26,6 +26,10 @@
 		<action name="toFinAdvertise" class="advertiseAction" method="toFinAdvertise">
 			 <result name="toFinAdvertise">/postjob/dashboard-manage-jobs.jsp</result>
 		</action>
+		<!-- 鑫烁添加 -->
+		<action name="toFindAdvertise" class="advertiseAction" method="toFindAdvertise">
+			 <result name="toFinAdvertise">/postjob/dashboard-manage-jobs.jsp</result>
+		</action>
 		<action name="detailAdvertise" class="advertiseAction" method="detailAdvertise">
 			 <result name="detailAdvertise">/postjob/single-job-page.jsp</result>
 		</action>

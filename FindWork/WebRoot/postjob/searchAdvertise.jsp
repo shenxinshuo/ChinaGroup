@@ -83,7 +83,7 @@
                           </s:url>
                           <li><a href="${advertise_searchByNameDesc }"> < </a></li>
                           <li><a href="#"><strong>${currentPage }</strong>/${lastPage }</a></li>
-                          <s:url id="advertises_searchByNameAdd" action="search_getAdvertisesByPostSearch" namespace="/">
+                          <s:url id="advertise_searchByNameAdd" action="search_getAdvertisesByPostSearch" namespace="/">
                           	<s:param name="postName">${postName }</s:param>
                           	<s:param name="currentPage">${currentPage+1 }</s:param>
                           </s:url>
