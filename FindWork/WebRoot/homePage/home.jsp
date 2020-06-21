@@ -103,16 +103,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 
 			<div class="ad_info">
+
 				<div class="row_1">
-				    <img class="ad_img1" src="ad_readHeader.action?ad.position=1" />
-					<img class="ad_img2" src="ad_readHeader.action?ad.position=2" />
+				   <a href="${url[1]}" target="_blank" ><img class="ad_img1" src="ad_readHeader.action?ad.position=1" /></a>
+				    <a href="${url[2]}" target="_blank" ><img class="ad_img2" src="ad_readHeader.action?ad.position=2" /></a>
 				</div>
 				<div class="row_2">
-					<img class="ad_img3" src="ad_readHeader.action?ad.position=3" />
-					<img class="ad_img4" src="ad_readHeader.action?ad.position=4" />
+					<a href="${url[3]}" target="_blank" ><img class="ad_img3" src="ad_readHeader.action?ad.position=3" /></a>
+					<a href="${url[4]}" target="_blank" ><img class="ad_img4" src="ad_readHeader.action?ad.position=4" /></a>
 				</div>
 				<div class="row_3">
-					<img class="ad_img5" src="ad_readHeader.action?ad.position=5" />
+					<a href="${url[5]}" target="_blank" ><img class="ad_img5" src="ad_readHeader.action?ad.position=5" /></a>
 				</div>
 			</div>
 		</div>

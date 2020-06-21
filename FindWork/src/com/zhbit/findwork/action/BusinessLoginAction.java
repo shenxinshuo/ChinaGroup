@@ -4,8 +4,10 @@ import java.util.List;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.zhbit.findwork.entity.Advertisement;
 import com.zhbit.findwork.entity.Business;
 import com.zhbit.findwork.entity.Post_type;
+import com.zhbit.findwork.service.AdvertisementService;
 import com.zhbit.findwork.service.BusinessService;
 import com.zhbit.findwork.service.Post_typeService;
 
@@ -15,7 +17,28 @@ public class BusinessLoginAction extends ActionSupport{
 	private List<Post_type> pts;
 	private BusinessService businessService;
 	private Post_typeService post_typeService;
-	
+	private AdvertisementService  advertisementService;
+	private String url[]= new String [6];
+	public AdvertisementService getAdvertisementService() {
+		return advertisementService;
+	}
+
+
+	public void setAdvertisementService(AdvertisementService advertisementService) {
+		this.advertisementService = advertisementService;
+	}
+
+
+	public String[] getUrl() {
+		return url;
+	}
+
+
+	public void setUrl(String[] url) {
+		this.url = url;
+	}
+
+
 	public void validateLogin(){
 		
 		System.out.println(business.getName()+business.getPassword());
@@ -39,6 +62,10 @@ public class BusinessLoginAction extends ActionSupport{
 		ac.getSession().put("LOGINED_USER", b);
 		ac.getSession().put("LOGINED_ROLE", 2);
 		pts = post_typeService.getAllPost_type();
+		List<Advertisement> ads=advertisementService.getAllAdvertisements();
+		for(int i=0;i<ads.size();i++){
+			url[ads.get(i).getPosition()]=ads.get(i).getUrl();
+		}
 		return "login";
 		
 	}

@@ -50,16 +50,19 @@
 			<property name="adminService" ref="adminService"></property>
 			<property name="advertiseService" ref="advertiseServiceImpl"></property>
 			<property name="blackListService" ref="blackListServiceImpl" />
+			<property name="advertisementService" ref="advertisementServiceImpl"></property>
 	   </bean>
 	   
 	   <bean id="businessLoginAction" class="com.zhbit.findwork.action.BusinessLoginAction" scope="request">
 	   		<property name="post_typeService" ref="post_typeService" />
 			<property name="businessService" ref="businessServiceImpl"></property>
+			<property name="advertisementService" ref="advertisementServiceImpl"></property>
 	   </bean>
 	   
 	   <!-- 返回首页action -->
 	   <bean id="backHomeAction" class="com.zhbit.findwork.action.BackHomeAction" scope="request">
 	   		<property name="post_typeService" ref="post_typeService" />
+	   		<property name="advertisementService" ref="advertisementServiceImpl"></property>
 	   </bean>
 	   
 	   <!-- 配置岗位action -->

@@ -54,18 +54,6 @@ public class AdvertisementAction extends ActionSupport  {
 	
 	private String message;				//用于返回信息给页面，提示用户
 	private String errorMessage;		//显示异常信息
-	
-	private String url;
-	
-	
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-	
 	public String readHeader(){
 		ad=advertisementService.getAdvertisementByPosition(ad.getPosition());
 		return "readHeader";
@@ -76,7 +64,8 @@ public class AdvertisementAction extends ActionSupport  {
 			InputStream inputStream = new FileInputStream(ad.getPicture());
 			return inputStream;
 		}catch(Exception e){
-			InputStream inputStream = new FileInputStream("D:\\a.jpg");
+			//
+			InputStream inputStream = new FileInputStream("D:\\ad.jpg");
 			return inputStream;
 		}
 		
@@ -154,6 +143,9 @@ public class AdvertisementAction extends ActionSupport  {
 	   if(HeaderFileName==null||HeaderFileName.equals("")){
 		 this.addFieldError("picture", "请选择新的广告宣传图片");
 		}
+	   if(Header==null||!Header.exists()){
+			 this.addFieldError("picture", "广告格式不正确");
+		}	 
 	   if(businessName==null||businessName.equals("")){
 		   this.addFieldError("business", "企业名字不能为空");		   
 	   }

@@ -15,11 +15,13 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.zhbit.findwork.entity.Advertisement;
 import com.zhbit.findwork.entity.Cv;
 import com.zhbit.findwork.entity.Post_type;
 import com.zhbit.findwork.entity.Role;
 import com.zhbit.findwork.entity.User;
 import com.zhbit.findwork.entity.UserBirthday;
+import com.zhbit.findwork.service.AdvertisementService;
 import com.zhbit.findwork.service.CvService;
 import com.zhbit.findwork.service.Post_typeService;
 import com.zhbit.findwork.service.RoleService;
@@ -59,8 +61,26 @@ public class UserAction extends ActionSupport{
 	private List<Cv> cvs;
 	
 	private RoleService roleService;
+	private AdvertisementService  advertisementService;
+	private String url[]= new String [6];
 	
 	
+
+	public AdvertisementService getAdvertisementService() {
+		return advertisementService;
+	}
+
+	public void setAdvertisementService(AdvertisementService advertisementService) {
+		this.advertisementService = advertisementService;
+	}
+
+	public String[] getUrl() {
+		return url;
+	}
+
+	public void setUrl(String[] url) {
+		this.url = url;
+	}
 
 	/**
 	 * 个人中心 注销用户
@@ -275,6 +295,10 @@ public class UserAction extends ActionSupport{
 		System.out.println(ActionContext.getContext()
 		.getSession().get("LOGINED_USER"));
 		pts = post_typeService.getAllPost_type();
+		List<Advertisement> ads=advertisementService.getAllAdvertisements();
+		for(int i=0;i<ads.size();i++){
+			url[ads.get(i).getPosition()]=ads.get(i).getUrl();
+		}
 		return "login";
 		
 	}

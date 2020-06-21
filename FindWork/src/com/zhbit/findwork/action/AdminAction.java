@@ -7,10 +7,12 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.zhbit.findwork.entity.Administrator;
 import com.zhbit.findwork.entity.Advertise;
+import com.zhbit.findwork.entity.Advertisement;
 import com.zhbit.findwork.entity.BlackList;
 import com.zhbit.findwork.entity.Business;
 import com.zhbit.findwork.service.AdministratorService;
 import com.zhbit.findwork.service.AdvertiseService;
+import com.zhbit.findwork.service.AdvertisementService;
 import com.zhbit.findwork.service.BlackListService;
 import com.zhbit.findwork.service.BusinessService;
 
@@ -35,6 +37,25 @@ public class AdminAction extends ActionSupport{
 	private static int page_line = 2;
 	private int firstResult;
 	
+	private AdvertisementService  advertisementService;
+	private String url[]= new String [6];
+	
+	public AdvertisementService getAdvertisementService() {
+		return advertisementService;
+	}
+
+	public void setAdvertisementService(AdvertisementService advertisementService) {
+		this.advertisementService = advertisementService;
+	}
+
+	public String[] getUrl() {
+		return url;
+	}
+
+	public void setUrl(String[] url) {
+		this.url = url;
+	}
+
 	public String showAdminCenter(){
 		
 		lines = businessService.getCountByCheckFlag(0);
@@ -296,6 +317,11 @@ public class AdminAction extends ActionSupport{
 		ActionContext ac = ActionContext.getContext();
 		ac.getSession().put("LOGINED_USER", a);
 		ac.getSession().put("LOGINED_ROLE", 5);
+		
+		List<Advertisement> ads=advertisementService.getAllAdvertisements();
+		for(int i=0;i<ads.size();i++){
+			url[ads.get(i).getPosition()]=ads.get(i).getUrl();
+		}
 		
 		return "login";
 		

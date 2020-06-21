@@ -4,7 +4,7 @@
 <html>
   <head>
     
-    <title>搜索企业</title>
+    <title>搜索招聘信息</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -39,16 +39,16 @@
                       <table class="table table-striped">
                         <tr>
                             <th>#</th>
-                            <th>企业名</th>
-                            <th>注册时间</th>
-                            <th style="width: 400px;">企业描述</th>
+                            <th>公司名称</th>
+                            <th>总部</th>
+                            <th style="width: 400px;">基本描述</th>
                             <th>操作 </th>
                         </tr>
                         <s:iterator value="businesses">
                         	<tr>
                             <td>${id }</td>
-                            <td>${name }</td>
-                            <td><s:property value="create_at" /></td>
+                            <td>${name}</td>
+                            <td>${city}</td>
                             <td>${description }</td>
                             <td>
                             	<s:url id="business_showBusinessInfo" action="business_showBusinessInfo" namespace="/">

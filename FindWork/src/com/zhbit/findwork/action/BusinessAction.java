@@ -14,6 +14,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.zhbit.findwork.entity.Advertise;
 import com.zhbit.findwork.entity.Business;
 import com.zhbit.findwork.service.AdvertiseService;
+import com.zhbit.findwork.service.AdvertisementService;
 import com.zhbit.findwork.service.BusinessService;
 
 public class BusinessAction extends ActionSupport{
@@ -40,8 +41,7 @@ public class BusinessAction extends ActionSupport{
 	private List<Advertise> advertises;	//企业名下的所有招聘信息
 	private String businessProvince;	//接收企业所在省份的值
 	//private int maxResults = 5;
-	
-	
+
 	public void setBusinessService(BusinessService businessService) {
 		this.businessService = businessService;
 	}
