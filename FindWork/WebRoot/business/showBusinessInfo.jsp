@@ -125,7 +125,17 @@
 	                                <s:if test="#business.check_flag == 1">
 	                                    <s:set name="check_status" value="%{'已通过审核'}" scope="action"></s:set>
 	                                </s:if>
+	                                <!-- 因为两个action传递数据的方式不同，所以做两个判断 -->
 	                                <s:if test="#business.check_flag == -1">
+	                                    <s:set name="check_status" value="%{'未通过审核'}" scope="action"></s:set>
+	                                </s:if>
+	                                <s:if test="business.check_flag == 0">
+	                                    <s:set name="check_status" value="%{'待审核'}" scope="action"></s:set>
+	                                </s:if>
+	                                <s:if test="business.check_flag == 1">
+	                                    <s:set name="check_status" value="%{'已通过审核'}" scope="action"></s:set>
+	                                </s:if>
+	                                <s:if test="business.check_flag == -1">
 	                                    <s:set name="check_status" value="%{'未通过审核'}" scope="action"></s:set>
 	                                </s:if>
 	                                <input type="text" name=""  value="${check_status }" class="form-control" size="30" readonly="readonly">

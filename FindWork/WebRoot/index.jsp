@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is my JSP page. <br>
+    	联系邮箱：xinshuoshen@qq.com
     ${advertises }
   </body>
 </html>

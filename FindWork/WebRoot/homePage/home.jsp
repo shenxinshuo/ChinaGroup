@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<jsp:include page="/common/header.jsp"/>
 
 		<div class="main_body">
-			<div class="div_search" style="margin-left:100px;">
+			<div class="div_search" style="">
 				<%-- <div class="col-lg-6">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="岗位 / 公司">
