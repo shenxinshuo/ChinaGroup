@@ -16,6 +16,8 @@
 	-->
 	<script type="text/javascript" src="resource/static/jquery/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="resource/static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+	<script src="<%=request.getContextPath() %>/resource/static/jquery/jquery.min.js"></script>
+ <script type="text/javascript" src="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
   </head>
   
   <body>

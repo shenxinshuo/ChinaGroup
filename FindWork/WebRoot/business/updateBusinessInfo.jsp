@@ -15,6 +15,8 @@
 	<script src="<%=request.getContextPath() %>/resource/static/jquery/jquery.min.js"></script>
 	<script src="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath() %>/js/yufeng/pro_cites.js"></script>
+
+ <script type="text/javascript" src="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			for(var i=0; i<pro.length; i++) {
