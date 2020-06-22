@@ -61,7 +61,7 @@ public class AdminAction extends ActionSupport{
 		lines = businessService.getCountByCheckFlag(0);
 		plist = new ArrayList<String>();
 		
-		for(int i=0,j=0;i<lines;i+=2,j++){
+		for(int i=0,j=0;i<lines;i+=5,j++){
 			plist.add(String.valueOf(j+1));
 		}
 		
@@ -91,7 +91,7 @@ public class AdminAction extends ActionSupport{
 		
 		lines = businessService.getCountByCheckFlag(0);
 		plist = new ArrayList<String>();
-		for(int i=0;i<lines;i+=6){
+		for(int i=0;i<lines;i+=5){
 			plist.add(String.valueOf(i+1));
 		}
 		if(currentPage == 0){
@@ -111,7 +111,7 @@ public class AdminAction extends ActionSupport{
 		
 		lines = businessService.getCountByCheckFlag(0);
 		plist = new ArrayList<String>();
-		for(int i=0,j=0;i<lines;i+=2,j++){
+		for(int i=0,j=0;i<lines;i+=5,j++){
 			plist.add(String.valueOf(j+1));
 		}
 		if(currentPage == 0){
@@ -133,7 +133,7 @@ public class AdminAction extends ActionSupport{
  		
  		lines = advertiseService.getUnFinAdvertiseCount();
 		plist = new ArrayList<String>();
-		for(int i=0,j=0;i<lines;i+=2,j++){
+		for(int i=0,j=0;i<lines;i+=5,j++){
 			plist.add(String.valueOf(j+1));
 		}
 		if(currentPage == 0){
@@ -155,7 +155,7 @@ public class AdminAction extends ActionSupport{
  		
  		lines = advertiseService.getUnFinAdvertiseCount();
 		plist = new ArrayList<String>();
-		for(int i=0,j=0;i<lines;i+=2,j++){
+		for(int i=0,j=0;i<lines;i+=5,j++){
 			plist.add(String.valueOf(j+1));
 		}
 		if(currentPage == 0){
@@ -180,7 +180,7 @@ public class AdminAction extends ActionSupport{
 		lines = blackListService.getCountByStatus(0);
 		plist = new ArrayList<String>();
 		
-		for(int i=0,j=0;i<lines;i+=6,j++){
+		for(int i=0,j=0;i<lines;i+=5,j++){
 			plist.add(String.valueOf(j+1));
 		}
 		
@@ -202,7 +202,7 @@ public class AdminAction extends ActionSupport{
 		lines = blackListService.getCountByStatus(0);
 		plist = new ArrayList<String>();
 		
-		for(int i=0,j=0;i<lines;i+=6,j++){
+		for(int i=0,j=0;i<lines;i+=5,j++){
 			plist.add(String.valueOf(j+1));
 		}
 		
@@ -226,7 +226,7 @@ public class AdminAction extends ActionSupport{
 		lines = blackListService.getCountByStatus(0);
 		plist = new ArrayList<String>();
 		
-		for(int i=0,j=0;i<lines;i+=6,j++){
+		for(int i=0,j=0;i<lines;i+=5,j++){
 			plist.add(String.valueOf(j+1));
 		}
 		
@@ -248,7 +248,7 @@ public class AdminAction extends ActionSupport{
 		lines = blackListService.getCountByStatus(0);
 		plist = new ArrayList<String>();
 		
-		for(int i=0,j=0;i<lines;i+=6,j++){
+		for(int i=0,j=0;i<lines;i+=5,j++){
 			plist.add(String.valueOf(j+1));
 		}
 		
@@ -273,7 +273,7 @@ public class AdminAction extends ActionSupport{
 		
 		lines = advertiseService.getUnFinAdvertiseCount();
 		plist = new ArrayList<String>();
-		for(int i=0,j=0;i<lines;i+=2,j++){
+		for(int i=0,j=0;i<lines;i+=5,j++){
 			plist.add(String.valueOf(j+1));
 		}
 		if(currentPage == 0){
@@ -304,7 +304,7 @@ public class AdminAction extends ActionSupport{
 		
 		lines = businessService.getCountByCheckFlag(0);
 		plist = new ArrayList<String>();
-		for(int i=0,j=0;i<lines;i+=2,j++){
+		for(int i=0,j=0;i<lines;i+=5,j++){
 			plist.add(String.valueOf(j+1));
 		}
 		if(currentPage == 0){
