@@ -21,7 +21,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	
 	<link rel="stylesheet" href="css/yufeng/CheckReInfo.css" />
+	<script src="<%=request.getContextPath() %>/resource/static/jquery/jquery.min.js"></script>
 	<script src="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		function js_method (){
