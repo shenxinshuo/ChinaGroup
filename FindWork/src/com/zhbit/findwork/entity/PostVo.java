@@ -5,11 +5,13 @@ public class PostVo {
 	private int id;
 	private String pname;
 	private String comment;
+	private int ptid;
 	
-	public PostVo(String pname, String comment, int id){
+	public PostVo(String pname, String comment, int id, int ptid){
 		this.pname = pname;
 		this.comment = comment;
 		this.id = id;
+		this.ptid = ptid;
 	}
 	
 	public PostVo(){
@@ -35,6 +37,14 @@ public class PostVo {
 	}
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public int getPtid() {
+		return ptid;
+	}
+
+	public void setPtid(int ptid) {
+		this.ptid = ptid;
 	}
 	
 	

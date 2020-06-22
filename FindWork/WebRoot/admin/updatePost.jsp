@@ -70,7 +70,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <select name="ptype" class="form-control" style="width:200px"> 
                             	<option>--请选择部门--</option>
 									<c:forEach items="${postTypes}" var="posttype">
-										<option value="${posttype.PTid}">${posttype.PTname}
+									<c:choose>
+										<c:when test="${posttype.PTid == postVo.ptid}">
+											<option value="${posttype.PTid}" selected="selected">${posttype.PTname}
+										</c:when>
+										<c:otherwise>
+											<option value="${posttype.PTid}">${posttype.PTname}
+										</c:otherwise>
+									</c:choose>
+										
 									</c:forEach>
                             </select>
                         </div>

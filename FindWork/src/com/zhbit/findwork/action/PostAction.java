@@ -110,7 +110,7 @@ public class PostAction extends ActionSupport{
 	//跳转修改岗位页面
 	public String showUpdatePost(){
 		post = postService.getPostByID(post.getPid());
-		postVo = new PostVo(post.getPname(), post.getComment(), post.getPid());
+		postVo = new PostVo(post.getPname(), post.getComment(), post.getPid(), post.getPtype().getPTid());
 		postTypes = post_typeService.getAllPost_type();
 		return "showUpdatePost";
 	}
