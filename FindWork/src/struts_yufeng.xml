@@ -34,7 +34,11 @@
 	<package name="businessLogin" extends="struts-default" namespace="/">
 		<action name="business2_*" class="businessLoginAction" method="{1}">
 			<result>/index.jsp</result>
-			<result name="login">/homePage/home.jsp</result>
+			<result name="login" type="redirectAction">
+				<param name="actionName">business_showBusinessCenter</param>
+				<param name="namespace">/</param>
+				<param name="business.id">${business.id}</param>
+			</result>
 			<result name="logout">/business/businessLogin.jsp</result>
 			<result name="input">/business/businessLogin.jsp</result>
 		</action>

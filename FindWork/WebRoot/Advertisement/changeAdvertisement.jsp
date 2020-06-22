@@ -16,7 +16,8 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<script src="<%=request.getContextPath() %>/resource/static/jquery/jquery.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resource/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
   </head>
   
   <body>
@@ -26,7 +27,7 @@
     
     <div class="container col-md-offset-2">
        <jsp:include page="leftMenu.jsp" >
-        	<jsp:param value="add" name="currentPage"/>
+        	<jsp:param value="update" name="currentPage"/>
         </jsp:include>
        
         <div class="col-md-8">
@@ -101,7 +102,15 @@
                             <select name="ad.position" class="form-control" style="width:200px"> 
                             	<option>--请选择广告位--</option>
 									<c:forEach items="${adids}" var="adid">
-										<option value="${adid}">第${adid}位</option>
+										<c:choose>
+											<c:when test="${ adid == ad.position}">
+												<option value="${adid}" selected="selected">第${adid}位</option>
+											</c:when>
+											<c:otherwise>
+												<option value="${adid}">第${adid}位</option>
+											</c:otherwise>
+										</c:choose>
+										
 									</c:forEach>
                             </select>
                         </div>      

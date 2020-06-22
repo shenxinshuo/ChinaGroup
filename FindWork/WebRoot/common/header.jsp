@@ -99,8 +99,8 @@
 						<li><a href="#">|</a></li>
 						<li><a href="<%=request.getContextPath() %>/business_searchByName.action?currentPage=1&searchName=">公司</a></li>
 						<li><a href="#">|</a></li>
-						<li><a href="#">简历投递</a></li>
-						<li><a href="#">|</a></li>
+						<!-- <li><a href="#">简历投递</a></li>
+						<li><a href="#">|</a></li> -->
 						<li><a href="#">加入我们</a></li>
 					
 					</ul>

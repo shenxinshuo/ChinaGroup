@@ -61,6 +61,7 @@ public class BusinessLoginAction extends ActionSupport{
 		ActionContext ac = ActionContext.getContext();
 		ac.getSession().put("LOGINED_USER", b);
 		ac.getSession().put("LOGINED_ROLE", 2);
+		business = b;//将有id的b赋值得business，重定向到action时用到
 		pts = post_typeService.getAllPost_type();
 		List<Advertisement> ads=advertisementService.getAllAdvertisements();
 		for(int i=0;i<ads.size();i++){

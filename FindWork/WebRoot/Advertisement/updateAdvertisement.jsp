@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <!--新增角色-->
     <div class="container col-md-offset-2">
        <jsp:include page="leftMenu.jsp" >
-        	<jsp:param value="add" name="currentPage"/>
+        	<jsp:param value="update" name="currentPage"/>
         </jsp:include>
         <!--面板-->
         <div class="check_right">

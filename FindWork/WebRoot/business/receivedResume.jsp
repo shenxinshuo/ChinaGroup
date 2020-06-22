@@ -34,7 +34,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="page-header">
-                        <h1>查看已投递简历 <small> 总数&nbsp;<span class="badge">${count }</span></small></h1>
+                        <h1>查看已投递简历 <small> 总数&nbsp;<span class="badge">${lines }</span></small></h1>
                       </div>
 					
 					<table style="width: 95%;text-align:center; margin: 30px auto;"   cellspacing=0  >
@@ -72,7 +72,7 @@
 		<nav aria-label="Page navigation">
 				  <ul class="pagination">
 				    <li>
-				      <a href="showReceivedCV.action?currentPage=1" aria-label="Previous">
+				      <a href="showReceivedCV.action?currentPage=${totalPages - 1 }&advertise.id=${advertise.id}" aria-label="Previous">
 				        <span aria-hidden="true">&laquo;</span>
 				      </a>
 				    </li>
@@ -84,7 +84,7 @@
 					</s:if>
 				    
 				    <li>
-				      <a href="showReceivedCV.action?currentPage=${totalPages }" aria-label="Next">
+				      <a href="showReceivedCV.action?currentPage=${totalPages + 1 }&advertise.id=${advertise.id}" aria-label="Next">
 				        <span aria-hidden="true">&raquo;</span>
 				      </a>
 				    </li>
