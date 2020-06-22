@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="check_left">
 				<ul class="nav nav-pills nav-stacked">
 					<li role="presentation"><a href="admin_showAdminCenter.action">审核企业</a></li>
-					<li role="presentation" class="active"><a href="#">审核招聘信息</a></li>
+					<li role="presentation" class="active"><a>审核招聘信息</a></li>
 					<li role="presentation"><a href="blacklist_toCheckComplain.action">处理投诉</a></li>
 					<li role="presentation"><a href="roleManager/addRole.jsp">角色管理</a></li>
 					<li role="presentation"><a href="post_toAddPost.action">岗位管理</a></li>

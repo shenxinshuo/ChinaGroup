@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<jsp:include page="/common/header.jsp"/>
 
 		<div class="main_body">
-			<div class="div_search" style="">
+			<div class="div_search">
 				<%-- <div class="col-lg-6">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="岗位 / 公司">
@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div><!-- /input-group -->
 				</div><!-- /.col-lg-6 --> --%>
 				
-				 <div class="col-lg-6 ">
+				 <div class="col-lg-6 " style="margin-left:35%">
 				    <div class="input-group col-md-8">
 				      <input type="text" id="searchName" class="form-control" aria-label="..."  placeholder="岗位 / 公司   点击右方按钮切换搜索方式">
 				      <div class="input-group-btn">
@@ -72,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				document.getElementById("advertiseSearch").href=requestPath;
 			}		
 		</script>
-		<div class="div_title">
+		<div class="div_title" style="margin-left:16%">
 			<label class="label label-danger">热门岗位</label>
 			<a class="types" href="#">证券</a>
 			<a class="types" href="#">C++</a>
