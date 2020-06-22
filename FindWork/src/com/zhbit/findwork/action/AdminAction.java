@@ -34,7 +34,7 @@ public class AdminAction extends ActionSupport{
 	private int lines;             //×ÜÌõÊı
 	private int totalPages;        //
 	private List<String> plist;
-	private static int page_line = 2;
+	private static int page_line = 5;
 	private int firstResult;
 	
 	private AdvertisementService  advertisementService;
