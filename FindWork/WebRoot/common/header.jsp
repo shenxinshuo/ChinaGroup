@@ -109,7 +109,13 @@
 					if(request.getSession().getAttribute("LOGINED_USER")!=null){
 					%>
 					<ul class="nav navbar-nav navbar-right">
+						<%
+							if(request.getSession().getAttribute("LOGINED_ROLE") != null){
+							int i = (Integer)request.getSession().getAttribute("LOGINED_ROLE");
+							if(i == 1){
+						 %>
 						<img class="img-circle" src="/FindWork/myHeader_readHeader.action" id="user_head"  />
+						<%}} %>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 								
