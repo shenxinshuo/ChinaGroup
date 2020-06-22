@@ -72,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				document.getElementById("advertiseSearch").href=requestPath;
 			}		
 		</script>
-		<div class="div_title" >
+		<div class="div_title" style="">
 			<label class="label label-danger">热门岗位</label>
 			<a class="types" href="#">证券</a>
 			<a class="types" href="#">C++</a>
