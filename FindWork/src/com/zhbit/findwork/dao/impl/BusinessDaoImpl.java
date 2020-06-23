@@ -144,7 +144,7 @@ public class BusinessDaoImpl implements BusinessDao {
 	@Override
 	public List<Business> getBusinessesByNameSearch(int firstResult, int maxResults, String name) {
 		String searchName = "%"+name+"%";
-		String hql = "from Business where name like :searchName and delete_flag = 0";
+		String hql = "from Business where name like :searchName and delete_flag = 0 and check_flag = 1";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setParameter("searchName", searchName)
 			.setFirstResult(firstResult)
@@ -155,7 +155,7 @@ public class BusinessDaoImpl implements BusinessDao {
 	
 	@Override
 	public int getCountByNameSearch(String name) {
-		String hql = "select count(id) from Business where name like :searchName and delete_flag = 0";
+		String hql = "select count(id) from Business where name like :searchName and delete_flag = 0 and check_flag = 1";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		String searchName = "%"+name+"%";
 		query.setParameter("searchName", searchName);

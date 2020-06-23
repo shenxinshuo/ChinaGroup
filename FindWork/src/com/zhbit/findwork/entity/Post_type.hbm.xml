@@ -15,7 +15,7 @@
 		<property name="Comment" column="Comment" />
 		<property name="create_at" column="create_at" />
 		<property name="update_at" column="update_at" />
-		<bag name="posts"  inverse="true" >
+		<bag name="posts"  inverse="true" lazy="false">
 			<key column="PTid" not-null="false"/>
 			<one-to-many class="Post"/>
 		</bag>

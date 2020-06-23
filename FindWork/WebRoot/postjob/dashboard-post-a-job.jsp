@@ -311,7 +311,7 @@ String path = request.getContextPath();
 								<div class="col-xl-12">
 									<div class="submit-field">
 										<h5>岗位要求</h5>
-										<textarea cols="30" rows="5" name="advertise.ask"  class="with-border"><c:if test="${isEdit==1}">${advertise.ask}</c:if></textarea>
+										<textarea cols="30" rows="5" name="advertise.ask"  class="with-border" placeholder="换行请自己使用换行符<br/>"><c:if test="${isEdit==1}">${advertise.ask}</c:if></textarea>
 										
 									</div>
 								</div>

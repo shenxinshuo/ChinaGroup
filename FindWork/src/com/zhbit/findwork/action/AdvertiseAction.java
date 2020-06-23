@@ -52,32 +52,32 @@ public class AdvertiseAction extends ActionSupport{
 	private int bid;		//鑫烁添加，接受查询企业发布招聘信息时传的企业id
 	
 	public void addAdvertise(){
-		/*HttpServletResponse response=ServletActionContext.getResponse(); 
-		response.setContentType("text/html;charset=utf-8"); */
-		// PrintWriter out = null;
+		HttpServletResponse response=ServletActionContext.getResponse(); 
+		response.setContentType("text/html;charset=utf-8"); 
+		PrintWriter out = null;
 		Business b =  (Business) ServletActionContext.getRequest().getSession().getAttribute("LOGINED_USER");
-		//advertise.setCity(b.getCity());
+		advertise.setCity(b.getCity());
 		
 		System.out.println(advertise.getCity());
 		
 		
 		
-//		advertise.setBusiness(b);
-//		advertise.setBid(b.getId());
-//		advertise.setBusinessName(b.getName());
-//		Post p = postService.getPostByID(advertise.getPost().getPid());
-//		advertise.setPost(p);
-//		advertise.setPostName(p.getPname());
-//		try {
-//			advertiseService.addAdvertese(advertise);
-//			//out = response.getWriter();
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} 
-		/* out.println("success"); 
+		advertise.setBusiness(b);
+		advertise.setBid(b.getId());
+		advertise.setBusinessName(b.getName());
+		Post p = postService.getPostByID(advertise.getPost().getPid());
+		advertise.setPost(p);
+		advertise.setPostName(p.getPname());
+		try {
+			advertiseService.addAdvertese(advertise);
+			//out = response.getWriter();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		 out.println("success"); 
 		 out.flush(); 
-		 out.close(); */
+		 out.close(); 
 	}
 	
 	public String showReceivedCV(){

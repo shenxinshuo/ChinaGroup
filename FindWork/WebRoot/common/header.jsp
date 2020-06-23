@@ -101,7 +101,7 @@
 						<li><a href="#">|</a></li>
 						<!-- <li><a href="#">简历投递</a></li>
 						<li><a href="#">|</a></li> -->
-						<li><a href="#">加入我们</a></li>
+						<li><a href="<%=request.getContextPath() %>/index.jsp">加入我们</a></li>
 					
 					</ul>
 		

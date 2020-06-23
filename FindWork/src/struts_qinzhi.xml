@@ -9,6 +9,7 @@
 <struts>
 	<package name="advertise" extends="struts-default" namespace="/">
 		<action name="addAdvertise" class="advertiseAction" method="addAdvertise">
+			
 		</action>
 		<action name="toAddAdvertise" class="advertiseAction" method="toAddAdvertise">
 			 <result name="toAddAdvertise">/postjob/dashboard-post-a-job.jsp</result>

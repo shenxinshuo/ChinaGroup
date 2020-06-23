@@ -36,11 +36,11 @@
 	        <div class="panel panel-default" style="margin:0px;">
 	            <div class="panel-heading">
 	                <div style="width: fit-content; margin:0 auto;">
-	                    <a href="">联系我们</a> 
+	                    <a href="<%=request.getContextPath() %>/index.jsp">联系我们</a> 
 	                    &nbsp;|&nbsp;
-	                    <a href="">用户反馈</a> 
+	                    <a href="<%=request.getContextPath() %>/index.jsp">用户反馈</a> 
 	                    &nbsp;|&nbsp;
-	                    <a href="">举报违规行为</a> 
+	                    <a href="<%=request.getContextPath() %>/index.jsp">举报违规行为</a> 
 	                    <br>
 	                    <p style="width: fit-content; margin:0 auto;" class="text-warning">吃着苦瓜，告诉自己，生活是甜的</p>
 	                </div>

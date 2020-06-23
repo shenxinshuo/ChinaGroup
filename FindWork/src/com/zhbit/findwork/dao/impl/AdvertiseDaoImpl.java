@@ -132,7 +132,7 @@ public class AdvertiseDaoImpl implements AdvertiseDao {
 	@Override
 	public List<Advertise> getAdvertisesByPostSearch(String postName, int firstResult, int maxResults) {
 		String searchPost = "%"+postName+"%";
-		String hql = "from Advertise where delete_flag = 0 and postName like :searchPost";
+		String hql = "from Advertise where delete_flag = 0 and check = 1 and postName like :searchPost";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setParameter("searchPost", searchPost)
 			.setFirstResult(firstResult)
@@ -144,7 +144,7 @@ public class AdvertiseDaoImpl implements AdvertiseDao {
 	@Override
 	public int getCountByPostSearch(String postName) {
 		String searchPost = "%"+postName+"%";
-		String hql = "select count(id) from Advertise where delete_flag = 0 and postName like :searchPost";
+		String hql = "select count(id) from Advertise where delete_flag = 0 and check = 1 and postName like :searchPost";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setParameter("searchPost", searchPost);
 		Long sum = (Long)query.uniqueResult(); //获得的整数只能为Long型，需要自己再转换为int
